@@ -1,0 +1,1203 @@
+<!doctype html>
+<html lang="es-ES"><head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Soy emprendedor UVP">
+  <title>Soy emprendedor UVP</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Hebrew:wght@100;200;300;400;500;600;700&amp;family=Parkinsans:wght@300..800&amp;family=Varela+Round&amp;display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: oklch(0.9816 0.0017 247.8);
+      --surface: oklch(1 0 89.9);
+      --fg: oklch(0.2178 0 89.9);
+      --muted: oklch(0.4800 0.0180 257.1);
+      --border: oklch(0.9288 0.0126 255.5);
+      --accent: oklch(0.6681 0.1935 40.0);
+      --navy: oklch(0.3327 0.0772 257.1);
+      --indicator: oklch(0.8750 0.1460 174);
+      --radius: 8px;
+      --shadow-low: 0 2px 4px rgb(14 30 54 / 5%);
+      --shadow-high: 0 10px 20px rgb(14 30 54 / 12%);
+      --display: "Parkinsans", sans-serif;
+      --body: "IBM Plex Sans Hebrew", sans-serif;
+      --mono: "SFMono-Regular", Consolas, monospace;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { margin: 0; background: var(--bg); color: var(--fg); font-family: var(--body); font-size: 16px; line-height: 1.7; }
+    button, a { font: inherit; }
+    button { cursor: pointer; }
+    a { color: inherit; text-decoration: none; }
+    :focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; }
+
+    .wrap { width: min(100% - 48px, 1280px); margin-inline: auto; }
+    .eyebrow { margin: 0 0 16px; color: var(--accent); font: 700 12px/1.2 var(--mono); letter-spacing: .12em; text-transform: uppercase; }
+    .section-head { max-width: 760px; margin-bottom: 40px; }
+    .section-head h2, .section-head h3, h1, h2, h3 { font-family: var(--display); color: var(--navy); }
+    .section-head h2 { margin: 0 0 12px; font-size: clamp(30px, 3.8vw, 48px); line-height: 1.1; letter-spacing: -.04em; }
+    .section-head p { margin: 0; color: var(--muted); }
+    .section { padding: 104px 0; }
+    .section.alt { background: var(--surface); }
+    .text-link { border-bottom: 1px solid currentColor; color: var(--navy); font-family: var(--display); font-weight: 700; }
+
+    .site-header { position: sticky; z-index: 20; top: 0; border-bottom: 1px solid color-mix(in oklch, var(--border), transparent 15%); background: color-mix(in oklch, var(--bg), transparent 8%); backdrop-filter: blur(16px); }
+    .nav { min-height: 80px; display: flex; flex-direction: row; align-items: center; justify-content: center; gap: 32px; padding: 12px 0; }
+    .brand { display: inline-flex; align-items: center; flex: 0 0 auto; }
+    .brand-logo { display: block; width: auto; height: 60px; }
+    .nav-links { display: flex; align-items: center; justify-content: center; gap: 24px; color: var(--muted); font: 700 12px/1 var(--display); letter-spacing: .02em; }
+    .nav-links a { padding-block: 12px; }
+    .nav-links a:hover { color: var(--navy); }
+    .nav-postulate { min-height: 40px; padding: 0 16px; border: 1px solid #f25f22; border-radius: 999px; background: #f25f22; color: #1a1a1a; font: 800 12px/1 var(--display); letter-spacing: .02em; transition: transform .2s ease, box-shadow .2s ease, background .2s ease; }
+    .nav-postulate:hover { background: #ff7a3d; box-shadow: var(--shadow-low); transform: translateY(-2px); }
+    .nav-toggle { display: none; min-width: 44px; min-height: 44px; border: 1px solid var(--navy); border-radius: var(--radius); background: transparent; color: var(--navy); font-family: var(--display); font-size: 13px; font-weight: 800; }
+
+    .hero { position: relative; overflow: hidden; padding: 80px 0 0; background: #F3922F; }
+    .hero::before { content: ""; position: absolute; inset: 0; background: linear-gradient(120deg, #E94F27, #F3922F 48%, transparent); background-size: 220% 220%; animation: hero-background-shift 12s ease-in-out infinite alternate; pointer-events: none; }
+    @keyframes hero-background-shift { from { background-position: 0% 50%; } to { background-position: 100% 50%; } }
+    .hero-grid { position: relative; z-index: 1; display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(320px, .9fr); gap: 64px; align-items: end; padding-bottom: 72px; }
+    .hero h1 { max-width: 780px; margin: 0; font-size: clamp(48px, 6.6vw, 84px); line-height: .98; letter-spacing: -.065em; color: #383737; }
+    .hero-copy { max-width: 585px; margin: 24px auto 32px; color: #383737; font-size: 18px; text-align: center; }
+    .btn { min-height: 48px; display: inline-flex; align-items: center; justify-content: center; padding: 0 20px; border-radius: var(--radius); border: 1px solid var(--navy); background: transparent; color: var(--navy); font: 800 14px/1 var(--display); transition: transform .2s ease, box-shadow .2s ease, background .2s ease, color .2s ease; }
+    .btn:hover { transform: translateY(-2px); box-shadow: var(--shadow-high); background: var(--navy); color: var(--surface); }
+    .btn.primary { border-color: #f25f22; background: #f25f22; color: #ffffff; }
+    .btn.primary:hover { background: #d94418; color: #ffffff; }
+    .hero-aside { justify-self: end; max-width: 390px; padding: 28px; border: 1px solid var(--border); background: color-mix(in oklch, var(--surface), transparent 4%); box-shadow: var(--shadow-low); }
+    .hero-aside p { margin: 0; font: 600 15px/1.5 var(--display); color: var(--navy); }
+    .hero-aside span { display: block; margin-top: 14px; color: var(--muted); font: 600 11px/1.3 var(--mono); letter-spacing: .08em; text-transform: uppercase; }
+    .hero-quick-links { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 58px; width: 100%; margin: 30px auto 0; text-align: left; }
+    .hero-quick-link { display: flex; flex-direction: column; justify-content: space-between; min-height: 180px; padding: 43px 25px 25px; border: 1px solid #383737; background: transparent; color: #383737; transition: background .5s ease, transform .5s ease, border-radius .5s ease; }
+    .hero-quick-link.hl-tl { border-radius: 40px 0 0 0; }
+    .hero-quick-link.hl-br { border-radius: 0 40px 0 0; }
+    .hero-quick-link.hl-tr { border-radius: 0 0 40px 0; }
+    .hero-quick-link.hl-bl { border-radius: 0 0 0 40px; }
+    .hl-content { display: flex; flex-direction: column; }
+    .hl-title { font: 800 24px/1.15 'Parkinsans', sans-serif; letter-spacing: -1px; color: #383737; margin: 0; }
+    .hl-desc { font: 400 18px/1.45 'IBM Plex Sans Hebrew', sans-serif; color: #383737; margin: 10px 0 0; opacity: .95; }
+    .hl-arrow { align-self: flex-end; margin-top: auto; }
+    .hl-arrow svg { width: 28px; height: 28px; }
+    .hero-quick-link:hover { transform: translateY(-3px); border-radius: 0; }
+    .hero-quick-link.hl-ember:hover { background: #e94f27; }
+    .hero-quick-link.hl-ember:hover .hl-title, .hero-quick-link.hl-ember:hover .hl-desc { color: #f8b133; }
+    .hero-quick-link.hl-ochre:hover { background: #da7021; }
+    .hero-quick-link.hl-clay:hover { background: #b04f17; }
+    .hero-quick-link.hl-gold:hover { background: #f6a732; }
+
+    .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0; }
+    .carousel-shell { position: relative; z-index: 2; padding-bottom: 40px; }
+    .carousel-intro { margin: 0; padding: 30px 24px 24px; background: #24272d; color: #fff; text-align: left; }
+    .carousel-intro h2 { max-width: 700px; margin: 0; color: #fff; font: 700 clamp(28px, 3.8vw, 46px)/1.08 var(--display); letter-spacing: -.04em; }
+    .carousel-intro p { margin: 10px 0 0; color: var(--indicator); font: 700 12px/1.2 var(--mono); letter-spacing: .12em; text-transform: uppercase; }
+    .carrousel { position: relative; height: clamp(430px, 48vw, 610px); overflow: hidden; border-top: 1px solid #343941; border-bottom: 1px solid #343941; background: #24272d; font-family: "Varela Round", var(--display); text-align: left; }
+    .carrousel .screens { position: relative; width: 100%; height: calc(100% - 76px); margin: 0; padding: 0; list-style: none; }
+    .carrousel .screens > li { position: absolute; top: 50%; left: 50%; z-index: 0; width: 52%; height: 62%; overflow: hidden; border-radius: 10px; opacity: 0; filter: blur(5px); pointer-events: none; transform: translate(-50%, -50%) scale(.72); transition: width .7s ease, height .7s ease, opacity .7s ease, filter .7s ease, transform .7s ease; }
+    .carrousel .screens > li.active { z-index: 3; width: 70%; height: 78%; opacity: 1; filter: none; pointer-events: auto; transform: translate(-50%, -50%) scale(1); }
+    .carrousel .screens > li.left, .carrousel .screens > li.right { z-index: 2; opacity: .48; pointer-events: auto; cursor: pointer; }
+    .carrousel .screens > li.left { transform: translate(-102%, -50%) scale(.88); }
+    .carrousel .screens > li.right { transform: translate(2%, -50%) scale(.88); }
+    .carrousel .screens > li.left:hover, .carrousel .screens > li.right:hover { opacity: .82; filter: blur(1px); }
+    .carrousel .slide { width: 100%; height: 100%; display: grid; grid-template-columns: minmax(180px, .9fr) minmax(0, 1.1fr); background: #30343b; }
+    .ph-img { position: relative; overflow: hidden; min-height: 100%; background: oklch(.40 .070 257.1); }
+    .ph-img::before, .ph-img::after { content: ""; position: absolute; border: 1px solid color-mix(in oklch, var(--surface), transparent 65%); transform: rotate(-24deg); }
+    .ph-img::before { width: 250px; height: 250px; left: 12%; top: -90px; }
+    .ph-img::after { width: 290px; height: 180px; right: -50px; bottom: -115px; }
+    .ph-img span { position: absolute; left: 24px; bottom: 20px; color: color-mix(in oklch, var(--surface), transparent 22%); font: 700 11px/1.3 var(--mono); letter-spacing: .08em; text-transform: uppercase; }
+    .carrousel .ph-img { background-color: #343941; background-position: center; background-size: cover; }
+    .carrousel .ph-img::before { z-index: 1; inset: 0; width: auto; height: auto; border: 0; background: linear-gradient(180deg, transparent 38%, rgb(20 23 28 / 72%)); transform: none; }
+    .carrousel .ph-img::after { display: none; }
+    .carrousel .ph-img span { z-index: 2; color: #fff; text-shadow: 0 1px 8px rgb(0 0 0 / 55%); }
+    .carrousel #s1 .ph-img { background-image: url("https://doocode.xyz/res/img/backgrounds/DCG34.png"); }
+    .carrousel #s2 .ph-img { background-image: url("https://doocode.xyz/res/img/backgrounds/DCG33.png"); }
+    .carrousel #s3 .ph-img { background-image: url("https://doocode.xyz/res/img/backgrounds/DCG32.png"); }
+    .carrousel #s4 .ph-img { background-image: url("https://doocode.xyz/res/img/backgrounds/DCG31.png"); }
+    .slide-copy { display: flex; flex-direction: column; justify-content: center; padding: 36px 50px; color: var(--surface); }
+    .slide-copy p { margin: 0 0 12px; color: var(--indicator); font: 700 12px/1.2 var(--mono); letter-spacing: .1em; text-transform: uppercase; }
+    .slide-copy h2 { max-width: 600px; margin: 0; color: var(--surface); font: 700 clamp(28px, 3vw, 44px)/1.04 var(--display); letter-spacing: -.04em; }
+    .carrousel .carousel-controls { position: absolute; right: 24px; bottom: 14px; left: 24px; z-index: 5; display: flex; align-items: center; justify-content: space-between; }
+    .dots { display: flex; gap: 8px; }
+    .dot, .arrow { border: 0; background: transparent; color: var(--navy); }
+    .dot { width: 28px; height: 28px; padding: 0; font: 700 11px/1 var(--mono); }
+    .dot[aria-current="true"] { color: var(--navy); }
+    .arrows { display: flex; gap: 8px; }
+    .arrow { width: 44px; height: 44px; border: 1px solid var(--navy); border-radius: 50%; font: 700 20px/1 var(--display); }
+    .arrow:hover { background: var(--navy); color: var(--surface); }
+    .carrousel .dot, .carrousel .arrow { color: #fff; }
+    .carrousel .arrow { border-color: rgb(255 255 255 / 65%); }
+    .carrousel .arrow:hover { background: #fff; color: #24272d; }
+    .carousel-pause { min-height: 44px; padding: 0 14px; border: 1px solid rgb(255 255 255 / 65%); border-radius: 999px; background: transparent; color: #fff; font: 700 11px/1 var(--display); }
+    .carousel-pause:hover { background: #fff; color: #24272d; }
+
+    .route-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+    .route { min-height: 246px; display: flex; flex-direction: column; justify-content: space-between; padding: 28px; border: 1px solid var(--border); background: var(--surface); box-shadow: var(--shadow-low); transition: transform .2s ease, box-shadow .2s ease; }
+    .route:hover { transform: translateY(-4px); box-shadow: var(--shadow-high); }
+    .route .num { color: var(--muted); font: 700 11px/1 var(--mono); letter-spacing: .1em; }
+    .route h3 { margin: 32px 0 12px; font-size: 27px; line-height: 1.08; letter-spacing: -.035em; }
+    .route p { margin: 0; color: var(--muted); font-size: 15px; line-height: 1.55; }
+    .route a { align-self: flex-start; margin-top: 24px; color: var(--navy); font: 800 13px/1 var(--display); }
+
+    .program-grid { display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(300px, .75fr); gap: 72px; align-items: start; }
+    .program-copy p { margin-top: 0; font-size: 18px; }
+    .ability-list { margin: 0; padding: 0; list-style: none; border-top: 1px solid var(--border); }
+    .ability-list li { display: grid; grid-template-columns: 52px 1fr; gap: 16px; padding: 20px 0; border-bottom: 1px solid var(--border); }
+    .ability-list span { color: var(--muted); font: 700 11px/1.3 var(--mono); letter-spacing: .08em; }
+    .ability-list strong { display: block; color: var(--navy); font: 700 19px/1.2 var(--display); }
+    .ability-list p { margin: 7px 0 0; color: var(--muted); font-size: 14px; line-height: 1.5; }
+
+    .academic-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+    .academic-card { padding: 28px; border-top: 3px solid var(--navy); background: var(--surface); box-shadow: var(--shadow-low); }
+    .academic-card h3 { margin: 0 0 14px; font-size: 22px; line-height: 1.15; letter-spacing: -.025em; }
+    .academic-card p { margin: 0; color: var(--muted); font-size: 14px; line-height: 1.65; }
+
+    .degree-layout { display: grid; grid-template-columns: minmax(0, 1fr) minmax(360px, .9fr); gap: 64px; align-items: center; }
+    .degree-layout .wrap { width: 60%; }
+    .degree-copy p { margin-top: 0; font-size: 17px; }
+    .degree-cta-row { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 28px; }
+    .requisitos { background: #f8f9fa; }
+    .requirements-grid { display: grid; grid-template-columns: 389px 1fr; gap: 100px; align-items: start; }
+    .requirements-left { position: sticky; top: 120px; }
+    .requirements-left .eyebrow { color: #f25f22; font: 700 12px/1.6 var(--display); letter-spacing: 1.44px; text-transform: uppercase; margin: 0 0 10px; }
+    .requirements-left h2 { font: 700 52px/1.08 var(--display); color: #1a365d; letter-spacing: -2.34px; margin: 0 0 43px; }
+    .req-button { display: inline-flex; align-items: center; justify-content: center; width: 100%; height: 46px; padding: 0 18px; border: 1px solid #1a365d; border-radius: 7px; background: transparent; color: #1a365d; text-decoration: none; font: 700 14px/1 var(--display); transition: background .2s ease, color .2s ease; }
+    .req-button:hover { background: #1a365d; color: #fff; }
+    .checklist { list-style: none; padding: 0; margin: 0; }
+    .checklist li { position: relative; padding: 18px 0 18px 28px; font: 700 16px/1.6 var(--display); color: #1a365d; border-bottom: 1px solid #c8d2dc; }
+    .checklist li::before { content: "✓"; position: absolute; left: 0; top: 18px; color: #f25f22; font-weight: 700; }
+    .checklist li:last-child { border-bottom: none; }
+    .requirements-right h3 { font: 700 21px/1.08 var(--display); color: #1a365d; margin: 100px 0 21px; }
+    .process-cards { display: grid; gap: 20px; }
+    .process-card { border: 1px solid #ccd5de; border-radius: 8px; padding: 15px; display: flex; flex-direction: column; gap: 10px; }
+    .process-num { font: 700 35px/1 var(--display); color: #f25f22; }
+    .process-card p { margin: 0; font: 400 16px/1.3 var(--display); color: #182433; }
+    .hub-diagram { position: relative; width: 100%; aspect-ratio: 1.6 / 1; max-width: 700px; margin: 0 auto; }
+    .hub-diagram svg.hub-bg { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; }
+    .hub-ring { fill: rgba(26, 54, 93, 0.04); stroke: rgba(26, 54, 93, 0.10); stroke-width: 1; }
+    .hub-link { fill: none; stroke: rgba(26, 54, 93, 0.45); stroke-width: 1.4; stroke-linecap: round; stroke-dasharray: 600; stroke-dashoffset: 600; }
+    .hub-center { position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); width: clamp(110px, 16vw, 150px); height: clamp(110px, 16vw, 150px); border-radius: 50%; background: var(--navy); color: var(--surface); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px; z-index: 5; box-shadow: 0 14px 22px rgb(26 54 93 / 35%), 0 4px 6px rgb(26 54 93 / 25%); text-align: center; padding: 12px; cursor: default; }
+    .hub-center-emoji { font-size: clamp(22px, 3vw, 32px); line-height: 1; }
+    .hub-center-text { font: 700 clamp(10px, 1.1vw, 13px)/1.2 var(--display); max-width: 110px; }
+    .hub-tile { position: absolute; width: clamp(90px, 11vw, 120px); min-height: clamp(56px, 7vw, 72px); border-radius: 16px; background: #30343b; border: 1px solid rgb(255 255 255 / 10%); display: flex; align-items: center; justify-content: center; color: #fff; font: 600 clamp(10px, 1vw, 12px)/1.25 var(--display); text-align: center; padding: 10px; z-index: 10; cursor: pointer; box-shadow: 0 18px 32px -12px rgb(0 0 0 / 45%), 0 6px 12px -4px rgb(0 0 0 / 30%), inset 0 1px 0 rgb(255 255 255 / 10%), inset 0 -2px 4px rgb(0 0 0 / 30%); transition: box-shadow .45s cubic-bezier(.6, 0, .2, 1), border-color .3s ease; will-change: transform; }
+    .hub-tile::after { content: ""; position: absolute; inset: 0; border-radius: inherit; background: linear-gradient(155deg, rgb(255 255 255 / 10%) 0%, transparent 35%, transparent 70%, rgb(0 0 0 / 25%) 100%); pointer-events: none; }
+    .hub-tile:hover, .hub-tile:focus-visible { border-color: var(--indicator); box-shadow: 0 24px 44px -14px rgb(0 0 0 / 55%), 0 10px 18px -5px rgb(0 0 0 / 35%), inset 0 1px 0 rgb(255 255 255 / 14%), inset 0 -2px 4px rgb(0 0 0 / 35%); }
+    .hub-tile:focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; }
+    .hub-tile-1 { left: 6%; top: 4%; }
+    .hub-tile-2 { right: 6%; top: 4%; }
+    .hub-tile-3 { left: 0; top: 42%; }
+    .hub-tile-4 { right: 0; top: 42%; }
+    .hub-tile-5 { left: 6%; bottom: 4%; }
+    .hub-tile-6 { right: 6%; bottom: 4%; }
+    .hub-tile-7 { left: 50%; bottom: 0; transform: translateX(-50%); }
+
+    .inspire-desc { max-width: 760px; margin: 0 0 46px; color: #617083; font: 400 17px/1.6 var(--body); }
+    #inspirate h2 { font: 700 52px/1.08 var(--display); color: #1a365d; letter-spacing: -2.34px; margin: 0 0 43px; }
+    .inspire-grid { display: grid; grid-template-columns: 1fr .5fr; gap: 18px; min-height: 523px; }
+    .card { position: relative; border-radius: 12px; overflow: hidden; }
+    .card-feature { min-height: 523px; }
+    .card-feature img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+    .card-overlay { position: absolute; bottom: 0; left: 0; right: 0; padding: 28px; background: linear-gradient(to bottom, rgba(8,30,52,0), rgba(8,30,52,.94)); color: #fff; }
+    .card-overlay .eyebrow { color: #00f5d4; font: 700 12px/1.6 var(--mono); letter-spacing: .88px; text-transform: uppercase; margin: 0 0 10px; }
+    .card-overlay h3 { margin: 0 0 21px; font: 700 18px/1.26 var(--display); color: #fff; }
+    .card-overlay p { margin: 0; font: 400 16px/1.6 var(--body); color: #d7e2ed; }
+    .card-stack { display: grid; grid-template-rows: 1fr 1fr; gap: 18px; }
+    .card-dark { background: #1a365d; padding: 24px; color: #fff; display: flex; flex-direction: column; justify-content: flex-start; }
+    .card-dark .eyebrow { color: #00f5d4; font: 700 12px/1.6 var(--mono); letter-spacing: 1.44px; text-transform: uppercase; margin: 0 0 10px; }
+    .card-dark h3 { margin: 0; font: 700 18px/1.26 var(--display); color: #fff; }
+    .card-cyan { background: #00f5d4; padding: 24px; color: #1a365d; display: flex; flex-direction: column; justify-content: flex-start; }
+    .card-cyan .eyebrow { color: #f25f22; font: 700 12px/1.6 var(--mono); letter-spacing: 1.44px; text-transform: uppercase; margin: 0 0 10px; }
+    .card-cyan h3 { margin: 0; font: 700 18px/1.26 var(--display); color: #1a365d; }
+    .pending { display: inline-block; margin-top: 17px; color: var(--muted); font: 700 10px/1 var(--mono); letter-spacing: .09em; text-transform: uppercase; }
+
+    .ecosystem-grid { display: grid; grid-template-columns: repeat(12, 1fr); gap: 24px; }
+    .eco-main { grid-column: span 7; padding: 36px; border: 1px solid var(--border); background: var(--surface); }
+    .eco-main h3, .eco-side h3 { margin: 0 0 14px; font-size: 28px; line-height: 1.1; letter-spacing: -.035em; }
+    .eco-main p, .eco-side p { margin: 0; color: var(--muted); font-size: 15px; line-height: 1.65; }
+    .eco-side { grid-column: span 5; display: grid; gap: 24px; }
+    .eco-card { padding: 28px; border-top: 3px solid var(--navy); background: var(--surface); box-shadow: var(--shadow-low); }
+    .logo-row { grid-column: 1 / -1; display: grid; grid-template-columns: repeat(6, 1fr); border: 1px solid var(--border); background: var(--surface); }
+    .logo-placeholder { min-height: 74px; display: grid; place-items: center; border-right: 1px solid var(--border); color: var(--muted); font: 700 11px/1 var(--mono); letter-spacing: .06em; }
+    .logo-placeholder:last-child { border-right: 0; }
+
+    .incubation { display: grid; grid-template-columns: .8fr 1.2fr; gap: 64px; align-items: start; }
+    .incubation-stamp { padding-top: 8px; color: var(--navy); font: 900 clamp(62px, 8vw, 112px)/.8 var(--display); letter-spacing: -.08em; }
+    .incubation-copy { padding-left: 28px; border-left: 1px solid var(--border); }
+    .incubation-copy p { margin: 0; color: var(--muted); font-size: 18px; }
+    .incubation-links { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 28px; }
+
+    .orientation { background: var(--surface); }
+    .orientation-layout { display: grid; grid-template-columns: minmax(260px, .75fr) minmax(0, 1.25fr); gap: 72px; align-items: start; }
+    .orientation-layout h2 { margin: 0 0 16px; font-size: clamp(32px, 4vw, 48px); line-height: 1.08; letter-spacing: -.04em; }
+    .orientation-layout > div > p:last-child { margin: 0; color: var(--muted); font-size: 17px; line-height: 1.65; }
+    .orientation-form { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px; padding: 30px; border: 1px solid var(--border); background: var(--bg); box-shadow: var(--shadow-low); }
+    .form-field { display: grid; gap: 7px; }
+    .form-field.full { grid-column: 1 / -1; }
+    .form-field label { color: var(--navy); font: 700 13px/1.2 var(--display); }
+    .form-field input, .form-field select, .form-field textarea { width: 100%; border: 1px solid var(--border); border-radius: var(--radius); background: var(--surface); color: var(--fg); font: 400 16px/1.4 var(--body); }
+    .form-field input, .form-field select { min-height: 48px; padding: 0 13px; }
+    .form-field textarea { min-height: 148px; padding: 12px 13px; resize: vertical; }
+    .form-field input:focus, .form-field select:focus, .form-field textarea:focus { border-color: var(--navy); outline: 3px solid color-mix(in oklch, var(--accent), transparent 65%); outline-offset: 0; }
+    .form-submit { grid-column: 1 / -1; display: flex; align-items: center; flex-wrap: wrap; gap: 16px; margin-top: 4px; }
+    .form-submit .btn { border-color: #f25f22; background: #f25f22; color: #1a1a1a; }
+    .form-submit .btn:hover { border-color: #ff7a3d; background: #ff7a3d; color: #1a1a1a; }
+    .form-status { margin: 0; color: var(--navy); font-size: 14px; font-weight: 600; }
+
+    .faq-grid { display: grid; grid-template-columns: minmax(250px, .7fr) minmax(0, 1.3fr); gap: 64px; }
+    .faq-nav { padding-top: 6px; }
+    .faq-nav p { margin: 0; color: var(--muted); }
+    .faq-item { border-top: 1px solid var(--border); }
+    .faq-item:last-child { border-bottom: 1px solid var(--border); }
+    .faq-button { width: 100%; min-height: 76px; display: flex; justify-content: space-between; align-items: center; gap: 24px; padding: 18px 0; border: 0; background: transparent; color: var(--navy); text-align: left; font: 700 18px/1.25 var(--display); }
+    .faq-button span:last-child { color: var(--muted); font: 400 26px/1 var(--display); }
+    .faq-button[aria-expanded="true"] span:last-child { color: var(--navy); transform: rotate(45deg); }
+    .faq-answer { max-height: 0; overflow: hidden; transition: max-height .25s ease; }
+    .faq-answer p { max-width: 720px; margin: 0; padding: 0 0 24px; color: var(--muted); font-size: 15px; line-height: 1.7; }
+    .faq-item.open .faq-answer { max-height: 420px; }
+
+    .footer { padding: 64px 0 32px; background: var(--navy); color: var(--surface); }
+    .footer-grid { display: grid; grid-template-columns: 1.4fr repeat(3, 1fr); gap: 40px; }
+    .footer-brand { max-width: 310px; font: 700 21px/1.1 var(--display); letter-spacing: -.035em; }
+    .footer h3 { margin: 0 0 12px; color: var(--indicator); font: 700 11px/1.2 var(--mono); letter-spacing: .1em; text-transform: uppercase; }
+    .footer ul { margin: 0; padding: 0; list-style: none; }
+    .footer li { margin: 6px 0; color: color-mix(in oklch, var(--surface), transparent 24%); font-size: 14px; }
+    .footer-bottom { margin-top: 48px; padding-top: 20px; border-top: 1px solid color-mix(in oklch, var(--surface), transparent 78%); color: color-mix(in oklch, var(--surface), transparent 45%); font: 600 10px/1.3 var(--mono); letter-spacing: .06em; text-transform: uppercase; }
+
+    dialog { width: min(100% - 32px, 480px); padding: 0; border: 0; background: var(--surface); box-shadow: 0 24px 70px rgb(0 0 0 / 28%); }
+    dialog::backdrop { background: rgb(8 21 40 / 55%); }
+    .dialog-inner { padding: 32px; }
+    .dialog-inner h2 { margin: 0 0 12px; color: var(--navy); font: 700 28px/1.1 var(--display); letter-spacing: -.035em; }
+    .dialog-inner p { margin: 0 0 24px; color: var(--muted); }
+
+    @media (max-width: 920px) {
+      .wrap { width: min(100% - 32px, 1280px); }
+      .nav { position: relative; min-height: 84px; flex-direction: row; justify-content: center; padding: 10px 0; }
+      .nav-toggle { display: inline-flex; align-items: center; justify-content: center; }
+      .nav-toggle { position: absolute; right: 0; top: 50%; transform: translateY(-50%); }
+      .nav-links { position: absolute; top: 84px; left: 16px; right: 16px; display: none; flex-direction: column; align-items: center; gap: 0; padding: 12px 20px; border: 1px solid var(--border); background: var(--surface); box-shadow: var(--shadow-high); text-align: center; }
+      .nav-links.open { display: flex; }
+      .nav-links a { width: 100%; padding: 14px 0; border-bottom: 1px solid var(--border); }
+      .nav-links a:last-child { border-bottom: 0; }
+      .nav-postulate { width: 100%; margin-top: 12px; }
+      .hero-grid, .program-grid, .degree-layout, .inspire-grid, .incubation, .faq-grid { grid-template-columns: 1fr; gap: 40px; }
+      .requirements-grid { grid-template-columns: 1fr; gap: 40px; }
+      .orientation-layout { grid-template-columns: 1fr; gap: 40px; }
+      .hero-aside { justify-self: start; }
+      .route-grid, .academic-grid { grid-template-columns: 1fr; }
+      .hub-diagram { max-width: 420px; }
+      .hub-tile { width: 84px; min-height: 50px; font-size: 10px; }
+      .hub-center { width: 100px; height: 100px; }
+      .hub-center-text { font-size: 10px; max-width: 80px; }
+      .hero-quick-links { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 40px; }
+      .hero-quick-link.hl-tl, .hero-quick-link.hl-br, .hero-quick-link.hl-tr, .hero-quick-link.hl-bl { border-radius: 40px 0 0 0; }
+      .carrousel { height: 530px; }
+      .carrousel .screens > li { width: 68%; height: 64%; }
+      .carrousel .screens > li.active { width: 82%; height: 82%; }
+      .carrousel .screens > li.left { transform: translate(-113%, -50%) scale(.86); }
+      .carrousel .screens > li.right { transform: translate(13%, -50%) scale(.86); }
+      .carrousel .slide { grid-template-columns: 1fr; grid-template-rows: minmax(150px, .9fr) minmax(160px, 1.1fr); }
+      .ph-img { min-height: 150px; }
+      .slide-copy { min-height: 160px; padding: 28px; }
+      .ecosystem-grid { display: grid; grid-template-columns: 1fr; }
+      .eco-main, .eco-side, .logo-row { grid-column: auto; }
+      .eco-side { grid-template-columns: 1fr; }
+      .logo-row { grid-template-columns: repeat(3, 1fr); }
+      .logo-placeholder:nth-child(3) { border-right: 0; }
+      .logo-placeholder:nth-child(-n+3) { border-bottom: 1px solid var(--border); }
+      .incubation-copy { padding-left: 0; border-left: 0; }
+      .footer-grid { grid-template-columns: repeat(2, 1fr); }
+      .footer-brand { grid-column: 1 / -1; }
+    }
+
+    @media (max-width: 560px) {
+      .section { padding: 72px 0; }
+      .hero { padding-top: 56px; }
+      .brand-logo { height: 60px; }
+      .hero h1 { font-size: 50px; }
+      .hero-copy { font-size: 16px; }
+      .hero-quick-links { grid-template-columns: 1fr; gap: 14px; margin-top: 24px; }
+      .hero-quick-link { min-height: auto; padding: 18px 20px; }
+      .hero-quick-link.hl-tl, .hero-quick-link.hl-br, .hero-quick-link.hl-tr, .hero-quick-link.hl-bl { border-radius: 28px; }
+      .carousel-shell { padding-bottom: 24px; }
+      .carrousel { height: 440px; margin-inline: -16px; }
+      .carrousel .screens { height: calc(100% - 68px); }
+      .carrousel .screens > li { width: 78%; height: 68%; }
+      .carrousel .screens > li.active { width: 90%; height: 88%; }
+      .carrousel .screens > li.left { transform: translate(-115%, -50%) scale(.84); }
+      .carrousel .screens > li.right { transform: translate(15%, -50%) scale(.84); }
+      .carrousel .slide { grid-template-rows: minmax(120px, .82fr) minmax(140px, 1.18fr); }
+      .ph-img { min-height: 120px; }
+      .slide-copy { min-height: 140px; padding: 20px; }
+      .slide-copy h2 { font-size: clamp(24px, 8vw, 34px); }
+      .carrousel .carousel-controls { right: 12px; bottom: 10px; left: 12px; }
+      .dot { width: 44px; height: 44px; }
+      .degree-cta-row, .incubation-links { align-items: stretch; flex-direction: column; }
+      .btn { width: 100%; }
+      .orientation-form { grid-template-columns: 1fr; padding: 20px; }
+      .form-field.full, .form-submit { grid-column: auto; }
+      .hub-diagram { max-width: 320px; aspect-ratio: 1 / 1.1; }
+      .hub-tile { width: 70px; min-height: 44px; font-size: 9px; border-radius: 12px; padding: 6px; }
+      .hub-center { width: 80px; height: 80px; }
+      .hub-center-emoji { font-size: 18px; }
+      .hub-center-text { font-size: 8px; max-width: 64px; }
+      .hub-tile-3, .hub-tile-4 { top: 40%; }
+      .footer-grid { grid-template-columns: 1fr; gap: 26px; }
+      .footer-brand { grid-column: auto; }
+    }
+
+    /* Responsive hero and accessible hamburger overrides. */
+    .hero { background: #ffffff; }
+    .hero::before { background: none; animation: none; }
+    .hero h1 { color: #383737; }
+    .hero-copy { color: #383737; }
+    .hero .btn.primary { border-color: #f25f22; background: #f25f22; color: #ffffff; }
+    .hero .btn.primary:hover { border-color: #d94418; background: #d94418; color: #ffffff; }
+    .hero-content { width: 100%; min-width: 0; grid-column: 1 / -1; text-align: center; transform-origin: center top; will-change: transform, opacity; }
+    .hero-content h1 { width: min(100%, 960px); max-width: 960px; margin-inline: auto; text-wrap: balance; }
+    .nav-toggle { width: 44px; height: 44px; align-items: center; justify-content: center; flex-direction: column; gap: 5px; padding: 0; }
+    .nav-toggle span { display: block; width: 21px; height: 2px; border-radius: 2px; background: currentColor; transition: opacity .2s ease, transform .2s ease; }
+    .nav-toggle[aria-expanded="true"] span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .nav-toggle[aria-expanded="true"] span:nth-child(2) { opacity: 0; }
+    .nav-toggle[aria-expanded="true"] span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+    @media (max-width: 920px) {
+      .nav-links { z-index: 30; left: 0; right: 0; max-height: calc(100vh - 100px); overflow-y: auto; align-items: stretch; text-align: left; }
+      .nav-links a { min-height: 48px; display: flex; align-items: center; padding-inline: 4px; }
+    }
+
+    @media (max-width: 560px) {
+      .hero { padding-top: 40px; }
+      .hero-grid { gap: 0; padding-bottom: 48px; }
+      .hero h1 { width: 100%; font-size: clamp(38px, 12vw, 50px); line-height: 1.02; letter-spacing: -.055em; }
+      .hero-copy { max-width: 36ch; margin: 20px auto 24px; padding-inline: 4px; font-size: 16px; line-height: 1.55; text-wrap: pretty; }
+      .hero-content .btn { width: min(100%, 340px); margin-inline: auto; padding-inline: 16px; line-height: 1.25; text-align: center; }
+      .carousel-intro { padding: 24px 16px 20px; }
+      .carrousel .carousel-controls { right: 12px; bottom: 8px; left: 12px; display: grid; grid-template-columns: 1fr auto; gap: 4px 12px; }
+      .carrousel .dots { gap: 0; }
+      .carrousel .arrows { align-items: center; }
+      .carousel-pause { width: auto; padding-inline: 12px; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { scroll-behavior: auto !important; transition-duration: .01ms !important; animation-duration: .01ms !important; }
+    }
+  </style>
+  <link rel="stylesheet" href="hero-scroll.css">
+</head>
+<body>
+  <header class="site-header" data-od-id="site-header">
+    <nav class="nav wrap" aria-label="Navegación principal" data-od-id="primary-navigation">
+      <a class="brand" href="#inicio" data-od-id="brand-link" aria-label="Soy Emprendedor UVP, inicio"><img class="brand-logo" src="Recurso-1.png" alt="Soy Emprendedor UVP"></a>
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="nav-links" aria-label="Abrir menú" data-od-id="menu-toggle"><span></span><span></span><span></span></button>
+      <div class="nav-links" id="nav-links" data-od-id="navigation-links">
+        <a href="#programa" data-od-id="nav-programa">Programa</a>
+        <a href="#titulacion" data-od-id="nav-titulacion">Titulación</a>
+        <a href="#inspirate" data-od-id="nav-inspirate">Inspírate</a>
+        <a href="#ecosistema" data-od-id="nav-ecosistema">Ecosistema</a>
+        <a href="#incubadora" data-od-id="nav-incubadora">Incubadora</a>
+        <a href="#preguntas" data-od-id="nav-faq">Preguntas frecuentes</a>
+        <a class="nav-postulate" href="#orientacion" data-orientation-request="emprender una idea" data-od-id="nav-postulate">Postula mi proyecto</a>
+      </div>
+    </nav>
+  </header>
+
+  <main id="content">
+    <section class="hero" id="inicio" data-od-id="hero-section">
+      <div class="hero-blobs" aria-hidden="true">
+        <div class="hero-blob" id="hero-blob-1"></div>
+        <div class="hero-blob" id="hero-blob-2"></div>
+        <div class="hero-blob" id="hero-blob-3"></div>
+      </div>
+      <div class="hero-grid wrap">
+        <div class="hero-content">
+          <div class="hero-focus-stage">
+            <button class="hero-focus-trigger" type="button" aria-expanded="false" aria-label="Mostrar frases de inspiración">
+              <picture>
+                <source srcset="assets/foco-hero.webp" type="image/webp">
+                <img class="hero-focus" src="assets/foco.png" width="2048" height="1745" alt="" fetchpriority="high">
+              </picture>
+            </button>
+            <ul class="hero-ideas" aria-hidden="true">
+              <li class="hero-idea">Naturaleza del proyecto</li>
+              <li class="hero-idea">Plan de marketing</li>
+              <li class="hero-idea">Plan de producción</li>
+              <li class="hero-idea">Plan organizacional</li>
+              <li class="hero-idea">Factibilidad financiera</li>
+              <li class="hero-idea">Marco legal</li>
+              <li class="hero-idea">Impacto del proyecto</li>
+            </ul>
+          </div>
+          <h1 data-od-id="hero-title">Tu idea tiene el poder de cambiar las cosas.</h1>
+           <p class="hero-copy">En la UVP, el emprendimiento no es solo una materia: es la chispa para transformar tu pasión en proyectos reales.</p>
+           <a class="btn primary" href="#programa" data-od-id="hero-cta">Conoce el Programa Emprendedores</a>
+            <nav class="hero-quick-links" aria-label="Rutas rápidas de emprendimiento">
+              <a class="hero-quick-link hl-tl hl-ember" href="#titulacion">
+                <div class="hl-content"><p class="hl-title">Quiero titularme</p><p class="hl-desc">Con mi proyecto emprendedor</p></div>
+                <div class="hl-arrow" aria-hidden="true"><svg viewBox="0 0 28 28" fill="none"><circle cx="14" cy="14" r="13" stroke="#f2a120" stroke-width="2"/><path d="M11 10l5 4-5 4" stroke="#f2a120" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+              </a>
+              <a class="hero-quick-link hl-br hl-ochre" href="#programa">
+                <div class="hl-content"><p class="hl-title">Quiero emprender</p><p class="hl-desc">Una idea de negocio</p></div>
+                <div class="hl-arrow" aria-hidden="true"><svg viewBox="0 0 28 28" fill="none"><circle cx="14" cy="14" r="13" stroke="#f2a120" stroke-width="2"/><path d="M11 10l5 4-5 4" stroke="#f2a120" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+              </a>
+              <a class="hero-quick-link hl-tr hl-clay" href="#ecosistema">
+                <div class="hl-content"><p class="hl-title">Tengo una empresa</p><p class="hl-desc">Quiero difusión y vinculación</p></div>
+                <div class="hl-arrow" aria-hidden="true"><svg viewBox="0 0 28 28" fill="none"><circle cx="14" cy="14" r="13" stroke="#f2a120" stroke-width="2"/><path d="M11 10l5 4-5 4" stroke="#f2a120" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+              </a>
+              <a class="hero-quick-link hl-bl hl-gold" href="#incubadora">
+                <div class="hl-content"><p class="hl-title">Inicia tu camino emprendedor</p><p class="hl-desc">Conoce la incubadora UVP</p></div>
+                <div class="hl-arrow" aria-hidden="true"><svg viewBox="0 0 28 28" fill="none"><circle cx="14" cy="14" r="13" stroke="#f2a120" stroke-width="2"/><path d="M11 10l5 4-5 4" stroke="#f2a120" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+              </a>
+            </nav>
+        </div>
+        
+      </div>
+
+      <div class="carousel-shell wrap" id="destacados" data-od-id="interest-carousel">
+        <div class="carousel-intro">
+          <p>Ahora en UVP</p>
+          <h2>Información que pone tu idea en movimiento.</h2>
+        </div>
+        <div class="carrousel" aria-roledescription="carrusel" aria-label="Información de interés" tabindex="0">
+          <ul class="screens">
+            <li id="s1" class="active" data-slide="0" aria-hidden="false">
+              <article class="slide" data-od-id="carousel-convocatorias">
+                <div class="ph-img" role="img" aria-label="Jóvenes emprendedoras participando en un panel de discusión"><span>Imagen de referencia</span></div>
+                <div class="slide-copy"><p>Información de interés</p><h2>Convocatorias</h2></div>
+              </article>
+            </li>
+            <li id="s2" class="right" data-slide="1" aria-hidden="true">
+              <article class="slide" data-od-id="carousel-titulacion">
+                <div class="ph-img" role="img" aria-label="Emprendedora presentando un proyecto ante una audiencia"><span>Imagen de referencia</span></div>
+                <div class="slide-copy"><p>Información de interés</p><h2>Titúlate con tu emprendimiento</h2></div>
+              </article>
+            </li>
+            <li id="s3" data-slide="2" aria-hidden="true">
+              <article class="slide" data-od-id="carousel-expo-emprende">
+                <div class="ph-img" role="img" aria-label="Joven emprendedor exponiendo una idea ante una audiencia"><span>Imagen de referencia</span></div>
+                <div class="slide-copy"><p>Información de interés</p><h2>Expo Emprende</h2></div>
+              </article>
+            </li>
+            <li id="s4" class="left" data-slide="3" aria-hidden="true">
+              <article class="slide" data-od-id="carousel-emprendedor-mes">
+                <div class="ph-img" role="img" aria-label="Emprendedor compartiendo su experiencia durante una presentación"><span>Imagen de referencia</span></div>
+                <div class="slide-copy"><p>Información de interés</p><h2>Conoce al Emprendedor del Mes</h2></div>
+              </article>
+            </li>
+          </ul>
+          <div class="carousel-controls" data-od-id="carousel-controls">
+            <div class="dots" role="tablist" aria-label="Seleccionar banner">
+              <button class="dot" role="tab" type="button" aria-selected="true" aria-current="true" aria-label="Ver Convocatorias" data-slide="0" data-od-id="carousel-dot-1">01</button>
+              <button class="dot" role="tab" type="button" aria-selected="false" aria-current="false" aria-label="Ver Titúlate con tu emprendimiento" data-slide="1" data-od-id="carousel-dot-2">02</button>
+              <button class="dot" role="tab" type="button" aria-selected="false" aria-current="false" aria-label="Ver Expo Emprende" data-slide="2" data-od-id="carousel-dot-3">03</button>
+              <button class="dot" role="tab" type="button" aria-selected="false" aria-current="false" aria-label="Ver Emprendedor del Mes" data-slide="3" data-od-id="carousel-dot-4">04</button>
+            </div>
+            <div class="arrows">
+              <button class="carousel-pause" type="button" aria-pressed="false" data-carousel="pause">Pausar</button>
+              <button class="arrow" type="button" aria-label="Banner anterior" data-carousel="previous" data-od-id="carousel-previous">←</button>
+              <button class="arrow" type="button" aria-label="Banner siguiente" data-carousel="next" data-od-id="carousel-next">→</button>
+            </div>
+          </div>
+          <p class="sr-only" id="carousel-status" aria-live="polite">Banner 1 de 4: Convocatorias</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" data-od-id="routes-section">
+      <div class="wrap">
+        <div class="section-head"><p class="eyebrow">Rutas UVP</p><h2 data-od-id="routes-title">Encuentra el espacio que acompaña tu momento.</h2></div>
+        <div class="route-grid">
+          <article class="route" data-od-id="route-programa"><span class="num">01</span><div><h3>Yo soy emprendedor UVP</h3><p>¿Qué es un Emprendedor UVP? Programas académicos y Titulación para emprendedores.</p></div><a href="#programa" data-od-id="route-programa-link">Conocer el programa →</a></article>
+          <article class="route" data-od-id="route-inspirate"><span class="num">02</span><div><h3>Inspírate y aprende</h3><p>Emprendedor del mes, podcast y multimedia, noticias y blog, convocatorias.</p></div><a href="#inspirate" data-od-id="route-inspirate-link">Explorar contenidos →</a></article>
+          <article class="route" data-od-id="route-incubadora"><span class="num">03</span><div><h3>Incubadora de empresas</h3><p>Incuba UVP, Postula tu proyecto y Agenda una mentoria.</p></div><a href="#incubadora" data-od-id="route-incubadora-link">Conocer Incuba UVP →</a></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section alt" id="programa" data-od-id="program-section">
+      <div class="wrap program-grid">
+        <div class="program-copy">
+          <p class="eyebrow">Programa Emprendedores</p>
+          <h2 data-od-id="program-title">Tu idea tiene el poder de cambiar las cosas.</h2>
+          <p>Sabemos que el mundo actual exige soluciones valientes, empleos con propósito y propuestas que realmente mejoren la vida de las personas. Por eso, en cada aula, taller o actividad, te respaldamos para que dejes de imaginar y empieces a crear.</p>
+          <p>Estamos listos para acompañarte a convertir tus ideas en valor real para la sociedad.</p>
+        </div>
+        <ul class="ability-list" data-od-id="abilities-list">
+          <li data-od-id="ability-initiative"><span>01</span><div><strong>Iniciativa</strong><p>Para dar el primer paso y transformar retos en oportunidades.</p></div></li>
+          <li data-od-id="ability-creativity"><span>02</span><div><strong>Creatividad</strong><p>Para diseñar soluciones innovadoras que marquen la diferencia.</p></div></li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="section" data-od-id="academic-section">
+      <div class="wrap">
+        <div class="section-head"><p class="eyebrow">Programas académicos de Emprendimiento</p><h2 data-od-id="academic-title">Formación emprendedora desde la misión universitaria.</h2><p>La identidad de emprendimiento en la universidad nace en la misión, y todos los alumnos cuentan con formación emprendedora.</p></div>
+        <div class="academic-grid">
+          <article class="academic-card" data-od-id="academic-card-innovation"><h3>Emprendimiento e Innovación</h3><p>En esta materia los alumnos aprenderán a desarrollar soluciones con proyectos sociales y económicos que resuelven de manera creativa problemas y necesidades a partir de la identificación de oportunidades para contribuir a la transformación del entorno actual y global, considerando metodologías de innovación tendencias, teniendo como referencia los ODS de la Agenda 2030 de la ONU.</p></article>
+          <article class="academic-card" data-od-id="academic-card-formulation"><h3>Diseño y Formulación de Proyectos Emprendedores</h3><p>El alumnos aprenderán a diseñar propuestas de valor con alto énfasis en mejorar resultados en los objetivos de organizaciones, a través de ideas innovadoras que permitan detectar oportunidades de negocios con capacidad emprendedora, para satisfacer las necesidades del contexto económico y social.</p></article>
+          <article class="academic-card" data-od-id="academic-card-evaluation"><h3>Desarrollo y Evaluación de Proyectos Emprendedores</h3><p>Los alumnos conocerán metodologías para evaluar la viabilidad legal, financiera y social de un plan de negocios, a través de la aplicación de herramientas financieras y de la investigación de licencias y permisos para iniciar operaciones, para medir su factibilidad económica y social.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section alt" id="titulacion" data-od-id="degree-section">
+      <div class="degree-layout">
+        <div class="wrap">
+          <div class="section-head"><p class="eyebrow">Titulación para emprendedores</p><h2 data-od-id="degree-title">Proyecto Emprendedor para Titulación.</h2></div>
+          <div class="degree-copy">
+            <p>En la Universidad del Valle de Puebla existen entre las modalidades de titulación la vía de Proyecto Emprendedor. El cual consiste en el desarrollo de una investigación con el formato de un Plan de Negocios.</p>
+            <p>A través del proyecto emprendedor el alumno desarrolla herramientas que le permitan conocimientos y aprendizajes en su carrera de forma práctica. El proyecto debe ser Innovador, generador de impacto en el entorno y debe desarrollar una solución que se desprenda de su área de estudio.</p>
+            <div class="degree-cta-row" data-od-id="degree-actions">
+              <button class="btn" type="button" data-dialog="postulacion" data-od-id="degree-apply">Postularme para titularme</button>
+              <button class="btn" type="button" data-dialog="asesores" data-od-id="degree-advisers">Conocer a los asesores</button>
+            </div>
+          </div>
+        </div>
+        <div class="hub-diagram" id="hubDiagram" aria-label="Elementos del Proyecto Emprendedor para Titulación" data-od-id="degree-diagram">
+          <svg class="hub-bg" viewBox="0 0 800 500" preserveAspectRatio="xMidYMid meet">
+            <circle class="hub-ring hub-ring-1" cx="400" cy="250" r="60"></circle>
+            <circle class="hub-ring hub-ring-2" cx="400" cy="250" r="110"></circle>
+            <circle class="hub-ring hub-ring-3" cx="400" cy="250" r="160"></circle>
+            <circle class="hub-ring hub-ring-4" cx="400" cy="250" r="210"></circle>
+            <path class="hub-link" id="hubLink1" d="M 140 75 Q 250 170, 395 247"></path>
+            <path class="hub-link" id="hubLink2" d="M 660 75 Q 545 170, 405 247"></path>
+            <path class="hub-link" id="hubLink3" d="M 80 270 Q 230 258, 388 250"></path>
+            <path class="hub-link" id="hubLink4" d="M 720 270 Q 570 258, 412 250"></path>
+            <path class="hub-link" id="hubLink5" d="M 140 425 Q 250 335, 395 253"></path>
+            <path class="hub-link" id="hubLink6" d="M 660 425 Q 545 335, 405 253"></path>
+            <path class="hub-link" id="hubLink7" d="M 400 430 Q 400 350, 400 260"></path>
+          </svg>
+          <div class="hub-center" id="hubCenter">
+            <span class="hub-center-emoji">💡</span>
+            <span class="hub-center-text">Proyecto Emprendedor para Titulación</span>
+          </div>
+          <button class="hub-tile hub-tile-1" type="button" data-tile="naturaleza"><span>Naturaleza del proyecto</span></button>
+          <button class="hub-tile hub-tile-2" type="button" data-tile="marketing"><span>Plan de marketing</span></button>
+          <button class="hub-tile hub-tile-3" type="button" data-tile="produccion"><span>Plan de producción</span></button>
+          <button class="hub-tile hub-tile-4" type="button" data-tile="organizacional"><span>Plan organizacional</span></button>
+          <button class="hub-tile hub-tile-5" type="button" data-tile="factibilidad"><span>Factibilidad financiera</span></button>
+          <button class="hub-tile hub-tile-6" type="button" data-tile="legal"><span>Marco legal</span></button>
+          <button class="hub-tile hub-tile-7" type="button" data-tile="impacto"><span>Impacto del proyecto</span></button>
+        </div>
+      </div>
+    </section>
+
+    <section class="section requisitos">
+      <div class="wrap requirements-grid">
+        <div class="requirements-left">
+          <p class="eyebrow">Requisitos</p>
+          <h2>Para titularte por Proyecto Emprendedor.</h2>
+          <a class="req-button" href="#preguntas">Consultar preguntas frecuentes</a>
+        </div>
+        <div class="requirements-right">
+          <ul class="checklist">
+            <li>Concluir todas las materias del programa académico.</li>
+            <li>Acreditar las materias terminales de emprendimiento.</li>
+            <li>Desarrollar el Plan de Negocios con el formato oficial UVP.</li>
+            <li>Completar 24 sesiones de asesoría.</li>
+            <li>Obtener la liberación de un asesor autorizado.</li>
+          </ul>
+          <h3>Proceso de titulación</h3>
+          <div class="process-cards">
+            <div class="process-card"><span class="process-num">01</span><p>Elegir las materias terminales de Proyecto Emprendedor.</p></div>
+            <div class="process-card"><span class="process-num">02</span><p>Solicitar un director de proyecto.</p></div>
+            <div class="process-card"><span class="process-num">03</span><p>Desarrollar el Plan de Negocios.</p></div>
+            <div class="process-card"><span class="process-num">04</span><p>Obtener la liberación del asesor.</p></div>
+            <div class="process-card"><span class="process-num">05</span><p>Obtener la liberación de dos lectores.</p></div>
+            <div class="process-card"><span class="process-num">06</span><p>Presentar el examen profesional ante sinodales.</p></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="inspirate" data-od-id="inspiration-section" style="background: #edf1f5;">
+      <div class="wrap">
+        <p class="eyebrow">Inspírate y aprende</p>
+        <h2 data-od-id="inspiration-title">Historias, recursos y conversaciones.</h2>
+        <p class="inspire-desc">Artículos, conferencias de aliados, videos, noticias y contenidos relacionados con innovación y emprendimiento.</p>
+        <div class="inspire-grid">
+          <article class="card card-feature" data-od-id="entrepreneur-card">
+            <img src="assets/carousel/emprendedor.webp" alt="Emprendedor presentando ante una audiencia" />
+            <div class="card-overlay">
+              <p class="eyebrow">Emprendedor del mes</p>
+              <h3>Historia, emprendimiento y video testimonial.</h3>
+              <p>Fotografía · Nombre · Historia · Emprendimiento.</p>
+            </div>
+          </article>
+          <div class="card-stack">
+            <article class="card card-dark" data-od-id="podcast-card">
+              <p class="eyebrow">Podcast y multimedia</p>
+              <h3>Voces UVP, Charlas UVPlay, Podcast Innova UVP y Cátedra CANACINTRA.</h3>
+            </article>
+            <article class="card card-cyan" data-od-id="news-card">
+              <p class="eyebrow">Noticias y blog</p>
+              <h3>Noticias, actividades universitarias, eventos y archivo por mes y año.</h3>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section alt" id="ecosistema" data-od-id="ecosystem-section">
+      <div class="wrap">
+        <div class="section-head"><p class="eyebrow">Ecosistema emprendedor UVP</p><h2 data-od-id="ecosystem-title">Vinculación, entorno y aliados.</h2></div>
+        <div class="ecosystem-grid">
+          <article class="eco-main" data-od-id="environment-card"><h3>Entorno UVP</h3><p>Propiciar acciones de carácter institucional que promuevan la generación y consolidación de alianzas estratégicas con los distintos actores de carácter social, público y privado a través de esquemas de participación y cooperación para el bien comunitario. Así como Desarrollar proyectos y programas de emprendimiento local, detectando, consolidando y desarrollando áreas de oportunidad alineadas al ambiente emprendedor de la zona y generar una economía local.</p></article>
+          <div class="eco-side">
+            <article class="eco-card" data-od-id="social-incubator-card"><h3>Incubadora Social</h3><p>Capacitar para el trabajo bajo el Modelo de Competencias Laborales en materia de emprendimiento e innovación a las personas privadas de la libertad, fortaleciendo habilidades, nuevas áreas profesionales, productividad competitiva y laboral.</p></article>
+            <article class="eco-card" data-od-id="committee-card"><h3>CE y DT Comité de Vinculación Empresarial</h3><p>Establecer, desarrollar y mantener la vinculación con el sector empresarial de la Región, para detectar y satisfacer las necesidades de éste a través de la pertinencia de los programas académicos que ofrecen las Instituciones de Educación Superior del Estado de Puebla.</p></article>
+          </div>
+          <div class="logo-row" aria-label="Carrusel de marcas de aliados" data-od-id="allies-carousel">
+            <div class="logo-placeholder">ALIADO</div><div class="logo-placeholder">ALIADO</div><div class="logo-placeholder">ALIADO</div><div class="logo-placeholder">ALIADO</div><div class="logo-placeholder">ALIADO</div><div class="logo-placeholder">ALIADO</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="incubadora" data-od-id="incubator-section">
+      <div class="wrap incubation">
+        <div><p class="eyebrow">Incubadora de empresas</p><div class="incubation-stamp" aria-hidden="true">CIE</div></div>
+        <div class="incubation-copy"><h2 data-od-id="incubator-title">Modelo de Incubación</h2><p>El Centro de Innovación empresarial (CIE) es un espacio que integra a los emprendedores de pequeñas empresas, para que puedan articularse con herramientas de negocios para el alcance de sus objetivos, a través de un modelo de incubación innovador diseñado para el desarrollo de competencias en emprendimiento; a través de facilitadores especializados y con experiencia en el rubro de creación de negocios de impacto.</p><div class="incubation-links"><a class="btn" href="#orientacion" data-orientation-request="emprender una idea" data-od-id="incubator-apply">Postula tu proyecto</a><a class="btn" href="#orientacion" data-orientation-request="mentoría" data-od-id="incubator-mentoring">Agenda una mentoría</a></div></div>
+      </div>
+    </section>
+
+    <section class="section orientation" id="orientacion" data-od-id="orientation-section">
+      <div class="wrap orientation-layout">
+        <div>
+          <p class="eyebrow">Orientación emprendedora</p>
+          <h2>Formulario de orientación</h2>
+          <p>Cuéntanos en qué necesitas apoyo. El mismo formulario sirve para postular un proyecto, solicitar mentoría, iniciar titulación, registrar una empresa o solicitar vinculación.</p>
+        </div>
+        <form class="orientation-form" id="orientation-form">
+          <div class="form-field">
+            <label for="orientation-name">Nombre completo</label>
+            <input id="orientation-name" name="name" type="text" autocomplete="name" required>
+          </div>
+          <div class="form-field">
+            <label for="orientation-email">Correo electrónico</label>
+            <input id="orientation-email" name="email" type="email" autocomplete="email" required>
+          </div>
+          <div class="form-field">
+            <label for="orientation-profile">Perfil</label>
+            <select id="orientation-profile" name="profile" required>
+              <option value="" selected disabled>Selecciona una opción</option>
+              <option value="estudiante uvp">Estudiante UVP</option>
+              <option value="egresado uvp">Egresado UVP</option>
+              <option value="empresa">Empresa</option>
+              <option value="aliado">Aliado</option>
+            </select>
+          </div>
+          <div class="form-field">
+            <label for="orientation-request">Tipo de solicitud</label>
+            <select id="orientation-request" name="request" required>
+              <option value="" selected disabled>Selecciona una opción</option>
+              <option value="emprender una idea">Emprender una idea</option>
+              <option value="titulación emprendedora">Titulación emprendedora</option>
+              <option value="mentoría">Mentoría</option>
+              <option value="registro de empresa">Registro de empresa</option>
+              <option value="vinculación">Vinculación</option>
+            </select>
+          </div>
+          <div class="form-field full">
+            <label for="orientation-description">Descripción de la solicitud</label>
+            <textarea id="orientation-description" name="description" required></textarea>
+          </div>
+          <div class="form-submit">
+            <button class="btn" type="submit">Enviar solicitud</button>
+            <p class="form-status" id="orientation-status" aria-live="polite"></p>
+          </div>
+        </form>
+      </div>
+    </section>
+
+    <section class="section alt" id="preguntas" data-od-id="faq-section">
+      <div class="wrap faq-grid">
+        <div class="faq-nav"><p class="eyebrow">Preguntas frecuentes</p><h2 data-od-id="faq-title">Respuestas para seguir avanzando.</h2><p>Desarrollo de Ideas y Emprendimiento, Titulación por Proyecto Emprendedor y Trámites y Apoyo Académico.</p></div>
+        <div data-od-id="faq-list">
+          <article class="faq-item" data-od-id="faq-start"><button class="faq-button" type="button" aria-expanded="false" data-od-id="faq-start-control"><span>Tengo una idea de negocio, ¿cómo puedo empezar a emprender?</span><span>+</span></button><div class="faq-answer"><p>¡El primer paso ya lo diste al tener la iniciativa! En la Coordinación de Emprendedores te acompañamos en todo el proceso para transformar tu idea en una realidad. Acércate a nuestras oficinas o contáctanos para recibir la asesoría inicial y dar vida a tu proyecto.</p></div></article>
+          <article class="faq-item" data-od-id="faq-cost"><button class="faq-button" type="button" aria-expanded="false" data-od-id="faq-cost-control"><span>¿Los servicios de la incubadora o coordinación tienen algún costo?</span><span>+</span></button><div class="faq-answer"><p>No. Para toda nuestra comunidad universitaria (estudiantes y egresados), los servicios de asesoría, mentoría y el programa de la Incubadora de Empresas son completamente gratuitos. Nuestro objetivo es impulsar y desarrollar tu espíritu emprendedor sin costos adicionales.</p></div></article>
+          <article class="faq-item" data-od-id="faq-funding"><button class="faq-button" type="button" aria-expanded="false" data-od-id="faq-funding-control"><span>¿Puedo obtener financiamiento directo para mi proyecto a través de la universidad?</span><span>+</span></button><div class="faq-answer"><p>La universidad no otorga financiamiento directo; sin embargo, en la Coordinación de Emprendedores te vinculamos con convocatorias, fondos gubernamentales, inversionistas y diversas instancias financieras para ayudarte a gestionar los recursos que necesitas para iniciar o hacer crecer tu empresa.</p></div></article>
+          <article class="faq-item" data-od-id="faq-graduate"><button class="faq-button" type="button" aria-expanded="false" data-od-id="faq-graduate-control"><span>Tengo tiempo de haber egresado, ¿aún puedo titularme por Proyecto Emprendedor?</span><span>+</span></button><div class="faq-answer"><p>Sí, aún estás a tiempo. Es necesario evaluar tu situación académica y el estado de tu proyecto para determinar si requieres alguna actualización del plan de negocios o cumplir con requisitos adicionales por parte de las áreas académicas involucradas. Te invitamos a agendar una cita con nosotros para revisar tu caso particular.</p></div></article>
+          <article class="faq-item" data-od-id="faq-director"><button class="faq-button" type="button" aria-expanded="false" data-od-id="faq-director-control"><span>¿Es obligatorio contar con un Director de Proyecto (Asesor)?</span><span>+</span></button><div class="faq-answer"><p>Sí, es un requisito indispensable. El Director de Proyecto te brindará la guía metodológica y técnica necesaria para garantizar la viabilidad de tu plan de negocios y asegurar que cumpla con los estándares requeridos para tu proceso de titulación.</p></div></article>
+          <article class="faq-item" data-od-id="faq-next-step"><button class="faq-button" type="button" aria-expanded="false" data-od-id="faq-next-step-control"><span>Ya terminé mi proyecto de titulación emprendedor, ¿cuál es el siguiente paso?</span><span>+</span></button><div class="faq-answer"><p>Si tu Director de Proyecto ya liberó y aprobó tu trabajo, deberá enviarlo formalmente a la Coordinación de Emprendedores para validar la etapa final e iniciar los trámites administrativos de titulación.</p><p>Nota: Si aún no cuentas con un Director asignado, acércate a la coordinación para orientarte en la asignación de uno.</p></div></article>
+          <article class="faq-item" data-od-id="faq-academic"><button class="faq-button" type="button" aria-expanded="false" data-od-id="faq-academic-control"><span>¿Cómo puedo realizar un curso de regularización o actualización académica?</span><span>+</span></button><div class="faq-answer"><p>Los cursos de regularización se ofertan mediante convocatorias oficiales a lo largo del ciclo escolar. Acércate a la Coordinación de Emprendedores para revisar tu historial académico y determinar si eres candidato a un examen extraordinario, recurso o curso de actualización.</p></div></article>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer" data-od-id="site-footer"><div class="wrap"><div class="footer-grid"><div class="footer-brand">Soy emprendedor UVP</div><div><h3>Programa</h3><ul><li>¿Qué es un Emprendedor UVP?</li><li>Programas académicos</li><li>Titulación para emprendedores</li></ul></div><div><h3>Inspírate</h3><ul><li>Emprendedor del mes</li><li>Podcast y multimedia</li><li>Noticias y blog</li></ul></div><div><h3>Ecosistema</h3><ul><li>Vinculacion emprendedora</li><li>Entorno UVP</li><li>Incubadora de empresas</li></ul></div></div><div class="footer-bottom">Universidad del Valle de Puebla</div></div></footer>
+
+  <dialog id="pending-dialog" aria-labelledby="dialog-title" data-od-id="pending-dialog"><div class="dialog-inner"><p class="eyebrow">Información pendiente</p><h2 id="dialog-title">Este apartado está por completar.</h2><p id="dialog-copy">La información correspondiente aún no está incluida en el plan.</p><button class="btn" type="button" data-close-dialog="" data-od-id="dialog-close">Cerrar</button></div></dialog>
+
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/SplitText.min.js"></script>
+  <script>
+    (() => {
+      const navToggle = document.querySelector('.nav-toggle');
+      const navLinks = document.querySelector('.nav-links');
+      const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+      if (window.gsap && !reduceMotion) {
+        gsap.timeline({ defaults: { ease: 'power2.out' } })
+          .from('.brand', { autoAlpha: 0, y: -10, duration: 0.42 })
+          .from('.nav-links a', { autoAlpha: 0, y: -8, duration: 0.3, stagger: 0.055 }, '-=0.18');
+
+        gsap.to('.hero-blob', {
+          x: 'random(-25, 25, 5)vw',
+          y: 'random(-30, 30, 5)vh',
+          rotation: 'random(-45, 45, 5)',
+          scale: 'random(0.4, 1.2)',
+          duration: 4,
+          ease: 'none',
+          repeat: -1,
+          repeatRefresh: true
+        });
+      }
+
+      if (window.gsap && window.SplitText && !reduceMotion) {
+        gsap.registerPlugin(SplitText);
+        document.fonts.ready.then(() => {
+          SplitText.create('.hero-content h1', {
+            type: 'lines,words,chars',
+            linesClass: 'hero-title-line',
+            wordsClass: 'hero-title-word',
+            charsClass: 'hero-title-char',
+            mask: 'lines',
+            deepSlice: true,
+            aria: 'auto',
+            autoSplit: true,
+            onSplit(instance) {
+              return gsap.from(instance.chars, {
+                yPercent: 115,
+                autoAlpha: 0,
+                rotateX: -70,
+                transformOrigin: '50% 100%',
+                duration: 0.8,
+                stagger: {
+                  amount: 1.2,
+                  from: 'start'
+                },
+                ease: 'power3.out'
+              });
+            }
+          });
+        });
+      }
+
+      if (window.gsap) {
+        const focusStage = document.querySelector('.hero-focus-stage');
+        const focusTrigger = document.querySelector('.hero-focus-trigger');
+        const ideaLabels = [...document.querySelectorAll('.hero-idea')];
+        let ideasOpen = false;
+        let ideasPinned = false;
+        let floatTweens = [];
+        let resizeTimer;
+
+        const getIdeaPositions = () => {
+          const mobile = window.matchMedia('(max-width: 560px)').matches;
+          const positions = mobile ? [
+            { x: 0, y: -112 },
+            { x: -115, y: -76 },
+            { x: 115, y: -76 },
+            { x: -130, y: -25 },
+            { x: 130, y: -25 },
+            { x: -105, y: 62 },
+            { x: 105, y: 62 }
+          ] : [
+            { x: -250, y: -58 },
+            { x: -165, y: -116 },
+            { x: 0, y: -136 },
+            { x: 170, y: -112 },
+            { x: 250, y: -54 },
+            { x: -200, y: 74 },
+            { x: 205, y: 74 }
+          ];
+          return gsap.utils.shuffle([...positions]);
+        };
+
+        const stopIdeaFloat = () => {
+          floatTweens.forEach((tween) => tween.kill());
+          floatTweens = [];
+        };
+
+        const startIdeaFloat = () => {
+          if (reduceMotion) return;
+          stopIdeaFloat();
+          floatTweens = ideaLabels.map((label) => gsap.to(label, {
+            y: `+=${gsap.utils.random(3, 7)}`,
+            duration: gsap.utils.random(1.4, 2.2),
+            delay: gsap.utils.random(0, 0.5),
+            repeat: -1,
+            yoyo: true,
+            ease: 'sine.inOut'
+          }));
+        };
+
+        const showIdeas = (force = false) => {
+          if (ideasOpen && !force) return;
+          ideasOpen = true;
+          focusTrigger.setAttribute('aria-expanded', 'true');
+          focusTrigger.setAttribute('aria-label', 'Ocultar frases de inspiración');
+          stopIdeaFloat();
+          gsap.killTweensOf(ideaLabels);
+          const positions = getIdeaPositions();
+
+          if (reduceMotion) {
+            gsap.set(ideaLabels, {
+              x: (index) => positions[index].x,
+              y: (index) => positions[index].y,
+              xPercent: -50,
+              yPercent: -50,
+              scale: 1,
+              autoAlpha: 1
+            });
+            return;
+          }
+
+          gsap.fromTo(ideaLabels, {
+            x: 0,
+            y: 0,
+            xPercent: -50,
+            yPercent: -50,
+            scale: 0.4,
+            autoAlpha: 0
+          }, {
+            x: (index) => positions[index].x,
+            y: (index) => positions[index].y,
+            scale: 1,
+            autoAlpha: 1,
+            duration: 0.55,
+            stagger: 0.06,
+            ease: 'back.out(1.7)',
+            onComplete: startIdeaFloat
+          });
+        };
+
+        const hideIdeas = () => {
+          ideasOpen = false;
+          focusTrigger.setAttribute('aria-expanded', 'false');
+          focusTrigger.setAttribute('aria-label', 'Mostrar frases de inspiración');
+          stopIdeaFloat();
+          gsap.killTweensOf(ideaLabels);
+          gsap.to(ideaLabels, {
+            x: 0,
+            y: 0,
+            scale: 0.4,
+            autoAlpha: 0,
+            duration: reduceMotion ? 0 : 0.28,
+            stagger: reduceMotion ? 0 : 0.025,
+            ease: 'power2.in'
+          });
+        };
+
+        focusStage.addEventListener('mouseenter', () => showIdeas());
+        focusStage.addEventListener('mouseleave', () => {
+          if (!ideasPinned && !focusStage.matches(':focus-within')) hideIdeas();
+        });
+        focusTrigger.addEventListener('focus', () => showIdeas());
+        focusTrigger.addEventListener('blur', () => {
+          if (!ideasPinned && !focusStage.matches(':hover')) hideIdeas();
+        });
+        focusTrigger.addEventListener('click', () => {
+          ideasPinned = !ideasPinned;
+          if (ideasPinned) showIdeas(true);
+          else hideIdeas();
+        });
+        focusTrigger.addEventListener('keydown', (event) => {
+          if (event.key === 'Escape') {
+            ideasPinned = false;
+            hideIdeas();
+            focusTrigger.blur();
+          }
+        });
+        window.addEventListener('resize', () => {
+          window.clearTimeout(resizeTimer);
+          resizeTimer = window.setTimeout(() => {
+            if (ideasOpen) showIdeas(true);
+          }, 150);
+        });
+      }
+
+      if (window.gsap && window.ScrollTrigger) {
+        gsap.registerPlugin(ScrollTrigger);
+        const carouselRevealMedia = gsap.matchMedia();
+
+        carouselRevealMedia.add({
+          mobile: '(max-width: 560px)',
+          reduce: '(prefers-reduced-motion: reduce)'
+        }, (context) => {
+          if (context.conditions.reduce) return undefined;
+
+          const mobile = context.conditions.mobile;
+          gsap.fromTo('.carousel-shell', {
+            y: mobile ? '10vh' : '18vh'
+          }, {
+            y: 0,
+            ease: 'none',
+            scrollTrigger: {
+              trigger: '.carousel-shell',
+              start: 'top bottom',
+              end: mobile ? 'top top+=84' : 'top top+=80',
+              scrub: 0.8,
+              invalidateOnRefresh: true
+            }
+          });
+        });
+      }
+
+      navToggle.addEventListener('click', () => {
+        const open = navLinks.classList.toggle('open');
+        navToggle.setAttribute('aria-expanded', String(open));
+        navToggle.setAttribute('aria-label', open ? 'Cerrar menú' : 'Abrir menú');
+      });
+      navLinks.querySelectorAll('a, button').forEach((link) => link.addEventListener('click', () => {
+        navLinks.classList.remove('open');
+        navToggle.setAttribute('aria-expanded', 'false');
+        navToggle.setAttribute('aria-label', 'Abrir menú');
+      }));
+      document.addEventListener('keydown', (event) => {
+        if (event.key === 'Escape' && navLinks.classList.contains('open')) {
+          navLinks.classList.remove('open');
+          navToggle.setAttribute('aria-expanded', 'false');
+          navToggle.setAttribute('aria-label', 'Abrir menú');
+          navToggle.focus();
+        }
+      });
+
+      const carousel = document.querySelector('.carrousel');
+      const screens = [...document.querySelectorAll('.carrousel .screens > li')];
+      const dots = [...document.querySelectorAll('.dot')];
+      const carouselStatus = document.querySelector('#carousel-status');
+      const pauseButton = document.querySelector('[data-carousel="pause"]');
+      let currentSlide = 0;
+      let autoplayId;
+      let manuallyPaused = reduceMotion;
+      let pointerInside = false;
+      let focusInside = false;
+
+      const goToSlide = (index) => {
+        currentSlide = (index + screens.length) % screens.length;
+        const previousSlide = (currentSlide - 1 + screens.length) % screens.length;
+        const nextSlide = (currentSlide + 1) % screens.length;
+
+        screens.forEach((screen, position) => {
+          screen.classList.toggle('active', position === currentSlide);
+          screen.classList.toggle('left', position === previousSlide);
+          screen.classList.toggle('right', position === nextSlide);
+          screen.setAttribute('aria-hidden', String(position !== currentSlide));
+        });
+        dots.forEach((dot, position) => {
+          const selected = position === currentSlide;
+          dot.setAttribute('aria-current', String(selected));
+          dot.setAttribute('aria-selected', String(selected));
+          dot.tabIndex = selected ? 0 : -1;
+        });
+
+        const title = screens[currentSlide].querySelector('h2').textContent;
+        carouselStatus.textContent = `Banner ${currentSlide + 1} de ${screens.length}: ${title}`;
+      };
+
+      const stopAutoplay = () => window.clearInterval(autoplayId);
+      const startAutoplay = () => {
+        stopAutoplay();
+        if (!manuallyPaused && !pointerInside && !focusInside && document.visibilityState === 'visible') {
+          autoplayId = window.setInterval(() => goToSlide(currentSlide + 1), 3000);
+        }
+      };
+      const updatePauseButton = () => {
+        pauseButton.setAttribute('aria-pressed', String(manuallyPaused));
+        pauseButton.textContent = manuallyPaused ? 'Reanudar' : 'Pausar';
+      };
+      const selectSlide = (index) => {
+        goToSlide(index);
+        startAutoplay();
+      };
+
+      dots.forEach((dot) => dot.addEventListener('click', () => selectSlide(Number(dot.dataset.slide))));
+      screens.forEach((screen, position) => screen.addEventListener('click', () => {
+        if (screen.classList.contains('left') || screen.classList.contains('right')) selectSlide(position);
+      }));
+      document.querySelector('[data-carousel="previous"]').addEventListener('click', () => selectSlide(currentSlide - 1));
+      document.querySelector('[data-carousel="next"]').addEventListener('click', () => selectSlide(currentSlide + 1));
+      pauseButton.addEventListener('click', () => {
+        manuallyPaused = !manuallyPaused;
+        updatePauseButton();
+        startAutoplay();
+      });
+      carousel.addEventListener('keydown', (event) => {
+        if (event.key === 'ArrowLeft') {
+          event.preventDefault();
+          selectSlide(currentSlide - 1);
+        } else if (event.key === 'ArrowRight') {
+          event.preventDefault();
+          selectSlide(currentSlide + 1);
+        } else if (event.key === 'Home') {
+          event.preventDefault();
+          selectSlide(0);
+        } else if (event.key === 'End') {
+          event.preventDefault();
+          selectSlide(screens.length - 1);
+        }
+      });
+
+      carousel.addEventListener('mouseenter', () => {
+        pointerInside = true;
+        stopAutoplay();
+      });
+      carousel.addEventListener('mouseleave', () => {
+        pointerInside = false;
+        startAutoplay();
+      });
+      carousel.addEventListener('focusin', () => {
+        focusInside = true;
+        stopAutoplay();
+      });
+      carousel.addEventListener('focusout', (event) => {
+        if (!carousel.contains(event.relatedTarget)) {
+          focusInside = false;
+          startAutoplay();
+        }
+      });
+      document.addEventListener('visibilitychange', () => {
+        if (document.hidden) stopAutoplay();
+        else startAutoplay();
+      });
+
+      let touchStartX = 0;
+      carousel.addEventListener('touchstart', (event) => {
+        touchStartX = event.changedTouches[0].clientX;
+      }, { passive: true });
+      carousel.addEventListener('touchend', (event) => {
+        const distance = event.changedTouches[0].clientX - touchStartX;
+        if (Math.abs(distance) > 45) selectSlide(currentSlide + (distance < 0 ? 1 : -1));
+      }, { passive: true });
+      goToSlide(0);
+      updatePauseButton();
+      startAutoplay();
+
+      document.querySelectorAll('.faq-button').forEach((button) => button.addEventListener('click', () => {
+        const item = button.closest('.faq-item');
+        const expanded = button.getAttribute('aria-expanded') === 'true';
+        item.classList.toggle('open', !expanded);
+        button.setAttribute('aria-expanded', String(!expanded));
+      }));
+
+      const dialog = document.querySelector('#pending-dialog');
+      const copy = document.querySelector('#dialog-copy');
+      const pendingMessages = {
+        postulacion: 'La información de «Postulate para titularte» está pendiente de completar en el plan.',
+        asesores: 'La información de los asesores de proyecto está pendiente de completar en el plan.',
+        proyecto: 'La información de «Postula tu proyecto» está pendiente de completar en el plan.',
+        mentoria: 'La información de «Agenda una mentoria» está pendiente de completar en el plan.'
+      };
+      document.querySelectorAll('[data-dialog]').forEach((button) => button.addEventListener('click', () => {
+        copy.textContent = pendingMessages[button.dataset.dialog];
+        dialog.showModal();
+      }));
+      document.querySelector('[data-close-dialog]').addEventListener('click', () => dialog.close());
+
+      const orientationForm = document.querySelector('#orientation-form');
+      const orientationRequest = document.querySelector('#orientation-request');
+      const orientationStatus = document.querySelector('#orientation-status');
+      document.querySelectorAll('[data-orientation-request]').forEach((link) => link.addEventListener('click', () => {
+        orientationRequest.value = link.dataset.orientationRequest;
+        orientationStatus.textContent = '';
+      }));
+      orientationForm.addEventListener('submit', (event) => {
+        event.preventDefault();
+        orientationForm.reset();
+        orientationStatus.textContent = 'Solicitud registrada. Nos comunicaremos contigo pronto.';
+      });
+
+      /* ---- Hub diagram animation ---- */
+      if (window.gsap && window.ScrollTrigger) {
+        const hub = document.querySelector('#hubDiagram');
+        if (hub) {
+          const hubRings = hub.querySelectorAll('.hub-ring');
+          const hubLinks = hub.querySelectorAll('.hub-link');
+          const hubTiles = hub.querySelectorAll('.hub-tile');
+          const hubCenter = hub.querySelector('#hubCenter');
+
+          gsap.set(hubRings, { transformOrigin: '400px 250px', scale: 0, opacity: 0 });
+          gsap.set(hubCenter, { scale: 0, opacity: 0 });
+          gsap.set(hubTiles, { scale: 0, opacity: 0 });
+          gsap.set(hubLinks, { strokeDashoffset: 600 });
+
+          const hubTl = gsap.timeline({
+            scrollTrigger: { trigger: hub, start: 'top 80%', once: true },
+            defaults: { ease: 'power3.out' }
+          });
+          hubTl
+            .to(hubRings, { scale: 1, opacity: 1, duration: 1.2, stagger: 0.1 }, 0)
+            .to(hubCenter, { scale: 1, opacity: 1, duration: 1, ease: 'back.out(1.8)' }, 0.3)
+            .to(hubTiles, { scale: 1, opacity: 1, duration: 0.9, stagger: 0.07, ease: 'back.out(1.6)' }, 0.6)
+            .to(hubLinks, { strokeDashoffset: 0, duration: 1, stagger: 0.06, ease: 'power2.inOut' }, 0.9);
+
+          /* continuous ring pulse */
+          hubRings.forEach((ring, i) => {
+            const baseR = 60 + i * 50;
+            gsap.to(ring, { attr: { r: baseR + 6 }, opacity: 0.5, duration: 2, delay: 1.5 + i * 0.3, ease: 'sine.inOut', yoyo: true, repeat: -1 });
+          });
+
+          /* center bob */
+          gsap.to(hubCenter, { y: '+=6', duration: 2.8, delay: 1.5, ease: 'sine.inOut', yoyo: true, repeat: -1 });
+
+          /* tile hover 3D */
+          hubTiles.forEach((tile) => {
+            tile.addEventListener('mousemove', (e) => {
+              const r = tile.getBoundingClientRect();
+              const px = (e.clientX - r.left) / r.width - 0.5;
+              const py = (e.clientY - r.top) / r.height - 0.5;
+              gsap.to(tile, { rotateX: -py * 16, rotateY: px * 16, scale: 1.08, duration: 0.4, ease: 'power2.out', transformPerspective: 600, overwrite: 'auto' });
+            });
+            tile.addEventListener('mouseleave', () => {
+              gsap.to(tile, { rotateX: 0, rotateY: 0, scale: 1, duration: 0.6, ease: 'elastic.out(1, 0.6)', overwrite: 'auto' });
+            });
+            tile.addEventListener('click', () => {
+              gsap.fromTo(tile, { scale: 1.08 }, { scale: 0.92, duration: 0.1, yoyo: true, repeat: 1, ease: 'power2.inOut' });
+            });
+          });
+
+          /* center click pulse */
+          hubCenter.addEventListener('click', () => {
+            gsap.fromTo(hubCenter, { scale: 1.12 }, { scale: 1, duration: 0.5, ease: 'elastic.out(1, 0.5)' });
+            hubRings.forEach((ring, i) => {
+              const baseR = 60 + i * 50;
+              gsap.timeline().to(ring, { attr: { r: baseR + 28 }, opacity: 0, duration: 0.7, ease: 'power2.out' }).to(ring, { attr: { r: baseR }, opacity: 1, duration: 0.35, ease: 'power2.in' });
+            });
+          });
+
+          /* mouse parallax */
+          let mx = 0, my = 0, tx = 0, ty = 0;
+          hub.addEventListener('mousemove', (e) => {
+            const r = hub.getBoundingClientRect();
+            mx = ((e.clientX - r.left) / r.width - 0.5) * 2;
+            my = ((e.clientY - r.top) / r.height - 0.5) * 2;
+          });
+          hub.addEventListener('mouseleave', () => { mx = 0; my = 0; });
+          function hubParallax() {
+            tx += (mx - tx) * 0.06;
+            ty += (my - ty) * 0.06;
+            hubTiles.forEach((tile, i) => {
+              const depth = 5 + (i % 3) * 2;
+              tile.style.translate = tx * depth + 'px ' + ty * depth + 'px';
+            });
+            hubCenter.style.translate = tx * 3 + 'px ' + ty * 3 + 'px';
+            requestAnimationFrame(hubParallax);
+          }
+          hubParallax();
+        }
+      }
+    })();
+  </script>
+
+
+
+
+
+<script type="application/json" id="speaker-notes">
+[]
+</script>
+
+
+
+</body></html>
