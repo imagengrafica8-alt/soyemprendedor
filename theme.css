@@ -1,0 +1,156 @@
+/* ============================================
+   EMPRENDEDORES UVP - Design Tokens
+   Light Mode Theme
+   ============================================ */
+
+:root {
+  /* === Semantic Backgrounds === */
+  --background-canvas: #fcfcfc;
+  --background-surface: #ffffff;
+  --background-subtle: #f0f0f0;
+  --background-inverse: #1a365d;
+  --background-brand: #fff8de;
+
+  /* === Semantic Text === */
+  --text-primary: #202020;
+  --text-secondary: #4d4d4d;
+  --text-muted: #7b7b7b;
+  --text-inverse: #ffffff;
+  --text-brand: #1a365d;
+  --text-on-brand: #ffffff;
+
+  /* === Semantic Borders === */
+  --border-default: #d4d4d4;
+  --border-strong: #939393;
+  --border-focus: #315bf7;
+  --border-brand: #1a365d;
+
+  /* === Legacy aliases (backward compat) === */
+  --bg: var(--background-canvas);
+  --bg-subtle: var(--background-subtle);
+  --surface: var(--background-surface);
+  --surface-alt: var(--background-subtle);
+  --fg: var(--text-primary);
+  --fg-secondary: var(--text-secondary);
+  --muted: var(--text-muted);
+  --fg-inverse: var(--text-inverse);
+  --border: var(--border-default);
+
+  /* === Brand - Dorado/Naranja === */
+  --brand-50: #fff8de;
+  --brand-100: #ffcf7e;
+  --brand-200: #f7aa32;
+  --brand-300: #dc9000;
+  --brand-400: #c17700;
+  --brand-500: #a16200;
+  --brand-600: #834e00;
+  --brand-700: #663a00;
+  --brand-800: #4a2700;
+  --brand-900: #301600;
+
+  /* === Brand Secondary - Rojo === */
+  --brand-secondary-50: #fff6f0;
+  --brand-secondary-100: #ffd1c2;
+  --brand-secondary-200: #ffa991;
+  --brand-secondary-300: #ff7e5f;
+  --brand-secondary-400: #e86446;
+  --brand-secondary-500: #cb4a2b;
+  --brand-secondary-600: #af2e0b;
+  --brand-secondary-700: #910300;
+  --brand-secondary-800: #6d0000;
+
+  /* === Accent === */
+  --accent: #f7aa32;
+  --accent-hover: #dc9000;
+  --accent-active: #c17700;
+
+  /* === Primary - CTA === */
+  --primary: #f25f22;
+  --primary-hover: #d94418;
+  --primary-light: #ff7a3d;
+
+  /* === Navy === */
+  --navy: #1a365d;
+  --navy-light: #2d4a7a;
+
+  /* === Info === */
+  --info-50: #f4fcff;
+  --info-100: #c9deff;
+  --info-200: #9fc0ff;
+  --info-300: #75a0ff;
+  --info-400: #4d7cff;
+  --info-500: #315bf7;
+  --info-600: #1f3fdb;
+
+  /* === Success === */
+  --success-400: #62b00b;
+  --success-500: #479400;
+  --success-600: #357700;
+
+  /* === Danger === */
+  --danger-400: #ff4965;
+  --danger-500: #eb284f;
+  --danger-600: #c90035;
+
+  /* === Indicator - Cyan/Teal === */
+  --indicator: #00c9a7;
+  --indicator-dark: #00a88a;
+
+  /* === Shadows === */
+  --shadow-low: 0 1px 3px rgb(0 0 0 / 6%), 0 1px 2px rgb(0 0 0 / 4%);
+  --shadow-medium: 0 4px 6px rgb(0 0 0 / 7%), 0 2px 4px rgb(0 0 0 / 4%);
+  --shadow-high: 0 10px 25px rgb(0 0 0 / 10%), 0 4px 10px rgb(0 0 0 / 5%);
+  --shadow-brand: 0 4px 14px rgb(242 95 34 / 25%);
+
+  /* === Typography === */
+  --display: "Parkinsans", sans-serif;
+  --body: "IBM Plex Sans Hebrew", sans-serif;
+  --mono: "SFMono-Regular", Consolas, monospace;
+
+  /* === Layout === */
+  --radius: 8px;
+  --radius-lg: 16px;
+  --radius-xl: 24px;
+
+  /* === Hero === */
+  --hero-bg: #ffffff;
+  --hero-text: #383737;
+  --hero-text-inverse: #ffffff;
+
+  /* === Carousel === */
+  --carousel-bg: #1e2128;
+  --carousel-border: #2d3139;
+  --carousel-slide: #282c34;
+
+  /* === Footer (always dark) === */
+  --footer-bg: #1a365d;
+  --footer-text: #ffffff;
+  --footer-muted: rgba(255, 255, 255, 0.72);
+  --footer-border: rgba(255, 255, 255, 0.12);
+
+  /* === Tinted backgrounds === */
+  --tinted-info: rgba(49, 91, 247, 0.06);
+  --tinted-brand: rgba(242, 95, 34, 0.06);
+  --tinted-success: rgba(71, 148, 0, 0.06);
+  --tinted-danger: rgba(235, 40, 79, 0.06);
+
+  /* === Card accent colors === */
+  --accent-innovation: var(--info-500);
+  --accent-formulation: var(--brand-400);
+  --accent-evaluation: var(--success-500);
+
+  /* === Form === */
+  --form-bg: var(--background-subtle);
+  --input-bg: var(--background-surface);
+  --input-border: var(--border-default);
+  --input-focus-border: var(--border-focus);
+
+  /* === Special cards === */
+  --card-dark-bg: var(--background-inverse);
+  --card-cyan-bg: var(--indicator);
+  --card-cyan-text: #0a2540;
+
+  /* === Section backgrounds === */
+  --req-bg: var(--background-subtle);
+  --inspire-bg: var(--background-subtle);
+}
