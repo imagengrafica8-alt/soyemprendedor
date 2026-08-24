@@ -1,302 +1,3020 @@
 <!doctype html>
-<html lang="es-ES"><head>
+<html lang="es-ES">
+
+<head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="Soy emprendedor UVP">
   <title>Soy emprendedor UVP</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
-  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Hebrew:wght@100;200;300;400;500;600;700&amp;family=Parkinsans:wght@300..800&amp;family=Varela+Round&amp;display=swap" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Hebrew:wght@100;200;300;400;500;600;700&amp;family=JetBrains+Mono:wght@700&amp;family=Parkinsans:wght@300..800&amp;family=Varela+Round&amp;display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="theme.css">
   <style>
-    :root {
-      --bg: oklch(0.9816 0.0017 247.8);
-      --surface: oklch(1 0 89.9);
-      --fg: oklch(0.2178 0 89.9);
-      --muted: oklch(0.4800 0.0180 257.1);
-      --border: oklch(0.9288 0.0126 255.5);
-      --accent: oklch(0.6681 0.1935 40.0);
-      --navy: oklch(0.3327 0.0772 257.1);
-      --indicator: oklch(0.8750 0.1460 174);
-      --radius: 8px;
-      --shadow-low: 0 2px 4px rgb(14 30 54 / 5%);
-      --shadow-high: 0 10px 20px rgb(14 30 54 / 12%);
-      --display: "Parkinsans", sans-serif;
-      --body: "IBM Plex Sans Hebrew", sans-serif;
-      --mono: "SFMono-Regular", Consolas, monospace;
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
     }
 
-    * { box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
-    body { margin: 0; background: var(--bg); color: var(--fg); font-family: var(--body); font-size: 16px; line-height: 1.7; }
-    button, a { font: inherit; }
-    button { cursor: pointer; }
-    a { color: inherit; text-decoration: none; }
-    :focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; }
+    html {
+      scroll-behavior: smooth;
+    }
 
-    .wrap { width: min(100% - 48px, 1280px); margin-inline: auto; }
-    .eyebrow { margin: 0 0 16px; color: var(--accent); font: 700 12px/1.2 var(--mono); letter-spacing: .12em; text-transform: uppercase; }
-    .section-head { max-width: 760px; margin-bottom: 40px; }
-    .section-head h2, .section-head h3, h1, h2, h3 { font-family: var(--display); color: var(--navy); }
-    .section-head h2 { margin: 0 0 12px; font-size: clamp(30px, 3.8vw, 48px); line-height: 1.1; letter-spacing: -.04em; }
-    .section-head p { margin: 0; color: var(--muted); }
-    .section { padding: 104px 0; }
-    .section.alt { background: var(--surface); }
-    .text-link { border-bottom: 1px solid currentColor; color: var(--navy); font-family: var(--display); font-weight: 700; }
+    body {
+      margin: 0;
+      background: var(--background-canvas);
+      color: var(--text-primary);
+      font-family: var(--body);
+      font-size: 16px;
+      line-height: 1.7;
+    }
 
-    .site-header { position: sticky; z-index: 20; top: 0; border-bottom: 1px solid color-mix(in oklch, var(--border), transparent 15%); background: color-mix(in oklch, var(--bg), transparent 8%); backdrop-filter: blur(16px); }
-    .nav { min-height: 80px; display: flex; flex-direction: row; align-items: center; justify-content: center; gap: 32px; padding: 12px 0; }
-    .brand { display: inline-flex; align-items: center; flex: 0 0 auto; }
-    .brand-logo { display: block; width: 155px; height: auto; }
-    .nav-links { display: flex; align-items: center; justify-content: center; gap: 24px; color: var(--muted); font: 700 12px/1 var(--display); letter-spacing: .02em; }
-    .nav-links a { padding-block: 12px; }
-    .nav-links a:hover { color: var(--navy); }
-    .nav-toggle { display: none; min-width: 44px; min-height: 44px; border: 1px solid var(--navy); border-radius: var(--radius); background: transparent; color: var(--navy); font-family: var(--display); font-size: 13px; font-weight: 800; }
+    button,
+    a {
+      font: inherit;
+    }
 
-    .hero { position: relative; overflow: hidden; padding: 80px 0 0; background: #F7AA32; }
-    .hero::before { content: ""; position: absolute; inset: 0; background: linear-gradient(120deg, #DA7022, #F7AA32 48%, #3837); background-size: 220% 220%; animation: hero-background-shift 12s ease-in-out infinite alternate; pointer-events: none; }
-    @keyframes hero-background-shift { from { background-position: 0% 50%; } to { background-position: 100% 50%; } }
-    .hero-grid { position: relative; z-index: 1; display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(320px, .9fr); gap: 64px; align-items: end; padding-bottom: 72px; }
-    .hero h1 { max-width: 780px; margin: 0; font-size: clamp(48px, 6.6vw, 84px); line-height: .98; letter-spacing: -.065em; }
-    .hero-copy { max-width: 585px; margin: 24px auto 32px; color: var(--muted); font-size: 18px; text-align: center; }
-    .btn { min-height: 48px; display: inline-flex; align-items: center; justify-content: center; padding: 0 20px; border-radius: var(--radius); border: 1px solid var(--navy); background: transparent; color: var(--navy); font: 800 14px/1 var(--display); transition: transform .2s ease, box-shadow .2s ease, background .2s ease, color .2s ease; }
-    .btn:hover { transform: translateY(-2px); box-shadow: var(--shadow-high); background: var(--navy); color: var(--surface); }
-    .btn.primary { border-color: var(--accent); background: var(--accent); color: var(--surface); }
-    .btn.primary:hover { background: oklch(.58 .1935 40); color: var(--surface); }
-    .hero-aside { justify-self: end; max-width: 390px; padding: 28px; border: 1px solid var(--border); background: color-mix(in oklch, var(--surface), transparent 4%); box-shadow: var(--shadow-low); }
-    .hero-aside p { margin: 0; font: 600 15px/1.5 var(--display); color: var(--navy); }
-    .hero-aside span { display: block; margin-top: 14px; color: var(--muted); font: 600 11px/1.3 var(--mono); letter-spacing: .08em; text-transform: uppercase; }
+    button {
+      cursor: pointer;
+    }
 
-    .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0; }
-    .carousel-shell { position: relative; z-index: 2; padding-bottom: 40px; }
-    .carrousel { position: relative; height: clamp(430px, 48vw, 610px); overflow: hidden; border-top: 1px solid #343941; border-bottom: 1px solid #343941; background: #24272d; font-family: "Varela Round", var(--display); text-align: left; }
-    .carrousel .screens { position: relative; width: 100%; height: calc(100% - 76px); margin: 0; padding: 0; list-style: none; }
-    .carrousel .screens > li { position: absolute; top: 50%; left: 50%; z-index: 0; width: 52%; height: 62%; overflow: hidden; border-radius: 10px; opacity: 0; filter: blur(5px); pointer-events: none; transform: translate(-50%, -50%) scale(.72); transition: width .7s ease, height .7s ease, opacity .7s ease, filter .7s ease, transform .7s ease; }
-    .carrousel .screens > li.active { z-index: 3; width: 70%; height: 78%; opacity: 1; filter: none; pointer-events: auto; transform: translate(-50%, -50%) scale(1); }
-    .carrousel .screens > li.left, .carrousel .screens > li.right { z-index: 2; opacity: .48; pointer-events: auto; cursor: pointer; }
-    .carrousel .screens > li.left { transform: translate(-102%, -50%) scale(.88); }
-    .carrousel .screens > li.right { transform: translate(2%, -50%) scale(.88); }
-    .carrousel .screens > li.left:hover, .carrousel .screens > li.right:hover { opacity: .82; filter: blur(1px); }
-    .carrousel .slide { width: 100%; height: 100%; display: grid; grid-template-columns: minmax(180px, .9fr) minmax(0, 1.1fr); background: #30343b; }
-    .ph-img { position: relative; overflow: hidden; min-height: 100%; background: oklch(.40 .070 257.1); }
-    .ph-img::before, .ph-img::after { content: ""; position: absolute; border: 1px solid color-mix(in oklch, var(--surface), transparent 65%); transform: rotate(-24deg); }
-    .ph-img::before { width: 250px; height: 250px; left: 12%; top: -90px; }
-    .ph-img::after { width: 290px; height: 180px; right: -50px; bottom: -115px; }
-    .ph-img span { position: absolute; left: 24px; bottom: 20px; color: color-mix(in oklch, var(--surface), transparent 22%); font: 700 11px/1.3 var(--mono); letter-spacing: .08em; text-transform: uppercase; }
-    .carrousel .ph-img { background-color: #343941; background-position: center; background-size: cover; }
-    .carrousel .ph-img::before { z-index: 1; inset: 0; width: auto; height: auto; border: 0; background: linear-gradient(180deg, transparent 38%, rgb(20 23 28 / 72%)); transform: none; }
-    .carrousel .ph-img::after { display: none; }
-    .carrousel .ph-img span { z-index: 2; color: #fff; text-shadow: 0 1px 8px rgb(0 0 0 / 55%); }
-    .carrousel #s1 .ph-img { background-image: url("https://doocode.xyz/res/img/backgrounds/DCG34.png"); }
-    .carrousel #s2 .ph-img { background-image: url("https://doocode.xyz/res/img/backgrounds/DCG33.png"); }
-    .carrousel #s3 .ph-img { background-image: url("https://doocode.xyz/res/img/backgrounds/DCG32.png"); }
-    .carrousel #s4 .ph-img { background-image: url("https://doocode.xyz/res/img/backgrounds/DCG31.png"); }
-    .slide-copy { display: flex; flex-direction: column; justify-content: center; padding: 36px 50px; color: var(--surface); }
-    .slide-copy p { margin: 0 0 12px; color: var(--indicator); font: 700 12px/1.2 var(--mono); letter-spacing: .1em; text-transform: uppercase; }
-    .slide-copy h2 { max-width: 600px; margin: 0; color: var(--surface); font: 700 clamp(28px, 3vw, 44px)/1.04 var(--display); letter-spacing: -.04em; }
-    .carrousel .carousel-controls { position: absolute; right: 24px; bottom: 14px; left: 24px; z-index: 5; display: flex; align-items: center; justify-content: space-between; }
-    .dots { display: flex; gap: 8px; }
-    .dot, .arrow { border: 0; background: transparent; color: var(--navy); }
-    .dot { width: 28px; height: 28px; padding: 0; font: 700 11px/1 var(--mono); }
-    .dot[aria-current="true"] { color: var(--navy); }
-    .arrows { display: flex; gap: 8px; }
-    .arrow { width: 44px; height: 44px; border: 1px solid var(--navy); border-radius: 50%; font: 700 20px/1 var(--display); }
-    .arrow:hover { background: var(--navy); color: var(--surface); }
-    .carrousel .dot, .carrousel .arrow { color: #fff; }
-    .carrousel .arrow { border-color: rgb(255 255 255 / 65%); }
-    .carrousel .arrow:hover { background: #fff; color: #24272d; }
-    .carousel-pause { min-height: 44px; padding: 0 14px; border: 1px solid rgb(255 255 255 / 65%); border-radius: 999px; background: transparent; color: #fff; font: 700 11px/1 var(--display); }
-    .carousel-pause:hover { background: #fff; color: #24272d; }
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
 
-    .route-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
-    .route { min-height: 246px; display: flex; flex-direction: column; justify-content: space-between; padding: 28px; border: 1px solid var(--border); background: var(--surface); box-shadow: var(--shadow-low); transition: transform .2s ease, box-shadow .2s ease; }
-    .route:hover { transform: translateY(-4px); box-shadow: var(--shadow-high); }
-    .route .num { color: var(--muted); font: 700 11px/1 var(--mono); letter-spacing: .1em; }
-    .route h3 { margin: 32px 0 12px; font-size: 27px; line-height: 1.08; letter-spacing: -.035em; }
-    .route p { margin: 0; color: var(--muted); font-size: 15px; line-height: 1.55; }
-    .route a { align-self: flex-start; margin-top: 24px; color: var(--navy); font: 800 13px/1 var(--display); }
+    :focus-visible {
+      outline: 3px solid var(--border-focus);
+      outline-offset: 3px;
+    }
 
-    .program-grid { display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(300px, .75fr); gap: 72px; align-items: start; }
-    .program-copy p { margin-top: 0; font-size: 18px; }
-    .ability-list { margin: 0; padding: 0; list-style: none; border-top: 1px solid var(--border); }
-    .ability-list li { display: grid; grid-template-columns: 52px 1fr; gap: 16px; padding: 20px 0; border-bottom: 1px solid var(--border); }
-    .ability-list span { color: var(--muted); font: 700 11px/1.3 var(--mono); letter-spacing: .08em; }
-    .ability-list strong { display: block; color: var(--navy); font: 700 19px/1.2 var(--display); }
-    .ability-list p { margin: 7px 0 0; color: var(--muted); font-size: 14px; line-height: 1.5; }
+    /* === Layout === */
+    .wrap {
+      width: min(100% - 48px, 1280px);
+      margin-inline: auto;
+    }
 
-    .academic-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
-    .academic-card { padding: 28px; border-top: 3px solid var(--navy); background: var(--surface); box-shadow: var(--shadow-low); }
-    .academic-card h3 { margin: 0 0 14px; font-size: 22px; line-height: 1.15; letter-spacing: -.025em; }
-    .academic-card p { margin: 0; color: var(--muted); font-size: 14px; line-height: 1.65; }
+    .sr-only {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border: 0;
+    }
 
-    .degree-layout { display: grid; grid-template-columns: minmax(0, 1fr) minmax(360px, .9fr); gap: 64px; align-items: start; }
-    .degree-copy p { margin-top: 0; font-size: 17px; }
-    .degree-cta-row { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 28px; }
-    .requirements { margin: 36px 0 0; padding: 24px; border: 1px solid var(--border); background: var(--surface); }
-    .requirements h3 { margin: 0 0 14px; font-size: 18px; line-height: 1.2; }
-    .requirements ul { margin: 0; padding-left: 20px; color: var(--muted); font-size: 14px; line-height: 1.65; }
-    .requirements li + li { margin-top: 8px; }
-    .diagram { position: relative; display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; padding: 28px; border: 1px solid var(--border); background: var(--surface); }
-    .diagram-item { min-height: 92px; display: flex; align-items: center; justify-content: center; padding: 12px; border: 1px solid var(--border); color: var(--navy); text-align: center; font: 700 12px/1.25 var(--display); }
-    .diagram-item.core { grid-column: 2; background: var(--navy); border-color: var(--navy); color: var(--surface); }
-    .degree-steps { margin: 44px 0 0; padding: 0; list-style: none; counter-reset: degree; }
-    .degree-steps li { position: relative; padding: 0 0 20px 56px; min-height: 52px; color: var(--muted); }
-    .degree-steps li::before { counter-increment: degree; content: counter(degree, decimal-leading-zero); position: absolute; left: 0; top: 0; color: var(--navy); font: 700 12px/1.5 var(--mono); }
-    .degree-steps li:not(:last-child)::after { content: ""; position: absolute; left: 10px; top: 23px; bottom: 0; border-left: 1px solid var(--border); }
+    /* === Typography === */
+    .eyebrow {
+      margin: 0 0 16px;
+      color: var(--text-brand);
+      font: 700 11px/1.2 var(--mono);
+      letter-spacing: .14em;
+      text-transform: uppercase;
+    }
 
-    .feature-grid { display: grid; grid-template-columns: 1.2fr .8fr; gap: 24px; }
-    .feature-panel { min-height: 350px; padding: 36px; background: var(--navy); color: var(--surface); }
-    .feature-panel .eyebrow { color: var(--indicator); }
-    .feature-panel h2 { max-width: 620px; margin: 0 0 18px; color: var(--surface); font: 700 clamp(30px, 3.8vw, 50px)/1.06 var(--display); letter-spacing: -.045em; }
-    .feature-panel p { max-width: 690px; margin: 0; color: color-mix(in oklch, var(--surface), transparent 18%); }
-    .content-stack { display: grid; gap: 24px; }
-    .content-note { min-height: 163px; padding: 27px; border: 1px solid var(--border); background: var(--surface); }
-    .content-note h3 { margin: 0 0 8px; font-size: 21px; line-height: 1.15; }
-    .content-note p { margin: 0; color: var(--muted); font-size: 14px; line-height: 1.55; }
-    .pending { display: inline-block; margin-top: 17px; color: var(--muted); font: 700 10px/1 var(--mono); letter-spacing: .09em; text-transform: uppercase; }
+    .section-head {
+      max-width: 760px;
+      margin-bottom: 48px;
+    }
 
-    .ecosystem-grid { display: grid; grid-template-columns: repeat(12, 1fr); gap: 24px; }
-    .eco-main { grid-column: span 7; padding: 36px; border: 1px solid var(--border); background: var(--surface); }
-    .eco-main h3, .eco-side h3 { margin: 0 0 14px; font-size: 28px; line-height: 1.1; letter-spacing: -.035em; }
-    .eco-main p, .eco-side p { margin: 0; color: var(--muted); font-size: 15px; line-height: 1.65; }
-    .eco-side { grid-column: span 5; display: grid; gap: 24px; }
-    .eco-card { padding: 28px; border-top: 3px solid var(--navy); background: var(--surface); box-shadow: var(--shadow-low); }
-    .logo-row { grid-column: 1 / -1; display: grid; grid-template-columns: repeat(6, 1fr); border: 1px solid var(--border); background: var(--surface); }
-    .logo-placeholder { min-height: 74px; display: grid; place-items: center; border-right: 1px solid var(--border); color: var(--muted); font: 700 11px/1 var(--mono); letter-spacing: .06em; }
-    .logo-placeholder:last-child { border-right: 0; }
+    .section-head h2,
+    h1,
+    h2,
+    h3 {
+      font-family: var(--display);
+      color: var(--text-primary);
+    }
 
-    .incubation { display: grid; grid-template-columns: .8fr 1.2fr; gap: 64px; align-items: start; }
-    .incubation-stamp { padding-top: 8px; color: var(--navy); font: 900 clamp(62px, 8vw, 112px)/.8 var(--display); letter-spacing: -.08em; }
-    .incubation-copy { padding-left: 28px; border-left: 1px solid var(--border); }
-    .incubation-copy p { margin: 0; color: var(--muted); font-size: 18px; }
-    .incubation-links { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 28px; }
+    .section-head h2 {
+      margin: 0 0 12px;
+      font-size: clamp(30px, 3.8vw, 48px);
+      line-height: 1.1;
+      letter-spacing: -.04em;
+    }
 
-    .faq-grid { display: grid; grid-template-columns: minmax(250px, .7fr) minmax(0, 1.3fr); gap: 64px; }
-    .faq-nav { padding-top: 6px; }
-    .faq-nav p { margin: 0; color: var(--muted); }
-    .faq-item { border-top: 1px solid var(--border); }
-    .faq-item:last-child { border-bottom: 1px solid var(--border); }
-    .faq-button { width: 100%; min-height: 76px; display: flex; justify-content: space-between; align-items: center; gap: 24px; padding: 18px 0; border: 0; background: transparent; color: var(--navy); text-align: left; font: 700 18px/1.25 var(--display); }
-    .faq-button span:last-child { color: var(--muted); font: 400 26px/1 var(--display); }
-    .faq-button[aria-expanded="true"] span:last-child { color: var(--navy); transform: rotate(45deg); }
-    .faq-answer { max-height: 0; overflow: hidden; transition: max-height .25s ease; }
-    .faq-answer p { max-width: 720px; margin: 0; padding: 0 0 24px; color: var(--muted); font-size: 15px; line-height: 1.7; }
-    .faq-item.open .faq-answer { max-height: 420px; }
+    .section-head p {
+      margin: 0;
+      color: var(--text-secondary);
+    }
 
-    .footer { padding: 64px 0 32px; background: var(--navy); color: var(--surface); }
-    .footer-grid { display: grid; grid-template-columns: 1.4fr repeat(3, 1fr); gap: 40px; }
-    .footer-brand { max-width: 310px; font: 700 21px/1.1 var(--display); letter-spacing: -.035em; }
-    .footer h3 { margin: 0 0 12px; color: var(--indicator); font: 700 11px/1.2 var(--mono); letter-spacing: .1em; text-transform: uppercase; }
-    .footer ul { margin: 0; padding: 0; list-style: none; }
-    .footer li { margin: 6px 0; color: color-mix(in oklch, var(--surface), transparent 24%); font-size: 14px; }
-    .footer-bottom { margin-top: 48px; padding-top: 20px; border-top: 1px solid color-mix(in oklch, var(--surface), transparent 78%); color: color-mix(in oklch, var(--surface), transparent 45%); font: 600 10px/1.3 var(--mono); letter-spacing: .06em; text-transform: uppercase; }
+    /* === Sections === */
+    .section {
+      padding: 104px 0;
+    }
 
-    dialog { width: min(100% - 32px, 480px); padding: 0; border: 0; background: var(--surface); box-shadow: 0 24px 70px rgb(0 0 0 / 28%); }
-    dialog::backdrop { background: rgb(8 21 40 / 55%); }
-    .dialog-inner { padding: 32px; }
-    .dialog-inner h2 { margin: 0 0 12px; color: var(--navy); font: 700 28px/1.1 var(--display); letter-spacing: -.035em; }
-    .dialog-inner p { margin: 0 0 24px; color: var(--muted); }
+    .section.alt {
+      background: var(--background-surface);
+    }
+
+    /* === Buttons === */
+    .btn {
+      min-height: 48px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0 24px;
+      border-radius: var(--radius);
+      border: 1.5px solid var(--border-brand);
+      background: transparent;
+      color: var(--text-brand);
+      font: 800 14px/1 var(--display);
+      transition: all .2s ease;
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-medium);
+      background: var(--text-brand);
+      color: var(--text-inverse);
+    }
+
+    .btn.primary {
+      border-color: var(--primary);
+      background: var(--primary);
+      color: var(--text-inverse);
+      box-shadow: var(--shadow-brand);
+    }
+
+    .btn.primary:hover {
+      background: var(--primary-hover);
+      border-color: var(--primary-hover);
+      box-shadow: var(--shadow-high);
+    }
+
+    /* === Custom Cursor === */
+    .custom-cursor {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 40px;
+      height: 40px;
+      border: 2px solid var(--primary);
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: 9999;
+      transform: translate(-50%, -50%);
+      transition: width .3s ease, height .3s ease, border-color .3s ease, background .3s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .custom-cursor span {
+      width: 8px;
+      height: 8px;
+      background: var(--primary);
+      border-radius: 50%;
+      transition: width .3s ease, height .3s ease, background .3s ease;
+    }
+
+    .custom-cursor.hover {
+      width: 56px;
+      height: 56px;
+      border-color: var(--primary);
+      background: color-mix(in srgb, var(--primary) 10%, transparent);
+    }
+
+    .custom-cursor.hover span {
+      width: 10px;
+      height: 10px;
+    }
+
+    .custom-cursor.clicking {
+      width: 32px;
+      height: 32px;
+    }
+
+    .custom-cursor.clicking span {
+      width: 6px;
+      height: 6px;
+    }
+
+    /* === Header === */
+    .site-header {
+      position: sticky;
+      z-index: 20;
+      top: 0;
+      border-bottom: 1px solid var(--border-default);
+      background: color-mix(in srgb, var(--background-canvas) 85%, transparent);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+    }
+
+    .nav {
+      min-height: 72px;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: center;
+      gap: 32px;
+      padding: 10px 0;
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      flex: 0 0 auto;
+    }
+
+    .brand-logo {
+      display: block;
+      width: auto;
+      height: 52px;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 28px;
+      color: var(--text-muted);
+      font: 700 11px/1 var(--display);
+      letter-spacing: .04em;
+      text-transform: uppercase;
+    }
+
+    .nav-links a {
+      padding-block: 12px;
+      position: relative;
+    }
+
+    .nav-links a::after {
+      content: "";
+      position: absolute;
+      bottom: 4px;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background: var(--primary);
+      transform: scaleX(0);
+      transition: transform .2s ease;
+    }
+
+    .nav-links a:hover {
+      color: var(--text-primary);
+    }
+
+    .nav-links a:hover::after {
+      transform: scaleX(1);
+    }
+
+    .nav-postulate {
+      min-height: 40px;
+      padding: 0 20px;
+      border: none;
+      border-radius: 999px;
+      background: var(--primary);
+      color: var(--text-inverse);
+      font: 800 11px/1 var(--display);
+      letter-spacing: .04em;
+      text-transform: uppercase;
+      transition: all .2s ease;
+      box-shadow: var(--shadow-brand);
+    }
+
+    .nav-postulate:hover {
+      background: var(--primary-hover);
+      box-shadow: var(--shadow-high);
+      transform: translateY(-2px);
+    }
+
+    .nav-toggle {
+      display: none;
+      min-width: 44px;
+      min-height: 44px;
+      border: 1px solid var(--border-default);
+      border-radius: var(--radius);
+      background: transparent;
+      color: var(--text-primary);
+      font-family: var(--display);
+      font-size: 13px;
+      font-weight: 800;
+    }
+
+    /* === Hero === */
+    .hero {
+      position: relative;
+      display: flex;
+      align-items: center;
+      min-height: calc(100svh - 72px);
+      overflow: hidden;
+      padding: 80px 0;
+      background: var(--hero-bg);
+    }
+
+    .hero-grid {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      justify-content: center;
+      padding-block: clamp(40px, 8vh, 80px);
+    }
+
+    .hero-content {
+      width: 100%;
+      max-width: 1280px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+
+    .hero-eyebrow {
+      margin: 0 0 16px;
+      color: #383737;
+      font: 700 36px/1 var(--display);
+      letter-spacing: 3.46px;
+    }
+
+    .hero h1 {
+      max-width: 960px;
+      margin: 0;
+      font-size: clamp(42px, 6.5vw, 84px);
+      line-height: .95;
+      letter-spacing: -.065em;
+      color: var(--hero-text);
+      text-wrap: balance;
+    }
+
+    .hero-copy {
+      max-width: 585px;
+      margin: 24px auto 32px;
+      color: var(--hero-text);
+      font-size: 18px;
+      line-height: 1.7;
+      text-align: center;
+      opacity: .9;
+    }
+
+    a.hero-cta.btn.primary {
+      margin-bottom: 48px;
+      border-radius: 100px !important;
+      min-height: 48px;
+      padding: 0 30px;
+      font: 800 14px/1 var(--display);
+      gap: 10px;
+    }
+
+    /* === Hero Quick Links === */
+    .hero-quick-links {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 25px;
+      width: 100%;
+      text-align: left;
+    }
+
+    .hero-quick-link {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      min-height: 200px;
+      padding: 44px 26px 26px;
+      border: 1px solid var(--hero-text);
+      background: transparent;
+      color: var(--hero-text);
+      transition: all .3s ease;
+    }
+
+    .hl-tl {
+      border-radius: 40px 0 0 0;
+    }
+
+    .hl-tr {
+      border-radius: 0 40px 0 0;
+    }
+
+    .hl-br {
+      border-radius: 0 0 40px 0;
+    }
+
+    .hl-bl {
+      border-radius: 0 0 0 40px;
+    }
+
+    .hl-content {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .hl-title {
+      font: 800 24px/1.15 var(--display);
+      letter-spacing: -1px;
+      color: var(--hero-text);
+      margin: 0;
+    }
+
+    .hl-desc {
+      font: 400 18px/1.45 var(--body);
+      color: var(--hero-text);
+      margin: 10px 0 0;
+      opacity: .95;
+    }
+
+    .hl-arrow {
+      align-self: flex-end;
+      margin-top: auto;
+      width: 28px;
+      height: 28px;
+      color: var(--primary);
+      transition: transform .3s ease;
+    }
+
+    .hl-arrow svg {
+      width: 28px;
+      height: 28px;
+    }
+
+    .hero-quick-link:hover {
+      background: color-mix(in srgb, var(--hero-text) 5%, transparent);
+    }
+
+    .hero-quick-link:hover .hl-arrow {
+      transform: translateX(4px);
+    }
+
+    /* === Interest carousel === */
+    .carousel-section {
+      display: flex;
+      align-items: center;
+      min-height: calc(100svh - 72px);
+      background: #f25f22;
+    }
+
+    .carousel-shell {
+      position: relative;
+      z-index: 2;
+      width: min(100%, 1280px);
+      isolation: isolate;
+      padding: 100px 0;
+    }
+
+    .carousel-intro {
+      width: 100%;
+      padding: 30px 24px 24px;
+      color: #fdfdfd;
+      text-align: left;
+    }
+
+    .carousel-intro p {
+      margin: 0 0 10px;
+      color: #fdfdfd;
+      font: 700 12px/14.4px "JetBrains Mono", var(--mono);
+      letter-spacing: 1.44px;
+      text-transform: uppercase;
+    }
+
+    .carousel-intro h2 {
+      max-width: 700px;
+      margin: 0;
+      color: #fdfdfd;
+      font: 700 46px/49.68px var(--display);
+      letter-spacing: -1.84px;
+    }
+
+    .carrousel {
+      position: relative;
+      height: 610px;
+      overflow: hidden;
+      border-top: 1px solid #fffae2;
+      border-bottom: 1px solid #fffae2;
+      color: #fdfdfd;
+      text-align: left;
+    }
+
+    .carrousel .screens {
+      position: relative;
+      width: 100%;
+      height: 532px;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .carrousel .screens>li {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      z-index: 0;
+      width: 586px;
+      height: 290px;
+      overflow: hidden;
+      border-radius: 9px;
+      opacity: 0;
+      filter: blur(4.4px);
+      pointer-events: none;
+      transform: translate(-50%, -50%) scale(.72);
+      transition: width .7s ease, height .7s ease, opacity .7s ease, filter .7s ease, transform .7s ease;
+    }
+
+    .carrousel .screens>li.active {
+      z-index: 3;
+      width: 896px;
+      height: 415px;
+      opacity: 1;
+      filter: none;
+      pointer-events: auto;
+      transform: translate(-50%, -50%);
+    }
+
+    .carrousel .screens>li.left,
+    .carrousel .screens>li.right {
+      z-index: 2;
+      opacity: .48;
+      pointer-events: auto;
+      cursor: pointer;
+    }
+
+    .carrousel .screens>li.left {
+      transform: translate(-109%, -50%);
+    }
+
+    .carrousel .screens>li.right {
+      transform: translate(9%, -50%);
+    }
+
+    .carrousel .screens>li.left:hover,
+    .carrousel .screens>li.right:hover {
+      opacity: .72;
+      filter: blur(1px);
+    }
+
+    .carrousel .slide {
+      width: 100%;
+      height: 100%;
+      display: grid;
+      grid-template-columns: 45% 55%;
+      border-radius: 10px;
+      overflow: hidden;
+      background: #f6feff;
+    }
+
+    .ph-img {
+      position: relative;
+      overflow: hidden;
+      min-height: 100%;
+      background: #343941;
+    }
+
+    .carrousel .ph-img {
+      background-position: center;
+      background-size: cover;
+    }
+
+    .carrousel .ph-img::before {
+      position: absolute;
+      z-index: 1;
+      inset: 0;
+      background: linear-gradient(180deg, rgb(20 23 28 / 0) 38%, rgb(20 23 28 / 72%));
+      content: "";
+    }
+
+    .carrousel .ph-img span {
+      position: absolute;
+      z-index: 2;
+      bottom: 22px;
+      left: 24px;
+      color: #fff;
+      font: 700 11px/14.3px "JetBrains Mono", var(--mono);
+      letter-spacing: .88px;
+      text-transform: uppercase;
+    }
+
+    .slide-copy {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 36px 50px;
+      color: #323232;
+    }
+
+    .slide-copy p {
+      margin: 0 0 10px;
+      color: #ea5628;
+      font: 700 12px/14.4px "JetBrains Mono", var(--mono);
+      letter-spacing: 1.2px;
+      text-transform: uppercase;
+    }
+
+    .slide-copy h2 {
+      max-width: 393px;
+      margin: 0;
+      color: #323232;
+      font: 700 24px/1.1 var(--display);
+      letter-spacing: -1.76px;
+    }
+
+    .slide-copy .slide-description {
+      max-width: 362px;
+      margin: 10px 0 0;
+      color: #323232;
+      font: 700 9.68px/12.584px var(--body);
+      letter-spacing: .774px;
+      text-transform: uppercase;
+    }
+
+    .carrousel .carousel-controls {
+      position: absolute;
+      right: 24px;
+      bottom: 21px;
+      left: 24px;
+      z-index: 5;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .dots {
+      display: flex;
+      gap: 8px;
+      align-items: end;
+    }
+
+    .dot,
+    .arrow {
+      border: 0;
+      background: transparent;
+      color: #fff;
+    }
+
+    .dot {
+      width: 28px;
+      height: 28px;
+      padding: 0;
+      color: #fff;
+      font: 700 11px/11px "JetBrains Mono", var(--mono);
+      opacity: 1;
+      transition: color .2s ease;
+    }
+
+    .dot:hover,
+    .dot[aria-current="true"] {
+      color: #f8b133;
+    }
+
+    .arrows {
+      display: flex;
+      gap: 8px;
+    }
+
+    .arrow {
+      width: 44px;
+      height: 44px;
+      border: 1px solid rgb(255 255 255 / 65%);
+      border-radius: 50%;
+      font: 700 20px/1 var(--display);
+      transition: all .2s ease;
+    }
+
+    .arrow:hover,
+    .carousel-pause:hover {
+      background: #fff;
+      color: #480058;
+      border-color: #fff;
+    }
+
+    .carousel-pause {
+      min-height: 44px;
+      padding: 0 15px;
+      border: 1px solid rgb(255 255 255 / 65%);
+      border-radius: 999px;
+      background: transparent;
+      color: #fff;
+      font: 700 11px/11px var(--display);
+      transition: all .2s ease;
+    }
+
+    /* === Entrepreneurship spaces === */
+    .routes-section {
+      padding: 150px 0;
+      background: #fff8f3;
+    }
+
+    .routes-layout {
+      display: grid;
+      width: min(100% - 48px, 1300px);
+      grid-template-columns: 590px 610px;
+      gap: 100px;
+      align-items: start;
+    }
+
+    .routes-intro {
+      position: sticky;
+      top: 96px;
+      display: flex;
+      flex-direction: column;
+      gap: 50px;
+    }
+
+    .routes-copy {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .routes-copy .eyebrow {
+      margin: 0;
+      color: #383737;
+      font: 700 12px/14.4px "JetBrains Mono", var(--mono);
+      letter-spacing: 1.44px;
+    }
+
+    .routes-copy h2 {
+      max-width: 590px;
+      margin: 0;
+      color: #383737;
+      font: 700 48px/52.8px var(--display);
+      letter-spacing: -1.92px;
+    }
+
+    .routes-copy>p {
+      width: 566px;
+      margin: 0;
+      color: #383737;
+      font: 400 18px/30.6px var(--body);
+    }
+
+    .routes-image {
+      position: relative;
+      width: 100%;
+      height: 415px;
+      overflow: hidden;
+      border-radius: 10px;
+      background: #343941;
+    }
+
+    .routes-image img,
+    .routes-image video {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .routes-image::after {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgb(20 23 28 / 0) 38%, rgb(20 23 28 / 72%));
+      content: "";
+    }
+
+    .routes-image span {
+      position: absolute;
+      z-index: 1;
+      bottom: 20px;
+      left: 24px;
+      color: #fff;
+      font: 700 11px/14.3px "JetBrains Mono", var(--mono);
+      letter-spacing: .88px;
+      text-transform: uppercase;
+    }
+
+    .route-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 100px;
+      padding: 10px;
+    }
+
+    .route {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      min-height: 246px;
+      padding: 29px;
+      border: 1px solid #e2e8f0;
+      background: #fff;
+      box-shadow: 0 2px 2px rgb(14 30 54 / 5%);
+    }
+
+    .route .num {
+      color: #383737;
+      font: 700 11px/11px "JetBrains Mono", var(--mono);
+      letter-spacing: 1.1px;
+    }
+
+    .route h3 {
+      margin: 32px 0 0;
+      color: #383737;
+      font: 700 27px/29.16px var(--display);
+      letter-spacing: -.945px;
+    }
+
+    .route p {
+      margin: 12px 0 0;
+      color: #383737;
+      font: 400 15px/23.25px var(--body);
+    }
+
+    .route a {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      align-self: flex-start;
+      gap: 10px;
+      min-width: 232px;
+      min-height: 48px;
+      margin-top: auto;
+      padding: 0 30px;
+      border-radius: 48px;
+      background: #ed6f25;
+      color: #fff;
+      font: 800 14px/14px var(--display);
+      text-align: center;
+      transition: background-color .2s ease, transform .2s ease;
+    }
+
+    .route a::after {
+      width: 24px;
+      height: 24px;
+      background: url("http://localhost:3845/assets/555ca112c2118783d4dbb39ec832469c25a13d9e.svg") center / contain no-repeat;
+      content: "";
+    }
+
+    .route a:hover {
+      background: #d94418;
+      transform: translateY(-2px);
+    }
+
+    /* === Entrepreneur identity === */
+    .section.program-section {
+      position: relative;
+      display: flex;
+      align-items: center;
+      min-height: calc(100svh - 72px);
+      overflow: hidden;
+      padding: 104px 0;
+      background: #1e1e1e;
+    }
+
+    .program-motion-path {
+      position: absolute;
+      z-index: 0;
+      top: 33%;
+      left: calc(50% - min(56.5vw, 843.896px));
+      width: min(56.5vw, 843.896px);
+      height: auto;
+      overflow: visible;
+      pointer-events: none;
+    }
+
+    .program-motion-path path {
+      fill: none;
+      stroke: none;
+    }
+
+    .program-layout {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) 528px;
+      gap: 100px;
+      width: min(100% - 48px, 1280px);
+      margin: 50px auto 0;
+      align-items: center;
+    }
+
+    .program-copy,
+    .program-traits {
+      position: relative;
+      z-index: 1;
+    }
+
+    .program-copy {
+      max-width: 652px;
+    }
+
+    .program-copy .eyebrow {
+      margin: 0;
+      color: #fff;
+      font: 700 18px/21.6px "JetBrains Mono", var(--mono);
+      letter-spacing: 2.16px;
+    }
+
+    .program-copy h2 {
+      margin: 19.92px 0 0;
+      color: #ed6f25;
+      font: 700 48px/52.8px var(--display);
+      letter-spacing: -1.92px;
+    }
+
+    .program-copy>p {
+      margin: 19.92px 0 0;
+      color: #fff;
+      font: 400 18px/30.6px var(--body);
+    }
+
+    .program-mark {
+      position: absolute;
+      z-index: 3;
+      top: 0;
+      left: 50%;
+      width: 149px;
+      height: 130px;
+      pointer-events: none;
+      translate: -50% -100%;
+      will-change: transform;
+    }
+
+    .program-section.motion-ready .program-mark {
+      top: 0;
+      left: 0;
+      translate: none;
+    }
+
+    .program-mark img {
+      display: block;
+      width: 149px;
+      height: 130px;
+    }
+
+    .program-traits {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      border-top: 1px solid rgb(255 255 255 / 65%);
+    }
+
+    .program-traits li {
+      display: grid;
+      grid-template-columns: 52px minmax(0, 1fr);
+      gap: 16px;
+      padding: 30px 0;
+      border-bottom: 1px solid rgb(255 255 255 / 65%);
+    }
+
+    .program-traits .num {
+      color: #ed6f25;
+      font: 700 11px/14.3px "JetBrains Mono", var(--mono);
+      letter-spacing: .88px;
+    }
+
+    .program-traits strong {
+      display: block;
+      color: #fff;
+      font: 700 27px/22.8px var(--display);
+    }
+
+    .program-traits p {
+      margin: 17px 0 0;
+      color: #fff;
+      font: 400 14px/21px var(--body);
+    }
+
+    /* === Academic Cards === */
+    .academic-section {
+      padding: 214px 0;
+      background: #fff8f3;
+    }
+
+    .academic-container {
+      width: min(100% - 48px, 1368px);
+      margin-inline: auto;
+    }
+
+    .academic-head {
+      width: min(100%, 760px);
+      margin-inline: auto;
+      color: #383737;
+      text-align: center;
+    }
+
+    .academic-head .eyebrow {
+      margin: 0;
+      color: #383737;
+      font: 700 18px/14.4px "JetBrains Mono", var(--mono);
+      letter-spacing: 1.44px;
+      text-transform: uppercase;
+    }
+
+    .academic-head h2 {
+      margin: 0;
+      color: #383737;
+      font: 700 48px/52.8px var(--display);
+      letter-spacing: -1.92px;
+    }
+
+    .academic-head>p:last-child {
+      width: 100%;
+      margin: 12px 0 0;
+      color: #383737;
+      font: 400 16px/27.2px var(--body);
+    }
+
+    .academic-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 410.664px));
+      justify-content: center;
+      gap: 50px;
+      margin-top: 40px;
+    }
+
+    .academic-card {
+      position: relative;
+      width: 100%;
+      max-width: 410.664px;
+      aspect-ratio: 410.664 / 460.91;
+      overflow: hidden;
+      background: #fff;
+      box-shadow: 0 2px 2px rgb(14 30 54 / 5%);
+    }
+
+    .academic-card video {
+      display: block;
+      width: 100%;
+      height: 78.89%;
+      background: #d8d8d8;
+      object-fit: cover;
+    }
+
+    .academic-card-body {
+      position: absolute;
+      top: 79.17%;
+      left: 0;
+      width: 100%;
+      height: 40.57%;
+      padding: 31px 28px 28px;
+      border-top: 3px solid #383737;
+      background: #fff;
+      transition: top .3s ease-out;
+      will-change: top;
+    }
+
+    .academic-card:is(:hover, :focus-visible) .academic-card-body {
+      top: 59.43%;
+    }
+
+    .academic-card h3 {
+      margin: 0;
+      color: #383737;
+      font: 700 22px/25.3px var(--display);
+      letter-spacing: -.55px;
+    }
+
+    .academic-card p {
+      width: 100%;
+      margin: 14px 0 0;
+      color: #383737;
+      font: 400 14px/23.1px var(--body);
+    }
+
+    /* === Degree / Titulación === */
+    .degree-layout {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(360px, .9fr);
+      gap: 64px;
+      align-items: center;
+    }
+
+    .degree-layout .wrap {
+      width: 60%;
+    }
+
+    .degree-copy p {
+      margin-top: 0;
+      font-size: 16px;
+      color: var(--text-secondary);
+    }
+
+    .degree-cta-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 28px;
+    }
+
+    /* === Degree story === */
+    .degree-story {
+      position: relative;
+      height: calc(100svh - 72px);
+      overflow: hidden;
+      background: #fff;
+    }
+
+    .degree-story-stage {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      isolation: isolate;
+      background: #fff;
+    }
+
+    .degree-story-video,
+    .degree-story-overlay,
+    .degree-story-final {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+    }
+
+    .degree-story-video {
+      z-index: 0;
+      display: block;
+      object-fit: cover;
+      transform: scale(1.06);
+    }
+
+    .degree-story-overlay {
+      z-index: 1;
+      display: block;
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    .degree-story-svg-copy {
+      font-family: var(--display);
+      font-weight: 700;
+      letter-spacing: -2.2562px;
+    }
+
+    .degree-story-svg-small {
+      font-size: 48px;
+    }
+
+    .degree-story-svg-large {
+      font-size: 84px;
+    }
+
+    .degree-story-solid-copy {
+      opacity: 0;
+    }
+
+    .degree-story-final {
+      z-index: 2;
+      pointer-events: none;
+    }
+
+    .degree-story-final-details {
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: calc(50% + 9.5px);
+      width: min(calc(100% - 32px), 687.148px);
+      margin: 0 auto;
+      padding: 40px 0;
+      color: #1a1a1a;
+      text-align: center;
+      opacity: 0;
+      pointer-events: auto;
+    }
+
+    .degree-story-final-copy p {
+      width: 100%;
+      margin: 0;
+      font: 400 17px/28.9px var(--body);
+    }
+
+    .degree-story-final-copy p+p {
+      padding-top: 17px;
+    }
+
+    .degree-story-final-actions {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      height: 76px;
+    }
+
+    .degree-story-final-actions .btn {
+      min-height: 48px;
+      padding: 0 21px;
+      border-width: 1px;
+      border-radius: 8px;
+      font-size: 14px;
+    }
+
+    /* === Hub Diagram === */
+    .hub-diagram {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 1.6 / 1;
+      max-width: 700px;
+      margin: 0 auto;
+    }
+
+    .hub-diagram svg.hub-bg {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      overflow: visible;
+    }
+
+    .hub-ring {
+      fill: var(--tinted-brand);
+      stroke: color-mix(in srgb, var(--primary) 20%, transparent);
+      stroke-width: 1;
+    }
+
+    .hub-link {
+      fill: none;
+      stroke: color-mix(in srgb, var(--primary) 40%, transparent);
+      stroke-width: 1.4;
+      stroke-linecap: round;
+      stroke-dasharray: 600;
+      stroke-dashoffset: 600;
+    }
+
+    .hub-center {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      width: clamp(110px, 16vw, 150px);
+      height: clamp(110px, 16vw, 150px);
+      border-radius: 50%;
+      background: var(--text-brand);
+      color: var(--text-inverse);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 4px;
+      z-index: 5;
+      box-shadow: var(--shadow-high);
+      text-align: center;
+      padding: 12px;
+      cursor: default;
+    }
+
+    .hub-center-emoji {
+      font-size: clamp(22px, 3vw, 32px);
+      line-height: 1;
+    }
+
+    .hub-center-text {
+      font: 700 clamp(10px, 1.1vw, 13px)/1.2 var(--display);
+      max-width: 110px;
+    }
+
+    .hub-tile {
+      position: absolute;
+      width: clamp(90px, 11vw, 120px);
+      min-height: clamp(56px, 7vw, 72px);
+      border-radius: var(--radius-lg);
+      background: var(--background-surface);
+      border: 1px solid var(--border-default);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--text-primary);
+      font: 600 clamp(10px, 1vw, 12px)/1.25 var(--display);
+      text-align: center;
+      padding: 10px;
+      z-index: 10;
+      cursor: pointer;
+      box-shadow: var(--shadow-medium);
+      transition: all .35s ease;
+    }
+
+    .hub-tile:hover,
+    .hub-tile:focus-visible {
+      border-color: var(--primary);
+      box-shadow: var(--shadow-high);
+      transform: translateY(-2px);
+    }
+
+    .hub-tile:focus-visible {
+      outline: 3px solid var(--border-focus);
+      outline-offset: 3px;
+    }
+
+    .hub-tile-1 {
+      left: 6%;
+      top: 4%;
+    }
+
+    .hub-tile-2 {
+      right: 6%;
+      top: 4%;
+    }
+
+    .hub-tile-3 {
+      left: 0;
+      top: 42%;
+    }
+
+    .hub-tile-4 {
+      right: 0;
+      top: 42%;
+    }
+
+    .hub-tile-5 {
+      left: 6%;
+      bottom: 4%;
+    }
+
+    .hub-tile-6 {
+      right: 6%;
+      bottom: 4%;
+    }
+
+    .hub-tile-7 {
+      left: 50%;
+      bottom: 0;
+      transform: translateX(-50%);
+    }
+
+    /* === Requisitos === */
+    .requisitos {
+      background: #f8f9fa;
+    }
+
+    .requirements-grid {
+      display: grid;
+      grid-template-columns: 389px minmax(0, 791px);
+      gap: 100px;
+      align-items: start;
+    }
+
+    .requirements-left {
+      color: #000;
+    }
+
+    .requirements-left .eyebrow {
+      margin: 0 0 10px;
+      color: #f25f22;
+      font: 700 12px/19.2px var(--display);
+      letter-spacing: 1.44px;
+    }
+
+    .requirements-left h2 {
+      margin: 0;
+      color: #1a365d;
+      font: 700 52px/56.16px var(--display);
+      letter-spacing: -2.34px;
+    }
+
+    .requirements-intro {
+      margin: 20px 0 43px;
+      color: #000;
+      font: 700 12px/19.2px var(--display);
+      letter-spacing: 1.44px;
+      text-transform: uppercase;
+    }
+
+    .req-button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      min-height: 46px;
+      padding: 0 19px;
+      border: 1px solid #1a365d;
+      border-radius: 7px;
+      background: transparent;
+      color: #1a365d;
+      text-decoration: none;
+      font: 700 14px/14px var(--display);
+      transition: all .2s ease;
+    }
+
+    .req-button:hover {
+      background: #1a365d;
+      color: #fff;
+    }
+
+    .checklist {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .checklist li {
+      padding: 18px 0 19px 28px;
+      border-bottom: 1px solid #c8d2dc;
+      color: #000;
+      font: 400 16px/25.6px var(--body);
+    }
+
+    .checklist strong {
+      display: block;
+      color: #1a365d;
+      font: 700 16px/25.6px var(--display);
+    }
+
+    .requirements-right h3 {
+      margin: 100px 0 21px;
+      color: #1a365d;
+      font: 700 21px/22.68px var(--display);
+    }
+
+    .process-cards {
+      display: grid;
+      gap: 20px;
+    }
+
+    .process-card {
+      min-height: 98px;
+      padding: 16px;
+      border: 1px solid #ccd5de;
+      border-radius: 8px;
+      background: transparent;
+      transition: all .2s ease;
+    }
+
+    .process-card:hover {
+      box-shadow: var(--shadow-low);
+    }
+
+    .process-card h4 {
+      margin: 0 0 10px;
+      color: #f25f22;
+      font: 700 35px/35px var(--display);
+      letter-spacing: -.03em;
+    }
+
+    .process-card p {
+      margin: 0;
+      color: #182433;
+      font: 400 16px/20.8px var(--display);
+    }
+
+    /* === Inspírate === */
+    #inspirate {
+      display: flex;
+      align-items: center;
+      min-height: calc(100svh - 72px);
+      background: #edf1f5;
+    }
+
+    #inspirate>.wrap>.eyebrow {
+      margin: 0;
+      color: #f25f22;
+      font: 700 12px/14.4px var(--mono);
+      letter-spacing: 1.44px;
+    }
+
+    .inspire-desc {
+      max-width: 861px;
+      margin: 0 0 46px;
+      color: #383737;
+      font: 400 17px/27.2px var(--body);
+    }
+
+    #inspirate h2 {
+      margin: 16px 0 10px;
+      color: #383737;
+      font: 700 52px/56.16px var(--display);
+      letter-spacing: -2.34px;
+    }
+
+    .inspire-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      gap: 18px;
+      min-height: 523px;
+    }
+
+    .card {
+      position: relative;
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+    }
+
+    .card-feature {
+      min-height: 523px;
+    }
+
+    .card-feature img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .card-overlay {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      min-height: 288px;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 28px;
+      background: linear-gradient(to bottom, transparent, rgb(8 30 52 / 0.94));
+      color: var(--text-inverse);
+    }
+
+    .card-overlay .eyebrow {
+      color: #ed6f25;
+      font: 700 12px/19.2px var(--mono);
+      letter-spacing: .88px;
+      text-transform: uppercase;
+      margin: 0;
+    }
+
+    .card-overlay h3 {
+      margin: 10px 0 21px;
+      color: #fff;
+      font: 700 18px/22.68px var(--display);
+    }
+
+    .card-overlay p {
+      margin: 0;
+      color: #d7e2ed;
+      font: 400 16px/25.6px var(--body);
+    }
+
+    .card-stack {
+      display: grid;
+      grid-template-rows: 1fr 1fr;
+      gap: 18px;
+    }
+
+    .card-dark {
+      padding: 24px;
+      background: #ed6f25;
+      color: #fff;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      border-radius: var(--radius-lg);
+    }
+
+    .card-dark .eyebrow {
+      margin: 0 0 10px;
+      color: #1e1e1e;
+      font: 700 12px/19.2px var(--mono);
+      letter-spacing: 1.44px;
+      text-transform: uppercase;
+    }
+
+    .card-dark h3 {
+      margin: 0;
+      color: #fff;
+      font: 700 18px/22.68px var(--display);
+    }
+
+    .card-cyan {
+      padding: 24px;
+      background: #383737;
+      color: #fff;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      border-radius: var(--radius-lg);
+    }
+
+    .card-cyan .eyebrow {
+      margin: 0 0 10px;
+      color: #f25f22;
+      font: 700 12px/19.2px var(--mono);
+      letter-spacing: 1.44px;
+      text-transform: uppercase;
+    }
+
+    .card-cyan h3 {
+      margin: 0;
+      color: #fff;
+      font: 700 18px/22.68px var(--display);
+    }
+
+    .pending {
+      display: inline-block;
+      margin-top: 17px;
+      color: var(--text-muted);
+      font: 700 10px/1 var(--mono);
+      letter-spacing: .09em;
+      text-transform: uppercase;
+    }
+
+    /* === Ecosistema === */
+    .ecosystem-grid {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 20px;
+    }
+
+    .eco-main {
+      grid-column: span 7;
+      padding: 36px;
+      border: 1px solid var(--border-default);
+      border-radius: var(--radius-lg);
+      background: var(--background-surface);
+    }
+
+    .eco-main h3,
+    .eco-side h3 {
+      margin: 0 0 14px;
+      font-size: 24px;
+      line-height: 1.15;
+      letter-spacing: -.03em;
+      color: var(--text-primary);
+    }
+
+    .eco-main p,
+    .eco-side p {
+      margin: 0;
+      color: var(--text-secondary);
+      font-size: 15px;
+      line-height: 1.65;
+    }
+
+    .eco-side {
+      grid-column: span 5;
+      display: grid;
+      gap: 20px;
+    }
+
+    .eco-card {
+      padding: 28px;
+      border-left: 4px solid var(--text-brand);
+      border-radius: 0 var(--radius) var(--radius) 0;
+      background: var(--background-surface);
+      box-shadow: var(--shadow-low);
+      transition: all .3s ease;
+    }
+
+    .eco-card:hover {
+      box-shadow: var(--shadow-medium);
+    }
+
+    .logo-row {
+      grid-column: 1 / -1;
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+      border: 1px solid var(--border-default);
+      border-radius: var(--radius-lg);
+      background: var(--background-surface);
+      overflow: hidden;
+    }
+
+    .logo-placeholder {
+      min-height: 74px;
+      display: grid;
+      place-items: center;
+      border-right: 1px solid var(--border-default);
+      color: var(--text-muted);
+      font: 700 10px/1 var(--mono);
+      letter-spacing: .08em;
+      text-transform: uppercase;
+    }
+
+    .logo-placeholder:last-child {
+      border-right: 0;
+    }
+
+    /* === Incubadora === */
+    .incubation {
+      display: grid;
+      grid-template-columns: .8fr 1.2fr;
+      gap: 64px;
+      align-items: start;
+    }
+
+    .incubation-stamp {
+      padding-top: 8px;
+      background: linear-gradient(135deg, var(--text-brand), var(--primary));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      font: 900 clamp(62px, 8vw, 112px)/.8 var(--display);
+      letter-spacing: -.08em;
+    }
+
+    .incubation-copy {
+      padding-left: 32px;
+      border-left: 2px solid var(--border-default);
+    }
+
+    .incubation-copy p {
+      margin: 0;
+      color: var(--text-secondary);
+      font-size: 17px;
+      line-height: 1.7;
+    }
+
+    .incubation-links {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-top: 28px;
+    }
+
+    /* === Orientación/Formulario === */
+    .orientation {
+      background: var(--background-surface);
+    }
+
+    .orientation-layout {
+      display: grid;
+      grid-template-columns: minmax(260px, .75fr) minmax(0, 1.25fr);
+      gap: 72px;
+      align-items: start;
+    }
+
+    .orientation-layout h2 {
+      margin: 0 0 16px;
+      font-size: clamp(30px, 3.8vw, 44px);
+      line-height: 1.08;
+      letter-spacing: -.04em;
+      color: var(--text-primary);
+    }
+
+    .orientation-layout>div>p:last-child {
+      margin: 0;
+      color: var(--text-secondary);
+      font-size: 16px;
+      line-height: 1.65;
+    }
+
+    .orientation-form {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 20px;
+      padding: 32px;
+      border: 1px solid var(--border-default);
+      border-radius: var(--radius-lg);
+      background: var(--form-bg);
+      box-shadow: var(--shadow-medium);
+    }
+
+    .form-field {
+      display: grid;
+      gap: 8px;
+    }
+
+    .form-field.full {
+      grid-column: 1 / -1;
+    }
+
+    .form-field label {
+      color: var(--text-primary);
+      font: 700 12px/1.2 var(--display);
+      text-transform: uppercase;
+      letter-spacing: .04em;
+    }
+
+    .form-field input,
+    .form-field select,
+    .form-field textarea {
+      width: 100%;
+      border: 1.5px solid var(--input-border);
+      border-radius: var(--radius);
+      background: var(--input-bg);
+      color: var(--text-primary);
+      font: 400 16px/1.4 var(--body);
+      transition: border-color .2s ease, box-shadow .2s ease;
+    }
+
+    .form-field input,
+    .form-field select {
+      min-height: 48px;
+      padding: 0 14px;
+    }
+
+    .form-field textarea {
+      min-height: 140px;
+      padding: 12px 14px;
+      resize: vertical;
+    }
+
+    .form-field input:focus,
+    .form-field select:focus,
+    .form-field textarea:focus {
+      border-color: var(--input-focus-border);
+      outline: none;
+      box-shadow: 0 0 0 3px color-mix(in srgb, var(--border-focus) 20%, transparent);
+    }
+
+    .form-submit {
+      grid-column: 1 / -1;
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 16px;
+      margin-top: 4px;
+    }
+
+    .form-submit .btn {
+      min-width: 200px;
+    }
+
+    .form-status {
+      margin: 0;
+      color: var(--text-brand);
+      font-size: 14px;
+      font-weight: 600;
+    }
+
+    /* === FAQ === */
+    .faq-grid {
+      display: grid;
+      grid-template-columns: minmax(250px, .7fr) minmax(0, 1.3fr);
+      gap: 64px;
+    }
+
+    .faq-nav {
+      padding-top: 6px;
+    }
+
+    .faq-nav p {
+      margin: 0;
+      color: var(--text-secondary);
+    }
+
+    .faq-item {
+      border-top: 1px solid var(--border-default);
+    }
+
+    .faq-item:last-child {
+      border-bottom: 1px solid var(--border-default);
+    }
+
+    .faq-button {
+      width: 100%;
+      min-height: 72px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 24px;
+      padding: 18px 0;
+      border: 0;
+      background: transparent;
+      color: var(--text-primary);
+      text-align: left;
+      font: 700 17px/1.25 var(--display);
+      transition: color .2s ease;
+    }
+
+    .faq-button:hover {
+      color: var(--primary);
+    }
+
+    .faq-button span:last-child {
+      color: var(--text-muted);
+      font: 400 24px/1 var(--display);
+      transition: transform .25s ease, color .25s ease;
+    }
+
+    .faq-button[aria-expanded="true"] span:last-child {
+      color: var(--primary);
+      transform: rotate(45deg);
+    }
+
+    .faq-answer {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height .3s ease;
+    }
+
+    .faq-answer p {
+      max-width: 720px;
+      margin: 0;
+      padding: 0 0 24px;
+      color: var(--text-secondary);
+      font-size: 15px;
+      line-height: 1.7;
+    }
+
+    .faq-item.open .faq-answer {
+      max-height: 420px;
+    }
+
+    /* === Footer === */
+    .footer {
+      padding: 64px 0 32px;
+      background: var(--footer-bg);
+      color: var(--footer-text);
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1.4fr repeat(3, 1fr);
+      gap: 40px;
+    }
+
+    .footer-brand {
+      max-width: 310px;
+      font: 700 22px/1.1 var(--display);
+      letter-spacing: -.035em;
+      color: var(--footer-text);
+    }
+
+    .footer h3 {
+      margin: 0 0 14px;
+      color: var(--indicator);
+      font: 700 10px/1.2 var(--mono);
+      letter-spacing: .12em;
+      text-transform: uppercase;
+    }
+
+    .footer ul {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .footer li {
+      margin: 8px 0;
+      color: var(--footer-muted);
+      font-size: 14px;
+      transition: color .2s ease;
+    }
+
+    .footer li:hover {
+      color: var(--footer-text);
+    }
+
+    .footer-bottom {
+      margin-top: 48px;
+      padding-top: 20px;
+      border-top: 1px solid var(--footer-border);
+      color: var(--footer-muted);
+      font: 600 10px/1.3 var(--mono);
+      letter-spacing: .08em;
+      text-transform: uppercase;
+    }
+
+    /* === Dialog === */
+    dialog {
+      width: min(100% - 32px, 480px);
+      padding: 0;
+      border: 0;
+      border-radius: var(--radius-lg);
+      background: var(--background-surface);
+      box-shadow: var(--shadow-high);
+    }
+
+    dialog::backdrop {
+      background: rgb(0 0 0 / 50%);
+      backdrop-filter: blur(4px);
+    }
+
+    .dialog-inner {
+      padding: 36px;
+    }
+
+    .dialog-inner h2 {
+      margin: 0 0 12px;
+      color: var(--text-primary);
+      font: 700 26px/1.1 var(--display);
+      letter-spacing: -.03em;
+    }
+
+    .dialog-inner p {
+      margin: 0 0 24px;
+      color: var(--text-secondary);
+    }
+
+    /* === Responsive === */
+    @media (max-width: 1347px) and (min-width: 921px) {
+      .routes-layout {
+        grid-template-columns: minmax(0, 1fr) minmax(0, 1.034fr);
+        gap: clamp(40px, 7.7vw, 100px);
+      }
+    }
 
     @media (max-width: 920px) {
-      .wrap { width: min(100% - 32px, 1280px); }
-      .nav { position: relative; min-height: 84px; flex-direction: row; justify-content: center; padding: 10px 0; }
-      .nav-toggle { display: inline-flex; align-items: center; justify-content: center; }
-      .nav-toggle { position: absolute; right: 0; top: 50%; transform: translateY(-50%); }
-      .nav-links { position: absolute; top: 84px; left: 16px; right: 16px; display: none; flex-direction: column; align-items: center; gap: 0; padding: 12px 20px; border: 1px solid var(--border); background: var(--surface); box-shadow: var(--shadow-high); text-align: center; }
-      .nav-links.open { display: flex; }
-      .nav-links a { width: 100%; padding: 14px 0; border-bottom: 1px solid var(--border); }
-      .nav-links a:last-child { border-bottom: 0; }
-      .hero-grid, .program-grid, .degree-layout, .feature-grid, .incubation, .faq-grid { grid-template-columns: 1fr; gap: 40px; }
-      .hero-aside { justify-self: start; }
-      .route-grid, .academic-grid { grid-template-columns: 1fr; }
-      .carrousel { height: 530px; }
-      .carrousel .screens > li { width: 68%; height: 64%; }
-      .carrousel .screens > li.active { width: 82%; height: 82%; }
-      .carrousel .screens > li.left { transform: translate(-113%, -50%) scale(.86); }
-      .carrousel .screens > li.right { transform: translate(13%, -50%) scale(.86); }
-      .carrousel .slide { grid-template-columns: 1fr; grid-template-rows: minmax(150px, .9fr) minmax(160px, 1.1fr); }
-      .ph-img { min-height: 150px; }
-      .slide-copy { min-height: 160px; padding: 28px; }
-      .ecosystem-grid { display: grid; grid-template-columns: 1fr; }
-      .eco-main, .eco-side, .logo-row { grid-column: auto; }
-      .eco-side { grid-template-columns: 1fr; }
-      .logo-row { grid-template-columns: repeat(3, 1fr); }
-      .logo-placeholder:nth-child(3) { border-right: 0; }
-      .logo-placeholder:nth-child(-n+3) { border-bottom: 1px solid var(--border); }
-      .incubation-copy { padding-left: 0; border-left: 0; }
-      .footer-grid { grid-template-columns: repeat(2, 1fr); }
-      .footer-brand { grid-column: 1 / -1; }
+      .wrap {
+        width: min(100% - 32px, 1280px);
+      }
+
+      .nav {
+        position: relative;
+        min-height: 72px;
+        flex-direction: row;
+        justify-content: center;
+        padding: 10px 0;
+      }
+
+      .nav-toggle {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .nav-toggle {
+        position: absolute;
+        right: 0;
+        top: 50%;
+        transform: translateY(-50%);
+      }
+
+      .nav-links {
+        position: absolute;
+        top: 72px;
+        left: 16px;
+        right: 16px;
+        display: none;
+        flex-direction: column;
+        align-items: center;
+        gap: 0;
+        padding: 12px 20px;
+        border: 1px solid var(--border-default);
+        border-radius: var(--radius-lg);
+        background: var(--background-surface);
+        box-shadow: var(--shadow-high);
+        text-align: center;
+      }
+
+      .nav-links.open {
+        display: flex;
+      }
+
+      .nav-links a {
+        width: 100%;
+        padding: 14px 0;
+        border-bottom: 1px solid var(--border-default);
+      }
+
+      .nav-links a::after {
+        display: none;
+      }
+
+      .nav-links a:last-child {
+        border-bottom: 0;
+      }
+
+      .nav-postulate {
+        width: 100%;
+        margin-top: 12px;
+      }
+
+      .hero-grid,
+      .degree-layout,
+      .inspire-grid,
+      .incubation,
+      .faq-grid {
+        grid-template-columns: 1fr;
+        gap: 40px;
+      }
+
+      .requirements-grid {
+        grid-template-columns: 1fr;
+        gap: 64px;
+      }
+
+      .orientation-layout {
+        grid-template-columns: 1fr;
+        gap: 40px;
+      }
+
+      .routes-layout {
+        grid-template-columns: minmax(0, 1fr);
+        gap: 50px;
+      }
+
+      .routes-intro {
+        position: static;
+        gap: 32px;
+      }
+
+      .routes-copy>p {
+        width: auto;
+        max-width: 566px;
+      }
+
+      .route-grid {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 20px;
+        padding: 0;
+      }
+
+      .route {
+        min-height: 280px;
+      }
+
+      .route-grid,
+      .academic-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .academic-section {
+        padding: 120px 0;
+      }
+
+      .academic-grid {
+        width: min(100%, 410.664px);
+        gap: 32px;
+        margin: 40px auto 0;
+      }
+
+      .program-layout {
+        grid-template-columns: minmax(0, 1fr);
+        gap: 64px;
+      }
+
+      .program-mark {
+        display: block;
+        width: 112px;
+        height: 98px;
+        opacity: .78;
+      }
+
+      .program-mark img {
+        transform: scale(.75);
+        transform-origin: top left;
+      }
+
+      .program-motion-path {
+        display: none;
+      }
+
+      .hub-diagram {
+        max-width: 420px;
+      }
+
+      .hub-tile {
+        width: 84px;
+        min-height: 50px;
+        font-size: 10px;
+      }
+
+      .hub-center {
+        width: 100px;
+        height: 100px;
+      }
+
+      .hub-center-text {
+        font-size: 10px;
+        max-width: 80px;
+      }
+
+      .hero-quick-links {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .hero-quick-link {
+        min-height: 180px;
+      }
+
+      .carousel-shell {
+        width: 100%;
+        padding: 72px 0;
+      }
+
+      .carousel-intro h2 {
+        font-size: clamp(34px, 6vw, 46px);
+        line-height: 1.08;
+      }
+
+      .carrousel {
+        height: 560px;
+      }
+
+      .carrousel .screens {
+        height: 482px;
+      }
+
+      .carrousel .screens>li {
+        width: 52%;
+        height: 260px;
+      }
+
+      .carrousel .screens>li.active {
+        width: 78%;
+        height: 370px;
+      }
+
+      .carrousel .screens>li.left {
+        transform: translate(-118%, -50%);
+      }
+
+      .carrousel .screens>li.right {
+        transform: translate(18%, -50%);
+      }
+
+      .ecosystem-grid {
+        display: grid;
+        grid-template-columns: 1fr;
+      }
+
+      .eco-main,
+      .eco-side,
+      .logo-row {
+        grid-column: auto;
+      }
+
+      .eco-side {
+        grid-template-columns: 1fr;
+      }
+
+      .logo-row {
+        grid-template-columns: repeat(3, 1fr);
+      }
+
+      .logo-placeholder:nth-child(3) {
+        border-right: 0;
+      }
+
+      .logo-placeholder:nth-child(-n+3) {
+        border-bottom: 1px solid var(--border-default);
+      }
+
+      .incubation-copy {
+        padding-left: 0;
+        border-left: 0;
+      }
+
+      .footer-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .footer-brand {
+        grid-column: 1 / -1;
+      }
     }
 
     @media (max-width: 560px) {
-      .section { padding: 72px 0; }
-      .hero { padding-top: 56px; }
-      .brand-logo { width: 142px; }
-      .hero h1 { font-size: 50px; }
-      .hero-copy { font-size: 16px; }
-      .carousel-shell { padding-bottom: 24px; }
-      .carrousel { height: 440px; margin-inline: -16px; }
-      .carrousel .screens { height: calc(100% - 68px); }
-      .carrousel .screens > li { width: 78%; height: 68%; }
-      .carrousel .screens > li.active { width: 90%; height: 88%; }
-      .carrousel .screens > li.left { transform: translate(-115%, -50%) scale(.84); }
-      .carrousel .screens > li.right { transform: translate(15%, -50%) scale(.84); }
-      .carrousel .slide { grid-template-rows: minmax(120px, .82fr) minmax(140px, 1.18fr); }
-      .ph-img { min-height: 120px; }
-      .slide-copy { min-height: 140px; padding: 20px; }
-      .slide-copy h2 { font-size: clamp(24px, 8vw, 34px); }
-      .carrousel .carousel-controls { right: 12px; bottom: 10px; left: 12px; }
-      .dot { width: 44px; height: 44px; }
-      .degree-cta-row, .incubation-links { align-items: stretch; flex-direction: column; }
-      .btn { width: 100%; }
-      .diagram { grid-template-columns: repeat(2, 1fr); padding: 16px; }
-      .diagram-item.core { grid-column: auto; }
-      .footer-grid { grid-template-columns: 1fr; gap: 26px; }
-      .footer-brand { grid-column: auto; }
+      .wrap {
+        width: calc(100% - 24px);
+      }
+
+      .section {
+        padding: 72px 0;
+      }
+
+      #inspirate h2 {
+        font-size: 38px;
+        line-height: 1.08;
+        letter-spacing: -1.7px;
+      }
+
+      .inspire-grid {
+        gap: 18px;
+        min-height: 0;
+      }
+
+      .card-feature {
+        min-height: 420px;
+      }
+
+      .card-overlay {
+        min-height: 250px;
+        padding: 24px;
+      }
+
+      .card-stack {
+        grid-template-rows: repeat(2, minmax(180px, auto));
+      }
+
+      .requirements-left h2 {
+        font-size: 40px;
+        line-height: 1.08;
+        letter-spacing: -1.8px;
+      }
+
+      .requirements-intro {
+        margin-bottom: 32px;
+      }
+
+      .requirements-grid {
+        gap: 48px;
+      }
+
+      .checklist li {
+        padding-left: 0;
+      }
+
+      .requirements-right h3 {
+        margin-top: 64px;
+      }
+
+      .process-card h4 {
+        font-size: 27px;
+        line-height: 1.08;
+      }
+
+      .routes-section {
+        padding: 72px 0;
+      }
+
+      .section.program-section {
+        padding: 120px 0 72px;
+      }
+
+      .hero {
+        padding-top: 48px;
+      }
+
+      .brand-logo {
+        height: 48px;
+      }
+
+      .hero h1 {
+        font-size: clamp(36px, 10vw, 48px);
+      }
+
+      .hero-copy {
+        font-size: 16px;
+      }
+
+      .hero-quick-links {
+        grid-template-columns: 1fr;
+        gap: 12px;
+      }
+
+      .hero-quick-link {
+        min-height: auto;
+        padding: 24px 20px;
+        border-radius: 16px !important;
+      }
+
+      .routes-layout {
+        width: calc(100% - 24px);
+        gap: 40px;
+      }
+
+      .routes-copy h2 {
+        font-size: 36px;
+        line-height: 1.1;
+        letter-spacing: -1.44px;
+      }
+
+      .routes-copy>p {
+        font-size: 16px;
+        line-height: 1.6;
+      }
+
+      .routes-image {
+        height: 280px;
+      }
+
+      .route-grid {
+        display: flex;
+        gap: 20px;
+      }
+
+      .route {
+        min-height: 246px;
+        padding: 28px;
+      }
+
+      .route h3 {
+        font-size: 25px;
+        line-height: 1.08;
+      }
+
+      .route a {
+        width: 100%;
+      }
+
+      .academic-section {
+        padding: 72px 0;
+      }
+
+      .academic-container {
+        width: calc(100% - 24px);
+      }
+
+      .academic-head .eyebrow {
+        font-size: 12px;
+        line-height: 14.4px;
+      }
+
+      .academic-head h2 {
+        margin-top: 4px;
+        font-size: 36px;
+        line-height: 39.6px;
+        letter-spacing: -1.44px;
+      }
+
+      .academic-head>p:last-child {
+        font-size: 15px;
+        line-height: 24px;
+      }
+
+      .academic-grid {
+        gap: 24px;
+        margin-top: 32px;
+      }
+
+      .academic-card-body {
+        padding: 24px 20px;
+      }
+
+      .academic-card h3 {
+        font-size: 20px;
+        line-height: 23px;
+      }
+
+      .degree-story-final-details {
+        top: calc(50% - 2px);
+        padding: 24px 0;
+      }
+
+      .degree-story-final-copy p {
+        font-size: 15px;
+        line-height: 24px;
+      }
+
+      .degree-story-final-actions {
+        flex-direction: column;
+        gap: 8px;
+        height: auto;
+        margin-top: 18px;
+      }
+
+      .degree-story-final-actions .btn {
+        width: min(100%, 280px);
+      }
+
+      .program-layout {
+        width: calc(100% - 24px);
+        gap: 48px;
+      }
+
+      .program-copy .eyebrow {
+        font-size: 12px;
+        line-height: 1.2;
+        letter-spacing: 1.44px;
+      }
+
+      .program-copy h2 {
+        margin-top: 16px;
+        font-size: 36px;
+        line-height: 1.1;
+        letter-spacing: -1.44px;
+      }
+
+      .program-copy>p {
+        margin-top: 16px;
+        font-size: 16px;
+        line-height: 1.6;
+      }
+
+      .program-traits li {
+        grid-template-columns: 38px minmax(0, 1fr);
+        gap: 12px;
+        padding: 24px 0;
+      }
+
+      .program-traits strong {
+        font-size: 23px;
+        line-height: 1.1;
+      }
+
+      .carousel-shell {
+        padding: 56px 0;
+      }
+
+      .carousel-intro {
+        padding: 20px 12px 18px;
+      }
+
+      .carousel-intro h2 {
+        font-size: 34px;
+        line-height: 1.05;
+        letter-spacing: -1.36px;
+      }
+
+      .carrousel {
+        height: 530px;
+      }
+
+      .carrousel .screens {
+        height: 452px;
+      }
+
+      .carrousel .screens>li {
+        width: 74%;
+        height: 270px;
+      }
+
+      .carrousel .screens>li.active {
+        width: 90%;
+        height: 360px;
+      }
+
+      .carrousel .screens>li.left {
+        transform: translate(-118%, -50%);
+      }
+
+      .carrousel .screens>li.right {
+        transform: translate(18%, -50%);
+      }
+
+      .carrousel .slide {
+        grid-template-columns: 1fr;
+        grid-template-rows: 46% 54%;
+      }
+
+      .slide-copy {
+        padding: 20px 24px;
+      }
+
+      .slide-copy h2 {
+        font-size: 21px;
+      }
+
+      .slide-copy .slide-description {
+        font-size: 8px;
+        line-height: 1.3;
+      }
+
+      .carrousel .carousel-controls {
+        right: 12px;
+        bottom: 14px;
+        left: 12px;
+      }
+
+      .carrousel .dots {
+        gap: 0;
+      }
+
+      .carrousel .arrows {
+        align-items: center;
+      }
+
+      .carousel-pause {
+        width: auto;
+        padding-inline: 12px;
+      }
+
+      .degree-cta-row,
+      .incubation-links {
+        align-items: stretch;
+        flex-direction: column;
+      }
+
+      .btn {
+        width: 100%;
+      }
+
+      .orientation-form {
+        grid-template-columns: 1fr;
+        padding: 20px;
+      }
+
+      .form-field.full,
+      .form-submit {
+        grid-column: auto;
+      }
+
+      .hub-diagram {
+        max-width: 320px;
+        aspect-ratio: 1 / 1.1;
+      }
+
+      .hub-tile {
+        width: 70px;
+        min-height: 44px;
+        font-size: 9px;
+        border-radius: var(--radius);
+        padding: 6px;
+      }
+
+      .hub-center {
+        width: 80px;
+        height: 80px;
+      }
+
+      .hub-center-emoji {
+        font-size: 18px;
+      }
+
+      .hub-center-text {
+        font-size: 8px;
+        max-width: 64px;
+      }
+
+      .hub-tile-3,
+      .hub-tile-4 {
+        top: 40%;
+      }
+
+      .footer-grid {
+        grid-template-columns: 1fr;
+        gap: 26px;
+      }
+
+      .footer-brand {
+        grid-column: auto;
+      }
     }
 
-    /* Responsive hero and accessible hamburger overrides. */
-    .hero { background: #1a365d; }
-    .hero::before { background: none; animation: none; }
-    .hero h1 { color: #fff; }
-    .hero-copy { color: #e2e8f0; }
-    .hero .btn.primary { border-color: #f25f22; background: #f25f22; color: #1a1a1a; }
-    .hero .btn.primary:hover { border-color: #ff7a3d; background: #ff7a3d; color: #1a1a1a; }
-    .hero-content { width: 100%; min-width: 0; grid-column: 1 / -1; text-align: center; transform-origin: center top; will-change: transform, opacity; }
-    .hero-content h1 { width: min(100%, 960px); max-width: 960px; margin-inline: auto; text-wrap: balance; }
-    .nav-toggle { width: 44px; height: 44px; align-items: center; justify-content: center; flex-direction: column; gap: 5px; padding: 0; }
-    .nav-toggle span { display: block; width: 21px; height: 2px; border-radius: 2px; background: currentColor; transition: opacity .2s ease, transform .2s ease; }
-    .nav-toggle[aria-expanded="true"] span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
-    .nav-toggle[aria-expanded="true"] span:nth-child(2) { opacity: 0; }
-    .nav-toggle[aria-expanded="true"] span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+    /* === Hero responsive overrides === */
+    .nav-toggle {
+      width: 44px;
+      height: 44px;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      gap: 5px;
+      padding: 0;
+    }
+
+    .nav-toggle span {
+      display: block;
+      width: 21px;
+      height: 2px;
+      border-radius: 2px;
+      background: currentColor;
+      transition: opacity .2s ease, transform .2s ease;
+    }
+
+    .nav-toggle[aria-expanded="true"] span:nth-child(1) {
+      transform: translateY(7px) rotate(45deg);
+    }
+
+    .nav-toggle[aria-expanded="true"] span:nth-child(2) {
+      opacity: 0;
+    }
+
+    .nav-toggle[aria-expanded="true"] span:nth-child(3) {
+      transform: translateY(-7px) rotate(-45deg);
+    }
 
     @media (max-width: 920px) {
-      .nav-links { z-index: 30; left: 0; right: 0; max-height: calc(100vh - 100px); overflow-y: auto; align-items: stretch; text-align: left; }
-      .nav-links a { min-height: 48px; display: flex; align-items: center; padding-inline: 4px; }
+      .nav-links {
+        z-index: 30;
+        left: 0;
+        right: 0;
+        max-height: calc(100vh - 80px);
+        overflow-y: auto;
+        align-items: stretch;
+        text-align: left;
+      }
+
+      .nav-links a {
+        min-height: 48px;
+        display: flex;
+        align-items: center;
+        padding-inline: 4px;
+      }
     }
 
     @media (max-width: 560px) {
-      .hero { padding-top: 40px; }
-      .hero-grid { gap: 0; padding-bottom: 48px; }
-      .hero h1 { width: 100%; font-size: clamp(38px, 12vw, 50px); line-height: 1.02; letter-spacing: -.055em; }
-      .hero-copy { max-width: 36ch; margin: 20px auto 24px; padding-inline: 4px; font-size: 16px; line-height: 1.55; text-wrap: pretty; }
-      .hero-content .btn { width: min(100%, 340px); margin-inline: auto; padding-inline: 16px; line-height: 1.25; text-align: center; }
-      .carrousel .carousel-controls { right: 12px; bottom: 8px; left: 12px; display: grid; grid-template-columns: 1fr auto; gap: 4px 12px; }
-      .carrousel .dots { gap: 0; }
-      .carrousel .arrows { align-items: center; }
-      .carousel-pause { width: auto; padding-inline: 12px; }
+      .hero {
+        padding-top: 36px;
+      }
+
+      .hero-grid {
+        padding-block: 32px;
+      }
+
+      .hero h1 {
+        width: 100%;
+        font-size: clamp(34px, 10vw, 48px);
+        line-height: 1.02;
+        letter-spacing: -.05em;
+      }
+
+      .hero-copy {
+        max-width: 36ch;
+        margin: 16px auto 24px;
+        padding-inline: 4px;
+        font-size: 15px;
+        line-height: 1.55;
+      }
+
+      .hero-cta {
+        margin-bottom: 24px;
+      }
+
+      .hero-cta.btn {
+        width: min(100%, 320px);
+        margin-inline: auto;
+        padding-inline: 16px;
+      }
+
+      .carousel-intro {
+        padding: 20px 16px 18px;
+      }
     }
 
     @media (prefers-reduced-motion: reduce) {
-      *, *::before, *::after { scroll-behavior: auto !important; transition-duration: .01ms !important; animation-duration: .01ms !important; }
+
+      *,
+      *::before,
+      *::after {
+        scroll-behavior: auto !important;
+        transition-duration: .01ms !important;
+        animation-duration: .01ms !important;
+      }
+
+      .degree-story {
+        height: auto;
+        min-height: calc(100svh - 72px);
+      }
+
+      .degree-story-video {
+        display: none;
+      }
+
+      .degree-story-overlay {
+        opacity: 1;
+      }
+
+      .degree-story-solid-copy {
+        opacity: 1;
+      }
+
+      .degree-story-final {
+        position: relative;
+        min-height: calc(100svh - 72px);
+      }
+
+      .degree-story-final-details {
+        opacity: 1;
+      }
+    }
+
+    /* === UVP purple-magenta palette and alternating section rhythm === */
+    .hero-eyebrow,
+    .routes-copy .eyebrow,
+    .routes-copy h2,
+    .routes-copy>p,
+    .route .num,
+    .route h3,
+    .route p,
+    .academic-head,
+    .academic-head .eyebrow,
+    .academic-head h2,
+    .academic-head>p:last-child,
+    .academic-card h3,
+    .academic-card p,
+    .inspire-desc,
+    #inspirate h2 {
+      color: var(--text-primary);
+    }
+
+    .carousel-section,
+    .program-section,
+    #inspirate,
+    #incubadora,
+    #preguntas {
+      --text-primary: #ffffff;
+      --text-secondary: #e7e7eb;
+      --text-muted: #c18af0;
+      --text-brand: #f0e1ff;
+      --border-default: rgb(240 225 255 / 28%);
+      --border-brand: #c18af0;
+      --background-surface: #37005e;
+      background: #26003f;
+      color: var(--text-primary);
+    }
+
+    .carousel-section {
+      background: #51008d;
+    }
+
+    .routes-section {
+      background: #f0e1ff;
+    }
+
+    .academic-section,
+    .orientation {
+      background: #f9e3f4;
+    }
+
+    .requisitos,
+    #ecosistema {
+      background: #fafafb;
+    }
+
+    .carousel-intro,
+    .carousel-intro p,
+    .carousel-intro h2,
+    .carrousel,
+    .program-copy .eyebrow,
+    .program-copy>p,
+    .program-traits strong,
+    .program-traits p,
+    #inspirate>.wrap>.eyebrow,
+    .card-overlay h3,
+    .card-dark h3,
+    .card-cyan h3 {
+      color: #ffffff;
+    }
+
+    .carousel-intro p,
+    .program-copy h2,
+    .program-traits .num,
+    #inspirate>.wrap>.eyebrow,
+    .card-overlay .eyebrow,
+    .card-cyan .eyebrow,
+    .incubation .eyebrow,
+    #preguntas .eyebrow {
+      color: #f0e1ff;
+    }
+
+    .carrousel {
+      border-color: #c18af0;
+    }
+
+    .carrousel .slide,
+    .route,
+    .academic-card,
+    .academic-card-body,
+    .orientation-form {
+      background: #ffffff;
+    }
+
+    .slide-copy,
+    .slide-copy h2,
+    .slide-copy .slide-description {
+      color: #111116;
+    }
+
+    .slide-copy p,
+    .card-dark .eyebrow {
+      color: #92247f;
+    }
+
+    .route {
+      border-color: #d6a3ce;
+      box-shadow: 0 2px 2px rgb(81 0 141 / 8%);
+    }
+
+    .route a {
+      background: var(--primary);
+    }
+
+    .route a:hover {
+      background: var(--primary-hover);
+    }
+
+    .academic-card-body {
+      border-top-color: #7800e5;
+    }
+
+    .degree-story,
+    .degree-story-stage {
+      background: #f0e1ff;
+    }
+
+    .degree-story-solid-copy,
+    .degree-story-final-details {
+      color: #26003f;
+      fill: #26003f;
+    }
+
+    .requirements-left,
+    .requirements-intro,
+    .checklist li {
+      color: #111116;
+    }
+
+    .requirements-left .eyebrow,
+    .process-card h4 {
+      color: #92247f;
+    }
+
+    .requirements-left h2,
+    .req-button,
+    .checklist strong,
+    .requirements-right h3 {
+      color: #51008d;
+    }
+
+    .req-button {
+      border-color: #51008d;
+    }
+
+    .req-button:hover {
+      background: #51008d;
+    }
+
+    .checklist li {
+      border-color: #d6a3ce;
+    }
+
+    .process-card {
+      border-color: #d6a3ce;
+    }
+
+    .process-card p {
+      color: #363640;
+    }
+
+    .card-overlay {
+      background: linear-gradient(to bottom, transparent, rgb(38 0 63 / 94%));
+    }
+
+    .card-dark {
+      background: #92247f;
+    }
+
+    .card-cyan {
+      background: #37005e;
+    }
+
+    .eco-main,
+    .eco-card,
+    .logo-row {
+      background: #ffffff;
+      border-color: #e7e7eb;
+    }
+
+    .eco-card {
+      border-left-color: #92247f;
+    }
+
+    .incubation-copy {
+      border-color: rgb(240 225 255 / 35%);
+    }
+
+    .incubation-stamp {
+      background-image: linear-gradient(135deg, #f0e1ff, #d6a3ce);
+    }
+
+    .orientation-form {
+      border-color: #d6a3ce;
+    }
+
+    .orientation .eyebrow,
+    .orientation .form-status {
+      color: #51008d;
+    }
+
+    #preguntas .faq-button,
+    #preguntas .faq-answer p,
+    #preguntas .faq-nav p {
+      color: #ffffff;
+    }
+
+    #preguntas .faq-button:hover,
+    #preguntas .faq-button[aria-expanded="true"] span:last-child {
+      color: #f0e1ff;
+    }
+
+    #preguntas .faq-button span:last-child {
+      color: #c18af0;
+    }
+
+    /* === Requirements: sticky intro with scrolling content === */
+    #requisitos {
+      padding-block: 150px;
+    }
+
+    #requisitos .requirements-grid {
+      width: min(100% - 48px, 1280px);
+      grid-template-columns: minmax(300px, 389px) minmax(0, 791px);
+      justify-content: center;
+      margin-inline: auto;
+      align-items: start;
+      gap: clamp(48px, 7vw, 100px);
+    }
+
+    #requisitos .requirements-left {
+      position: sticky;
+      top: 96px;
+      align-self: start;
+    }
+
+    #requisitos .requirements-panel {
+      min-height: 0;
+      padding: 0;
+    }
+
+    #requisitos .requirements-panel-process h3 {
+      margin: 100px 0 21px;
+    }
+
+    #requisitos .requirements-panel-process .process-cards {
+      grid-template-columns: 1fr;
+    }
+
+    @media (max-width: 920px) {
+      #requisitos {
+        padding-block: 72px;
+      }
+
+      #requisitos .requirements-grid {
+        width: min(100% - 32px, 1280px);
+        grid-template-columns: 1fr;
+        gap: 48px;
+      }
+
+      #requisitos .requirements-left {
+        position: static;
+      }
+
+      #requisitos .requirements-panel-process {
+        margin-top: 64px;
+      }
+
+      #requisitos .requirements-panel-process .process-cards {
+        grid-template-columns: 1fr;
+      }
     }
   </style>
   <link rel="stylesheet" href="hero-scroll.css">
 </head>
+
 <body>
+  <div class="custom-cursor" id="customCursor"><span></span></div>
   <header class="site-header" data-od-id="site-header">
     <nav class="nav wrap" aria-label="Navegación principal" data-od-id="primary-navigation">
-      <a class="brand" href="#inicio" data-od-id="brand-link" aria-label="Soy Emprendedor UVP, inicio"><img class="brand-logo" src="Recurso-1.png" alt="Soy Emprendedor UVP"></a>
-      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="nav-links" aria-label="Abrir menú" data-od-id="menu-toggle"><span></span><span></span><span></span></button>
+      <a class="brand" href="#inicio" data-od-id="brand-link" aria-label="Soy Emprendedor UVP, inicio"><img
+          class="brand-logo" src="Recurso-1.png" alt="Soy Emprendedor UVP"></a>
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="nav-links" aria-label="Abrir menú"
+        data-od-id="menu-toggle"><span></span><span></span><span></span></button>
       <div class="nav-links" id="nav-links" data-od-id="navigation-links">
         <a href="#programa" data-od-id="nav-programa">Programa</a>
         <a href="#titulacion" data-od-id="nav-titulacion">Titulación</a>
@@ -304,6 +3022,8 @@
         <a href="#ecosistema" data-od-id="nav-ecosistema">Ecosistema</a>
         <a href="#incubadora" data-od-id="nav-incubadora">Incubadora</a>
         <a href="#preguntas" data-od-id="nav-faq">Preguntas frecuentes</a>
+        <a class="nav-postulate" href="#orientacion" data-orientation-request="emprender una idea"
+          data-od-id="nav-postulate">Postula mi proyecto</a>
       </div>
     </nav>
   </header>
@@ -312,140 +3032,350 @@
     <section class="hero" id="inicio" data-od-id="hero-section">
       <div class="hero-grid wrap">
         <div class="hero-content">
-          <div class="hero-focus-stage">
-            <button class="hero-focus-trigger" type="button" aria-expanded="false" aria-label="Mostrar frases de inspiración">
-              <picture>
-                <source srcset="assets/foco-hero.webp" type="image/webp">
-                <img class="hero-focus" src="assets/foco.png" width="2048" height="1745" alt="" fetchpriority="high">
-              </picture>
-            </button>
-            <ul class="hero-ideas" aria-hidden="true">
-              <li class="hero-idea">Imagina en grande</li>
-              <li class="hero-idea">Crea con propósito</li>
-              <li class="hero-idea">Atrévete a comenzar</li>
-              <li class="hero-idea">Convierte retos</li>
-              <li class="hero-idea">Conecta ideas</li>
-              <li class="hero-idea">Hazlo posible</li>
-              <li class="hero-idea">Deja tu huella</li>
-            </ul>
-          </div>
-          <h1 data-od-id="hero-title">Tu idea tiene el poder de cambiar las cosas.</h1>
-          <p class="hero-copy">En la UVP, el emprendimiento no es solo una materia: es la chispa para transformar tu pasión en proyectos reales.</p>
-          <a class="btn primary" href="#programa" data-od-id="hero-cta">Conoce el Programa Emprendedores</a>
+          <p class="hero-eyebrow">Emprendimiento UVP</p>
+          <h1 data-od-id="hero-title">Convierte tu idea en un proyecto viable</h1>
+          <p class="hero-copy">Te acompañamos para validar, desarrollar y poner en marcha tu proyecto con formación,
+            mentorías, vinculación e incubación.</p>
+          <a class="btn primary hero-cta" href="#programa" data-od-id="hero-cta">Quiero empezar <svg width="24"
+              height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+              stroke-linejoin="round">
+              <path d="M7 17L17 7" />
+              <path d="M7 7h10v10" />
+            </svg></a>
+          <nav class="hero-quick-links" aria-label="Rutas rápidas de emprendimiento">
+            <a class="hero-quick-link hl-tl" href="#titulacion">
+              <div class="hl-content">
+                <p class="hl-title">Quiero titularme<br>con mi proyecto</p>
+                <p class="hl-desc">Conoce los requisitos y el proceso para titularte.</p>
+              </div>
+              <div class="hl-arrow" aria-hidden="true"><svg viewBox="0 0 28 28" fill="none">
+                  <circle cx="14" cy="14" r="13" stroke="currentColor" stroke-width="2" />
+                  <path d="M11 10l5 4-5 4" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                    stroke-linejoin="round" />
+                </svg></div>
+            </a>
+            <a class="hero-quick-link hl-tr" href="#programa">
+              <div class="hl-content">
+                <p class="hl-title">Quiero desarrollar<br>una idea</p>
+                <p class="hl-desc">Recibe orientación para tu proyecto.</p>
+              </div>
+              <div class="hl-arrow" aria-hidden="true"><svg viewBox="0 0 28 28" fill="none">
+                  <circle cx="14" cy="14" r="13" stroke="currentColor" stroke-width="2" />
+                  <path d="M11 10l5 4-5 4" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                    stroke-linejoin="round" />
+                </svg></div>
+            </a>
+            <a class="hero-quick-link hl-br" href="#ecosistema">
+              <div class="hl-content">
+                <p class="hl-title">Ya tengo una<br>empresa</p>
+                <p class="hl-desc">Encuentra crecimiento para tu negocio.</p>
+              </div>
+              <div class="hl-arrow" aria-hidden="true"><svg viewBox="0 0 28 28" fill="none">
+                  <circle cx="14" cy="14" r="13" stroke="currentColor" stroke-width="2" />
+                  <path d="M11 10l5 4-5 4" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                    stroke-linejoin="round" />
+                </svg></div>
+            </a>
+            <a class="hero-quick-link hl-bl" href="#incubadora">
+              <div class="hl-content">
+                <p class="hl-title">Necesito orientación</p>
+                <p class="hl-desc">Te ayudaremos a identificar el siguiente paso.</p>
+              </div>
+              <div class="hl-arrow" aria-hidden="true"><svg viewBox="0 0 28 28" fill="none">
+                  <circle cx="14" cy="14" r="13" stroke="currentColor" stroke-width="2" />
+                  <path d="M11 10l5 4-5 4" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                    stroke-linejoin="round" />
+                </svg></div>
+            </a>
+          </nav>
         </div>
-        
       </div>
+    </section>
 
+    <section class="carousel-section" data-od-id="interest-carousel-section">
       <div class="carousel-shell wrap" id="destacados" data-od-id="interest-carousel">
+        <div class="carousel-intro">
+          <p>Ahora en UVP</p>
+          <h2>Información que pone tu idea en movimiento.</h2>
+        </div>
         <div class="carrousel" aria-roledescription="carrusel" aria-label="Información de interés" tabindex="0">
           <ul class="screens">
-            <li id="s1" class="active" data-slide="0" aria-hidden="false">
+            <li id="s1" class="right" data-slide="0" aria-hidden="true">
               <article class="slide" data-od-id="carousel-convocatorias">
-                <div class="ph-img" role="img" aria-label="Jóvenes emprendedoras participando en un panel de discusión"><span>Imagen de referencia</span></div>
-                <div class="slide-copy"><p>Información de interés</p><h2>Convocatorias</h2></div>
+                <div class="ph-img" role="img" aria-label="Jóvenes emprendedoras participando en un panel de discusión">
+                  <span>Imagen de referencia</span></div>
+                <div class="slide-copy">
+                  <p>Información de interés</p>
+                  <h2>Convocatorias</h2>
+                </div>
               </article>
             </li>
-            <li id="s2" class="right" data-slide="1" aria-hidden="true">
+            <li id="s2" data-slide="1" aria-hidden="true">
               <article class="slide" data-od-id="carousel-titulacion">
-                <div class="ph-img" role="img" aria-label="Emprendedora presentando un proyecto ante una audiencia"><span>Imagen de referencia</span></div>
-                <div class="slide-copy"><p>Información de interés</p><h2>Titúlate con tu emprendimiento</h2></div>
+                <div class="ph-img" role="img" aria-label="Emprendedora presentando un proyecto ante una audiencia">
+                  <span>Imagen de referencia</span></div>
+                <div class="slide-copy">
+                  <p>Información de interés</p>
+                  <h2>Titúlate con tu emprendimiento</h2>
+                </div>
               </article>
             </li>
-            <li id="s3" data-slide="2" aria-hidden="true">
+            <li id="s3" class="left" data-slide="2" aria-hidden="true">
               <article class="slide" data-od-id="carousel-expo-emprende">
-                <div class="ph-img" role="img" aria-label="Joven emprendedor exponiendo una idea ante una audiencia"><span>Imagen de referencia</span></div>
-                <div class="slide-copy"><p>Información de interés</p><h2>Expo Emprende</h2></div>
+                <div class="ph-img" role="img" aria-label="Joven emprendedor exponiendo una idea ante una audiencia">
+                  <span>Imagen de referencia</span></div>
+                <div class="slide-copy">
+                  <p>Información de interés</p>
+                  <h2>Expo Emprende</h2>
+                </div>
               </article>
             </li>
-            <li id="s4" class="left" data-slide="3" aria-hidden="true">
+            <li id="s4" class="active" data-slide="3" aria-hidden="false">
               <article class="slide" data-od-id="carousel-emprendedor-mes">
-                <div class="ph-img" role="img" aria-label="Emprendedor compartiendo su experiencia durante una presentación"><span>Imagen de referencia</span></div>
-                <div class="slide-copy"><p>Información de interés</p><h2>Conoce al Emprendedor del Mes</h2></div>
+                <div class="ph-img" role="img"
+                  aria-label="Emprendedor compartiendo su experiencia durante una presentación"><span>Imagen de
+                    referencia</span></div>
+                <div class="slide-copy">
+                  <p>Emprendedor del mes</p>
+                  <h2>Conoce la historia detrás de una idea que se convirtió en negocio</h2>
+                  <p class="slide-description">Inspírate con proyectos creados por estudiantes y egresados de la
+                    comunidad UVP.</p>
+                </div>
               </article>
             </li>
           </ul>
           <div class="carousel-controls" data-od-id="carousel-controls">
             <div class="dots" role="tablist" aria-label="Seleccionar banner">
-              <button class="dot" role="tab" type="button" aria-selected="true" aria-current="true" aria-label="Ver Convocatorias" data-slide="0" data-od-id="carousel-dot-1">01</button>
-              <button class="dot" role="tab" type="button" aria-selected="false" aria-current="false" aria-label="Ver Titúlate con tu emprendimiento" data-slide="1" data-od-id="carousel-dot-2">02</button>
-              <button class="dot" role="tab" type="button" aria-selected="false" aria-current="false" aria-label="Ver Expo Emprende" data-slide="2" data-od-id="carousel-dot-3">03</button>
-              <button class="dot" role="tab" type="button" aria-selected="false" aria-current="false" aria-label="Ver Emprendedor del Mes" data-slide="3" data-od-id="carousel-dot-4">04</button>
+              <button class="dot" role="tab" type="button" aria-selected="false" aria-current="false"
+                aria-label="Ver Convocatorias" data-slide="0" data-od-id="carousel-dot-1">01</button>
+              <button class="dot" role="tab" type="button" aria-selected="false" aria-current="false"
+                aria-label="Ver Titúlate con tu emprendimiento" data-slide="1" data-od-id="carousel-dot-2">02</button>
+              <button class="dot" role="tab" type="button" aria-selected="false" aria-current="false"
+                aria-label="Ver Expo Emprende" data-slide="2" data-od-id="carousel-dot-3">03</button>
+              <button class="dot" role="tab" type="button" aria-selected="true" aria-current="true"
+                aria-label="Ver Emprendedor del Mes" data-slide="3" data-od-id="carousel-dot-4">04</button>
             </div>
             <div class="arrows">
               <button class="carousel-pause" type="button" aria-pressed="false" data-carousel="pause">Pausar</button>
-              <button class="arrow" type="button" aria-label="Banner anterior" data-carousel="previous" data-od-id="carousel-previous">←</button>
-              <button class="arrow" type="button" aria-label="Banner siguiente" data-carousel="next" data-od-id="carousel-next">→</button>
+              <button class="arrow" type="button" aria-label="Banner anterior" data-carousel="previous"
+                data-od-id="carousel-previous">←</button>
+              <button class="arrow" type="button" aria-label="Banner siguiente" data-carousel="next"
+                data-od-id="carousel-next">→</button>
             </div>
           </div>
-          <p class="sr-only" id="carousel-status" aria-live="polite">Banner 1 de 4: Convocatorias</p>
+          <p class="sr-only" id="carousel-status" aria-live="polite">Banner 4 de 4: Conoce la historia detrás de una
+            idea que se convirtió en negocio</p>
         </div>
       </div>
     </section>
 
-    <section class="section" data-od-id="routes-section">
-      <div class="wrap">
-        <div class="section-head"><p class="eyebrow">Rutas UVP</p><h2 data-od-id="routes-title">Encuentra el espacio que acompaña tu momento.</h2></div>
+    <section class="section routes-section" data-od-id="routes-section">
+      <div class="wrap routes-layout">
+        <div class="routes-intro">
+          <div class="routes-copy">
+            <p class="eyebrow">Espacios y servicios de emprendimiento</p>
+            <h2 data-od-id="routes-title">Encuentra el apoyo que necesitas en cada etapa</h2>
+            <p>Explora los espacios, programas y recursos que UVP ofrece para ayudarte a aprender, emprender y hacer
+              crecer tu proyecto.</p>
+          </div>
+          <div class="routes-image">
+            <video autoplay muted loop playsinline preload="metadata"
+              poster="http://localhost:3845/assets/b2adf366e819312017ff819c0cd1e08aab513193.png">
+              <source src="assets/videos/video1.mp4" type="video/mp4">
+            </video>
+            <span>Video de referencia</span>
+          </div>
+        </div>
         <div class="route-grid">
-          <article class="route" data-od-id="route-programa"><span class="num">01</span><div><h3>Yo soy emprendedor UVP</h3><p>¿Qué es un Emprendedor UVP? Programas académicos y Titulación para emprendedores.</p></div><a href="#programa" data-od-id="route-programa-link">Conocer el programa →</a></article>
-          <article class="route" data-od-id="route-inspirate"><span class="num">02</span><div><h3>Inspírate y aprende</h3><p>Emprendedor del mes, podcast y multimedia, noticias y blog, convocatorias.</p></div><a href="#inspirate" data-od-id="route-inspirate-link">Explorar contenidos →</a></article>
-          <article class="route" data-od-id="route-incubadora"><span class="num">03</span><div><h3>Incubadora de empresas</h3><p>Incuba UVP, Postula tu proyecto y Agenda una mentoria.</p></div><a href="#incubadora" data-od-id="route-incubadora-link">Conocer Incuba UVP →</a></article>
+          <article class="route" data-od-id="route-programa">
+            <div><span class="num">01</span>
+              <h3>Emprende en UVP</h3>
+              <p>Descubre qué significa ser Emprendedor UVP y conoce las oportunidades disponibles durante tu formación.
+              </p>
+            </div><a href="#programa" data-od-id="route-programa-link">Conocer más</a>
+          </article>
+          <article class="route" data-od-id="route-inspirate">
+            <div><span class="num">02</span>
+              <h3>Aprende e inspírate</h3>
+              <p>Accede a historias, noticias, podcasts, convocatorias y experiencias de otros emprendedores.</p>
+            </div><a href="#inspirate" data-od-id="route-inspirate-link">Explorar recursos</a>
+          </article>
+          <article class="route" data-od-id="route-incubadora">
+            <div><span class="num">03</span>
+              <h3>Incuba tu proyecto</h3>
+              <p>Recibe acompañamiento para estructurar, validar y desarrollar tu modelo de negocio.</p>
+            </div><a href="#incubadora" data-od-id="route-incubadora-link">Conocer la incubadora</a>
+          </article>
         </div>
       </div>
     </section>
 
-    <section class="section alt" id="programa" data-od-id="program-section">
-      <div class="wrap program-grid">
-        <div class="program-copy">
-          <p class="eyebrow">Programa Emprendedores</p>
-          <h2 data-od-id="program-title">Tu idea tiene el poder de cambiar las cosas.</h2>
-          <p>Sabemos que el mundo actual exige soluciones valientes, empleos con propósito y propuestas que realmente mejoren la vida de las personas. Por eso, en cada aula, taller o actividad, te respaldamos para que dejes de imaginar y empieces a crear.</p>
-          <p>Estamos listos para acompañarte a convertir tus ideas en valor real para la sociedad.</p>
+    <section class="section alt program-section" id="programa" data-od-id="program-section">
+      <svg class="program-motion-path" viewBox="0 0 843.896 315.18" preserveAspectRatio="none" aria-hidden="true">
+        <path id="program-motion-path" d="M0.5 118.85C0.5 261.259 270.506 530.126 843.556 0.36715"></path>
+      </svg>
+      <div class="program-layout">
+        <div class="program-mark" aria-hidden="true">
+          <img src="assets/logo-cohete.svg" alt="">
         </div>
-        <ul class="ability-list" data-od-id="abilities-list">
-          <li data-od-id="ability-initiative"><span>01</span><div><strong>Iniciativa</strong><p>Para dar el primer paso y transformar retos en oportunidades.</p></div></li>
-          <li data-od-id="ability-creativity"><span>02</span><div><strong>Creatividad</strong><p>Para diseñar soluciones innovadoras que marquen la diferencia.</p></div></li>
+        <div class="program-copy">
+          <p class="eyebrow">( Identidad del emprendedor )</p>
+          <h2 data-od-id="program-title">Emprender es transformar retos en oportunidades</h2>
+          <p>Ser Emprendedor UVP significa tomar la iniciativa, identificar necesidades y crear soluciones que generen
+            valor en tu entorno.</p>
+        </div>
+        <ul class="program-traits" data-od-id="abilities-list">
+          <li data-od-id="ability-initiative"><span class="num">01</span>
+            <div><strong>Da el primer paso</strong>
+              <p>Toma decisiones, moviliza tus ideas y convierte los retos en oportunidades de crecimiento.</p>
+            </div>
+          </li>
+          <li data-od-id="ability-creativity"><span class="num">02</span>
+            <div><strong>Diseña nuevas soluciones</strong>
+              <p>Para diseñar soluciones innovadoras que marquen la diferencia.</p>
+            </div>
+          </li>
         </ul>
       </div>
     </section>
 
-    <section class="section" data-od-id="academic-section">
-      <div class="wrap">
-        <div class="section-head"><p class="eyebrow">Programas académicos de Emprendimiento</p><h2 data-od-id="academic-title">Formación emprendedora desde la misión universitaria.</h2><p>La identidad de emprendimiento en la universidad nace en la misión, y todos los alumnos cuentan con formación emprendedora.</p></div>
+    <section class="section academic-section" data-od-id="academic-section">
+      <div class="academic-container">
+        <div class="academic-head">
+          <p class="eyebrow">( Formación académica )</p>
+          <h2 data-od-id="academic-title">Desarrolla tu proyecto durante tu carrera</h2>
+          <p>A través de tres niveles de formación aprenderás a identificar oportunidades, diseñar un modelo de negocio
+            y evaluar su viabilidad.</p>
+        </div>
         <div class="academic-grid">
-          <article class="academic-card" data-od-id="academic-card-innovation"><h3>Emprendimiento e Innovación</h3><p>En esta materia los alumnos aprenderán a desarrollar soluciones con proyectos sociales y económicos que resuelven de manera creativa problemas y necesidades a partir de la identificación de oportunidades para contribuir a la transformación del entorno actual y global, considerando metodologías de innovación tendencias, teniendo como referencia los ODS de la Agenda 2030 de la ONU.</p></article>
-          <article class="academic-card" data-od-id="academic-card-formulation"><h3>Diseño y Formulación de Proyectos Emprendedores</h3><p>El alumnos aprenderán a diseñar propuestas de valor con alto énfasis en mejorar resultados en los objetivos de organizaciones, a través de ideas innovadoras que permitan detectar oportunidades de negocios con capacidad emprendedora, para satisfacer las necesidades del contexto económico y social.</p></article>
-          <article class="academic-card" data-od-id="academic-card-evaluation"><h3>Desarrollo y Evaluación de Proyectos Emprendedores</h3><p>Los alumnos conocerán metodologías para evaluar la viabilidad legal, financiera y social de un plan de negocios, a través de la aplicación de herramientas financieras y de la investigación de licencias y permisos para iniciar operaciones, para medir su factibilidad económica y social.</p></article>
+          <article class="academic-card" tabindex="0" data-od-id="academic-card-innovation">
+            <video autoplay muted loop playsinline preload="metadata" aria-hidden="true">
+              <source src="assets/videos/video2.mp4" type="video/mp4">
+            </video>
+            <div class="academic-card-body">
+              <h3>Emprendimiento<br>e Innovación</h3>
+              <p>Identifica necesidades reales y desarrolla soluciones innovadoras con impacto social y económico.</p>
+            </div>
+          </article>
+          <article class="academic-card" tabindex="0" data-od-id="academic-card-formulation">
+            <video autoplay muted loop playsinline preload="metadata" aria-hidden="true">
+              <source src="assets/videos/video.4.mp4" type="video/mp4">
+            </video>
+            <div class="academic-card-body">
+              <h3>Diseño y Formulación de Proyectos Emprendedores</h3>
+              <p>Define tu propuesta de valor, conoce a tu mercado y estructura un modelo de negocio viable.</p>
+            </div>
+          </article>
+          <article class="academic-card" tabindex="0" data-od-id="academic-card-evaluation">
+            <video autoplay muted loop playsinline preload="metadata" aria-hidden="true">
+              <source src="assets/videos/video3.mp4" type="video/mp4">
+            </video>
+            <div class="academic-card-body">
+              <h3>Desarrollo y evaluación de Proyectos Emprendedores</h3>
+              <p>Analiza los aspectos financieros, legales y operativos necesarios para preparar tu proyecto.</p>
+            </div>
+          </article>
         </div>
       </div>
     </section>
 
-    <section class="section alt" id="titulacion" data-od-id="degree-section">
-      <div class="wrap">
-        <div class="section-head"><p class="eyebrow">Titulación para emprendedores</p><h2 data-od-id="degree-title">Proyecto Emprendedor para Titulación.</h2></div>
-        <div class="degree-layout">
-          <div class="degree-copy">
-            <p>En la Universidad del Valle de Puebla existen entre las modalidades de titulación la vía de Proyecto Emprendedor. El cual consiste en el desarrollo de una investigación con el formato de un Plan de Negocios.</p>
-            <p>A través del proyecto emprendedor el alumno desarrolla herramientas que le permitan conocimientos y aprendizajes en su carrera de forma práctica. El proyecto debe ser Innovador, generador de impacto en el entorno y debe desarrollar una solución que se desprenda de su área de estudio.</p>
-            <div class="degree-cta-row" data-od-id="degree-actions">
-              <button class="btn" type="button" data-dialog="postulacion" data-od-id="degree-apply">Postulate para titularte</button>
-              <button class="btn" type="button" data-dialog="asesores" data-od-id="degree-advisers">Conoce a los asesores de proyecto</button>
-              <a class="btn" href="#preguntas" data-od-id="degree-faq">Preguntas frecuentes</a>
+
+    <section class="degree-story" aria-labelledby="degree-story-title" data-od-id="degree-story-section">
+      <div class="degree-story-stage">
+        <video class="degree-story-video" autoplay muted loop playsinline preload="metadata" aria-hidden="true">
+          <source src="assets/videos/videp-back.mp4" type="video/mp4">
+        </video>
+        <svg class="degree-story-overlay" viewBox="0 0 2240 1117" preserveAspectRatio="xMidYMid slice"
+          aria-hidden="true">
+          <defs>
+            <g id="degree-story-title-shape" class="degree-story-svg-copy" text-anchor="middle">
+              <text x="0" y="-103" class="degree-story-svg-small">Titúlate con un</text>
+              <text x="0" y="0" class="degree-story-svg-large">Proyecto</text>
+              <text x="0" y="103" class="degree-story-svg-large">Emprendedor</text>
+            </g>
+            <mask id="degree-story-cutout" maskUnits="userSpaceOnUse" x="0" y="0" width="2240" height="1117">
+              <rect width="2240" height="1117" fill="white"></rect>
+              <g class="degree-story-mask-copy" fill="black" transform="translate(1120 418)">
+                <g class="degree-story-title-position">
+                  <g class="degree-story-title-scale">
+                    <use href="#degree-story-title-shape"></use>
+                  </g>
+                </g>
+              </g>
+            </mask>
+          </defs>
+          <rect width="2240" height="1117" fill="white" mask="url(#degree-story-cutout)"></rect>
+          <g class="degree-story-solid-copy" fill="#383737" transform="translate(1120 418)">
+            <g class="degree-story-title-position">
+              <g class="degree-story-title-scale">
+                <use href="#degree-story-title-shape"></use>
+              </g>
+            </g>
+          </g>
+        </svg>
+        <div class="degree-story-final">
+          <h2 id="degree-story-title" class="sr-only">Titúlate con un Proyecto Emprendedor</h2>
+          <div class="degree-story-final-details">
+            <div class="degree-story-final-copy">
+              <p>Aplica los conocimientos de tu carrera para desarrollar un Plan de Negocios innovador, viable y con
+                impacto en tu entorno.</p>
+              <p>Tu proyecto integra siete áreas que permiten analizar cómo funcionará y qué necesita para ponerse en
+                marcha.</p>
             </div>
-            <div class="requirements" data-od-id="degree-requirements">
-              <h3>Postularte para titularte</h3>
-              <ul>
-                <li>Cursar todas las materias de su programa académico.</li>
-                <li>Acreditar las materias terminales de emprendimiento en 7mo y 8vo semestre se su programa académico.</li>
-                <li>Haber desarrollarlo un proyecto emprendedor con la estructura institucional de Plan de Negocio de la Universidad del Valle de Puebla.</li>
-                <li>Recibir un total de 24 asesorías y la liberación por parte de un asesor de proyecto avalado dentro del catalogo de directores de proyecto emprendedor.</li>
-              </ul>
+            <div class="degree-story-final-actions">
+              <a class="btn" href="#requisitos">Consultar requisitos</a>
+              <button class="btn" type="button" data-dialog="asesores">Conocer a los asesores</button>
             </div>
-            <ol class="degree-steps" data-od-id="degree-process">
-              <li>Elegir terminales de Proyecto Emprendedor.</li><li>Solicitar un director de proyecto.</li><li>Desarrollar un Plan de Negocios a partir de las materias.</li><li>Obtener la liberación del asesor de proyecto.</li><li>Obtener la liberación de 2 lectores asignados para el proyecto.</li><li>Presentar el examen profesional ante sinodales.</li>
-            </ol>
           </div>
-          <div class="diagram" aria-label="Elementos del Proyecto Emprendedor para Titulación" data-od-id="degree-diagram">
-            <div class="diagram-item">Naturaleza del Proyecto</div><div class="diagram-item">Impacto del proyecto</div><div class="diagram-item">Plan de Marketing</div><div class="diagram-item">Marco legal</div><div class="diagram-item core">Proyecto Emprendedor para Titulación</div><div class="diagram-item">Plan de Producción</div><div class="diagram-item">Factibilidad Financiera</div><div class="diagram-item">Plan Organizacional</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section requisitos" id="requisitos">
+      <div class="wrap requirements-grid">
+        <div class="requirements-left">
+          <p class="eyebrow">Requisitos y proceso de titulación</p>
+          <h2>Requisitos para titularte por Proyecto Emprendedor</h2>
+          <p class="requirements-intro">Antes de iniciar, verifica que cumples con los requisitos académicos y de acompañamiento establecidos por la UVP.</p>
+          <a class="req-button" href="#orientacion" data-orientation-request="titularme por Proyecto Emprendedor">Solicitar orientación sobre titulación</a>
+        </div>
+        <div class="requirements-right">
+          <div class="requirements-panel requirements-panel-checklist">
+            <ul class="checklist">
+              <li><strong>Concluye tu plan de estudios</strong>Acredita todas las asignaturas de tu programa académico.</li>
+              <li><strong>Aprueba las materias correspondientes</strong>Cumple con las asignaturas terminales de emprendimiento de 7mo y 8vo semestre.</li>
+              <li><strong>Desarrolla tu Plan de Negocios</strong>Utiliza la estructura y los lineamientos oficiales de la UVP.</li>
+              <li><strong>Completa tus mentorías</strong>Obtén la liberación de un asesor autorizado, al cumplir tus 24 mentorías.</li>
+            </ul>
+          </div>
+          <div class="requirements-panel requirements-panel-process">
+            <h3>Proceso de titulación</h3>
+            <div class="process-cards">
+              <div class="process-card">
+                <h4>1. Elige la terminal de Proyecto Emprendedor</h4>
+                <p>Inscríbete en las materias correspondientes.</p>
+              </div>
+              <div class="process-card">
+                <h4>2. Solicita un director de proyecto</h4>
+                <p>Solicitar un director de proyecto.</p>
+              </div>
+              <div class="process-card">
+                <h4>3. Desarrolla tu Plan de Negocios</h4>
+                <p>Recibe acompañamiento metodológico y especializado.</p>
+              </div>
+              <div class="process-card">
+                <h4>4. Obtén la liberación de tu asesor</h4>
+                <p>Realiza los ajustes necesarios y recibe su aprobación.</p>
+              </div>
+              <div class="process-card">
+                <h4>5. Completa la revisión de lectores</h4>
+                <p>Obtener la liberación de dos lectores.</p>
+              </div>
+              <div class="process-card">
+                <h4>6. Presenta tu examen profesional</h4>
+                <p>Expón y defiende el proyecto ante tus sinodales.</p>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -453,13 +3383,27 @@
 
     <section class="section" id="inspirate" data-od-id="inspiration-section">
       <div class="wrap">
-        <div class="section-head"><p class="eyebrow">Inspírate y aprende</p><h2 data-od-id="inspiration-title">Temas de interés para innovación y emprendimiento.</h2></div>
-        <div class="feature-grid">
-          <article class="feature-panel" data-od-id="interest-panel"><p class="eyebrow">Temas de interés</p><h2>Artículos, conferencias de aliados y videos relacionados a la innovación y el emprendimiento.</h2><p>Notas de revistas, noticias, blogs, etc.</p></article>
-          <div class="content-stack">
-            <article class="content-note" data-od-id="news-card"><h3>Noticias y blog</h3><p>Aquí se va a colocar las noticias de emprendedores de actividades, eventos y noticias destacadas que se promuevan en la universidad.</p><span class="pending">Noticias pendientes</span></article>
-            <article class="content-note" data-od-id="podcast-card"><h3>Podcast y multimedia</h3><span class="pending">Contenido pendiente</span></article>
-            <article class="content-note" data-od-id="entrepreneur-card"><h3>Emprendedor del Mes</h3><p>Apartado con imagenes, nombre, información y video con testimonial.</p><span class="pending">Perfil pendiente</span></article>
+        <p class="eyebrow">Inspírate y aprende</p>
+        <h2 data-od-id="inspiration-title">Historias, recursos y conversaciones para emprender</h2>
+        <p class="inspire-desc">Aprende de otras experiencias y mantente al día con ideas, eventos y oportunidades para desarrollar tu proyecto.</p>
+        <div class="inspire-grid">
+          <article class="card card-feature" data-od-id="entrepreneur-card">
+            <img src="assets/carousel/emprendedor.webp" alt="Emprendedor presentando ante una audiencia" />
+            <div class="card-overlay">
+              <p class="eyebrow">Emprendedor del mes</p>
+              <h3>Conoce proyectos creados por estudiantes y egresados UVP.</h3>
+              <p>Fotografía · Nombre · Historia · Emprendimiento.</p>
+            </div>
+          </article>
+          <div class="card-stack">
+            <article class="card card-dark" data-od-id="podcast-card">
+              <p class="eyebrow">Podcast y multimedia</p>
+              <h3>Voces UVP, Charlas UVPlay, Podcast Innova UVP y Cátedra CANACINTRA.</h3>
+            </article>
+            <article class="card card-cyan" data-od-id="news-card">
+              <p class="eyebrow">Noticias y blog</p>
+              <h3>Consulta contenidos, tendencias y actividades de la comunidad emprendedora.</h3>
+            </article>
           </div>
         </div>
       </div>
@@ -467,15 +3411,40 @@
 
     <section class="section alt" id="ecosistema" data-od-id="ecosystem-section">
       <div class="wrap">
-        <div class="section-head"><p class="eyebrow">Ecosistema emprendedor UVP</p><h2 data-od-id="ecosystem-title">Vinculación, entorno y aliados.</h2></div>
+        <div class="section-head">
+          <p class="eyebrow">Ecosistema emprendedor UVP</p>
+          <h2 data-od-id="ecosystem-title">Vinculación, entorno y aliados.</h2>
+        </div>
         <div class="ecosystem-grid">
-          <article class="eco-main" data-od-id="environment-card"><h3>Entorno UVP</h3><p>Propiciar acciones de carácter institucional que promuevan la generación y consolidación de alianzas estratégicas con los distintos actores de carácter social, público y privado a través de esquemas de participación y cooperación para el bien comunitario. Así como Desarrollar proyectos y programas de emprendimiento local, detectando, consolidando y desarrollando áreas de oportunidad alineadas al ambiente emprendedor de la zona y generar una economía local.</p></article>
+          <article class="eco-main" data-od-id="environment-card">
+            <h3>Entorno UVP</h3>
+            <p>Propiciar acciones de carácter institucional que promuevan la generación y consolidación de alianzas
+              estratégicas con los distintos actores de carácter social, público y privado a través de esquemas de
+              participación y cooperación para el bien comunitario. Así como Desarrollar proyectos y programas de
+              emprendimiento local, detectando, consolidando y desarrollando áreas de oportunidad alineadas al ambiente
+              emprendedor de la zona y generar una economía local.</p>
+          </article>
           <div class="eco-side">
-            <article class="eco-card" data-od-id="social-incubator-card"><h3>Incubadora Social</h3><p>Capacitar para el trabajo bajo el Modelo de Competencias Laborales en materia de emprendimiento e innovación a las personas privadas de la libertad, fortaleciendo habilidades, nuevas áreas profesionales, productividad competitiva y laboral.</p></article>
-            <article class="eco-card" data-od-id="committee-card"><h3>CE y DT Comité de Vinculación Empresarial</h3><p>Establecer, desarrollar y mantener la vinculación con el sector empresarial de la Región, para detectar y satisfacer las necesidades de éste a través de la pertinencia de los programas académicos que ofrecen las Instituciones de Educación Superior del Estado de Puebla.</p></article>
+            <article class="eco-card" data-od-id="social-incubator-card">
+              <h3>Incubadora Social</h3>
+              <p>Capacitar para el trabajo bajo el Modelo de Competencias Laborales en materia de emprendimiento e
+                innovación a las personas privadas de la libertad, fortaleciendo habilidades, nuevas áreas
+                profesionales, productividad competitiva y laboral.</p>
+            </article>
+            <article class="eco-card" data-od-id="committee-card">
+              <h3>CE y DT Comité de Vinculación Empresarial</h3>
+              <p>Establecer, desarrollar y mantener la vinculación con el sector empresarial de la Región, para detectar
+                y satisfacer las necesidades de éste a través de la pertinencia de los programas académicos que ofrecen
+                las Instituciones de Educación Superior del Estado de Puebla.</p>
+            </article>
           </div>
           <div class="logo-row" aria-label="Carrusel de marcas de aliados" data-od-id="allies-carousel">
-            <div class="logo-placeholder">ALIADO</div><div class="logo-placeholder">ALIADO</div><div class="logo-placeholder">ALIADO</div><div class="logo-placeholder">ALIADO</div><div class="logo-placeholder">ALIADO</div><div class="logo-placeholder">ALIADO</div>
+            <div class="logo-placeholder">ALIADO</div>
+            <div class="logo-placeholder">ALIADO</div>
+            <div class="logo-placeholder">ALIADO</div>
+            <div class="logo-placeholder">ALIADO</div>
+            <div class="logo-placeholder">ALIADO</div>
+            <div class="logo-placeholder">ALIADO</div>
           </div>
         </div>
       </div>
@@ -483,212 +3452,396 @@
 
     <section class="section" id="incubadora" data-od-id="incubator-section">
       <div class="wrap incubation">
-        <div><p class="eyebrow">Incubadora de empresas</p><div class="incubation-stamp" aria-hidden="true">CIE</div></div>
-        <div class="incubation-copy"><h2 data-od-id="incubator-title">Modelo de Incubación</h2><p>El Centro de Innovación empresarial (CIE) es un espacio que integra a los emprendedores de pequeñas empresas, para que puedan articularse con herramientas de negocios para el alcance de sus objetivos, a través de un modelo de incubación innovador diseñado para el desarrollo de competencias en emprendimiento; a través de facilitadores especializados y con experiencia en el rubro de creación de negocios de impacto.</p><div class="incubation-links"><button class="btn" type="button" data-dialog="proyecto" data-od-id="incubator-apply">Postula tu proyecto</button><button class="btn" type="button" data-dialog="mentoria" data-od-id="incubator-mentoring">Agenda una mentoria</button></div></div>
+        <div>
+          <p class="eyebrow">Incubadora de empresas</p>
+          <div class="incubation-stamp" aria-hidden="true">CIE</div>
+        </div>
+        <div class="incubation-copy">
+          <h2 data-od-id="incubator-title">Modelo de Incubación</h2>
+          <p>El Centro de Innovación empresarial (CIE) es un espacio que integra a los emprendedores de pequeñas
+            empresas, para que puedan articularse con herramientas de negocios para el alcance de sus objetivos, a
+            través de un modelo de incubación innovador diseñado para el desarrollo de competencias en emprendimiento; a
+            través de facilitadores especializados y con experiencia en el rubro de creación de negocios de impacto.</p>
+          <div class="incubation-links"><a class="btn" href="#orientacion" data-orientation-request="emprender una idea"
+              data-od-id="incubator-apply">Postula tu proyecto</a><a class="btn" href="#orientacion"
+              data-orientation-request="mentoría" data-od-id="incubator-mentoring">Agenda una mentoría</a></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section orientation" id="orientacion" data-od-id="orientation-section">
+      <div class="wrap orientation-layout">
+        <div>
+          <p class="eyebrow">Orientación emprendedora</p>
+          <h2>Formulario de orientación</h2>
+          <p>Cuéntanos en qué necesitas apoyo. El mismo formulario sirve para postular un proyecto, solicitar mentoría,
+            iniciar titulación, registrar una empresa o solicitar vinculación.</p>
+        </div>
+        <form class="orientation-form" id="orientation-form">
+          <div class="form-field">
+            <label for="orientation-name">Nombre completo</label>
+            <input id="orientation-name" name="name" type="text" autocomplete="name" required>
+          </div>
+          <div class="form-field">
+            <label for="orientation-email">Correo electrónico</label>
+            <input id="orientation-email" name="email" type="email" autocomplete="email" required>
+          </div>
+          <div class="form-field">
+            <label for="orientation-profile">Perfil</label>
+            <select id="orientation-profile" name="profile" required>
+              <option value="" selected disabled>Selecciona una opción</option>
+              <option value="estudiante uvp">Estudiante UVP</option>
+              <option value="egresado uvp">Egresado UVP</option>
+              <option value="empresa">Empresa</option>
+              <option value="aliado">Aliado</option>
+            </select>
+          </div>
+          <div class="form-field">
+            <label for="orientation-request">Tipo de solicitud</label>
+            <select id="orientation-request" name="request" required>
+              <option value="" selected disabled>Selecciona una opción</option>
+              <option value="emprender una idea">Emprender una idea</option>
+              <option value="titulación emprendedora">Titulación emprendedora</option>
+              <option value="mentoría">Mentoría</option>
+              <option value="registro de empresa">Registro de empresa</option>
+              <option value="vinculación">Vinculación</option>
+            </select>
+          </div>
+          <div class="form-field full">
+            <label for="orientation-description">Descripción de la solicitud</label>
+            <textarea id="orientation-description" name="description" required></textarea>
+          </div>
+          <div class="form-submit">
+            <button class="btn" type="submit">Enviar solicitud</button>
+            <p class="form-status" id="orientation-status" aria-live="polite"></p>
+          </div>
+        </form>
       </div>
     </section>
 
     <section class="section alt" id="preguntas" data-od-id="faq-section">
       <div class="wrap faq-grid">
-        <div class="faq-nav"><p class="eyebrow">Preguntas frecuentes</p><h2 data-od-id="faq-title">Respuestas para seguir avanzando.</h2><p>Desarrollo de Ideas y Emprendimiento, Titulación por Proyecto Emprendedor y Trámites y Apoyo Académico.</p></div>
+        <div class="faq-nav">
+          <p class="eyebrow">Preguntas frecuentes</p>
+          <h2 data-od-id="faq-title">Respuestas para seguir avanzando.</h2>
+          <p>Desarrollo de Ideas y Emprendimiento, Titulación por Proyecto Emprendedor y Trámites y Apoyo Académico.</p>
+        </div>
         <div data-od-id="faq-list">
-          <article class="faq-item" data-od-id="faq-start"><button class="faq-button" type="button" aria-expanded="false" data-od-id="faq-start-control"><span>Tengo una idea de negocio, ¿cómo puedo empezar a emprender?</span><span>+</span></button><div class="faq-answer"><p>¡El primer paso ya lo diste al tener la iniciativa! En la Coordinación de Emprendedores te acompañamos en todo el proceso para transformar tu idea en una realidad. Acércate a nuestras oficinas o contáctanos para recibir la asesoría inicial y dar vida a tu proyecto.</p></div></article>
-          <article class="faq-item" data-od-id="faq-cost"><button class="faq-button" type="button" aria-expanded="false" data-od-id="faq-cost-control"><span>¿Los servicios de la incubadora o coordinación tienen algún costo?</span><span>+</span></button><div class="faq-answer"><p>No. Para toda nuestra comunidad universitaria (estudiantes y egresados), los servicios de asesoría, mentoría y el programa de la Incubadora de Empresas son completamente gratuitos. Nuestro objetivo es impulsar y desarrollar tu espíritu emprendedor sin costos adicionales.</p></div></article>
-          <article class="faq-item" data-od-id="faq-funding"><button class="faq-button" type="button" aria-expanded="false" data-od-id="faq-funding-control"><span>¿Puedo obtener financiamiento directo para mi proyecto a través de la universidad?</span><span>+</span></button><div class="faq-answer"><p>La universidad no otorga financiamiento directo; sin embargo, en la Coordinación de Emprendedores te vinculamos con convocatorias, fondos gubernamentales, inversionistas y diversas instancias financieras para ayudarte a gestionar los recursos que necesitas para iniciar o hacer crecer tu empresa.</p></div></article>
-          <article class="faq-item" data-od-id="faq-graduate"><button class="faq-button" type="button" aria-expanded="false" data-od-id="faq-graduate-control"><span>Tengo tiempo de haber egresado, ¿aún puedo titularme por Proyecto Emprendedor?</span><span>+</span></button><div class="faq-answer"><p>Sí, aún estás a tiempo. Es necesario evaluar tu situación académica y el estado de tu proyecto para determinar si requieres alguna actualización del plan de negocios o cumplir con requisitos adicionales por parte de las áreas académicas involucradas. Te invitamos a agendar una cita con nosotros para revisar tu caso particular.</p></div></article>
-          <article class="faq-item" data-od-id="faq-director"><button class="faq-button" type="button" aria-expanded="false" data-od-id="faq-director-control"><span>¿Es obligatorio contar con un Director de Proyecto (Asesor)?</span><span>+</span></button><div class="faq-answer"><p>Sí, es un requisito indispensable. El Director de Proyecto te brindará la guía metodológica y técnica necesaria para garantizar la viabilidad de tu plan de negocios y asegurar que cumpla con los estándares requeridos para tu proceso de titulación.</p></div></article>
-          <article class="faq-item" data-od-id="faq-next-step"><button class="faq-button" type="button" aria-expanded="false" data-od-id="faq-next-step-control"><span>Ya terminé mi proyecto de titulación emprendedor, ¿cuál es el siguiente paso?</span><span>+</span></button><div class="faq-answer"><p>Si tu Director de Proyecto ya liberó y aprobó tu trabajo, deberá enviarlo formalmente a la Coordinación de Emprendedores para validar la etapa final e iniciar los trámites administrativos de titulación.</p><p>Nota: Si aún no cuentas con un Director asignado, acércate a la coordinación para orientarte en la asignación de uno.</p></div></article>
-          <article class="faq-item" data-od-id="faq-academic"><button class="faq-button" type="button" aria-expanded="false" data-od-id="faq-academic-control"><span>¿Cómo puedo realizar un curso de regularización o actualización académica?</span><span>+</span></button><div class="faq-answer"><p>Los cursos de regularización se ofertan mediante convocatorias oficiales a lo largo del ciclo escolar. Acércate a la Coordinación de Emprendedores para revisar tu historial académico y determinar si eres candidato a un examen extraordinario, recurso o curso de actualización.</p></div></article>
+          <article class="faq-item" data-od-id="faq-start"><button class="faq-button" type="button"
+              aria-expanded="false" data-od-id="faq-start-control"><span>Tengo una idea de negocio, ¿cómo puedo empezar
+                a emprender?</span><span>+</span></button>
+            <div class="faq-answer">
+              <p>¡El primer paso ya lo diste al tener la iniciativa! En la Coordinación de Emprendedores te acompañamos
+                en todo el proceso para transformar tu idea en una realidad. Acércate a nuestras oficinas o contáctanos
+                para recibir la asesoría inicial y dar vida a tu proyecto.</p>
+            </div>
+          </article>
+          <article class="faq-item" data-od-id="faq-cost"><button class="faq-button" type="button" aria-expanded="false"
+              data-od-id="faq-cost-control"><span>¿Los servicios de la incubadora o coordinación tienen algún
+                costo?</span><span>+</span></button>
+            <div class="faq-answer">
+              <p>No. Para toda nuestra comunidad universitaria (estudiantes y egresados), los servicios de asesoría,
+                mentoría y el programa de la Incubadora de Empresas son completamente gratuitos. Nuestro objetivo es
+                impulsar y desarrollar tu espíritu emprendedor sin costos adicionales.</p>
+            </div>
+          </article>
+          <article class="faq-item" data-od-id="faq-funding"><button class="faq-button" type="button"
+              aria-expanded="false" data-od-id="faq-funding-control"><span>¿Puedo obtener financiamiento directo para mi
+                proyecto a través de la universidad?</span><span>+</span></button>
+            <div class="faq-answer">
+              <p>La universidad no otorga financiamiento directo; sin embargo, en la Coordinación de Emprendedores te
+                vinculamos con convocatorias, fondos gubernamentales, inversionistas y diversas instancias financieras
+                para ayudarte a gestionar los recursos que necesitas para iniciar o hacer crecer tu empresa.</p>
+            </div>
+          </article>
+          <article class="faq-item" data-od-id="faq-graduate"><button class="faq-button" type="button"
+              aria-expanded="false" data-od-id="faq-graduate-control"><span>Tengo tiempo de haber egresado, ¿aún puedo
+                titularme por Proyecto Emprendedor?</span><span>+</span></button>
+            <div class="faq-answer">
+              <p>Sí, aún estás a tiempo. Es necesario evaluar tu situación académica y el estado de tu proyecto para
+                determinar si requieres alguna actualización del plan de negocios o cumplir con requisitos adicionales
+                por parte de las áreas académicas involucradas. Te invitamos a agendar una cita con nosotros para
+                revisar tu caso particular.</p>
+            </div>
+          </article>
+          <article class="faq-item" data-od-id="faq-director"><button class="faq-button" type="button"
+              aria-expanded="false" data-od-id="faq-director-control"><span>¿Es obligatorio contar con un Director de
+                Proyecto (Asesor)?</span><span>+</span></button>
+            <div class="faq-answer">
+              <p>Sí, es un requisito indispensable. El Director de Proyecto te brindará la guía metodológica y técnica
+                necesaria para garantizar la viabilidad de tu plan de negocios y asegurar que cumpla con los estándares
+                requeridos para tu proceso de titulación.</p>
+            </div>
+          </article>
+          <article class="faq-item" data-od-id="faq-next-step"><button class="faq-button" type="button"
+              aria-expanded="false" data-od-id="faq-next-step-control"><span>Ya terminé mi proyecto de titulación
+                emprendedor, ¿cuál es el siguiente paso?</span><span>+</span></button>
+            <div class="faq-answer">
+              <p>Si tu Director de Proyecto ya liberó y aprobó tu trabajo, deberá enviarlo formalmente a la Coordinación
+                de Emprendedores para validar la etapa final e iniciar los trámites administrativos de titulación.</p>
+              <p>Nota: Si aún no cuentas con un Director asignado, acércate a la coordinación para orientarte en la
+                asignación de uno.</p>
+            </div>
+          </article>
+          <article class="faq-item" data-od-id="faq-academic"><button class="faq-button" type="button"
+              aria-expanded="false" data-od-id="faq-academic-control"><span>¿Cómo puedo realizar un curso de
+                regularización o actualización académica?</span><span>+</span></button>
+            <div class="faq-answer">
+              <p>Los cursos de regularización se ofertan mediante convocatorias oficiales a lo largo del ciclo escolar.
+                Acércate a la Coordinación de Emprendedores para revisar tu historial académico y determinar si eres
+                candidato a un examen extraordinario, recurso o curso de actualización.</p>
+            </div>
+          </article>
         </div>
       </div>
     </section>
   </main>
 
-  <footer class="footer" data-od-id="site-footer"><div class="wrap"><div class="footer-grid"><div class="footer-brand">Soy emprendedor UVP</div><div><h3>Programa</h3><ul><li>¿Qué es un Emprendedor UVP?</li><li>Programas académicos</li><li>Titulación para emprendedores</li></ul></div><div><h3>Inspírate</h3><ul><li>Emprendedor del mes</li><li>Podcast y multimedia</li><li>Noticias y blog</li></ul></div><div><h3>Ecosistema</h3><ul><li>Vinculacion emprendedora</li><li>Entorno UVP</li><li>Incubadora de empresas</li></ul></div></div><div class="footer-bottom">Universidad del Valle de Puebla</div></div></footer>
+  <footer class="footer" data-od-id="site-footer">
+    <div class="wrap">
+      <div class="footer-grid">
+        <div class="footer-brand">Soy emprendedor UVP</div>
+        <div>
+          <h3>Programa</h3>
+          <ul>
+            <li>¿Qué es un Emprendedor UVP?</li>
+            <li>Programas académicos</li>
+            <li>Titulación para emprendedores</li>
+          </ul>
+        </div>
+        <div>
+          <h3>Inspírate</h3>
+          <ul>
+            <li>Emprendedor del mes</li>
+            <li>Podcast y multimedia</li>
+            <li>Noticias y blog</li>
+          </ul>
+        </div>
+        <div>
+          <h3>Ecosistema</h3>
+          <ul>
+            <li>Vinculacion emprendedora</li>
+            <li>Entorno UVP</li>
+            <li>Incubadora de empresas</li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">Universidad del Valle de Puebla</div>
+    </div>
+  </footer>
 
-  <dialog id="pending-dialog" aria-labelledby="dialog-title" data-od-id="pending-dialog"><div class="dialog-inner"><p class="eyebrow">Información pendiente</p><h2 id="dialog-title">Este apartado está por completar.</h2><p id="dialog-copy">La información correspondiente aún no está incluida en el plan.</p><button class="btn" type="button" data-close-dialog="" data-od-id="dialog-close">Cerrar</button></div></dialog>
+  <dialog id="pending-dialog" aria-labelledby="dialog-title" data-od-id="pending-dialog">
+    <div class="dialog-inner">
+      <p class="eyebrow">Información pendiente</p>
+      <h2 id="dialog-title">Este apartado está por completar.</h2>
+      <p id="dialog-copy">La información correspondiente aún no está incluida en el plan.</p><button class="btn"
+        type="button" data-close-dialog="" data-od-id="dialog-close">Cerrar</button>
+    </div>
+  </dialog>
 
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/SplitText.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/MotionPathPlugin.min.js"></script>
   <script>
     (() => {
+      // Custom cursor
+      const cursor = document.getElementById('customCursor');
+      if (cursor && window.matchMedia('(pointer: fine)').matches) {
+        document.documentElement.style.cursor = 'none';
+        document.querySelectorAll('a, button, [role="button"], input, select, textarea, label').forEach((el) => {
+          el.style.cursor = 'none';
+        });
+        document.addEventListener('mousemove', (e) => {
+          gsap.to(cursor, { x: e.clientX, y: e.clientY, duration: 0.15, ease: 'power2.out' });
+        });
+        document.addEventListener('mousedown', () => cursor.classList.add('clicking'));
+        document.addEventListener('mouseup', () => cursor.classList.remove('clicking'));
+        document.querySelectorAll('a, button, [role="button"]').forEach((el) => {
+          el.addEventListener('mouseenter', () => cursor.classList.add('hover'));
+          el.addEventListener('mouseleave', () => cursor.classList.remove('hover'));
+        });
+      } else if (cursor) {
+        cursor.style.display = 'none';
+      }
+
       const navToggle = document.querySelector('.nav-toggle');
       const navLinks = document.querySelector('.nav-links');
       const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
       if (window.gsap && !reduceMotion) {
-        gsap.timeline({ defaults: { ease: 'power2.out' } })
-          .from('.brand', { autoAlpha: 0, y: -10, duration: 0.42 })
-          .from('.nav-links a', { autoAlpha: 0, y: -8, duration: 0.3, stagger: 0.055 }, '-=0.18');
-      }
+        const headerAnimatedItems = document.querySelectorAll('.brand, .nav-links a');
+        gsap.timeline({
+          defaults: { ease: 'power2.out' },
+          onComplete: () => gsap.set(headerAnimatedItems, { clearProps: 'opacity,visibility,transform' })
+        })
+          .from('.brand', { autoAlpha: 0, y: -10, duration: 0.84 })
+          .from('.nav-links a:not(.nav-postulate)', { autoAlpha: 0, y: -8, duration: 0.6, stagger: 0.11 }, '-=0.36')
+          .from('.nav-postulate', { autoAlpha: 0, y: -8, duration: 0.6 }, '<');
 
-      if (window.gsap && window.SplitText && !reduceMotion) {
-        gsap.registerPlugin(SplitText);
-        document.fonts.ready.then(() => {
-          SplitText.create('.hero-content h1', {
-            type: 'lines,words,chars',
-            linesClass: 'hero-title-line',
-            wordsClass: 'hero-title-word',
-            charsClass: 'hero-title-char',
-            mask: 'lines',
-            deepSlice: true,
-            aria: 'auto',
-            autoSplit: true,
-            onSplit(instance) {
-              return gsap.from(instance.chars, {
-                yPercent: 115,
-                autoAlpha: 0,
-                rotateX: -70,
-                transformOrigin: '50% 100%',
-                duration: 0.8,
-                stagger: {
-                  amount: 1.2,
-                  from: 'start'
-                },
-                ease: 'power3.out'
-              });
-            }
-          });
-        });
-      }
+        const heroBtn = document.querySelector('.hero-cta');
+        const heroBtnWrap = heroBtn ? heroBtn.closest('.hero-content') : null;
+        const strength = 0.3;
 
-      if (window.gsap) {
-        const focusStage = document.querySelector('.hero-focus-stage');
-        const focusTrigger = document.querySelector('.hero-focus-trigger');
-        const ideaLabels = [...document.querySelectorAll('.hero-idea')];
-        let ideasOpen = false;
-        let ideasPinned = false;
-        let floatTweens = [];
-        let resizeTimer;
-
-        const getIdeaPositions = () => {
-          const mobile = window.matchMedia('(max-width: 560px)').matches;
-          const positions = mobile ? [
-            { x: 0, y: -112 },
-            { x: -115, y: -76 },
-            { x: 115, y: -76 },
-            { x: -130, y: -25 },
-            { x: 130, y: -25 },
-            { x: -105, y: 62 },
-            { x: 105, y: 62 }
-          ] : [
-            { x: -250, y: -58 },
-            { x: -165, y: -116 },
-            { x: 0, y: -136 },
-            { x: 170, y: -112 },
-            { x: 250, y: -54 },
-            { x: -200, y: 74 },
-            { x: 205, y: 74 }
-          ];
-          return gsap.utils.shuffle([...positions]);
-        };
-
-        const stopIdeaFloat = () => {
-          floatTweens.forEach((tween) => tween.kill());
-          floatTweens = [];
-        };
-
-        const startIdeaFloat = () => {
-          if (reduceMotion) return;
-          stopIdeaFloat();
-          floatTweens = ideaLabels.map((label) => gsap.to(label, {
-            y: `+=${gsap.utils.random(3, 7)}`,
-            duration: gsap.utils.random(1.4, 2.2),
-            delay: gsap.utils.random(0, 0.5),
+        if (heroBtn && heroBtnWrap) {
+          gsap.to(heroBtn, {
+            keyframes: [
+              { rotation: 8, duration: 0.18 },
+              { rotation: -8, duration: 0.18 },
+              { rotation: 6, duration: 0.18 },
+              { rotation: -6, duration: 0.18 },
+              { rotation: 4, duration: 0.18 },
+              { rotation: -4, duration: 0.18 },
+              { rotation: 0, duration: 0.18 }
+            ],
             repeat: -1,
-            yoyo: true,
-            ease: 'sine.inOut'
-          }));
-        };
-
-        const showIdeas = (force = false) => {
-          if (ideasOpen && !force) return;
-          ideasOpen = true;
-          focusTrigger.setAttribute('aria-expanded', 'true');
-          focusTrigger.setAttribute('aria-label', 'Ocultar frases de inspiración');
-          stopIdeaFloat();
-          gsap.killTweensOf(ideaLabels);
-          const positions = getIdeaPositions();
-
-          if (reduceMotion) {
-            gsap.set(ideaLabels, {
-              x: (index) => positions[index].x,
-              y: (index) => positions[index].y,
-              xPercent: -50,
-              yPercent: -50,
-              scale: 1,
-              autoAlpha: 1
-            });
-            return;
-          }
-
-          gsap.fromTo(ideaLabels, {
-            x: 0,
-            y: 0,
-            xPercent: -50,
-            yPercent: -50,
-            scale: 0.4,
-            autoAlpha: 0
-          }, {
-            x: (index) => positions[index].x,
-            y: (index) => positions[index].y,
-            scale: 1,
-            autoAlpha: 1,
-            duration: 0.55,
-            stagger: 0.06,
-            ease: 'back.out(1.7)',
-            onComplete: startIdeaFloat
+            ease: 'power2.inOut'
           });
-        };
 
-        const hideIdeas = () => {
-          ideasOpen = false;
-          focusTrigger.setAttribute('aria-expanded', 'false');
-          focusTrigger.setAttribute('aria-label', 'Mostrar frases de inspiración');
-          stopIdeaFloat();
-          gsap.killTweensOf(ideaLabels);
-          gsap.to(ideaLabels, {
-            x: 0,
-            y: 0,
-            scale: 0.4,
-            autoAlpha: 0,
-            duration: reduceMotion ? 0 : 0.28,
-            stagger: reduceMotion ? 0 : 0.025,
-            ease: 'power2.in'
+          heroBtnWrap.addEventListener('mousemove', (e) => {
+            const rect = heroBtnWrap.getBoundingClientRect();
+            const x = gsap.utils.mapRange(rect.left, rect.right, -rect.width / 2, rect.width / 2, e.clientX);
+            const y = gsap.utils.mapRange(rect.top, rect.bottom, -rect.height / 2, rect.height / 2, e.clientY);
+            gsap.to(heroBtn, { x: x * strength, y: y * strength, duration: 0.4, ease: 'power2.out', overwrite: 'auto' });
           });
-        };
 
-        focusStage.addEventListener('mouseenter', () => showIdeas());
-        focusStage.addEventListener('mouseleave', () => {
-          if (!ideasPinned && !focusStage.matches(':focus-within')) hideIdeas();
-        });
-        focusTrigger.addEventListener('focus', () => showIdeas());
-        focusTrigger.addEventListener('blur', () => {
-          if (!ideasPinned && !focusStage.matches(':hover')) hideIdeas();
-        });
-        focusTrigger.addEventListener('click', () => {
-          ideasPinned = !ideasPinned;
-          if (ideasPinned) showIdeas(true);
-          else hideIdeas();
-        });
-        focusTrigger.addEventListener('keydown', (event) => {
-          if (event.key === 'Escape') {
-            ideasPinned = false;
-            hideIdeas();
-            focusTrigger.blur();
-          }
-        });
-        window.addEventListener('resize', () => {
-          window.clearTimeout(resizeTimer);
-          resizeTimer = window.setTimeout(() => {
-            if (ideasOpen) showIdeas(true);
-          }, 150);
-        });
+          heroBtnWrap.addEventListener('mouseleave', () => {
+            gsap.to(heroBtn, { x: 0, y: 0, duration: 0.7, ease: 'elastic.out(1, 0.4)', overwrite: 'auto' });
+          });
+        }
       }
 
       if (window.gsap && window.ScrollTrigger) {
         gsap.registerPlugin(ScrollTrigger);
+        const programSection = document.querySelector('.program-section');
+        const programMark = document.querySelector('.program-mark');
+        const programTextBlocks = programSection?.querySelectorAll('.program-copy, .program-traits');
+        const programMotionMedia = gsap.matchMedia();
+
+        programMotionMedia.add({
+          desktop: '(min-width: 921px)',
+          reduce: '(prefers-reduced-motion: reduce)'
+        }, (context) => {
+          if (!programSection || !programMark || !window.MotionPathPlugin || !context.conditions.desktop || context.conditions.reduce) return undefined;
+
+          gsap.registerPlugin(MotionPathPlugin);
+          programSection.classList.add('motion-ready');
+          gsap.set(programTextBlocks, { autoAlpha: 0, y: 42 });
+          gsap.set(programMark, { opacity: 0 });
+
+          const programTimeline = gsap.timeline({
+            scrollTrigger: {
+              trigger: programSection,
+              start: 'top 66.667%',
+              end: 'top top+=72',
+              scrub: 0.4,
+              invalidateOnRefresh: true
+            }
+          });
+
+          programTimeline
+            .to(programMark, {
+              motionPath: {
+                path: '#program-motion-path',
+                align: '#program-motion-path',
+                alignOrigin: [0.5, 1],
+                start: 2 / 3,
+                end: 1,
+                autoRotate: 40
+              },
+              scale: 1,
+              duration: 0.76,
+              ease: 'none'
+            })
+            .to(programMark, {
+              opacity: 1,
+              duration: 0.228,
+              ease: 'power1.out'
+            }, 0)
+            .to(programMark, {
+              rotation: 0,
+              duration: 0.08,
+              ease: 'power1.inOut'
+            }, 0.76)
+            .to(programTextBlocks, {
+              autoAlpha: 1,
+              y: 0,
+              duration: 0.18,
+              stagger: 0.04,
+              ease: 'power2.out'
+            })
+            .to({}, { duration: 0.1 });
+
+          return () => {
+            programSection.classList.remove('motion-ready');
+            gsap.set([...programTextBlocks, programMark], { clearProps: 'all' });
+          };
+        });
+
+        const degreeStory = document.querySelector('.degree-story');
+        const degreeStoryVideo = degreeStory?.querySelector('.degree-story-video');
+        const degreeStoryOverlay = degreeStory?.querySelector('.degree-story-overlay');
+        const degreeStoryTitlePosition = degreeStory?.querySelectorAll('.degree-story-title-position');
+        const degreeStoryTitleScale = degreeStory?.querySelectorAll('.degree-story-title-scale');
+        const degreeStorySolidCopy = degreeStory?.querySelector('.degree-story-solid-copy');
+        const degreeStoryFinalDetails = degreeStory?.querySelector('.degree-story-final-details');
+        const degreeStoryMedia = gsap.matchMedia();
+
+        degreeStoryMedia.add('(prefers-reduced-motion: no-preference)', () => {
+          if (!degreeStory || !degreeStoryVideo || !degreeStoryOverlay || !degreeStoryTitlePosition?.length || !degreeStoryTitleScale?.length || !degreeStorySolidCopy || !degreeStoryFinalDetails) return undefined;
+
+          gsap.set(degreeStoryVideo, { opacity: 1, yPercent: -3 });
+          gsap.set(degreeStoryOverlay, { autoAlpha: 0 });
+          gsap.set(degreeStoryTitlePosition, { attr: { transform: 'translate(0 150)' } });
+          gsap.set(degreeStoryTitleScale, { attr: { transform: 'scale(12)' } });
+          gsap.set(degreeStorySolidCopy, { opacity: 0 });
+          gsap.set(degreeStoryFinalDetails, { autoAlpha: 0 });
+
+          const degreeStoryTimeline = gsap.timeline({
+            scrollTrigger: {
+              trigger: degreeStory,
+              start: 'top top+=72',
+              end: () => `+=${window.innerHeight * 4.2}`,
+              pin: true,
+              pinSpacing: true,
+              scrub: 1,
+              anticipatePin: 1,
+              invalidateOnRefresh: true
+            }
+          });
+
+          degreeStoryTimeline
+            .to({}, { duration: 0.15 })
+            .to(degreeStoryOverlay, { autoAlpha: 1, duration: 0.1, ease: 'none' })
+            .to(degreeStoryTitleScale, { attr: { transform: 'scale(1)' }, duration: 0.6, ease: 'power1.inOut' })
+            .to(degreeStoryTitlePosition, { attr: { transform: 'translate(0 0)' }, duration: 0.6, ease: 'power1.inOut' }, '<')
+            .to(degreeStorySolidCopy, { opacity: 1, duration: 0.12, ease: 'none' })
+            .to(degreeStoryVideo, { opacity: 0, duration: 0.08, ease: 'none' })
+            .to(degreeStoryFinalDetails, { autoAlpha: 1, duration: 0.18, ease: 'power1.out' })
+            .to({}, { duration: 0.15 });
+
+          const degreeStoryParallax = gsap.to(degreeStoryVideo, {
+            yPercent: 3,
+            ease: 'none',
+            scrollTrigger: {
+              trigger: degreeStory,
+              start: 'top top+=72',
+              end: () => `+=${window.innerHeight * 4.2}`,
+              scrub: true,
+              invalidateOnRefresh: true
+            }
+          });
+
+          return () => {
+            degreeStoryTimeline.scrollTrigger?.kill();
+            degreeStoryTimeline.kill();
+            degreeStoryParallax.scrollTrigger?.kill();
+            degreeStoryParallax.kill();
+            degreeStoryTitlePosition.forEach((node) => node.removeAttribute('transform'));
+            degreeStoryTitleScale.forEach((node) => node.removeAttribute('transform'));
+            gsap.set([degreeStoryVideo, degreeStoryOverlay, degreeStorySolidCopy, degreeStoryFinalDetails], { clearProps: 'all' });
+          };
+        });
+
         const carouselRevealMedia = gsap.matchMedia();
 
         carouselRevealMedia.add({
@@ -712,6 +3865,11 @@
             }
           });
         });
+
+        const refreshScrollTriggers = () => window.requestAnimationFrame(() => ScrollTrigger.refresh());
+        window.addEventListener('load', refreshScrollTriggers, { once: true });
+        document.fonts?.ready.then(refreshScrollTriggers);
+        degreeStoryVideo?.addEventListener('loadedmetadata', refreshScrollTriggers, { once: true });
       }
 
       navToggle.addEventListener('click', () => {
@@ -719,7 +3877,7 @@
         navToggle.setAttribute('aria-expanded', String(open));
         navToggle.setAttribute('aria-label', open ? 'Cerrar menú' : 'Abrir menú');
       });
-      navLinks.querySelectorAll('a').forEach((link) => link.addEventListener('click', () => {
+      navLinks.querySelectorAll('a, button').forEach((link) => link.addEventListener('click', () => {
         navLinks.classList.remove('open');
         navToggle.setAttribute('aria-expanded', 'false');
         navToggle.setAttribute('aria-label', 'Abrir menú');
@@ -738,7 +3896,7 @@
       const dots = [...document.querySelectorAll('.dot')];
       const carouselStatus = document.querySelector('#carousel-status');
       const pauseButton = document.querySelector('[data-carousel="pause"]');
-      let currentSlide = 0;
+      let currentSlide = 3;
       let autoplayId;
       let manuallyPaused = reduceMotion;
       let pointerInside = false;
@@ -864,6 +4022,99 @@
         dialog.showModal();
       }));
       document.querySelector('[data-close-dialog]').addEventListener('click', () => dialog.close());
+
+      const orientationForm = document.querySelector('#orientation-form');
+      const orientationRequest = document.querySelector('#orientation-request');
+      const orientationStatus = document.querySelector('#orientation-status');
+      document.querySelectorAll('[data-orientation-request]').forEach((link) => link.addEventListener('click', () => {
+        orientationRequest.value = link.dataset.orientationRequest;
+        orientationStatus.textContent = '';
+      }));
+      orientationForm.addEventListener('submit', (event) => {
+        event.preventDefault();
+        orientationForm.reset();
+        orientationStatus.textContent = 'Solicitud registrada. Nos comunicaremos contigo pronto.';
+      });
+
+      /* ---- Hub diagram animation ---- */
+      if (window.gsap && window.ScrollTrigger) {
+        const hub = document.querySelector('#hubDiagram');
+        if (hub) {
+          const hubRings = hub.querySelectorAll('.hub-ring');
+          const hubLinks = hub.querySelectorAll('.hub-link');
+          const hubTiles = hub.querySelectorAll('.hub-tile');
+          const hubCenter = hub.querySelector('#hubCenter');
+
+          gsap.set(hubRings, { transformOrigin: '400px 250px', scale: 0, opacity: 0 });
+          gsap.set(hubCenter, { scale: 0, opacity: 0 });
+          gsap.set(hubTiles, { scale: 0, opacity: 0 });
+          gsap.set(hubLinks, { strokeDashoffset: 600 });
+
+          const hubTl = gsap.timeline({
+            scrollTrigger: { trigger: hub, start: 'top 80%', once: true },
+            defaults: { ease: 'power3.out' }
+          });
+          hubTl
+            .to(hubRings, { scale: 1, opacity: 1, duration: 1.2, stagger: 0.1 }, 0)
+            .to(hubCenter, { scale: 1, opacity: 1, duration: 1, ease: 'back.out(1.8)' }, 0.3)
+            .to(hubTiles, { scale: 1, opacity: 1, duration: 0.9, stagger: 0.07, ease: 'back.out(1.6)' }, 0.6)
+            .to(hubLinks, { strokeDashoffset: 0, duration: 1, stagger: 0.06, ease: 'power2.inOut' }, 0.9);
+
+          /* continuous ring pulse */
+          hubRings.forEach((ring, i) => {
+            const baseR = 60 + i * 50;
+            gsap.to(ring, { attr: { r: baseR + 6 }, opacity: 0.5, duration: 2, delay: 1.5 + i * 0.3, ease: 'sine.inOut', yoyo: true, repeat: -1 });
+          });
+
+          /* center bob */
+          gsap.to(hubCenter, { y: '+=6', duration: 2.8, delay: 1.5, ease: 'sine.inOut', yoyo: true, repeat: -1 });
+
+          /* tile hover 3D */
+          hubTiles.forEach((tile) => {
+            tile.addEventListener('mousemove', (e) => {
+              const r = tile.getBoundingClientRect();
+              const px = (e.clientX - r.left) / r.width - 0.5;
+              const py = (e.clientY - r.top) / r.height - 0.5;
+              gsap.to(tile, { rotateX: -py * 16, rotateY: px * 16, scale: 1.08, duration: 0.4, ease: 'power2.out', transformPerspective: 600, overwrite: 'auto' });
+            });
+            tile.addEventListener('mouseleave', () => {
+              gsap.to(tile, { rotateX: 0, rotateY: 0, scale: 1, duration: 0.6, ease: 'elastic.out(1, 0.6)', overwrite: 'auto' });
+            });
+            tile.addEventListener('click', () => {
+              gsap.fromTo(tile, { scale: 1.08 }, { scale: 0.92, duration: 0.1, yoyo: true, repeat: 1, ease: 'power2.inOut' });
+            });
+          });
+
+          /* center click pulse */
+          hubCenter.addEventListener('click', () => {
+            gsap.fromTo(hubCenter, { scale: 1.12 }, { scale: 1, duration: 0.5, ease: 'elastic.out(1, 0.5)' });
+            hubRings.forEach((ring, i) => {
+              const baseR = 60 + i * 50;
+              gsap.timeline().to(ring, { attr: { r: baseR + 28 }, opacity: 0, duration: 0.7, ease: 'power2.out' }).to(ring, { attr: { r: baseR }, opacity: 1, duration: 0.35, ease: 'power2.in' });
+            });
+          });
+
+          /* mouse parallax */
+          let mx = 0, my = 0, tx = 0, ty = 0;
+          hub.addEventListener('mousemove', (e) => {
+            const r = hub.getBoundingClientRect();
+            mx = ((e.clientX - r.left) / r.width - 0.5) * 2;
+            my = ((e.clientY - r.top) / r.height - 0.5) * 2;
+          });
+          hub.addEventListener('mouseleave', () => { mx = 0; my = 0; });
+          function hubParallax() {
+            tx += (mx - tx) * 0.06;
+            ty += (my - ty) * 0.06;
+            hubTiles.forEach((tile, i) => {
+              const depth = 5 + (i % 3) * 2;
+              tile.style.translate = tx * depth + 'px ' + ty * depth + 'px';
+            });
+            hubCenter.style.translate = tx * 3 + 'px ' + ty * 3 + 'px';
+            requestAnimationFrame(hubParallax);
+          }
+          hubParallax();
+        }
+      }
     })();
   </script>
 
@@ -871,10 +4122,12 @@
 
 
 
-<script type="application/json" id="speaker-notes">
+  <script type="application/json" id="speaker-notes">
 []
 </script>
 
 
 
-</body></html>
+</body>
+
+</html>
