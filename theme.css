@@ -5,25 +5,25 @@
 
 :root {
   /* === Semantic Backgrounds === */
-  --background-canvas: #fcfcfc;
+  --background-canvas: #ffffff;
   --background-surface: #ffffff;
-  --background-subtle: #f0f0f0;
-  --background-inverse: #1a365d;
-  --background-brand: #fff8de;
+  --background-subtle: #fafafb;
+  --background-inverse: #26003f;
+  --background-brand: #f0e1ff;
 
   /* === Semantic Text === */
-  --text-primary: #202020;
-  --text-secondary: #4d4d4d;
-  --text-muted: #7b7b7b;
+  --text-primary: #111116;
+  --text-secondary: #565661;
+  --text-muted: #7c7c88;
   --text-inverse: #ffffff;
-  --text-brand: #1a365d;
+  --text-brand: #51008d;
   --text-on-brand: #ffffff;
 
   /* === Semantic Borders === */
-  --border-default: #d4d4d4;
-  --border-strong: #939393;
-  --border-focus: #315bf7;
-  --border-brand: #1a365d;
+  --border-default: #e7e7eb;
+  --border-strong: #d1d1d8;
+  --border-focus: #7800e5;
+  --border-brand: #902ce5;
 
   /* === Legacy aliases (backward compat) === */
   --bg: var(--background-canvas);
@@ -36,42 +36,42 @@
   --fg-inverse: var(--text-inverse);
   --border: var(--border-default);
 
-  /* === Brand - Dorado/Naranja === */
-  --brand-50: #fff8de;
-  --brand-100: #ffcf7e;
-  --brand-200: #f7aa32;
-  --brand-300: #dc9000;
-  --brand-400: #c17700;
-  --brand-500: #a16200;
-  --brand-600: #834e00;
-  --brand-700: #663a00;
-  --brand-800: #4a2700;
-  --brand-900: #301600;
+  /* === Brand - Purple === */
+  --brand-50: #f0e1ff;
+  --brand-100: #c18af0;
+  --brand-200: #a55ee8;
+  --brand-300: #902ce5;
+  --brand-400: #7800e5;
+  --brand-500: #6700c2;
+  --brand-600: #51008d;
+  --brand-700: #37005e;
+  --brand-800: #26003f;
+  --brand-900: #19002d;
 
-  /* === Brand Secondary - Rojo === */
-  --brand-secondary-50: #fff6f0;
-  --brand-secondary-100: #ffd1c2;
-  --brand-secondary-200: #ffa991;
-  --brand-secondary-300: #ff7e5f;
-  --brand-secondary-400: #e86446;
-  --brand-secondary-500: #cb4a2b;
-  --brand-secondary-600: #af2e0b;
-  --brand-secondary-700: #910300;
-  --brand-secondary-800: #6d0000;
+  /* === Brand Secondary - Magenta === */
+  --brand-secondary-50: #f9e3f4;
+  --brand-secondary-100: #f0cee7;
+  --brand-secondary-200: #d6a3ce;
+  --brand-secondary-300: #bb73ae;
+  --brand-secondary-400: #a64999;
+  --brand-secondary-500: #92247f;
+  --brand-secondary-600: #791967;
+  --brand-secondary-700: #5d154e;
+  --brand-secondary-800: #45103a;
 
   /* === Accent === */
-  --accent: #f7aa32;
-  --accent-hover: #dc9000;
-  --accent-active: #c17700;
+  --accent: #92247f;
+  --accent-hover: #791967;
+  --accent-active: #5d154e;
 
   /* === Primary - CTA === */
-  --primary: #f25f22;
-  --primary-hover: #d94418;
-  --primary-light: #ff7a3d;
+  --primary: #7800e5;
+  --primary-hover: #6700c2;
+  --primary-light: #a55ee8;
 
-  /* === Navy === */
-  --navy: #1a365d;
-  --navy-light: #2d4a7a;
+  /* === Deep purple === */
+  --navy: #26003f;
+  --navy-light: #37005e;
 
   /* === Info === */
   --info-50: #f4fcff;
@@ -93,14 +93,14 @@
   --danger-600: #c90035;
 
   /* === Indicator - Cyan/Teal === */
-  --indicator: #00c9a7;
-  --indicator-dark: #00a88a;
+  --indicator: #bb73ae;
+  --indicator-dark: #92247f;
 
   /* === Shadows === */
   --shadow-low: 0 1px 3px rgb(0 0 0 / 6%), 0 1px 2px rgb(0 0 0 / 4%);
   --shadow-medium: 0 4px 6px rgb(0 0 0 / 7%), 0 2px 4px rgb(0 0 0 / 4%);
   --shadow-high: 0 10px 25px rgb(0 0 0 / 10%), 0 4px 10px rgb(0 0 0 / 5%);
-  --shadow-brand: 0 4px 14px rgb(242 95 34 / 25%);
+  --shadow-brand: 0 4px 14px rgb(120 0 229 / 25%);
 
   /* === Typography === */
   --display: "Parkinsans", sans-serif;
@@ -113,24 +113,24 @@
   --radius-xl: 24px;
 
   /* === Hero === */
-  --hero-bg: #ffffff;
-  --hero-text: #383737;
+  --hero-bg: #f0e1ff;
+  --hero-text: #26003f;
   --hero-text-inverse: #ffffff;
 
   /* === Carousel === */
-  --carousel-bg: #1e2128;
-  --carousel-border: #2d3139;
-  --carousel-slide: #282c34;
+  --carousel-bg: #26003f;
+  --carousel-border: #51008d;
+  --carousel-slide: #37005e;
 
   /* === Footer (always dark) === */
-  --footer-bg: #1a365d;
+  --footer-bg: #19002d;
   --footer-text: #ffffff;
   --footer-muted: rgba(255, 255, 255, 0.72);
   --footer-border: rgba(255, 255, 255, 0.12);
 
   /* === Tinted backgrounds === */
-  --tinted-info: rgba(49, 91, 247, 0.06);
-  --tinted-brand: rgba(242, 95, 34, 0.06);
+  --tinted-info: rgba(120, 0, 229, 0.06);
+  --tinted-brand: rgba(120, 0, 229, 0.06);
   --tinted-success: rgba(71, 148, 0, 0.06);
   --tinted-danger: rgba(235, 40, 79, 0.06);
 
@@ -147,8 +147,8 @@
 
   /* === Special cards === */
   --card-dark-bg: var(--background-inverse);
-  --card-cyan-bg: var(--indicator);
-  --card-cyan-text: #0a2540;
+  --card-cyan-bg: var(--navy);
+  --card-cyan-text: #ffffff;
 
   /* === Section backgrounds === */
   --req-bg: var(--background-subtle);
