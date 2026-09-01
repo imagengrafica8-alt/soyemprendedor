@@ -113,8 +113,12 @@
   --radius-xl: 24px;
 
   /* === Hero === */
-  --hero-bg: #f0e1ff;
-  --hero-text: #26003f;
+  --hero-bg: linear-gradient(122.22deg, #49018a 0%, #eb2c49 100%);
+  --hero-bg-gradient: linear-gradient(-57.78deg, #eb2c49 52.197%, #49018a 88.968%);
+  --hero-bg-visual: linear-gradient(122.22deg, #49018a 0%, #eb2c49 100%);
+  --hero-text: #ffffff;
+  --hero-text-muted: rgba(255, 255, 255, 0.9);
+  --hero-border: rgba(255, 255, 255, 0.95);
   --hero-text-inverse: #ffffff;
 
   /* === Carousel === */
@@ -153,4 +157,58 @@
   /* === Section backgrounds === */
   --req-bg: var(--background-subtle);
   --inspire-bg: var(--background-subtle);
+
+  /* === Blog / Recursos (dark) === */
+  --blog-bg: var(--brand-700);
+  --blog-media-bg: var(--brand-800);
+  --blog-badge-bg: var(--primary);
+  --blog-text: var(--text-inverse);
+  --blog-text-muted: color-mix(in srgb, var(--text-inverse) 55%, transparent);
+  --blog-text-faint: color-mix(in srgb, var(--text-inverse) 35%, transparent);
+  --blog-text-subtle: color-mix(in srgb, var(--text-inverse) 60%, transparent);
+  --blog-text-soft: color-mix(in srgb, var(--text-inverse) 80%, transparent);
+  --blog-text-very-faint: color-mix(in srgb, var(--text-inverse) 30%, transparent);
+  --blog-border: color-mix(in srgb, var(--text-inverse) 10%, transparent);
+  --blog-border-strong: color-mix(in srgb, var(--text-inverse) 14%, transparent);
+  --blog-border-button: color-mix(in srgb, var(--text-inverse) 20%, transparent);
+  --blog-border-button-hover: color-mix(in srgb, var(--text-inverse) 35%, transparent);
+  --blog-btn-hover-bg: color-mix(in srgb, var(--text-inverse) 8%, transparent);
+  --blog-card-bg: color-mix(in srgb, var(--text-inverse) 5%, transparent);
+  --blog-card-bg-hover: color-mix(in srgb, var(--text-inverse) 7%, transparent);
+  --blog-card-border: color-mix(in srgb, var(--text-inverse) 8%, transparent);
+  --blog-featured-bg: color-mix(in srgb, var(--text-inverse) 3%, transparent);
+  --blog-tag-emprendedores-bg: color-mix(in srgb, var(--brand-100) 10%, transparent);
+  --blog-tag-emprendedores-text: var(--brand-100);
+  --blog-tag-vinculacion-bg: color-mix(in srgb, var(--info-200) 10%, transparent);
+  --blog-tag-vinculacion-text: var(--info-200);
+  --blog-tag-logros-bg: color-mix(in srgb, var(--success-400) 10%, transparent);
+  --blog-tag-logros-text: var(--success-400);
+  --blog-icon-bg: color-mix(in srgb, var(--primary) 40%, transparent);
+  --blog-gradient-featured: linear-gradient(90deg, color-mix(in srgb, var(--brand-700) 0%, transparent) 0%, color-mix(in srgb, var(--brand-700) 70%, transparent) 100%);
+  --blog-gradient-card: linear-gradient(0deg, color-mix(in srgb, var(--brand-700) 60%, transparent) 0%, color-mix(in srgb, var(--brand-700) 0%, transparent) 100%);
+
+  /* === CIE / Incubadora (dark) === */
+  --cie-bg: var(--brand-900);
+  --cie-bg-gradient: linear-gradient(155deg, #49018a 0%, #19002d 55%, #eb2c49 100%);
+  --cie-text: var(--text-inverse);
+  --cie-text-muted: color-mix(in srgb, var(--text-inverse) 65%, transparent);
+  --cie-text-soft: color-mix(in srgb, var(--text-inverse) 60%, transparent);
+  --cie-text-faint: color-mix(in srgb, var(--text-inverse) 40%, transparent);
+  --cie-text-very-faint: color-mix(in srgb, var(--text-inverse) 30%, transparent);
+  --cie-text-ultra-faint: color-mix(in srgb, var(--text-inverse) 25%, transparent);
+  --cie-text-dim: color-mix(in srgb, var(--text-inverse) 20%, transparent);
+  --cie-border: color-mix(in srgb, var(--text-inverse) 10%, transparent);
+  --cie-border-light: color-mix(in srgb, var(--text-inverse) 12%, transparent);
+  --cie-border-cta: color-mix(in srgb, var(--text-inverse) 25%, transparent);
+  --cie-accent: var(--brand-100);
+  --cie-primary: var(--primary);
+  --cie-primary-soft: color-mix(in srgb, var(--primary) 30%, transparent);
+  --cie-primary-mid: color-mix(in srgb, var(--primary) 40%, transparent);
+  --cie-primary-strong: color-mix(in srgb, var(--primary) 60%, transparent);
+  --cie-card-bg: linear-gradient(155deg, color-mix(in srgb, var(--text-inverse) 10%, transparent) 8%, color-mix(in srgb, var(--text-inverse) 4%, transparent) 91%);
+  --cie-card-border: color-mix(in srgb, var(--text-inverse) 12%, transparent);
+  --cie-card-active-bg: color-mix(in srgb, var(--primary) 30%, transparent);
+  --cie-card-active-border: color-mix(in srgb, var(--primary) 40%, transparent);
+  --cie-progress-bg: color-mix(in srgb, var(--text-inverse) 8%, transparent);
+  --cie-progress-fill: linear-gradient(90deg, var(--primary) 0%, #eb2c49 100%);
 }

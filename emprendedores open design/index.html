@@ -327,7 +327,7 @@
 
     .hero-eyebrow {
       margin: 0 0 16px;
-      color: #383737;
+      color: var(--hero-text);
       font: 700 36px/1 var(--display);
       letter-spacing: 3.46px;
     }
@@ -422,7 +422,7 @@
       margin-top: auto;
       width: 28px;
       height: 28px;
-      color: var(--primary);
+      color: var(--hero-text);
       transition: transform .3s ease;
     }
 
@@ -833,7 +833,7 @@
     .route a::after {
       width: 24px;
       height: 24px;
-      background: url("http://localhost:3845/assets/555ca112c2118783d4dbb39ec832469c25a13d9e.svg") center / contain no-repeat;
+      background: url("assets/icon-figma-arrow.svg") center / contain no-repeat;
       content: "";
     }
 
@@ -1091,85 +1091,63 @@
 
     /* === Degree story === */
     .degree-story {
-      position: relative;
-      height: calc(100svh - 72px);
-      overflow: hidden;
-      background: #fff;
+      display: flex;
+      align-items: center;
+      min-height: calc(100svh - 72px);
+      padding: 120px 24px;
+      background: linear-gradient(-13.7469deg, #eb2c49 24.164%, #49018a 74.626%);
     }
 
-    .degree-story-stage {
-      position: relative;
-      width: 100%;
-      height: 100%;
-      overflow: hidden;
-      isolation: isolate;
-      background: #fff;
-    }
-
-    .degree-story-video,
-    .degree-story-overlay,
+    .degree-story-stage,
     .degree-story-final {
-      position: absolute;
-      inset: 0;
       width: 100%;
-      height: 100%;
     }
 
-    .degree-story-video {
-      z-index: 0;
-      display: block;
-      object-fit: cover;
-      transform: scale(1.06);
+    .degree-story-layout {
+      display: grid;
+      grid-template-columns: minmax(0, 588px) minmax(0, 567px);
+      gap: 100px;
+      align-items: center;
+      width: min(100%, 1255px);
+      margin: 0 auto;
     }
 
-    .degree-story-overlay {
-      z-index: 1;
-      display: block;
-      opacity: 0;
-      pointer-events: none;
+    .degree-story-copy {
+      min-width: 0;
+      text-align: right;
     }
 
-    .degree-story-svg-copy {
+    .degree-story-copy h2 {
+      margin: 0;
+      color: #fff;
       font-family: var(--display);
       font-weight: 700;
+      line-height: 103.411px;
       letter-spacing: -2.2562px;
     }
 
-    .degree-story-svg-small {
+    .degree-story-copy h2 span {
+      display: block;
+    }
+
+    .degree-story-copy h2 span:first-child {
       font-size: 48px;
     }
 
-    .degree-story-svg-large {
+    .degree-story-copy h2 span:not(:first-child) {
       font-size: 84px;
     }
 
-    .degree-story-solid-copy {
-      opacity: 0;
-    }
-
-    .degree-story-final {
-      z-index: 2;
-      pointer-events: none;
-    }
-
     .degree-story-final-details {
-      position: absolute;
-      left: 0;
-      right: 0;
-      top: calc(50% + 9.5px);
-      width: min(calc(100% - 32px), 687.148px);
-      margin: 0 auto;
       padding: 40px 0;
-      color: #1a1a1a;
-      text-align: center;
-      opacity: 0;
-      pointer-events: auto;
+      color: #fff;
     }
 
     .degree-story-final-copy p {
       width: 100%;
       margin: 0;
       font: 400 17px/28.9px var(--body);
+      text-align: right;
     }
 
     .degree-story-final-copy p+p {
@@ -1179,17 +1157,118 @@
     .degree-story-final-actions {
       display: flex;
       align-items: center;
-      justify-content: center;
+      justify-content: flex-end;
       gap: 12px;
       height: 76px;
     }
 
     .degree-story-final-actions .btn {
       min-height: 48px;
-      padding: 0 21px;
-      border-width: 1px;
+      padding: 0 20px;
+      border: 1px solid #7800e5;
       border-radius: 8px;
-      font-size: 14px;
+      background: #7800e5;
+      color: #fff;
+      font: 800 14px/14px var(--display);
+    }
+
+    .degree-story-final-actions .btn:hover {
+      border-color: #6700c2;
+      background: #6700c2;
+      color: #fff;
+    }
+
+    .degree-story-final-actions .btn:nth-child(2) {
+      padding-inline: 21px;
+      border-color: rgb(255 255 255 / 50%);
+      background: transparent;
+    }
+
+    .degree-story-final-actions .btn:nth-child(2):hover {
+      border-color: #fff;
+      background: rgb(255 255 255 / 12%);
+    }
+
+    .degree-story-graphic {
+      display: block;
+      width: min(100%, 567px);
+      height: auto;
+      justify-self: center;
+    }
+
+    .degree-story-graphic-canvas {
+      position: relative;
+      width: 100%;
+      height: 485px;
+      overflow: hidden;
+    }
+
+    .degree-graphic-art {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    .degree-graphic-layer {
+      position: absolute;
+      display: block;
+    }
+
+    .degree-graphic-layer img {
+      position: absolute;
+      inset: 0;
+      display: block;
+      width: 100%;
+      height: 100%;
+    }
+
+    .degree-story-graphic-label {
+      position: absolute;
+      z-index: 2;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 17.64%;
+      min-height: 5.41%;
+      padding: 4.526px;
+      color: #fff;
+      font: 700 13px/normal var(--display);
+      text-align: left;
+    }
+
+    .degree-graphic-step {
+      position: absolute;
+      z-index: 1;
+      color: #fff;
+      font: 800 24.607px/1 var(--display);
+      letter-spacing: -.76px;
+    }
+
+    .degree-graphic-step.s01 { top: 15.8%; left: 42.3%; }
+    .degree-graphic-step.s02 { top: 40.2%; left: 32.8%; }
+    .degree-graphic-step.s03 { top: 51.9%; left: 54.1%; }
+    .degree-graphic-step.s04 { top: 33.4%; left: 62.2%; }
+    .degree-graphic-step.s05 { top: 59.6%; left: 57.1%; }
+    .degree-graphic-step.s06 { top: 72.3%; left: 51.2%; color: #b68ae3; }
+
+    .degree-story-graphic-label.nature { top: 0; left: 29.37%; }
+    .degree-story-graphic-label.marketing { top: 2.71%; left: 50.74%; }
+    .degree-story-graphic-label.production { top: 15.09%; left: 69.85%; }
+    .degree-story-graphic-label.organization { top: 32.8%; left: 80.25%; width: 19.75%; }
+    .degree-story-graphic-label.legal { top: 51.42%; left: 81.73%; }
+    .degree-story-graphic-label.finance { top: 69.43%; left: 78.62%; }
+    .degree-story-graphic-label.impact { top: 85.42%; left: 70.56%; }
+
+    .degree-story-graphic-caption {
+      width: 100%;
+      margin: 0;
+      padding: 10px;
+      color: #fff;
+      font: 700 30px/52.8px var(--display);
+      letter-spacing: -.92px;
+      text-align: center;
+      white-space: nowrap;
     }
 
     /* === Hub Diagram === */
@@ -1439,146 +1518,398 @@
       font: 400 16px/20.8px var(--display);
     }
 
-    /* === Inspírate === */
+    /* === Inspírate — réplica exacta Figma 230:1080 (colores idénticos) === */
     #inspirate {
+      padding: 0;
+      display: block;
+      background: transparent;
+    }
+
+    /* --- Sección superior: Emprendedor del mes (bg #26003f) — Figma 230:990 pt50 pb100 === */
+    .inspirate-dark {
+      background: #26003f;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      overflow: hidden;
+      position: relative;
+      padding-top: 50px;
+      padding-bottom: 100px;
+      width: 100%;
+      box-sizing: border-box;
+    }
+
+    .inspirate-dark-margin {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 100%;
+      flex: 0 0 auto;
+    }
+
+    .inspirate-dark-topbar {
       display: flex;
       align-items: center;
-      min-height: calc(100svh - 72px);
-      background: #edf1f5;
+      justify-content: space-between;
+      width: 100%;
+      max-width: 1280px;
+      padding: 16px 24px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
     }
 
-    #inspirate>.wrap>.eyebrow {
+    .inspirate-dark-topbar p {
       margin: 0;
-      color: #f25f22;
-      font: 700 12px/14.4px var(--mono);
-      letter-spacing: 1.44px;
+      font: 700 10px/15px var(--mono);
+      letter-spacing: 2.2px;
+      text-transform: uppercase;
+      white-space: nowrap;
     }
 
-    .inspire-desc {
-      max-width: 861px;
-      margin: 0 0 46px;
-      color: #383737;
-      font: 400 17px/27.2px var(--body);
+    .inspirate-dark-topbar p:first-child {
+      color: #c18af0;
     }
 
-    #inspirate h2 {
-      margin: 16px 0 10px;
-      color: #383737;
-      font: 700 52px/56.16px var(--display);
-      letter-spacing: -2.34px;
+    .inspirate-dark-topbar p:last-child {
+      color: rgba(255, 255, 255, 0.3);
+      font-weight: 400;
+      letter-spacing: 0;
     }
 
-    .inspire-grid {
+    .inspirate-dark-grid {
       display: grid;
-      grid-template-columns: 2fr 1fr;
-      gap: 18px;
-      min-height: 523px;
+      grid-template-columns: 949.5px 949.5px;
+      grid-template-rows: 600px;
+      width: 100%;
+      height: 600px;
+      flex: 1;
     }
 
-    .card {
+    .inspirate-dark-image-wrap {
       position: relative;
-      border-radius: var(--radius-lg);
+      grid-column: 1;
+      grid-row: 1;
+      min-height: 600px;
       overflow: hidden;
+      align-self: stretch;
     }
 
-    .card-feature {
-      min-height: 523px;
-    }
-
-    .card-feature img {
+    .inspirate-dark-image-wrap img {
       position: absolute;
       inset: 0;
       width: 100%;
       height: 100%;
       object-fit: cover;
+      display: block;
     }
 
-    .card-overlay {
+    .inspirate-dark-gradient {
       position: absolute;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      min-height: 288px;
+      inset: 0;
+      background: linear-gradient(90deg, rgba(38, 0, 63, 0.8) 0%, rgba(38, 0, 63, 0) 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0) 100%);
+      pointer-events: none;
+    }
+
+    .inspirate-dark-content {
+      position: relative;
+      grid-column: 2;
+      grid-row: 1;
       display: flex;
       flex-direction: column;
-      justify-content: flex-end;
-      padding: 28px;
-      background: linear-gradient(to bottom, transparent, rgb(8 30 52 / 0.94));
-      color: var(--text-inverse);
+      align-items: flex-start;
+      justify-content: center;
+      padding: 80px 40px;
+      align-self: stretch;
     }
 
-    .card-overlay .eyebrow {
-      color: #ed6f25;
-      font: 700 12px/19.2px var(--mono);
-      letter-spacing: .88px;
-      text-transform: uppercase;
+    .inspirate-dark-eyebrow {
       margin: 0;
-    }
-
-    .card-overlay h3 {
-      margin: 10px 0 21px;
-      color: #fff;
-      font: 700 18px/22.68px var(--display);
-    }
-
-    .card-overlay p {
-      margin: 0;
-      color: #d7e2ed;
-      font: 400 16px/25.6px var(--body);
-    }
-
-    .card-stack {
-      display: grid;
-      grid-template-rows: 1fr 1fr;
-      gap: 18px;
-    }
-
-    .card-dark {
-      padding: 24px;
-      background: #ed6f25;
-      color: #fff;
+      padding-bottom: 24px;
+      height: 39px;
       display: flex;
-      flex-direction: column;
-      justify-content: flex-start;
-      border-radius: var(--radius-lg);
-    }
-
-    .card-dark .eyebrow {
-      margin: 0 0 10px;
-      color: #1e1e1e;
-      font: 700 12px/19.2px var(--mono);
-      letter-spacing: 1.44px;
+      align-items: flex-start;
+      font: 700 10px/15px var(--mono);
+      color: #c18af0;
+      letter-spacing: 2px;
       text-transform: uppercase;
     }
 
-    .card-dark h3 {
+    .inspirate-dark-name {
       margin: 0;
-      color: #fff;
-      font: 700 18px/22.68px var(--display);
-    }
-
-    .card-cyan {
-      padding: 24px;
-      background: #383737;
-      color: #fff;
+      padding-bottom: 16px;
+      height: 144px;
       display: flex;
       flex-direction: column;
-      justify-content: flex-start;
-      border-radius: var(--radius-lg);
+      width: 870px;
+      max-width: 100%;
+      font: 700 51.2px/64px var(--display);
+      color: #ffffff;
+      letter-spacing: 0;
     }
 
-    .card-cyan .eyebrow {
-      margin: 0 0 10px;
-      color: #f25f22;
-      font: 700 12px/19.2px var(--mono);
-      letter-spacing: 1.44px;
-      text-transform: uppercase;
-    }
-
-    .card-cyan h3 {
+    .inspirate-dark-name p {
       margin: 0;
-      color: #fff;
-      font: 700 18px/22.68px var(--display);
+      line-height: 64px;
+    }
+
+    .inspirate-dark-sub {
+      margin: 0;
+      height: 28px;
+      padding-bottom: 8px;
+      font: 400 14px/20px var(--body);
+      color: rgba(255, 255, 255, 0.6);
+      white-space: nowrap;
+    }
+
+    .inspirate-dark-divider {
+      width: 48px;
+      height: 1px;
+      background: #7800e5;
+      margin: 24px 0;
+      flex-shrink: 0;
+    }
+
+    .inspirate-dark-desc {
+      margin: 0;
+      padding-bottom: 32px;
+      height: 84px;
+      width: 870px;
+      max-width: 100%;
+      font: 400 16px/26px var(--body);
+      color: rgba(255, 255, 255, 0.5);
+    }
+
+    .inspirate-dark-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      padding: 12px 20px;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: 4px;
+      background: transparent;
+      color: #ffffff;
+      font: 700 12px/16px var(--mono);
+      text-align: center;
+      white-space: nowrap;
+      transition: background .2s ease, border-color .2s ease;
+      text-decoration: none;
+    }
+
+    .inspirate-dark-btn:hover {
+      background: rgba(255, 255, 255, 0.08);
+      border-color: rgba(255, 255, 255, 0.35);
+    }
+
+    .inspirate-dark-btn img {
+      width: 14px;
+      height: 14px;
+      display: block;
+    }
+
+    .inspirate-dark-watermark {
+      position: absolute;
+      right: 40px;
+      left: auto;
+      top: 32px;
+      font: 700 144px/144px var(--mono);
+      color: rgba(255, 255, 255, 0.05);
+      white-space: nowrap;
+      pointer-events: none;
+      user-select: none;
+    }
+
+    /* --- Sección inferior: Podcast y multimedia (bg #7800e5) — Figma 230:1018 pt50 pb100 === */
+    .inspirate-purple {
+      background: #532190;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      overflow: hidden;
+      position: relative;
+      width: 100%;
+      padding-top: 50px;
+      padding-bottom: 100px;
+      box-sizing: border-box;
+    }
+
+    .inspirate-purple-margin {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 100%;
+    }
+
+    .inspirate-purple-topbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+      max-width: 1280px;
+      padding: 16px 24px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .inspirate-purple-topbar p {
+      margin: 0;
+      font: 700 10px/15px var(--mono);
+      letter-spacing: 2.2px;
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+
+    .inspirate-purple-topbar p:first-child {
+      color: rgba(255, 255, 255, 0.7);
+    }
+
+    .inspirate-purple-topbar p:last-child {
+      color: rgba(255, 255, 255, 0.3);
+      font-weight: 400;
+      letter-spacing: 0;
+    }
+
+    .inspirate-purple-body {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 100%;
+    }
+
+    .inspirate-purple-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      max-width: 1280px;
+      padding: 64px 24px;
+      box-sizing: border-box;
+    }
+
+    .inspirate-purple-grid {
+      display: flex;
+      gap: 50px;
+      align-items: center;
+      justify-content: center;
+      width: 1232px;
+      max-width: 100%;
+    }
+
+    .inspirate-purple-left {
+      display: flex;
+      gap: 30px;
+      align-items: center;
+      flex-shrink: 0;
+    }
+
+    .inspirate-purple-mic {
+      width: 121.166px;
+      height: 250.861px;
+      flex-shrink: 0;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .inspirate-purple-mic img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      pointer-events: none;
+    }
+
+    .inspirate-purple-title {
+      display: contents;
+    }
+
+    .inspirate-purple-watermark {
+      display: none;
+    }
+
+    .inspirate-purple-heading {
+      font: 900 50px/normal var(--display);
+      color: #ffffff;
+      width: 479.754px;
+      max-width: 100%;
+      letter-spacing: 0;
+      margin: 0;
+    }
+
+    .inspirate-purple-heading p {
+      margin: 0;
+      line-height: 83.6px;
+    }
+
+    .inspirate-purple-list {
+      display: flex;
+      flex-direction: column;
+      gap: 1px;
+      width: 100%;
+    }
+
+    .inspirate-purple-item {
+      display: flex;
+      gap: 20px;
+      align-items: flex-start;
+      padding: 20px 24px;
+      background: rgba(255, 255, 255, 0.1);
+      width: 100%;
+      box-sizing: border-box;
+    }
+
+    .inspirate-purple-icon {
+      flex: 0 0 40px;
+      width: 40px;
+      height: 40px;
+      border: 2px solid rgba(255, 255, 255, 0.4);
+      border-radius: 16777200px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: transparent;
+    }
+
+    .inspirate-purple-icon img {
+      width: 10px;
+      height: 12px;
+      display: block;
+    }
+
+    .inspirate-purple-meta {
+      flex: 1 0 0;
+      min-width: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+    }
+
+    .inspirate-purple-meta-head {
+      display: flex;
+      gap: 12px;
+      align-items: center;
+      width: 100%;
+    }
+
+    .inspirate-purple-code {
+      font: 400 10px/15px var(--mono);
+      color: rgba(255, 255, 255, 0.4);
+      white-space: nowrap;
+    }
+
+    .inspirate-purple-item h3 {
+      margin: 0;
+      font: 700 16px/24px var(--display);
+      color: #ffffff;
+      white-space: nowrap;
+    }
+
+    .inspirate-purple-item-desc {
+      margin: 0;
+      padding-top: 4px;
+      height: 24px;
+      width: 594px;
+      max-width: 100%;
+      font: 400 14px/19.25px var(--body);
+      color: rgba(255, 255, 255, 0.7);
+      white-space: nowrap;
     }
 
     .pending {
@@ -1590,117 +1921,1281 @@
       text-transform: uppercase;
     }
 
-    /* === Ecosistema === */
-    .ecosystem-grid {
-      display: grid;
-      grid-template-columns: repeat(12, 1fr);
-      gap: 20px;
+    @media (max-width: 1300px) {
+      .inspirate-dark-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .inspirate-purple-grid {
+        grid-template-columns: repeat(12, 1fr);
+        gap: 32px;
+      }
+
+      .inspirate-purple-heading {
+        font-size: 50px;
+        line-height: normal;
+      }
+
+      .inspirate-purple-watermark {
+        display: none;
+      }
+
+      .inspirate-dark-name {
+        font-size: 51.2px;
+        line-height: 64px;
+        width: 870px;
+      }
+
+      .inspirate-dark-desc {
+        width: 870px;
+      }
     }
 
-    .eco-main {
-      grid-column: span 7;
-      padding: 36px;
-      border: 1px solid var(--border-default);
-      border-radius: var(--radius-lg);
-      background: var(--background-surface);
+    @media (max-width: 920px) {
+      .inspirate-dark {
+        height: auto;
+      }
+
+      .inspirate-dark-grid {
+        grid-template-columns: 1fr;
+        grid-template-rows: auto auto;
+        height: auto;
+      }
+
+      .inspirate-dark-image-wrap {
+        grid-column: 1;
+        grid-row: 1;
+        min-height: 380px;
+        height: 380px;
+      }
+
+      .inspirate-dark-content {
+        grid-column: 1;
+        grid-row: 2;
+        padding: 40px 24px;
+      }
+
+      .inspirate-dark-watermark {
+        display: none;
+      }
+
+      .inspirate-dark-name {
+        height: auto;
+        padding-bottom: 12px;
+      }
+
+      .inspirate-dark-desc {
+        height: auto;
+        padding-bottom: 24px;
+      }
+
+      .inspirate-purple-container {
+        padding: 40px 24px;
+      }
+
+      .inspirate-purple-grid {
+        flex-direction: column;
+        gap: 32px;
+        width: 100%;
+      }
+
+      .inspirate-purple-left {
+        width: 100%;
+        justify-content: center;
+      }
+
+      .inspirate-purple-mic {
+        width: 100px;
+        height: 207px;
+      }
+
+      .inspirate-purple-watermark {
+        display: none;
+      }
+
+      .inspirate-purple-heading {
+        position: relative;
+        font-size: 42px;
+        line-height: 1;
+        left: auto;
+        top: auto;
+        width: auto;
+      }
+
+      .inspirate-purple-list {
+        width: 100%;
+      }
     }
 
-    .eco-main h3,
-    .eco-side h3 {
-      margin: 0 0 14px;
-      font-size: 24px;
-      line-height: 1.15;
-      letter-spacing: -.03em;
-      color: var(--text-primary);
+    @media (max-width: 560px) {
+      .inspirate-dark-topbar,
+      .inspirate-purple-topbar {
+        padding: 14px 16px;
+      }
+
+      .inspirate-dark-content {
+        padding: 32px 16px;
+      }
+
+      .inspirate-dark-name {
+        font-size: 38px;
+        line-height: 42px;
+      }
+
+      .inspirate-purple-container {
+        padding: 32px 16px;
+      }
+
+      .inspirate-purple-item {
+        padding: 16px;
+        gap: 14px;
+      }
+
+      .inspirate-purple-mic {
+        width: 90px;
+        height: 186px;
+      }
+
+      .inspirate-purple-left {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        gap: 20px;
+      }
+
+      .inspirate-purple-icon {
+        width: 36px;
+        height: 36px;
+      }
+
+      .inspirate-purple-heading {
+        position: relative !important;
+        left: auto !important;
+        top: auto !important;
+        font-size: 36px;
+        text-align: center;
+        line-height: 42px;
+        width: 100%;
+        max-width: 100%;
+        white-space: normal;
+        overflow-wrap: break-word;
+      }
+
+      .inspirate-purple-heading p {
+        white-space: normal;
+      }
+
+      .inspirate-purple-title {
+        width: 100%;
+        max-width: 100%;
+        overflow: hidden;
+      }
+
+      .inspirate-purple-item-desc {
+        white-space: normal;
+        height: auto;
+        width: 100%;
+      }
+
+      .inspirate-dark-sub {
+        white-space: normal;
+      }
+
+      .inspirate-dark-name {
+        width: 100%;
+        max-width: 100%;
+        white-space: normal;
+        overflow-wrap: break-word;
+      }
+
+      .inspirate-dark-desc {
+        width: 100%;
+      }
     }
 
-    .eco-main p,
-    .eco-side p {
-      margin: 0;
-      color: var(--text-secondary);
-      font-size: 15px;
-      line-height: 1.65;
-    }
-
-    .eco-side {
-      grid-column: span 5;
-      display: grid;
-      gap: 20px;
-    }
-
-    .eco-card {
-      padding: 28px;
-      border-left: 4px solid var(--text-brand);
-      border-radius: 0 var(--radius) var(--radius) 0;
-      background: var(--background-surface);
-      box-shadow: var(--shadow-low);
-      transition: all .3s ease;
-    }
-
-    .eco-card:hover {
-      box-shadow: var(--shadow-medium);
-    }
-
-    .logo-row {
-      grid-column: 1 / -1;
-      display: grid;
-      grid-template-columns: repeat(6, 1fr);
-      border: 1px solid var(--border-default);
-      border-radius: var(--radius-lg);
-      background: var(--background-surface);
+    /* === Noticias — Figma 232:1094 (bg #fafafb) === */
+    .noticias-section {
+      background: #fafafb;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
       overflow: hidden;
+      padding-top: 100px;
+      padding-bottom: 50px;
+      width: 100%;
+      box-sizing: border-box;
     }
 
-    .logo-placeholder {
-      min-height: 74px;
+    .noticias-topbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 16px 24px;
+      border-bottom: 1px solid #e7e7eb;
+      box-sizing: border-box;
+    }
+
+    .noticias-topbar p {
+      margin: 0;
+      font: 700 10px/15px var(--mono);
+      letter-spacing: 2.2px;
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+
+    .noticias-topbar p:first-child { color: #565661; }
+    .noticias-topbar p:last-child { color: #7c7c88; font-weight: 400; letter-spacing: 0; }
+
+    .noticias-container {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      width: 100%;
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 64px 24px;
+      box-sizing: border-box;
+    }
+
+    .noticias-header {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      width: 100%;
+      gap: 24px;
+    }
+
+    .noticias-heading {
+      font: 700 56px/70px var(--display);
+      color: #51008d;
+      margin: 0;
+      letter-spacing: 0;
+    }
+
+    .noticias-heading p { margin:0; line-height:70px; }
+
+    .noticias-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 8px 16px;
+      border: 1px solid rgba(144,44,229,0.4);
+      border-radius: 4px;
+      background: transparent;
+      color: #51008d;
+      font: 700 12px/16px var(--mono);
+      text-decoration: none;
+      white-space: nowrap;
+      transition: background .2s ease, border-color .2s ease;
+    }
+
+    .noticias-btn:hover { background: rgba(144,44,229,0.08); border-color: rgba(144,44,229,0.6); }
+
+    .noticias-grid {
       display: grid;
-      place-items: center;
-      border-right: 1px solid var(--border-default);
-      color: var(--text-muted);
-      font: 700 10px/1 var(--mono);
-      letter-spacing: .08em;
+      grid-template-columns: repeat(3, 394.66px);
+      gap: 24px;
+      width: 100%;
+      margin-top: 40px;
+      justify-content: space-between;
+    }
+
+    .noticia-card {
+      border-top: 2px solid #902ce5;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      align-items: flex-start;
+      min-height: 440px;
+      padding: 0 20px 20px;
+      overflow: hidden;
+      background: #fff;
+      box-sizing: border-box;
+    }
+
+    .noticia-card>img {
+      width: calc(100% + 40px);
+      height: 188px;
+      margin: 0 -20px;
+      object-fit: cover;
+    }
+
+    .noticia-meta {
+      display: flex;
+      gap: 12px;
+      align-items: center;
+      width: 100%;
+    }
+
+    .noticia-tag {
+      font: 700 10px/15px var(--mono);
+      color: #7800e5;
+      letter-spacing: 0.5px;
       text-transform: uppercase;
     }
 
-    .logo-placeholder:last-child {
-      border-right: 0;
+    .noticia-date {
+      font: 400 10px/15px var(--mono);
+      color: #7c7c88;
     }
 
-    /* === Incubadora === */
-    .incubation {
-      display: grid;
-      grid-template-columns: .8fr 1.2fr;
-      gap: 64px;
-      align-items: start;
-    }
-
-    .incubation-stamp {
-      padding-top: 8px;
-      background: linear-gradient(135deg, var(--text-brand), var(--primary));
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-      font: 900 clamp(62px, 8vw, 112px)/.8 var(--display);
-      letter-spacing: -.08em;
-    }
-
-    .incubation-copy {
-      padding-left: 32px;
-      border-left: 2px solid var(--border-default);
-    }
-
-    .incubation-copy p {
+    .noticia-title {
+      font: 700 18px/24.75px var(--display);
+      color: #51008d;
       margin: 0;
-      color: var(--text-secondary);
-      font-size: 17px;
-      line-height: 1.7;
+      width: 100%;
     }
 
-    .incubation-links {
+    .noticia-desc {
+      font: 400 14px/22.75px var(--body);
+      color: #565661;
+      margin: 0;
+      flex: 1 0 0;
+      width: 100%;
+    }
+
+    .noticia-link {
+      font: 400 12px/16px var(--mono);
+      color: #7c7c88;
+      text-decoration: none;
+    }
+
+    .noticia-link:hover { color: #51008d; }
+
+    /* === Blog / Recursos — Figma 236:929 — FULLPAGE (variables theme.css) === */
+    .blog-section {
+      background: var(--blog-bg);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: calc(100svh - 72px);
+      min-height: calc(100dvh - 72px);
+      width: 100%;
+      padding-top: 100px;
+      padding-bottom: 50px;
+      box-sizing: border-box;
+      overflow: hidden;
+    }
+
+    .blog-section-inner {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 100%;
+      flex: 1;
+      justify-content: center;
+    }
+
+    .blog-topbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 16px 24px;
+      border-bottom: 1px solid var(--blog-border);
+      box-sizing: border-box;
+      flex-shrink: 0;
+    }
+
+    .blog-topbar p {
+      margin: 0;
+      font: 700 10px/15px var(--mono);
+      letter-spacing: 2.2px;
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+
+    .blog-topbar p:first-child { color: var(--brand-100); }
+    .blog-topbar p:last-child { color: color-mix(in srgb, var(--text-inverse) 20%, transparent); font-weight:400; letter-spacing:0; }
+
+    .blog-container {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      width: 100%;
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 64px 24px;
+      box-sizing: border-box;
+      flex: 1;
+      justify-content: center;
+    }
+
+    .blog-header {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      width: 100%;
+      gap: 24px;
+    }
+
+    .blog-heading {
+      font: 700 51.2px/64px var(--display);
+      color: var(--blog-text);
+      margin: 0;
+    }
+
+    .blog-heading p { margin:0; line-height:64px; }
+
+    .blog-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 8px 16px;
+      border: 1px solid var(--blog-border-button);
+      border-radius: 4px;
+      background: transparent;
+      color: var(--blog-text-subtle);
+      font: 700 12px/16px var(--mono);
+      text-decoration: none;
+      white-space: nowrap;
+      transition: background .2s ease, border-color .2s ease, color .2s ease;
+      cursor: pointer;
+    }
+
+    .blog-btn:hover { background: var(--blog-btn-hover-bg); border-color: var(--blog-border-button-hover); color: var(--blog-text); }
+
+    /* --- Featured article (Figma 236:944) --- */
+    .blog-featured-wrap {
+      width: 100%;
+      padding-top: 48px;
+      box-sizing: border-box;
+    }
+
+    .blog-featured {
+      display: grid;
+      grid-template-columns: 615px 1fr;
+      min-height: 460px;
+      border: 1px solid var(--blog-border);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      background: var(--blog-featured-bg);
+      width: 100%;
+      box-sizing: border-box;
+    }
+
+    .blog-featured-media {
+      position: relative;
+      background: var(--blog-media-bg);
+      min-height: 380px;
+      overflow: hidden;
+    }
+
+    .blog-featured-media img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0.8;
+      display: block;
+    }
+
+    .blog-featured-gradient {
+      position: absolute;
+      inset: 0;
+      background: var(--blog-gradient-featured);
+      pointer-events: none;
+    }
+
+    .blog-featured-badge {
+      position: absolute;
+      left: 20px;
+      top: 20px;
+      background: var(--blog-badge-bg);
+      color: var(--blog-text);
+      font: 700 10px/15px var(--mono);
+      letter-spacing: 1.8px;
+      text-transform: uppercase;
+      padding: 4px 12px;
+      border-radius: 999px;
+      z-index: 1;
+    }
+
+    .blog-featured-body {
+      background: var(--blog-card-bg);
+      padding: 48px;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 0;
+      min-width: 0;
+    }
+
+    .blog-featured-top {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+      width: 100%;
+      min-width: 0;
+    }
+
+    .blog-featured-meta {
       display: flex;
       gap: 12px;
+      align-items: center;
+      width: 100%;
+    }
+
+    .blog-tag {
+      display: inline-flex;
+      align-items: center;
+      padding: 4px 8px;
+      border-radius: 999px;
+      font: 700 10px/15px var(--mono);
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+
+    .blog-tag--emprendedores {
+      background: var(--blog-tag-emprendedores-bg);
+      color: var(--blog-tag-emprendedores-text);
+    }
+
+    .blog-tag--vinculacion {
+      background: var(--blog-tag-vinculacion-bg);
+      color: var(--blog-tag-vinculacion-text);
+    }
+
+    .blog-tag--logros {
+      background: var(--blog-tag-logros-bg);
+      color: var(--blog-tag-logros-text);
+    }
+
+    .blog-date {
+      font: 400 10px/15px var(--mono);
+      color: var(--blog-text-very-faint);
+      white-space: nowrap;
+    }
+
+    .blog-featured-title {
+      margin: 20px 0 0;
+      font: 700 28px/38.5px var(--display);
+      color: var(--blog-text);
+      width: 100%;
+    }
+
+    .blog-featured-desc {
+      margin: 20px 0 0;
+      font: 400 14px/22.75px var(--body);
+      color: var(--blog-text-muted);
+      width: 100%;
+    }
+
+    .blog-featured-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+      padding-top: 24px;
+      margin-top: 32px;
+      border-top: 1px solid var(--blog-border);
+      gap: 16px;
+    }
+
+    .blog-author {
+      display: flex;
+      gap: 12px;
+      align-items: center;
+      min-width: 0;
+    }
+
+    .blog-author-icon {
+      width: 32px;
+      height: 32px;
+      border-radius: 999px;
+      background: var(--blog-icon-bg);
+      color: var(--brand-100);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .blog-author-icon svg {
+      width: 14px;
+      height: 14px;
+      display: block;
+    }
+
+    .blog-author-icon img {
+      width: 14px;
+      height: 14px;
+      display: block;
+    }
+
+    .blog-author-text {
+      display: flex;
+      flex-direction: column;
+      min-width: 0;
+    }
+
+    .blog-author-label {
+      font: 400 10px/15px var(--mono);
+      color: var(--blog-text-faint);
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+
+    .blog-author-name {
+      font: 700 14px/20px var(--display);
+      color: var(--blog-text-soft);
+      white-space: nowrap;
+    }
+
+    .blog-readmore {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font: 700 12px/16px var(--mono);
+      color: var(--brand-100);
+      text-decoration: none;
+      white-space: nowrap;
+      flex-shrink: 0;
+      transition: opacity .2s ease, transform .2s ease;
+    }
+
+    .blog-readmore img,
+    .blog-readmore svg {
+      width: 14px;
+      height: 14px;
+      display: block;
+      transition: transform .2s ease;
+    }
+
+    .blog-readmore:hover { opacity: 0.9; }
+    .blog-readmore:hover img,
+    .blog-readmore:hover svg { transform: translateX(3px); }
+
+    /* --- Secondary grid (Figma 236:978) --- */
+    .blog-secondary-wrap {
+      width: 100%;
+      padding-top: 32px;
+      box-sizing: border-box;
+    }
+
+    .blog-secondary-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 24px;
+      width: 100%;
+      align-items: stretch;
+    }
+
+    .blog-card-secondary {
+      background: var(--blog-card-bg);
+      border: 1px solid var(--blog-card-border);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      min-height: 387px;
+      transition: transform .25s ease, border-color .25s ease, background .25s ease;
+    }
+
+    .blog-card-secondary:hover {
+      transform: translateY(-4px);
+      border-color: var(--blog-border-strong);
+      background: var(--blog-card-bg-hover);
+    }
+
+    .blog-card-secondary-media {
+      position: relative;
+      height: 192px;
+      background: var(--blog-media-bg);
+      overflow: hidden;
+      flex-shrink: 0;
+    }
+
+    .blog-card-secondary-media img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0.75;
+      display: block;
+      transition: transform .4s ease, opacity .4s ease;
+    }
+
+    .blog-card-secondary:hover .blog-card-secondary-media img {
+      transform: scale(1.03);
+      opacity: 0.9;
+    }
+
+    .blog-card-secondary-gradient {
+      position: absolute;
+      inset: 0;
+      background: var(--blog-gradient-card);
+      pointer-events: none;
+    }
+
+    .blog-card-secondary-body {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      padding: 24px;
+      min-width: 0;
+      min-height: 193px;
+      box-sizing: border-box;
+    }
+
+    .blog-card-secondary-meta {
+      display: flex;
+      gap: 8px;
+      align-items: center;
+      width: 100%;
+    }
+
+    .blog-card-secondary-title {
+      margin: 0;
+      font: 700 16px/22px var(--display);
+      color: var(--blog-text);
+      flex: 1;
+      min-height: 44px;
+      display: flex;
+      align-items: flex-start;
+    }
+
+    .blog-card-secondary-footer {
+      margin-top: auto;
+      padding-top: 16px;
+      border-top: 1px solid var(--blog-border);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+    }
+
+    .blog-card-secondary-author {
+      font: 400 10px/15px var(--mono);
+      color: var(--blog-text-faint);
+      white-space: nowrap;
+    }
+
+    @media (max-width: 1280px) {
+      .blog-featured { grid-template-columns: 1fr 1fr; }
+      .blog-featured-body { padding: 32px; }
+      .blog-secondary-grid { gap: 20px; }
+    }
+
+    @media (max-width: 1024px) {
+      .blog-featured { grid-template-columns: 1fr; min-height: auto; }
+      .blog-featured-media { min-height: 360px; height: 360px; }
+      .blog-featured-title { font-size: 24px; line-height: 30px; }
+      .blog-secondary-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    }
+
+    @media (max-width: 920px) {
+      .noticias-heading { font-size:42px; line-height:52px; }
+      .blog-heading { font-size:38px; line-height:44px; }
+      .noticias-grid { grid-template-columns:1fr; height:auto; }
+      .noticias-header, .blog-header { flex-direction:column; align-items:flex-start; gap:16px; }
+      .blog-container { padding: 40px 24px; }
+      .blog-featured-media { min-height: 300px; height: 300px; }
+    }
+
+    @media (max-width: 640px) {
+      .blog-secondary-grid { grid-template-columns: 1fr; }
+      .blog-featured-body { padding: 24px; }
+      .blog-featured-title { font-size: 22px; line-height: 28px; }
+      .blog-featured-desc { font-size: 13px; line-height: 20px; }
+      .blog-featured-footer { flex-direction: column; align-items: flex-start; gap: 16px; }
+    }
+
+    @media (max-width: 560px) {
+      .noticias-topbar, .blog-topbar { padding:14px 16px; }
+      .noticias-container { padding:32px 16px; }
+      .blog-container { padding:32px 16px; }
+      .noticias-heading { font-size:32px; line-height:38px; }
+      .blog-heading { font-size:28px; line-height:34px; }
+      .blog-featured-media { min-height: 260px; height: 260px; }
+    }
+
+    /* === CIE / Incubadora — Figma 240:1465 (bg #19002d) === */
+    .cie-section {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      padding-top: 100px;
+      background: var(--cie-bg);
+      overflow: hidden;
+      isolation: isolate;
+      width: 100%;
+      box-sizing: border-box;
+    }
+
+    .cie-background {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+      pointer-events: none;
+      overflow: hidden;
+    }
+
+    .cie-bg-image {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      opacity: 0.2;
+      object-fit: cover;
+      object-position: center;
+      display: block;
+    }
+
+    .cie-bg-gradient {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      opacity: 0.85;
+      background: var(--cie-bg-gradient);
+    }
+
+    .cie-glow {
+      position: absolute;
+      border-radius: 9999px;
+      pointer-events: none;
+    }
+
+    .cie-glow--tl {
+      left: -160px;
+      top: -160px;
+      width: 600px;
+      height: 600px;
+      opacity: 0.2;
+      background: radial-gradient(ellipse at center, var(--cie-primary) 0%, transparent 70%);
+    }
+
+    .cie-glow--br {
+      right: -80px;
+      bottom: -60px;
+      width: 500px;
+      height: 500px;
+      opacity: 0.15;
+      background: radial-gradient(ellipse at center, #eb2c49 0%, transparent 70%);
+    }
+
+    @media (max-width: 920px) {
+      .cie-glow--tl { width: 400px; height: 400px; left: -100px; top: -100px; }
+      .cie-glow--br { width: 360px; height: 360px; }
+    }
+
+    .cie-topbar {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: min(100% - 48px, 1280px);
+      margin: 0 auto;
+      padding: 24px 24px 16px;
+      border-bottom: 1px solid var(--cie-border);
+      box-sizing: border-box;
+    }
+
+    .cie-topbar p {
+      margin: 0;
+      font: 700 10px/15px var(--mono);
+      letter-spacing: 2.2px;
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+
+    .cie-topbar p:first-child { color: var(--cie-accent); }
+    .cie-topbar p:last-child { color: var(--cie-text-ultra-faint); font-weight: 400; letter-spacing: 0; }
+
+    .cie-layout {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      grid-template-columns: 584px 584px;
+      gap: 64px;
+      justify-content: center;
+      width: min(100% - 48px, 1280px);
+      margin: 0 auto;
+      padding: 80px 24px;
+      align-items: center;
+      box-sizing: border-box;
+    }
+
+    .cie-left {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      width: 100%;
+      max-width: 584px;
+      min-height: 561px;
+      justify-content: center;
+    }
+
+    .cie-stamp {
+      margin: 0;
+      font: 900 176px/176px var(--display);
+      letter-spacing: -0.04em;
+      color: transparent;
+      -webkit-text-stroke: 1.2px color-mix(in srgb, var(--cie-text) 12%, transparent);
+      user-select: none;
+      line-height: 1;
+    }
+
+    @supports not (-webkit-text-stroke: 1px black) {
+      .cie-stamp { color: color-mix(in srgb, var(--cie-text) 6%, transparent); }
+    }
+
+    .cie-heading {
+      margin: 0;
+      font: 700 36px/45px var(--display);
+      color: var(--cie-text);
+      letter-spacing: 0;
+    }
+
+    .cie-heading span { display: block; }
+
+    .cie-desc {
+      margin: 16px 0 0;
+      max-width: 512px;
+      font: 400 16px/26px var(--body);
+      color: var(--cie-text-muted);
+    }
+
+    .cie-heading-wrap {
+      margin-top: -16px;
+      width: 100%;
+    }
+
+    .cie-stats {
+      display: flex;
+      gap: 32px;
+      align-items: flex-start;
+      width: 100%;
+      margin-top: 32px;
+      padding: 24px 0;
+      border-top: 1px solid var(--cie-border);
+      border-bottom: 1px solid var(--cie-border);
+    }
+
+    .cie-stat { flex: 0 0 auto; min-width: 0; }
+    .cie-stat:nth-child(1) { width: 124px; }
+    .cie-stat:nth-child(2) { width: 124px; }
+    .cie-stat:nth-child(3) { width: 104px; }
+
+    .cie-stat-number {
+      margin: 0;
+      font: 900 30px/30px var(--display);
+      color: var(--cie-text);
+      white-space: nowrap;
+    }
+
+    .cie-stat-label {
+      margin: 4px 0 0;
+      font: 400 10px/15px var(--mono);
+      color: var(--cie-text-faint);
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+
+    .cie-actions {
+      display: flex;
+      gap: 12px;
+      align-items: center;
       flex-wrap: wrap;
-      margin-top: 28px;
+      width: 100%;
+      padding-top: 40px;
+      min-height: 86px;
+      box-sizing: border-box;
+    }
+
+    .cie-btn-primary {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 46px;
+      padding: 12px 28px;
+      border: none;
+      border-radius: 999px;
+      background: var(--cie-primary);
+      color: var(--cie-text);
+      font: 800 14px/20px var(--display);
+      text-align: center;
+      box-shadow: 0 10px 7.5px color-mix(in srgb, var(--cie-primary) 40%, transparent), 0 4px 3px color-mix(in srgb, var(--cie-primary) 40%, transparent);
+      cursor: pointer;
+      transition: transform .2s ease, background .2s ease, box-shadow .2s ease;
+      text-decoration: none;
+      white-space: nowrap;
+    }
+
+    .cie-btn-primary:hover {
+      background: var(--primary-hover);
+      transform: translateY(-2px);
+      box-shadow: 0 14px 10px color-mix(in srgb, var(--cie-primary) 30%, transparent), 0 6px 4px color-mix(in srgb, var(--cie-primary) 30%, transparent);
+    }
+
+    .cie-btn-secondary {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 46px;
+      padding: 12px 28px;
+      border: 1px solid var(--cie-border-cta);
+      border-radius: 999px;
+      background: color-mix(in srgb, var(--cie-text) 0%, transparent);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      color: var(--cie-text);
+      font: 600 14px/20px var(--display);
+      text-align: center;
+      cursor: pointer;
+      transition: background .2s ease, border-color .2s ease, transform .2s ease;
+      text-decoration: none;
+      white-space: nowrap;
+    }
+
+    .cie-btn-secondary:hover {
+      background: color-mix(in srgb, var(--cie-text) 8%, transparent);
+      border-color: color-mix(in srgb, var(--cie-text) 35%, transparent);
+      transform: translateY(-2px);
+    }
+
+    .cie-right {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      min-width: 0;
+    }
+
+    .cie-card-wrap {
+      width: 448px;
+      max-width: 100%;
+      height: 566px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .cie-card-image {
+      display: block;
+      width: 100%;
+      height: 100%;
+      border-radius: 23.869px;
+      box-shadow: 0 24.864px 49.727px -11.935px rgba(0, 0, 0, .25);
+      object-fit: cover;
+    }
+
+    .cie-card {
+      width: 443.64px;
+      max-width: 100%;
+      height: 565.345px;
+      display: flex;
+      flex-direction: column;
+      border: 0.995px solid var(--cie-card-border);
+      border-radius: 23.869px;
+      background: var(--cie-card-bg);
+      backdrop-filter: blur(19.891px);
+      -webkit-backdrop-filter: blur(19.891px);
+      box-shadow: 0 24.864px 49.727px -11.935px rgba(0,0,0,0.25);
+      overflow: hidden;
+      box-sizing: border-box;
+    }
+
+    .cie-card-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+      padding: 19.891px 27.847px;
+      border-bottom: 0.995px solid var(--cie-border);
+      box-sizing: border-box;
+      flex-shrink: 0;
+    }
+
+    .cie-card-header p {
+      margin: 0;
+      font: 700 9.945px/14.918px var(--mono);
+      color: var(--cie-accent);
+      letter-spacing: 1.79px;
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+
+    .cie-dots {
+      display: flex;
+      gap: 5.967px;
+      align-items: center;
+    }
+
+    .cie-dot {
+      width: 9.903px;
+      height: 9.988px;
+      border-radius: 999px;
+      background: color-mix(in srgb, var(--cie-text) 15%, transparent);
+      flex-shrink: 0;
+    }
+
+    .cie-dot--active { background: var(--cie-primary-strong); }
+
+    .cie-card-list {
+      display: flex;
+      flex-direction: column;
+      gap: 11.935px;
+      width: 100%;
+      padding: 23.869px;
+      box-sizing: border-box;
+      flex: 1;
+      min-height: 0;
+    }
+
+    .cie-phase {
+      display: flex;
+      gap: 15.913px;
+      align-items: flex-start;
+      width: 100%;
+      padding: 13.924px 15.913px;
+      border: 0.995px solid transparent;
+      border-radius: 11.935px;
+      box-sizing: border-box;
+      transition: background .2s ease, border-color .2s ease;
+    }
+
+    .cie-phase--active {
+      background: var(--cie-card-active-bg);
+      border-color: var(--cie-card-active-border);
+    }
+
+    .cie-phase-num {
+      flex: 0 0 22px;
+      width: 22px;
+      padding-top: 1.989px;
+      font: 700 17.902px/17.902px var(--mono);
+      color: var(--cie-text-dim);
+      white-space: nowrap;
+    }
+
+    .cie-phase--active .cie-phase-num { color: var(--cie-accent); }
+
+    .cie-phase-body { flex: 1; min-width: 0; }
+
+    .cie-phase-title {
+      margin: 0;
+      font: 700 13.924px/19.891px var(--display);
+      color: color-mix(in srgb, var(--cie-text) 60%, transparent);
+      white-space: nowrap;
+    }
+
+    .cie-phase--active .cie-phase-title { color: var(--cie-text); }
+
+    .cie-phase-desc {
+      margin: 1.989px 0 0;
+      font: 400 10.94px/15.043px var(--body);
+      color: var(--cie-text-faint);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .cie-phase--active .cie-phase-desc { color: var(--cie-text-faint); }
+
+    .cie-phase-dot {
+      flex: 0 0 5.942px;
+      width: 5.942px;
+      height: 5.993px;
+      margin-top: 3.978px;
+      border-radius: 999px;
+      background: var(--cie-accent);
+      opacity: 0;
+    }
+
+    .cie-phase--active .cie-phase-dot { opacity: 1; }
+
+    .cie-progress {
+      display: flex;
+      flex-direction: column;
+      gap: 7.956px;
+      width: 100%;
+      padding: 7.956px 27.847px 23.869px;
+      box-sizing: border-box;
+      flex-shrink: 0;
+    }
+
+    .cie-progress-bar {
+      width: 100%;
+      height: 5.993px;
+      border-radius: 999px;
+      background: var(--cie-progress-bg);
+      overflow: hidden;
+    }
+
+    .cie-progress-fill {
+      width: 154.482px;
+      max-width: 40%;
+      height: 100%;
+      border-radius: 999px;
+      background: var(--cie-progress-fill);
+    }
+
+    .cie-progress-label {
+      margin: 0;
+      font: 400 9.945px/14.918px var(--mono);
+      color: var(--cie-text-very-faint);
+      white-space: nowrap;
+    }
+
+    /* === Responsive CIE === */
+    @media (max-width: 1280px) {
+      .cie-layout { grid-template-columns: 1fr 1fr; gap: 48px; }
+      .cie-left { max-width: 100%; }
+      .cie-card-wrap { width: 420px; height: 540px; }
+      .cie-card-image { width: 100%; height: 100%; }
+    }
+
+    @media (max-width: 1024px) {
+      .cie-layout { grid-template-columns: 1fr; gap: 48px; padding: 48px 24px; }
+      .cie-left { min-height: auto; }
+      .cie-stamp { font-size: 120px; line-height: 120px; }
+      .cie-card-wrap { width: 448px; height: 566px; margin: 0 auto; }
+    }
+
+    @media (max-width: 920px) {
+      .cie-layout { padding: 40px 24px; }
+      .cie-stamp { font-size: 96px; line-height: 96px; }
+      .cie-heading { font-size: 30px; line-height: 38px; }
+      .cie-stats { gap: 20px; }
+      .cie-stat:nth-child(1), .cie-stat:nth-child(2) { width: auto; flex: 1; }
+      .cie-stat:nth-child(3) { width: auto; flex: 1; }
+    }
+
+    @media (max-width: 640px) {
+      .cie-topbar { padding: 16px; }
+      .cie-layout { padding: 32px 16px; gap: 32px; }
+      .cie-stamp { font-size: 72px; line-height: 72px; }
+      .cie-heading { font-size: 28px; line-height: 34px; }
+      .cie-desc { font-size: 15px; line-height: 24px; }
+      .cie-stats { flex-wrap: wrap; gap: 16px; }
+      .cie-actions { flex-direction: column; align-items: stretch; }
+      .cie-btn-primary, .cie-btn-secondary { width: 100%; }
+      .cie-card-wrap { width: 100%; height: auto; min-height: 0; aspect-ratio: 4 / 5; }
+      .cie-card-image { height: 100%; min-height: 0; }
+      .cie-phase-desc { white-space: normal; }
+    }
+
+    @media (max-width: 560px) {
+      .cie-stamp { font-size: 64px; line-height: 64px; }
+      .cie-card-header p { font-size: 8.5px; }
+      .cie-phase-title { font-size: 12.5px; }
     }
 
     /* === Orientación/Formulario === */
@@ -2238,7 +3733,7 @@
         padding: 72px 0;
       }
 
-      #inspirate h2 {
+      #inspirate > .wrap > h2 {
         font-size: 38px;
         line-height: 1.08;
         letter-spacing: -1.7px;
@@ -2260,6 +3755,13 @@
 
       .card-stack {
         grid-template-rows: repeat(2, minmax(180px, auto));
+      }
+
+      /* Override Figma pm-title for 560px — mantiene 44px en vez de 38px heredado */
+      #inspirate .pm-title h2 {
+        font-size: 44px !important;
+        line-height: 42px !important;
+        letter-spacing: -1.5px !important;
       }
 
       .requirements-left h2 {
@@ -2400,27 +3902,6 @@
       .academic-card h3 {
         font-size: 20px;
         line-height: 23px;
-      }
-
-      .degree-story-final-details {
-        top: calc(50% - 2px);
-        padding: 24px 0;
-      }
-
-      .degree-story-final-copy p {
-        font-size: 15px;
-        line-height: 24px;
-      }
-
-      .degree-story-final-actions {
-        flex-direction: column;
-        gap: 8px;
-        height: auto;
-        margin-top: 18px;
-      }
-
-      .degree-story-final-actions .btn {
-        width: min(100%, 280px);
       }
 
       .program-layout {
@@ -2629,6 +4110,73 @@
       transform: translateY(-7px) rotate(-45deg);
     }
 
+    @media (max-width: 1120px) {
+      .degree-story {
+        padding-block: 88px;
+      }
+
+      .degree-story-layout {
+        grid-template-columns: minmax(0, 588px);
+        justify-content: center;
+        gap: 64px;
+      }
+    }
+
+    @media (max-width: 560px) {
+      .degree-story {
+        padding: 72px 12px;
+      }
+
+      .degree-story-layout {
+        gap: 48px;
+      }
+
+      .degree-story-copy h2 {
+        line-height: 1.04;
+        letter-spacing: -.045em;
+      }
+
+      .degree-story-copy h2 span:first-child {
+        font-size: clamp(30px, 9vw, 48px);
+      }
+
+      .degree-story-copy h2 span:not(:first-child) {
+        font-size: clamp(48px, 14vw, 68px);
+      }
+
+      .degree-story-final-details {
+        padding: 28px 0 0;
+      }
+
+      .degree-story-final-copy p {
+        font-size: 15px;
+        line-height: 24px;
+      }
+
+      .degree-story-final-actions {
+        flex-direction: column;
+        align-items: stretch;
+        height: auto;
+        margin-top: 24px;
+      }
+
+      .degree-story-final-actions .btn {
+        width: 100%;
+      }
+
+      .degree-story-graphic-caption {
+        font-size: clamp(14px, 3.5vw, 20px);
+        line-height: 1.3;
+        text-align: center;
+        white-space: normal;
+      }
+
+      .degree-story-graphic-canvas {
+        height: auto;
+        aspect-ratio: 567 / 485;
+      }
+    }
+
     @media (max-width: 920px) {
       .nav-links {
         z-index: 30;
@@ -2697,35 +4245,9 @@
         animation-duration: .01ms !important;
       }
 
-      .degree-story {
-        height: auto;
-        min-height: calc(100svh - 72px);
-      }
-
-      .degree-story-video {
-        display: none;
-      }
-
-      .degree-story-overlay {
-        opacity: 1;
-      }
-
-      .degree-story-solid-copy {
-        opacity: 1;
-      }
-
-      .degree-story-final {
-        position: relative;
-        min-height: calc(100svh - 72px);
-      }
-
-      .degree-story-final-details {
-        opacity: 1;
-      }
     }
 
     /* === UVP purple-magenta palette and alternating section rhythm === */
-    .hero-eyebrow,
     .routes-copy .eyebrow,
     .routes-copy h2,
     .routes-copy>p,
@@ -2745,8 +4267,6 @@
 
     .carousel-section,
     .program-section,
-    #inspirate,
-    #incubadora,
     #preguntas {
       --text-primary: #ffffff;
       --text-secondary: #e7e7eb;
@@ -2757,6 +4277,32 @@
       --background-surface: #37005e;
       background: #26003f;
       color: var(--text-primary);
+    }
+
+    #incubadora {
+      --text-primary: #ffffff;
+      --text-secondary: #e7e7eb;
+      --text-muted: #c18af0;
+      --text-brand: #f0e1ff;
+      --border-default: rgb(240 225 255 / 28%);
+      --border-brand: #c18af0;
+      --background-surface: #37005e;
+      background: var(--cie-bg);
+      color: var(--text-primary);
+    }
+
+    /* #inspirate réplica exacta Figma 230:1080 — colores idénticos, wrapper transparente */
+    #inspirate {
+      --text-primary: #ffffff;
+      --text-secondary: rgba(255, 255, 255, 0.7);
+      --text-muted: rgba(255, 255, 255, 0.4);
+      --text-brand: #ffffff;
+      --border-default: rgba(255, 255, 255, 0.1);
+      --border-brand: rgba(255, 255, 255, 0.4);
+      --background-surface: rgba(255, 255, 255, 0.1);
+      background: transparent;
+      color: #ffffff;
+      padding: 0;
     }
 
     .carousel-section {
@@ -2841,17 +4387,6 @@
 
     .academic-card-body {
       border-top-color: #7800e5;
-    }
-
-    .degree-story,
-    .degree-story-stage {
-      background: #f0e1ff;
-    }
-
-    .degree-story-solid-copy,
-    .degree-story-final-details {
-      color: #26003f;
-      fill: #26003f;
     }
 
     .requirements-left,
@@ -2947,9 +4482,49 @@
       color: #c18af0;
     }
 
-    /* === Requirements: sticky intro with scrolling content === */
+    /* === Requirements: grid fullpage exacto, centrado vertical/horizontal === */
     #requisitos {
-      padding-block: 150px;
+      padding-block: 0;
+    }
+
+    .requisitos-grid-section {
+      background: #51008d;
+      min-height: calc(100vh - 72px);
+      min-height: calc(100svh - 72px);
+      min-height: calc(100dvh - 72px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding-block: 80px;
+    }
+
+    .requisitos-grid-section .requirements-left,
+    .requisitos-grid-section .requirements-intro,
+    .requisitos-grid-section .checklist li {
+      color: #f0e1ff;
+    }
+
+    .requisitos-grid-section .requirements-left .eyebrow {
+      color: #c18af0;
+    }
+
+    .requisitos-grid-section .requirements-left h2,
+    .requisitos-grid-section .checklist strong {
+      color: #fff;
+    }
+
+    .requisitos-grid-section .checklist li {
+      border-color: rgb(240 225 255 / 42%);
+    }
+
+    .requisitos-grid-section .req-button {
+      border-color: #fff;
+      color: #fff;
+    }
+
+    .requisitos-grid-section .req-button:hover {
+      background: #fff;
+      color: #51008d;
     }
 
     #requisitos .requirements-grid {
@@ -2957,50 +4532,189 @@
       grid-template-columns: minmax(300px, 389px) minmax(0, 791px);
       justify-content: center;
       margin-inline: auto;
-      align-items: start;
+      align-items: center;
       gap: clamp(48px, 7vw, 100px);
     }
 
     #requisitos .requirements-left {
-      position: sticky;
-      top: 96px;
-      align-self: start;
+      position: relative;
+      top: auto;
+      align-self: center;
     }
 
-    #requisitos .requirements-panel {
-      min-height: 0;
-      padding: 0;
+    .requisitos-process-section {
+      background: #f8f9fa;
+      padding-block: 0;
     }
 
-    #requisitos .requirements-panel-process h3 {
-      margin: 100px 0 21px;
+    .requirements-process {
+      width: min(100% - 48px, 1200px);
+      margin-inline: auto;
+      padding-block: 100px;
     }
 
-    #requisitos .requirements-panel-process .process-cards {
-      grid-template-columns: 1fr;
+    .requirements-process>h2 {
+      width: min(100%, 791px);
+      margin: 0 auto 50px;
+      color: #111116;
+      font: 700 52px/56.16px var(--display);
+      letter-spacing: -2.34px;
+      text-align: center;
+    }
+
+    .process-timeline {
+      position: relative;
+    }
+
+    .process-timeline::before {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      width: 2px;
+      background: #111116;
+      content: "";
+    }
+
+    .process-timeline .process-cards {
+      display: grid;
+      gap: 50px;
+    }
+
+    .process-step {
+      display: grid;
+      grid-template-columns: 40px minmax(0, 1fr);
+      gap: 40px;
+      align-items: center;
+    }
+
+    .process-marker {
+      justify-self: center;
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      background: #7800e5;
+    }
+
+    .process-timeline .process-card {
+      min-height: 98px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 10px;
+      padding: 16px;
+      border-color: #ccd5de;
+      background: transparent;
+    }
+
+    .process-timeline .process-card h3 {
+      margin: 0;
+      color: #51008d;
+      font: 700 30px/35px var(--display);
+      letter-spacing: 0;
+    }
+
+    .process-timeline .process-card p {
+      color: #182433;
+      font: 400 16px/20.8px var(--display);
+    }
+
+    .process-step {
+      position: relative;
+    }
+
+    .process-cursor-preview {
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: 9;
+      width: 280px;
+      aspect-ratio: 28 / 19;
+      overflow: hidden;
+      border: 1px solid rgb(255 255 255 / 65%);
+      border-radius: 10px;
+      background: #fff;
+      box-shadow: 0 18px 48px rgb(38 0 63 / 25%);
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+      will-change: transform;
+    }
+
+    .process-cursor-preview img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    @media (pointer: coarse) {
+      .process-cursor-preview {
+        display: none !important;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .process-cursor-preview {
+        display: none !important;
+      }
     }
 
     @media (max-width: 920px) {
-      #requisitos {
+      .requisitos-grid-section {
+        min-height: auto;
         padding-block: 72px;
+        align-items: start;
       }
 
       #requisitos .requirements-grid {
         width: min(100% - 32px, 1280px);
         grid-template-columns: 1fr;
         gap: 48px;
+        align-items: start;
       }
 
       #requisitos .requirements-left {
         position: static;
+        align-self: start;
       }
 
-      #requisitos .requirements-panel-process {
-        margin-top: 64px;
+      .requisitos-process-section {
+        padding-block: 72px;
       }
 
-      #requisitos .requirements-panel-process .process-cards {
-        grid-template-columns: 1fr;
+      .requirements-process {
+        width: min(100% - 32px, 1200px);
+        padding-block: 0;
+      }
+
+      .requirements-process>h2 {
+        margin-bottom: 40px;
+        font-size: 40px;
+        line-height: 1.08;
+      }
+
+      .process-timeline .process-cards {
+        gap: 28px;
+      }
+
+      .process-step {
+        grid-template-columns: 24px minmax(0, 1fr);
+        gap: 16px;
+      }
+
+      .process-marker {
+        width: 16px;
+        height: 16px;
+      }
+
+      .process-timeline .process-card h3 {
+        font-size: 22px;
+        line-height: 1.15;
+      }
+
+      .process-cursor-preview {
+        display: none !important;
       }
     }
   </style>
@@ -3180,7 +4894,7 @@
           </div>
           <div class="routes-image">
             <video autoplay muted loop playsinline preload="metadata"
-              poster="http://localhost:3845/assets/b2adf366e819312017ff819c0cd1e08aab513193.png">
+              poster="assets/foco-hero.webp">
               <source src="assets/videos/video1.mp4" type="video/mp4">
             </video>
             <span>Video de referencia</span>
@@ -3282,56 +4996,28 @@
 
     <section class="degree-story" aria-labelledby="degree-story-title" data-od-id="degree-story-section">
       <div class="degree-story-stage">
-        <video class="degree-story-video" autoplay muted loop playsinline preload="metadata" aria-hidden="true">
-          <source src="assets/videos/videp-back.mp4" type="video/mp4">
-        </video>
-        <svg class="degree-story-overlay" viewBox="0 0 2240 1117" preserveAspectRatio="xMidYMid slice"
-          aria-hidden="true">
-          <defs>
-            <g id="degree-story-title-shape" class="degree-story-svg-copy" text-anchor="middle">
-              <text x="0" y="-103" class="degree-story-svg-small">Titúlate con un</text>
-              <text x="0" y="0" class="degree-story-svg-large">Proyecto</text>
-              <text x="0" y="103" class="degree-story-svg-large">Emprendedor</text>
-            </g>
-            <mask id="degree-story-cutout" maskUnits="userSpaceOnUse" x="0" y="0" width="2240" height="1117">
-              <rect width="2240" height="1117" fill="white"></rect>
-              <g class="degree-story-mask-copy" fill="black" transform="translate(1120 418)">
-                <g class="degree-story-title-position">
-                  <g class="degree-story-title-scale">
-                    <use href="#degree-story-title-shape"></use>
-                  </g>
-                </g>
-              </g>
-            </mask>
-          </defs>
-          <rect width="2240" height="1117" fill="white" mask="url(#degree-story-cutout)"></rect>
-          <g class="degree-story-solid-copy" fill="#383737" transform="translate(1120 418)">
-            <g class="degree-story-title-position">
-              <g class="degree-story-title-scale">
-                <use href="#degree-story-title-shape"></use>
-              </g>
-            </g>
-          </g>
-        </svg>
         <div class="degree-story-final">
-          <h2 id="degree-story-title" class="sr-only">Titúlate con un Proyecto Emprendedor</h2>
-          <div class="degree-story-final-details">
-            <div class="degree-story-final-copy">
-              <p>Aplica los conocimientos de tu carrera para desarrollar un Plan de Negocios innovador, viable y con
-                impacto en tu entorno.</p>
-              <p>Tu proyecto integra siete áreas que permiten analizar cómo funcionará y qué necesita para ponerse en
-                marcha.</p>
+          <div class="degree-story-layout">
+            <div class="degree-story-copy">
+              <h2 id="degree-story-title"><span>Titúlate con un</span><span>Proyecto</span><span>Emprendedor</span></h2>
+              <div class="degree-story-final-details">
+                <div class="degree-story-final-copy">
+                  <p>Aplica los conocimientos de tu carrera para desarrollar un Plan de Negocios innovador, viable y con impacto en tu entorno.</p>
+                  <p>Tu proyecto integra siete áreas que permiten analizar cómo funcionará y qué necesita para ponerse en marcha.</p>
+                </div>
+                <div class="degree-story-final-actions">
+                  <a class="btn" href="#requisitos">Consultar requisitos</a>
+                  <button class="btn" type="button" data-dialog="asesores">Conocer a los asesores</button>
+                </div>
+              </div>
             </div>
-            <div class="degree-story-final-actions">
-              <a class="btn" href="#requisitos">Consultar requisitos</a>
-              <button class="btn" type="button" data-dialog="asesores">Conocer a los asesores</button>
-            </div>
+            <img class="degree-story-graphic" src="assets/Graphics.svg" alt="Las siete áreas de un proyecto emprendedor">
           </div>
         </div>
       </div>
     </section>
 
-    <section class="section requisitos" id="requisitos">
+    <section class="section requisitos requisitos-grid-section" id="requisitos">
       <div class="wrap requirements-grid">
         <div class="requirements-left">
           <p class="eyebrow">Requisitos y proceso de titulación</p>
@@ -3340,40 +5026,162 @@
           <a class="req-button" href="#orientacion" data-orientation-request="titularme por Proyecto Emprendedor">Solicitar orientación sobre titulación</a>
         </div>
         <div class="requirements-right">
-          <div class="requirements-panel requirements-panel-checklist">
-            <ul class="checklist">
-              <li><strong>Concluye tu plan de estudios</strong>Acredita todas las asignaturas de tu programa académico.</li>
-              <li><strong>Aprueba las materias correspondientes</strong>Cumple con las asignaturas terminales de emprendimiento de 7mo y 8vo semestre.</li>
-              <li><strong>Desarrolla tu Plan de Negocios</strong>Utiliza la estructura y los lineamientos oficiales de la UVP.</li>
-              <li><strong>Completa tus mentorías</strong>Obtén la liberación de un asesor autorizado, al cumplir tus 24 mentorías.</li>
-            </ul>
-          </div>
-          <div class="requirements-panel requirements-panel-process">
-            <h3>Proceso de titulación</h3>
-            <div class="process-cards">
+          <ul class="checklist">
+            <li><strong>Concluye tu plan de estudios</strong>Acredita todas las asignaturas de tu programa académico.</li>
+            <li><strong>Aprueba las materias correspondientes</strong>Cumple con las asignaturas terminales de emprendimiento de 7mo y 8vo semestre.</li>
+            <li><strong>Desarrolla tu Plan de Negocios</strong>Utiliza la estructura y los lineamientos oficiales de la UVP.</li>
+            <li><strong>Completa tus mentorías</strong>Obtén la liberación de un asesor autorizado, al cumplir tus 24 mentorías.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="section requisitos-process-section">
+      <div class="wrap requirements-process">
+        <h2>Proceso de titulación</h2>
+        <div class="process-timeline">
+          <div class="process-cards">
+            <div class="process-step">
+              <span class="process-marker" aria-hidden="true"></span>
               <div class="process-card">
-                <h4>1. Elige la terminal de Proyecto Emprendedor</h4>
+                <h3>1. Elige la terminal de Proyecto Emprendedor</h3>
                 <p>Inscríbete en las materias correspondientes.</p>
               </div>
+              <div class="process-cursor-preview" aria-hidden="true"><img src="https://images.pexels.com/photos/3184296/pexels-photo-3184296.jpeg?auto=compress&cs=tinysrgb&w=560" alt=""></div>
+            </div>
+            <div class="process-step">
+              <span class="process-marker" aria-hidden="true"></span>
               <div class="process-card">
-                <h4>2. Solicita un director de proyecto</h4>
+                <h3>2. Solicita un director de proyecto</h3>
                 <p>Solicitar un director de proyecto.</p>
               </div>
+              <div class="process-cursor-preview" aria-hidden="true"><img src="https://images.pexels.com/photos/3184292/pexels-photo-3184292.jpeg?auto=compress&cs=tinysrgb&w=560" alt=""></div>
+            </div>
+            <div class="process-step">
+              <span class="process-marker" aria-hidden="true"></span>
               <div class="process-card">
-                <h4>3. Desarrolla tu Plan de Negocios</h4>
+                <h3>3. Desarrolla tu Plan de Negocios</h3>
                 <p>Recibe acompañamiento metodológico y especializado.</p>
               </div>
+              <div class="process-cursor-preview" aria-hidden="true"><img src="https://images.pexels.com/photos/1181406/pexels-photo-1181406.jpeg?auto=compress&cs=tinysrgb&w=560" alt=""></div>
+            </div>
+            <div class="process-step">
+              <span class="process-marker" aria-hidden="true"></span>
               <div class="process-card">
-                <h4>4. Obtén la liberación de tu asesor</h4>
+                <h3>4. Obtén la liberación de tu asesor</h3>
                 <p>Realiza los ajustes necesarios y recibe su aprobación.</p>
               </div>
+              <div class="process-cursor-preview" aria-hidden="true"><img src="https://images.pexels.com/photos/3184465/pexels-photo-3184465.jpeg?auto=compress&cs=tinysrgb&w=560" alt=""></div>
+            </div>
+            <div class="process-step">
+              <span class="process-marker" aria-hidden="true"></span>
               <div class="process-card">
-                <h4>5. Completa la revisión de lectores</h4>
+                <h3>5. Completa la revisión de lectores</h3>
                 <p>Obtener la liberación de dos lectores.</p>
               </div>
+              <div class="process-cursor-preview" aria-hidden="true"><img src="https://images.pexels.com/photos/1181244/pexels-photo-1181244.jpeg?auto=compress&cs=tinysrgb&w=560" alt=""></div>
+            </div>
+            <div class="process-step">
+              <span class="process-marker" aria-hidden="true"></span>
               <div class="process-card">
-                <h4>6. Presenta tu examen profesional</h4>
+                <h3>6. Presenta tu examen profesional</h3>
                 <p>Expón y defiende el proyecto ante tus sinodales.</p>
+              </div>
+              <div class="process-cursor-preview" aria-hidden="true"><img src="https://images.pexels.com/photos/3182759/pexels-photo-3182759.jpeg?auto=compress&cs=tinysrgb&w=560" alt=""></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="inspirate" data-od-id="inspiration-section">
+      <div class="inspirate-dark" data-node-id="230:990">
+        <div class="inspirate-dark-margin" data-node-id="230:991">
+          <div class="inspirate-dark-topbar" data-node-id="230:992">
+            <p data-node-id="230:994">Inspírate y aprende</p>
+            <p data-node-id="230:996">Vol. 2026 · UVP</p>
+          </div>
+        </div>
+        <div class="inspirate-dark-grid" data-node-id="230:997">
+          <div class="inspirate-dark-image-wrap" data-node-id="230:998">
+            <img src="assets/figma/emprendedor-miguel.png" alt="Miguel Ángel Gómez Andrade presentando" data-node-id="230:999">
+            <div class="inspirate-dark-gradient" data-node-id="230:1000"></div>
+          </div>
+          <div class="inspirate-dark-content" data-node-id="230:1001">
+            <p class="inspirate-dark-eyebrow" data-node-id="230:1003">Emprendedor del mes</p>
+            <h2 class="inspirate-dark-name" data-node-id="230:1005">
+              <p>Miguel Ángel</p>
+              <p>Gómez Andrade</p>
+            </h2>
+            <p class="inspirate-dark-sub" data-node-id="230:1007">Fotografía · Nombre · Historia · Emprendimiento</p>
+            <div class="inspirate-dark-divider" data-node-id="230:1009"></div>
+            <p class="inspirate-dark-desc" data-node-id="230:1011">Cada mes destacamos a un emprendedor UVP que está transformando una idea en impacto real. Conoce su historia, su proceso y los aprendizajes que comparte con la comunidad.</p>
+            <a class="inspirate-dark-btn" href="#orientacion" data-node-id="230:1012">Leer su historia <img src="assets/figma/icon-arrow.svg" alt="" width="14" height="14" data-node-id="230:1014"></a>
+            <p class="inspirate-dark-watermark" data-node-id="230:1017" aria-hidden="true">01</p>
+          </div>
+        </div>
+      </div>
+      <div class="inspirate-purple" data-node-id="230:1018">
+        <div class="inspirate-purple-margin" data-node-id="230:1019">
+          <div class="inspirate-purple-topbar" data-node-id="230:1020">
+            <p data-node-id="230:1022">Podcast y multimedia</p>
+            <p data-node-id="230:1024">02 / 04</p>
+          </div>
+        </div>
+        <div class="inspirate-purple-body" data-node-id="230:1025">
+          <div class="inspirate-purple-container" data-node-id="230:1026">
+            <div class="inspirate-purple-grid" data-node-id="230:1027">
+              <div class="inspirate-purple-left">
+                <div class="inspirate-purple-mic">
+                  <img src="assets/podcast-34.png" alt="Micrófono de podcast sobre fondo morado - Podcast UVP" width="483" height="1000" loading="eager" decoding="async">
+                </div>
+                <h2 class="inspirate-purple-heading" data-node-id="230:1030">
+                  <p>Escucha,</p>
+                  <p>aprende,</p>
+                  <p>emprende.</p>
+                </h2>
+              </div>
+              <div class="inspirate-purple-list" data-node-id="230:1031">
+                <article class="inspirate-purple-item" data-node-id="230:1032">
+                  <div class="inspirate-purple-icon" data-node-id="230:1033"><img src="assets/figma/icon-play.svg" alt="" width="10" height="12" data-node-id="230:1034"></div>
+                  <div class="inspirate-purple-meta" data-node-id="230:1036">
+                    <div class="inspirate-purple-meta-head" data-node-id="230:1037">
+                      <span class="inspirate-purple-code" data-node-id="230:1039">E·01</span>
+                      <h3 data-node-id="230:1041">Voces UVP</h3>
+                    </div>
+                    <p class="inspirate-purple-item-desc" data-node-id="230:1043">Conversaciones con emprendedores, docentes y aliados del ecosistema.</p>
+                  </div>
+                </article>
+                <article class="inspirate-purple-item" data-node-id="230:1044">
+                  <div class="inspirate-purple-icon" data-node-id="230:1045"><img src="assets/figma/icon-play.svg" alt="" width="10" height="12" data-node-id="230:1046"></div>
+                  <div class="inspirate-purple-meta" data-node-id="230:1048">
+                    <div class="inspirate-purple-meta-head" data-node-id="230:1049">
+                      <span class="inspirate-purple-code" data-node-id="230:1051">E·02</span>
+                      <h3 data-node-id="230:1053">Charlas UVPlay</h3>
+                    </div>
+                    <p class="inspirate-purple-item-desc" data-node-id="230:1055">Sesiones grabadas de los ciclos de charlas presenciales UVPlay.</p>
+                  </div>
+                </article>
+                <article class="inspirate-purple-item" data-node-id="230:1056">
+                  <div class="inspirate-purple-icon" data-node-id="230:1057"><img src="assets/figma/icon-play.svg" alt="" width="10" height="12" data-node-id="230:1058"></div>
+                  <div class="inspirate-purple-meta" data-node-id="230:1060">
+                    <div class="inspirate-purple-meta-head" data-node-id="230:1061">
+                      <span class="inspirate-purple-code" data-node-id="230:1063">E·03</span>
+                      <h3 data-node-id="230:1065">Podcast Innova UVP</h3>
+                    </div>
+                    <p class="inspirate-purple-item-desc" data-node-id="230:1067">Ideas, tendencias e innovación contadas desde adentro.</p>
+                  </div>
+                </article>
+                <article class="inspirate-purple-item" data-node-id="230:1068">
+                  <div class="inspirate-purple-icon" data-node-id="230:1069"><img src="assets/figma/icon-play.svg" alt="" width="10" height="12" data-node-id="230:1070"></div>
+                  <div class="inspirate-purple-meta" data-node-id="230:1072">
+                    <div class="inspirate-purple-meta-head" data-node-id="230:1073">
+                      <span class="inspirate-purple-code" data-node-id="230:1075">E·04</span>
+                      <h3 data-node-id="230:1077">Cátedra CANACINTRA</h3>
+                    </div>
+                    <p class="inspirate-purple-item-desc" data-node-id="230:1079">Expertos del sector industrial comparten su visión del emprendimiento.</p>
+                  </div>
+                </article>
               </div>
             </div>
           </div>
@@ -3381,141 +5189,133 @@
       </div>
     </section>
 
-    <section class="section" id="inspirate" data-od-id="inspiration-section">
-      <div class="wrap">
-        <p class="eyebrow">Inspírate y aprende</p>
-        <h2 data-od-id="inspiration-title">Historias, recursos y conversaciones para emprender</h2>
-        <p class="inspire-desc">Aprende de otras experiencias y mantente al día con ideas, eventos y oportunidades para desarrollar tu proyecto.</p>
-        <div class="inspire-grid">
-          <article class="card card-feature" data-od-id="entrepreneur-card">
-            <img src="assets/carousel/emprendedor.webp" alt="Emprendedor presentando ante una audiencia" />
-            <div class="card-overlay">
-              <p class="eyebrow">Emprendedor del mes</p>
-              <h3>Conoce proyectos creados por estudiantes y egresados UVP.</h3>
-              <p>Fotografía · Nombre · Historia · Emprendimiento.</p>
+    <div id="ecosistema" aria-hidden="true" style="position:absolute;top:0;visibility:hidden;pointer-events:none;"></div>
+    <section id="noticias" class="noticias-section" data-section="noticias">
+      <div class="noticias-topbar">
+        <p>Noticias</p>
+        <p>03 / 04</p>
+      </div>
+      <div class="noticias-container">
+        <div class="noticias-header">
+          <h2 class="noticias-heading">
+            <p>Lo que está pasando</p>
+            <p>en la comunidad</p>
+          </h2>
+          <a href="#" class="noticias-btn">Ver todas las noticias →</a>
+        </div>
+        <div class="noticias-grid">
+          <article class="noticia-card">
+            <img src="assets/blog/demo-day.png" alt="Estudiantes presentan sus proyectos en el Demo Day UVP" width="600" height="380" loading="lazy" decoding="async">
+            <div class="noticia-meta">
+              <span class="noticia-tag">Eventos</span>
+              <span class="noticia-date">Ago 2026</span>
             </div>
+            <h3 class="noticia-title">Demo Day UVP: proyectos finalistas presentan ante inversionistas</h3>
+            <p class="noticia-desc">Seis equipos de incubación mostraron sus avances ante un panel de mentores y fondos de capital semilla.</p>
+            <a href="#" class="noticia-link">Leer más →</a>
           </article>
-          <div class="card-stack">
-            <article class="card card-dark" data-od-id="podcast-card">
-              <p class="eyebrow">Podcast y multimedia</p>
-              <h3>Voces UVP, Charlas UVPlay, Podcast Innova UVP y Cátedra CANACINTRA.</h3>
-            </article>
-            <article class="card card-cyan" data-od-id="news-card">
-              <p class="eyebrow">Noticias y blog</p>
-              <h3>Consulta contenidos, tendencias y actividades de la comunidad emprendedora.</h3>
-            </article>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="section alt" id="ecosistema" data-od-id="ecosystem-section">
-      <div class="wrap">
-        <div class="section-head">
-          <p class="eyebrow">Ecosistema emprendedor UVP</p>
-          <h2 data-od-id="ecosystem-title">Vinculación, entorno y aliados.</h2>
-        </div>
-        <div class="ecosystem-grid">
-          <article class="eco-main" data-od-id="environment-card">
-            <h3>Entorno UVP</h3>
-            <p>Propiciar acciones de carácter institucional que promuevan la generación y consolidación de alianzas
-              estratégicas con los distintos actores de carácter social, público y privado a través de esquemas de
-              participación y cooperación para el bien comunitario. Así como Desarrollar proyectos y programas de
-              emprendimiento local, detectando, consolidando y desarrollando áreas de oportunidad alineadas al ambiente
-              emprendedor de la zona y generar una economía local.</p>
+          <article class="noticia-card">
+            <img src="assets/blog/alianza-canacintra.png" alt="Alianza UVP-CANACINTRA para impulsar emprendimientos" width="600" height="380" loading="lazy" decoding="async">
+            <div class="noticia-meta">
+              <span class="noticia-tag">Convocatoria</span>
+              <span class="noticia-date">Jul 2026</span>
+            </div>
+            <h3 class="noticia-title">Abierta la convocatoria para el Programa de Incubación Avanzada</h3>
+            <p class="noticia-desc">El CIE abre sus puertas a nuevos proyectos con potencial de escala. La postulación cierra el 30 de agosto.</p>
+            <a href="#" class="noticia-link">Leer más →</a>
           </article>
-          <div class="eco-side">
-            <article class="eco-card" data-od-id="social-incubator-card">
-              <h3>Incubadora Social</h3>
-              <p>Capacitar para el trabajo bajo el Modelo de Competencias Laborales en materia de emprendimiento e
-                innovación a las personas privadas de la libertad, fortaleciendo habilidades, nuevas áreas
-                profesionales, productividad competitiva y laboral.</p>
-            </article>
-            <article class="eco-card" data-od-id="committee-card">
-              <h3>CE y DT Comité de Vinculación Empresarial</h3>
-              <p>Establecer, desarrollar y mantener la vinculación con el sector empresarial de la Región, para detectar
-                y satisfacer las necesidades de éste a través de la pertinencia de los programas académicos que ofrecen
-                las Instituciones de Educación Superior del Estado de Puebla.</p>
-            </article>
-          </div>
-          <div class="logo-row" aria-label="Carrusel de marcas de aliados" data-od-id="allies-carousel">
-            <div class="logo-placeholder">ALIADO</div>
-            <div class="logo-placeholder">ALIADO</div>
-            <div class="logo-placeholder">ALIADO</div>
-            <div class="logo-placeholder">ALIADO</div>
-            <div class="logo-placeholder">ALIADO</div>
-            <div class="logo-placeholder">ALIADO</div>
-          </div>
+          <article class="noticia-card">
+            <img src="assets/blog/egresada-financiamiento.png" alt="Egresada UVP recibe financiamiento para su emprendimiento" width="600" height="380" loading="lazy" decoding="async">
+            <div class="noticia-meta">
+              <span class="noticia-tag">Logro</span>
+              <span class="noticia-date">Jul 2026</span>
+            </div>
+            <h3 class="noticia-title">Egresada UVP recibe financiamiento de fondo nacional INADEM</h3>
+            <p class="noticia-desc">Daniela Ríos, fundadora de EcoLokal, fue seleccionada entre más de 400 emprendedores a nivel nacional.</p>
+            <a href="#" class="noticia-link">Leer más →</a>
+          </article>
+          <article class="noticia-card">
+            <img src="assets/blog/taller-mipymes.png" alt="Taller para emprendedores y MiPyMEs en la Universidad del Valle de Puebla" width="600" height="380" loading="lazy" decoding="async">
+            <div class="noticia-meta">
+              <span class="noticia-tag">Formación</span>
+              <span class="noticia-date">Jun 2026</span>
+            </div>
+            <h3 class="noticia-title">UVP impulsa a emprendedores y MiPyMEs con un taller especializado</h3>
+            <p class="noticia-desc">La comunidad recibió herramientas prácticas para fortalecer sus modelos de negocio y su estrategia comercial.</p>
+            <a href="#" class="noticia-link">Leer más →</a>
+          </article>
+          <article class="noticia-card">
+            <img src="assets/carousel/convocatorias.webp" alt="Convocatoria para proyectos de emprendimiento UVP" width="600" height="380" loading="lazy" decoding="async">
+            <div class="noticia-meta">
+              <span class="noticia-tag">Convocatoria</span>
+              <span class="noticia-date">May 2026</span>
+            </div>
+            <h3 class="noticia-title">Nueva convocatoria para incubar proyectos con impacto regional</h3>
+            <p class="noticia-desc">El CIE abre registros para equipos que buscan validar, estructurar y acelerar sus ideas de negocio.</p>
+            <a href="#" class="noticia-link">Leer más →</a>
+          </article>
+          <article class="noticia-card">
+            <img src="assets/carousel/expo.webp" alt="Expo de proyectos emprendedores de la comunidad UVP" width="600" height="380" loading="lazy" decoding="async">
+            <div class="noticia-meta">
+              <span class="noticia-tag">Comunidad</span>
+              <span class="noticia-date">Abr 2026</span>
+            </div>
+            <h3 class="noticia-title">Expo UVP conecta proyectos emprendedores con la comunidad</h3>
+            <p class="noticia-desc">Estudiantes y egresados compartieron soluciones innovadoras ante aliados, docentes y futuros clientes.</p>
+            <a href="#" class="noticia-link">Leer más →</a>
+          </article>
         </div>
       </div>
     </section>
 
-    <section class="section" id="incubadora" data-od-id="incubator-section">
-      <div class="wrap incubation">
-        <div>
-          <p class="eyebrow">Incubadora de empresas</p>
-          <div class="incubation-stamp" aria-hidden="true">CIE</div>
-        </div>
-        <div class="incubation-copy">
-          <h2 data-od-id="incubator-title">Modelo de Incubación</h2>
-          <p>El Centro de Innovación empresarial (CIE) es un espacio que integra a los emprendedores de pequeñas
-            empresas, para que puedan articularse con herramientas de negocios para el alcance de sus objetivos, a
-            través de un modelo de incubación innovador diseñado para el desarrollo de competencias en emprendimiento; a
-            través de facilitadores especializados y con experiencia en el rubro de creación de negocios de impacto.</p>
-          <div class="incubation-links"><a class="btn" href="#orientacion" data-orientation-request="emprender una idea"
-              data-od-id="incubator-apply">Postula tu proyecto</a><a class="btn" href="#orientacion"
-              data-orientation-request="mentoría" data-od-id="incubator-mentoring">Agenda una mentoría</a></div>
-        </div>
-      </div>
-    </section>
 
-    <section class="section orientation" id="orientacion" data-od-id="orientation-section">
-      <div class="wrap orientation-layout">
-        <div>
-          <p class="eyebrow">Orientación emprendedora</p>
-          <h2>Formulario de orientación</h2>
-          <p>Cuéntanos en qué necesitas apoyo. El mismo formulario sirve para postular un proyecto, solicitar mentoría,
-            iniciar titulación, registrar una empresa o solicitar vinculación.</p>
+    <section id="incubadora" class="cie-section" data-od-id="incubator-section" data-node-id="240:1465">
+      <div class="cie-background" aria-hidden="true">
+        <img class="cie-bg-image" src="assets/cie/cie-hero.jpg" alt="" width="1899" height="782" loading="lazy" decoding="async" data-node-id="240:1467">
+        <div class="cie-bg-gradient" data-node-id="240:1468"></div>
+        <div class="cie-glow cie-glow--tl" data-node-id="240:1469"></div>
+        <div class="cie-glow cie-glow--br" data-node-id="240:1470"></div>
+      </div>
+
+      <div class="cie-topbar" data-node-id="240:1472">
+        <p data-node-id="240:1474">Modelo de Incubación</p>
+        <p data-node-id="240:1477">Centro de Innovación Empresarial · UVP</p>
+      </div>
+
+      <div class="cie-layout" data-node-id="240:1479">
+        <div class="cie-left" data-node-id="240:1480">
+          <p class="cie-stamp" aria-hidden="true" data-node-id="240:1482">CIE</p>
+          <div class="cie-heading-wrap" data-node-id="240:1524">
+            <h2 class="cie-heading" data-node-id="240:1486" data-od-id="incubator-title"><span>Centro de</span><span>Innovación Empresarial</span></h2>
+            <p class="cie-desc" data-node-id="240:1489">El CIE reúne herramientas, mentoría y experiencia especializada para ayudarte a estructurar tu proyecto y avanzar en su proceso de incubación con acompañamiento real.</p>
+          </div>
+
+          <div class="cie-stats" data-node-id="240:1492">
+            <div class="cie-stat" data-node-id="240:1493">
+              <p class="cie-stat-number" data-node-id="240:1495">+120</p>
+              <p class="cie-stat-label" data-node-id="240:1498">proyectos incubados</p>
+            </div>
+            <div class="cie-stat" data-node-id="240:1501">
+              <p class="cie-stat-number" data-node-id="240:1503">5</p>
+              <p class="cie-stat-label" data-node-id="240:1506">fases de incubación</p>
+            </div>
+            <div class="cie-stat" data-node-id="240:1509">
+              <p class="cie-stat-number" data-node-id="240:1511">+40</p>
+              <p class="cie-stat-label" data-node-id="240:1514">mentores activos</p>
+            </div>
+          </div>
+
+          <div class="cie-actions" data-node-id="240:1517">
+            <a class="cie-btn-primary" href="#orientacion" data-orientation-request="emprender una idea" data-od-id="incubator-apply" data-node-id="240:1519">Postular mi proyecto</a>
+            <a class="cie-btn-secondary" href="#orientacion" data-orientation-request="mentoría" data-od-id="incubator-mentoring" data-node-id="240:1522">Agendar una mentoría</a>
+          </div>
         </div>
-        <form class="orientation-form" id="orientation-form">
-          <div class="form-field">
-            <label for="orientation-name">Nombre completo</label>
-            <input id="orientation-name" name="name" type="text" autocomplete="name" required>
+
+        <div class="cie-right" data-node-id="240:1527">
+          <div class="cie-card-wrap" data-node-id="240:1613">
+            <img class="cie-card-image" src="assets/cie/cie-hero.jpg" alt="Espacio del Centro de Innovación Empresarial UVP" width="1600" height="900" loading="lazy" decoding="async">
           </div>
-          <div class="form-field">
-            <label for="orientation-email">Correo electrónico</label>
-            <input id="orientation-email" name="email" type="email" autocomplete="email" required>
-          </div>
-          <div class="form-field">
-            <label for="orientation-profile">Perfil</label>
-            <select id="orientation-profile" name="profile" required>
-              <option value="" selected disabled>Selecciona una opción</option>
-              <option value="estudiante uvp">Estudiante UVP</option>
-              <option value="egresado uvp">Egresado UVP</option>
-              <option value="empresa">Empresa</option>
-              <option value="aliado">Aliado</option>
-            </select>
-          </div>
-          <div class="form-field">
-            <label for="orientation-request">Tipo de solicitud</label>
-            <select id="orientation-request" name="request" required>
-              <option value="" selected disabled>Selecciona una opción</option>
-              <option value="emprender una idea">Emprender una idea</option>
-              <option value="titulación emprendedora">Titulación emprendedora</option>
-              <option value="mentoría">Mentoría</option>
-              <option value="registro de empresa">Registro de empresa</option>
-              <option value="vinculación">Vinculación</option>
-            </select>
-          </div>
-          <div class="form-field full">
-            <label for="orientation-description">Descripción de la solicitud</label>
-            <textarea id="orientation-description" name="description" required></textarea>
-          </div>
-          <div class="form-submit">
-            <button class="btn" type="submit">Enviar solicitud</button>
-            <p class="form-status" id="orientation-status" aria-live="polite"></p>
-          </div>
-        </form>
+        </div>
       </div>
     </section>
 
@@ -3593,6 +5393,57 @@
             </div>
           </article>
         </div>
+      </div>
+    </section>
+
+
+    <section class="section orientation" id="orientacion" data-od-id="orientation-section">
+      <div class="wrap orientation-layout">
+        <div>
+          <p class="eyebrow">Orientación emprendedora</p>
+          <h2>Formulario de orientación</h2>
+          <p>Cuéntanos en qué necesitas apoyo. El mismo formulario sirve para postular un proyecto, solicitar mentoría,
+            iniciar titulación, registrar una empresa o solicitar vinculación.</p>
+        </div>
+        <form class="orientation-form" id="orientation-form">
+          <div class="form-field">
+            <label for="orientation-name">Nombre completo</label>
+            <input id="orientation-name" name="name" type="text" autocomplete="name" required>
+          </div>
+          <div class="form-field">
+            <label for="orientation-email">Correo electrónico</label>
+            <input id="orientation-email" name="email" type="email" autocomplete="email" required>
+          </div>
+          <div class="form-field">
+            <label for="orientation-profile">Perfil</label>
+            <select id="orientation-profile" name="profile" required>
+              <option value="" selected disabled>Selecciona una opción</option>
+              <option value="estudiante uvp">Estudiante UVP</option>
+              <option value="egresado uvp">Egresado UVP</option>
+              <option value="empresa">Empresa</option>
+              <option value="aliado">Aliado</option>
+            </select>
+          </div>
+          <div class="form-field">
+            <label for="orientation-request">Tipo de solicitud</label>
+            <select id="orientation-request" name="request" required>
+              <option value="" selected disabled>Selecciona una opción</option>
+              <option value="emprender una idea">Emprender una idea</option>
+              <option value="titulación emprendedora">Titulación emprendedora</option>
+              <option value="mentoría">Mentoría</option>
+              <option value="registro de empresa">Registro de empresa</option>
+              <option value="vinculación">Vinculación</option>
+            </select>
+          </div>
+          <div class="form-field full">
+            <label for="orientation-description">Descripción de la solicitud</label>
+            <textarea id="orientation-description" name="description" required></textarea>
+          </div>
+          <div class="form-submit">
+            <button class="btn" type="submit">Enviar solicitud</button>
+            <p class="form-status" id="orientation-status" aria-live="polite"></p>
+          </div>
+        </form>
       </div>
     </section>
   </main>
@@ -3710,6 +5561,76 @@
         }
       }
 
+      // Process preview - Cursor-Tracking Image Preview (CodePen reference adaptado)
+      // - 1 imagen fixed por .process-step, 280x190, sigue cursor con quickTo 0.35 power3.out, fade 0.2 power2.out
+      // - firstEnter evita salto desde (0,0), matchMedia conserva guard del proyecto
+      if (window.gsap) {
+        const processPreviewMedia = gsap.matchMedia();
+        processPreviewMedia.add({
+          finePointer: "(pointer: fine)",
+          motion: "(prefers-reduced-motion: no-preference)"
+        }, (context) => {
+          if (!context.conditions.finePointer || !context.conditions.motion) return;
+
+          gsap.set(".process-step .process-cursor-preview", { yPercent: -50, xPercent: -50 });
+
+          gsap.utils.toArray(".process-step").forEach((el) => {
+            const image = el.querySelector(".process-cursor-preview");
+            if (!image) return;
+            const imgTag = image.querySelector("img");
+            let firstEnter = true;
+            const setX = gsap.quickTo(image, "x", { duration: 0.35, ease: "power3.out" });
+            const setY = gsap.quickTo(image, "y", { duration: 0.35, ease: "power3.out" });
+            const align = (e) => {
+              if (firstEnter) {
+                setX(e.clientX, e.clientX);
+                setY(e.clientY, e.clientY);
+                firstEnter = false;
+              } else {
+                setX(e.clientX);
+                setY(e.clientY);
+              }
+            };
+            const startFollow = () => document.addEventListener("mousemove", align);
+            const stopFollow = () => document.removeEventListener("mousemove", align);
+            const fade = gsap.to(image, {
+              autoAlpha: 1,
+              paused: true,
+              duration: 0.2,
+              ease: "power2.out",
+              onReverseComplete: stopFollow
+            });
+
+            if (imgTag) {
+              const fallbackImage = "assets/foco-hero.webp";
+              imgTag.addEventListener("error", () => {
+                if (!imgTag.src.endsWith(fallbackImage)) imgTag.src = fallbackImage;
+              });
+            }
+
+            el.addEventListener("mouseenter", (e) => {
+              firstEnter = true;
+              fade.play();
+              startFollow();
+              align(e);
+            });
+            el.addEventListener("mouseleave", () => fade.reverse());
+          });
+
+          return () => {
+            // gsap.matchMedia limpia automáticamente listeners al cambiar media
+          };
+        });
+      } else {
+        // Fallback sin GSAP: solo manejo de error de imagen
+        document.querySelectorAll(".process-cursor-preview img").forEach((img) => {
+          const fallbackImage = "assets/foco-hero.webp";
+          img.addEventListener("error", () => {
+            if (!img.src.endsWith(fallbackImage)) img.src = fallbackImage;
+          });
+        });
+      }
+
       if (window.gsap && window.ScrollTrigger) {
         gsap.registerPlugin(ScrollTrigger);
         const programSection = document.querySelector('.program-section');
@@ -3777,71 +5698,6 @@
           };
         });
 
-        const degreeStory = document.querySelector('.degree-story');
-        const degreeStoryVideo = degreeStory?.querySelector('.degree-story-video');
-        const degreeStoryOverlay = degreeStory?.querySelector('.degree-story-overlay');
-        const degreeStoryTitlePosition = degreeStory?.querySelectorAll('.degree-story-title-position');
-        const degreeStoryTitleScale = degreeStory?.querySelectorAll('.degree-story-title-scale');
-        const degreeStorySolidCopy = degreeStory?.querySelector('.degree-story-solid-copy');
-        const degreeStoryFinalDetails = degreeStory?.querySelector('.degree-story-final-details');
-        const degreeStoryMedia = gsap.matchMedia();
-
-        degreeStoryMedia.add('(prefers-reduced-motion: no-preference)', () => {
-          if (!degreeStory || !degreeStoryVideo || !degreeStoryOverlay || !degreeStoryTitlePosition?.length || !degreeStoryTitleScale?.length || !degreeStorySolidCopy || !degreeStoryFinalDetails) return undefined;
-
-          gsap.set(degreeStoryVideo, { opacity: 1, yPercent: -3 });
-          gsap.set(degreeStoryOverlay, { autoAlpha: 0 });
-          gsap.set(degreeStoryTitlePosition, { attr: { transform: 'translate(0 150)' } });
-          gsap.set(degreeStoryTitleScale, { attr: { transform: 'scale(12)' } });
-          gsap.set(degreeStorySolidCopy, { opacity: 0 });
-          gsap.set(degreeStoryFinalDetails, { autoAlpha: 0 });
-
-          const degreeStoryTimeline = gsap.timeline({
-            scrollTrigger: {
-              trigger: degreeStory,
-              start: 'top top+=72',
-              end: () => `+=${window.innerHeight * 4.2}`,
-              pin: true,
-              pinSpacing: true,
-              scrub: 1,
-              anticipatePin: 1,
-              invalidateOnRefresh: true
-            }
-          });
-
-          degreeStoryTimeline
-            .to({}, { duration: 0.15 })
-            .to(degreeStoryOverlay, { autoAlpha: 1, duration: 0.1, ease: 'none' })
-            .to(degreeStoryTitleScale, { attr: { transform: 'scale(1)' }, duration: 0.6, ease: 'power1.inOut' })
-            .to(degreeStoryTitlePosition, { attr: { transform: 'translate(0 0)' }, duration: 0.6, ease: 'power1.inOut' }, '<')
-            .to(degreeStorySolidCopy, { opacity: 1, duration: 0.12, ease: 'none' })
-            .to(degreeStoryVideo, { opacity: 0, duration: 0.08, ease: 'none' })
-            .to(degreeStoryFinalDetails, { autoAlpha: 1, duration: 0.18, ease: 'power1.out' })
-            .to({}, { duration: 0.15 });
-
-          const degreeStoryParallax = gsap.to(degreeStoryVideo, {
-            yPercent: 3,
-            ease: 'none',
-            scrollTrigger: {
-              trigger: degreeStory,
-              start: 'top top+=72',
-              end: () => `+=${window.innerHeight * 4.2}`,
-              scrub: true,
-              invalidateOnRefresh: true
-            }
-          });
-
-          return () => {
-            degreeStoryTimeline.scrollTrigger?.kill();
-            degreeStoryTimeline.kill();
-            degreeStoryParallax.scrollTrigger?.kill();
-            degreeStoryParallax.kill();
-            degreeStoryTitlePosition.forEach((node) => node.removeAttribute('transform'));
-            degreeStoryTitleScale.forEach((node) => node.removeAttribute('transform'));
-            gsap.set([degreeStoryVideo, degreeStoryOverlay, degreeStorySolidCopy, degreeStoryFinalDetails], { clearProps: 'all' });
-          };
-        });
-
         const carouselRevealMedia = gsap.matchMedia();
 
         carouselRevealMedia.add({
@@ -3869,7 +5725,6 @@
         const refreshScrollTriggers = () => window.requestAnimationFrame(() => ScrollTrigger.refresh());
         window.addEventListener('load', refreshScrollTriggers, { once: true });
         document.fonts?.ready.then(refreshScrollTriggers);
-        degreeStoryVideo?.addEventListener('loadedmetadata', refreshScrollTriggers, { once: true });
       }
 
       navToggle.addEventListener('click', () => {
