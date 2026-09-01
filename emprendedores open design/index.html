@@ -278,8 +278,13 @@
       box-shadow: var(--shadow-brand);
     }
 
+    .nav-postulate::after {
+      display: none;
+    }
+
     .nav-postulate:hover {
       background: var(--primary-hover);
+      color: #f9e3f4 !important;
       box-shadow: var(--shadow-high);
       transform: translateY(-2px);
     }
@@ -4731,9 +4736,9 @@
         data-od-id="menu-toggle"><span></span><span></span><span></span></button>
       <div class="nav-links" id="nav-links" data-od-id="navigation-links">
         <a href="#programa" data-od-id="nav-programa">Programa</a>
-        <a href="#titulacion" data-od-id="nav-titulacion">Titulación</a>
+        <a href="#requisitos" data-od-id="nav-titulacion">Titulación</a>
         <a href="#inspirate" data-od-id="nav-inspirate">Inspírate</a>
-        <a href="#ecosistema" data-od-id="nav-ecosistema">Ecosistema</a>
+        <a href="#noticias" data-od-id="nav-noticias">Noticias</a>
         <a href="#incubadora" data-od-id="nav-incubadora">Incubadora</a>
         <a href="#preguntas" data-od-id="nav-faq">Preguntas frecuentes</a>
         <a class="nav-postulate" href="#orientacion" data-orientation-request="emprender una idea"
@@ -4757,7 +4762,7 @@
               <path d="M7 7h10v10" />
             </svg></a>
           <nav class="hero-quick-links" aria-label="Rutas rápidas de emprendimiento">
-            <a class="hero-quick-link hl-tl" href="#titulacion">
+            <a class="hero-quick-link hl-tl" href="#degree-story">
               <div class="hl-content">
                 <p class="hl-title">Quiero titularme<br>con mi proyecto</p>
                 <p class="hl-desc">Conoce los requisitos y el proceso para titularte.</p>
@@ -4779,7 +4784,7 @@
                     stroke-linejoin="round" />
                 </svg></div>
             </a>
-            <a class="hero-quick-link hl-br" href="#ecosistema">
+            <a class="hero-quick-link hl-br" href="#incubadora">
               <div class="hl-content">
                 <p class="hl-title">Ya tengo una<br>empresa</p>
                 <p class="hl-desc">Encuentra crecimiento para tu negocio.</p>
@@ -4994,7 +4999,7 @@
     </section>
 
 
-    <section class="degree-story" aria-labelledby="degree-story-title" data-od-id="degree-story-section">
+    <section class="degree-story" id="degree-story" aria-labelledby="degree-story-title" data-od-id="degree-story-section">
       <div class="degree-story-stage">
         <div class="degree-story-final">
           <div class="degree-story-layout">
