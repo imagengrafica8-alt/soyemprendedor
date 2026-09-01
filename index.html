@@ -278,8 +278,13 @@
       box-shadow: var(--shadow-brand);
     }
 
+    .nav-postulate::after {
+      display: none;
+    }
+
     .nav-postulate:hover {
       background: var(--primary-hover);
+      color: #f9e3f4 !important;
       box-shadow: var(--shadow-high);
       transform: translateY(-2px);
     }
@@ -1091,85 +1096,63 @@
 
     /* === Degree story === */
     .degree-story {
-      position: relative;
-      height: calc(100svh - 72px);
-      overflow: hidden;
-      background: #fff;
+      display: flex;
+      align-items: center;
+      min-height: calc(100svh - 72px);
+      padding: 120px 24px;
+      background: linear-gradient(-13.7469deg, #eb2c49 24.164%, #49018a 74.626%);
     }
 
-    .degree-story-stage {
-      position: relative;
-      width: 100%;
-      height: 100%;
-      overflow: hidden;
-      isolation: isolate;
-      background: #fff;
-    }
-
-    .degree-story-video,
-    .degree-story-overlay,
+    .degree-story-stage,
     .degree-story-final {
-      position: absolute;
-      inset: 0;
       width: 100%;
-      height: 100%;
     }
 
-    .degree-story-video {
-      z-index: 0;
-      display: block;
-      object-fit: cover;
-      transform: scale(1.06);
+    .degree-story-layout {
+      display: grid;
+      grid-template-columns: minmax(0, 588px) minmax(0, 567px);
+      gap: 100px;
+      align-items: center;
+      width: min(100%, 1255px);
+      margin: 0 auto;
     }
 
-    .degree-story-overlay {
-      z-index: 1;
-      display: block;
-      opacity: 0;
-      pointer-events: none;
+    .degree-story-copy {
+      min-width: 0;
+      text-align: right;
     }
 
-    .degree-story-svg-copy {
+    .degree-story-copy h2 {
+      margin: 0;
+      color: #fff;
       font-family: var(--display);
       font-weight: 700;
+      line-height: 103.411px;
       letter-spacing: -2.2562px;
     }
 
-    .degree-story-svg-small {
+    .degree-story-copy h2 span {
+      display: block;
+    }
+
+    .degree-story-copy h2 span:first-child {
       font-size: 48px;
     }
 
-    .degree-story-svg-large {
+    .degree-story-copy h2 span:not(:first-child) {
       font-size: 84px;
     }
 
-    .degree-story-solid-copy {
-      opacity: 0;
-    }
-
-    .degree-story-final {
-      z-index: 2;
-      pointer-events: none;
-    }
-
     .degree-story-final-details {
-      position: absolute;
-      left: 0;
-      right: 0;
-      top: calc(50% + 9.5px);
-      width: min(calc(100% - 32px), 687.148px);
-      margin: 0 auto;
       padding: 40px 0;
-      color: #1a1a1a;
-      text-align: center;
-      opacity: 0;
-      pointer-events: auto;
+      color: #fff;
     }
 
     .degree-story-final-copy p {
       width: 100%;
       margin: 0;
       font: 400 17px/28.9px var(--body);
+      text-align: right;
     }
 
     .degree-story-final-copy p+p {
@@ -1179,17 +1162,118 @@
     .degree-story-final-actions {
       display: flex;
       align-items: center;
-      justify-content: center;
+      justify-content: flex-end;
       gap: 12px;
       height: 76px;
     }
 
     .degree-story-final-actions .btn {
       min-height: 48px;
-      padding: 0 21px;
-      border-width: 1px;
+      padding: 0 20px;
+      border: 1px solid #7800e5;
       border-radius: 8px;
-      font-size: 14px;
+      background: #7800e5;
+      color: #fff;
+      font: 800 14px/14px var(--display);
+    }
+
+    .degree-story-final-actions .btn:hover {
+      border-color: #6700c2;
+      background: #6700c2;
+      color: #fff;
+    }
+
+    .degree-story-final-actions .btn:nth-child(2) {
+      padding-inline: 21px;
+      border-color: rgb(255 255 255 / 50%);
+      background: transparent;
+    }
+
+    .degree-story-final-actions .btn:nth-child(2):hover {
+      border-color: #fff;
+      background: rgb(255 255 255 / 12%);
+    }
+
+    .degree-story-graphic {
+      display: block;
+      width: min(100%, 567px);
+      height: auto;
+      justify-self: center;
+    }
+
+    .degree-story-graphic-canvas {
+      position: relative;
+      width: 100%;
+      height: 485px;
+      overflow: hidden;
+    }
+
+    .degree-graphic-art {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    .degree-graphic-layer {
+      position: absolute;
+      display: block;
+    }
+
+    .degree-graphic-layer img {
+      position: absolute;
+      inset: 0;
+      display: block;
+      width: 100%;
+      height: 100%;
+    }
+
+    .degree-story-graphic-label {
+      position: absolute;
+      z-index: 2;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 17.64%;
+      min-height: 5.41%;
+      padding: 4.526px;
+      color: #fff;
+      font: 700 13px/normal var(--display);
+      text-align: left;
+    }
+
+    .degree-graphic-step {
+      position: absolute;
+      z-index: 1;
+      color: #fff;
+      font: 800 24.607px/1 var(--display);
+      letter-spacing: -.76px;
+    }
+
+    .degree-graphic-step.s01 { top: 15.8%; left: 42.3%; }
+    .degree-graphic-step.s02 { top: 40.2%; left: 32.8%; }
+    .degree-graphic-step.s03 { top: 51.9%; left: 54.1%; }
+    .degree-graphic-step.s04 { top: 33.4%; left: 62.2%; }
+    .degree-graphic-step.s05 { top: 59.6%; left: 57.1%; }
+    .degree-graphic-step.s06 { top: 72.3%; left: 51.2%; color: #b68ae3; }
+
+    .degree-story-graphic-label.nature { top: 0; left: 29.37%; }
+    .degree-story-graphic-label.marketing { top: 2.71%; left: 50.74%; }
+    .degree-story-graphic-label.production { top: 15.09%; left: 69.85%; }
+    .degree-story-graphic-label.organization { top: 32.8%; left: 80.25%; width: 19.75%; }
+    .degree-story-graphic-label.legal { top: 51.42%; left: 81.73%; }
+    .degree-story-graphic-label.finance { top: 69.43%; left: 78.62%; }
+    .degree-story-graphic-label.impact { top: 85.42%; left: 70.56%; }
+
+    .degree-story-graphic-caption {
+      width: 100%;
+      margin: 0;
+      padding: 10px;
+      color: #fff;
+      font: 700 30px/52.8px var(--display);
+      letter-spacing: -.92px;
+      text-align: center;
+      white-space: nowrap;
     }
 
     /* === Hub Diagram === */
@@ -1640,7 +1724,7 @@
 
     /* --- Sección inferior: Podcast y multimedia (bg #7800e5) — Figma 230:1018 pt50 pb100 === */
     .inspirate-purple {
-      background: #7800e5;
+      background: #532190;
       display: flex;
       flex-direction: column;
       align-items: flex-start;
@@ -2120,20 +2204,28 @@
       grid-template-columns: repeat(3, 394.66px);
       gap: 24px;
       width: 100%;
-      height: 184px;
       margin-top: 40px;
       justify-content: space-between;
     }
 
     .noticia-card {
       border-top: 2px solid #902ce5;
-      padding-top: 20px;
       display: flex;
       flex-direction: column;
       gap: 12px;
       align-items: flex-start;
-      height: 184px;
+      min-height: 440px;
+      padding: 0 20px 20px;
+      overflow: hidden;
+      background: #fff;
       box-sizing: border-box;
+    }
+
+    .noticia-card>img {
+      width: calc(100% + 40px);
+      height: 188px;
+      margin: 0 -20px;
+      object-fit: cover;
     }
 
     .noticia-meta {
@@ -2898,7 +2990,15 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      transform: skewX(-0.39deg);
+    }
+
+    .cie-card-image {
+      display: block;
+      width: 100%;
+      height: 100%;
+      border-radius: 23.869px;
+      box-shadow: 0 24.864px 49.727px -11.935px rgba(0, 0, 0, .25);
+      object-fit: cover;
     }
 
     .cie-card {
@@ -3064,7 +3164,7 @@
       .cie-layout { grid-template-columns: 1fr 1fr; gap: 48px; }
       .cie-left { max-width: 100%; }
       .cie-card-wrap { width: 420px; height: 540px; }
-      .cie-card { width: 100%; height: 100%; }
+      .cie-card-image { width: 100%; height: 100%; }
     }
 
     @media (max-width: 1024px) {
@@ -3092,8 +3192,8 @@
       .cie-stats { flex-wrap: wrap; gap: 16px; }
       .cie-actions { flex-direction: column; align-items: stretch; }
       .cie-btn-primary, .cie-btn-secondary { width: 100%; }
-      .cie-card-wrap { width: 100%; height: auto; min-height: 520px; transform: none; }
-      .cie-card { height: auto; min-height: 520px; }
+      .cie-card-wrap { width: 100%; height: auto; min-height: 0; aspect-ratio: 4 / 5; }
+      .cie-card-image { height: 100%; min-height: 0; }
       .cie-phase-desc { white-space: normal; }
     }
 
@@ -3809,27 +3909,6 @@
         line-height: 23px;
       }
 
-      .degree-story-final-details {
-        top: calc(50% - 2px);
-        padding: 24px 0;
-      }
-
-      .degree-story-final-copy p {
-        font-size: 15px;
-        line-height: 24px;
-      }
-
-      .degree-story-final-actions {
-        flex-direction: column;
-        gap: 8px;
-        height: auto;
-        margin-top: 18px;
-      }
-
-      .degree-story-final-actions .btn {
-        width: min(100%, 280px);
-      }
-
       .program-layout {
         width: calc(100% - 24px);
         gap: 48px;
@@ -4036,6 +4115,73 @@
       transform: translateY(-7px) rotate(-45deg);
     }
 
+    @media (max-width: 1120px) {
+      .degree-story {
+        padding-block: 88px;
+      }
+
+      .degree-story-layout {
+        grid-template-columns: minmax(0, 588px);
+        justify-content: center;
+        gap: 64px;
+      }
+    }
+
+    @media (max-width: 560px) {
+      .degree-story {
+        padding: 72px 12px;
+      }
+
+      .degree-story-layout {
+        gap: 48px;
+      }
+
+      .degree-story-copy h2 {
+        line-height: 1.04;
+        letter-spacing: -.045em;
+      }
+
+      .degree-story-copy h2 span:first-child {
+        font-size: clamp(30px, 9vw, 48px);
+      }
+
+      .degree-story-copy h2 span:not(:first-child) {
+        font-size: clamp(48px, 14vw, 68px);
+      }
+
+      .degree-story-final-details {
+        padding: 28px 0 0;
+      }
+
+      .degree-story-final-copy p {
+        font-size: 15px;
+        line-height: 24px;
+      }
+
+      .degree-story-final-actions {
+        flex-direction: column;
+        align-items: stretch;
+        height: auto;
+        margin-top: 24px;
+      }
+
+      .degree-story-final-actions .btn {
+        width: 100%;
+      }
+
+      .degree-story-graphic-caption {
+        font-size: clamp(14px, 3.5vw, 20px);
+        line-height: 1.3;
+        text-align: center;
+        white-space: normal;
+      }
+
+      .degree-story-graphic-canvas {
+        height: auto;
+        aspect-ratio: 567 / 485;
+      }
+    }
+
     @media (max-width: 920px) {
       .nav-links {
         z-index: 30;
@@ -4104,31 +4250,6 @@
         animation-duration: .01ms !important;
       }
 
-      .degree-story {
-        height: auto;
-        min-height: calc(100svh - 72px);
-      }
-
-      .degree-story-video {
-        display: none;
-      }
-
-      .degree-story-overlay {
-        opacity: 1;
-      }
-
-      .degree-story-solid-copy {
-        opacity: 1;
-      }
-
-      .degree-story-final {
-        position: relative;
-        min-height: calc(100svh - 72px);
-      }
-
-      .degree-story-final-details {
-        opacity: 1;
-      }
     }
 
     /* === UVP purple-magenta palette and alternating section rhythm === */
@@ -4273,17 +4394,6 @@
       border-top-color: #7800e5;
     }
 
-    .degree-story,
-    .degree-story-stage {
-      background: #f0e1ff;
-    }
-
-    .degree-story-solid-copy,
-    .degree-story-final-details {
-      color: #26003f;
-      fill: #26003f;
-    }
-
     .requirements-left,
     .requirements-intro,
     .checklist li {
@@ -4383,7 +4493,7 @@
     }
 
     .requisitos-grid-section {
-      background: #f8f9fa;
+      background: #51008d;
       min-height: calc(100vh - 72px);
       min-height: calc(100svh - 72px);
       min-height: calc(100dvh - 72px);
@@ -4391,6 +4501,35 @@
       align-items: center;
       justify-content: center;
       padding-block: 80px;
+    }
+
+    .requisitos-grid-section .requirements-left,
+    .requisitos-grid-section .requirements-intro,
+    .requisitos-grid-section .checklist li {
+      color: #f0e1ff;
+    }
+
+    .requisitos-grid-section .requirements-left .eyebrow {
+      color: #c18af0;
+    }
+
+    .requisitos-grid-section .requirements-left h2,
+    .requisitos-grid-section .checklist strong {
+      color: #fff;
+    }
+
+    .requisitos-grid-section .checklist li {
+      border-color: rgb(240 225 255 / 42%);
+    }
+
+    .requisitos-grid-section .req-button {
+      border-color: #fff;
+      color: #fff;
+    }
+
+    .requisitos-grid-section .req-button:hover {
+      background: #fff;
+      color: #51008d;
     }
 
     #requisitos .requirements-grid {
@@ -4597,9 +4736,9 @@
         data-od-id="menu-toggle"><span></span><span></span><span></span></button>
       <div class="nav-links" id="nav-links" data-od-id="navigation-links">
         <a href="#programa" data-od-id="nav-programa">Programa</a>
-        <a href="#titulacion" data-od-id="nav-titulacion">Titulación</a>
+        <a href="#requisitos" data-od-id="nav-titulacion">Titulación</a>
         <a href="#inspirate" data-od-id="nav-inspirate">Inspírate</a>
-        <a href="#ecosistema" data-od-id="nav-ecosistema">Ecosistema</a>
+        <a href="#noticias" data-od-id="nav-noticias">Noticias</a>
         <a href="#incubadora" data-od-id="nav-incubadora">Incubadora</a>
         <a href="#preguntas" data-od-id="nav-faq">Preguntas frecuentes</a>
         <a class="nav-postulate" href="#orientacion" data-orientation-request="emprender una idea"
@@ -4623,7 +4762,7 @@
               <path d="M7 7h10v10" />
             </svg></a>
           <nav class="hero-quick-links" aria-label="Rutas rápidas de emprendimiento">
-            <a class="hero-quick-link hl-tl" href="#titulacion">
+            <a class="hero-quick-link hl-tl" href="#degree-story">
               <div class="hl-content">
                 <p class="hl-title">Quiero titularme<br>con mi proyecto</p>
                 <p class="hl-desc">Conoce los requisitos y el proceso para titularte.</p>
@@ -4645,7 +4784,7 @@
                     stroke-linejoin="round" />
                 </svg></div>
             </a>
-            <a class="hero-quick-link hl-br" href="#ecosistema">
+            <a class="hero-quick-link hl-br" href="#incubadora">
               <div class="hl-content">
                 <p class="hl-title">Ya tengo una<br>empresa</p>
                 <p class="hl-desc">Encuentra crecimiento para tu negocio.</p>
@@ -4860,52 +4999,24 @@
     </section>
 
 
-    <section class="degree-story" aria-labelledby="degree-story-title" data-od-id="degree-story-section">
+    <section class="degree-story" id="degree-story" aria-labelledby="degree-story-title" data-od-id="degree-story-section">
       <div class="degree-story-stage">
-        <video class="degree-story-video" autoplay muted loop playsinline preload="metadata" aria-hidden="true">
-          <source src="assets/videos/videp-back.mp4" type="video/mp4">
-        </video>
-        <svg class="degree-story-overlay" viewBox="0 0 2240 1117" preserveAspectRatio="xMidYMid slice"
-          aria-hidden="true">
-          <defs>
-            <g id="degree-story-title-shape" class="degree-story-svg-copy" text-anchor="middle">
-              <text x="0" y="-103" class="degree-story-svg-small">Titúlate con un</text>
-              <text x="0" y="0" class="degree-story-svg-large">Proyecto</text>
-              <text x="0" y="103" class="degree-story-svg-large">Emprendedor</text>
-            </g>
-            <mask id="degree-story-cutout" maskUnits="userSpaceOnUse" x="0" y="0" width="2240" height="1117">
-              <rect width="2240" height="1117" fill="white"></rect>
-              <g class="degree-story-mask-copy" fill="black" transform="translate(1120 418)">
-                <g class="degree-story-title-position">
-                  <g class="degree-story-title-scale">
-                    <use href="#degree-story-title-shape"></use>
-                  </g>
-                </g>
-              </g>
-            </mask>
-          </defs>
-          <rect width="2240" height="1117" fill="white" mask="url(#degree-story-cutout)"></rect>
-          <g class="degree-story-solid-copy" fill="#383737" transform="translate(1120 418)">
-            <g class="degree-story-title-position">
-              <g class="degree-story-title-scale">
-                <use href="#degree-story-title-shape"></use>
-              </g>
-            </g>
-          </g>
-        </svg>
         <div class="degree-story-final">
-          <h2 id="degree-story-title" class="sr-only">Titúlate con un Proyecto Emprendedor</h2>
-          <div class="degree-story-final-details">
-            <div class="degree-story-final-copy">
-              <p>Aplica los conocimientos de tu carrera para desarrollar un Plan de Negocios innovador, viable y con
-                impacto en tu entorno.</p>
-              <p>Tu proyecto integra siete áreas que permiten analizar cómo funcionará y qué necesita para ponerse en
-                marcha.</p>
+          <div class="degree-story-layout">
+            <div class="degree-story-copy">
+              <h2 id="degree-story-title"><span>Titúlate con un</span><span>Proyecto</span><span>Emprendedor</span></h2>
+              <div class="degree-story-final-details">
+                <div class="degree-story-final-copy">
+                  <p>Aplica los conocimientos de tu carrera para desarrollar un Plan de Negocios innovador, viable y con impacto en tu entorno.</p>
+                  <p>Tu proyecto integra siete áreas que permiten analizar cómo funcionará y qué necesita para ponerse en marcha.</p>
+                </div>
+                <div class="degree-story-final-actions">
+                  <a class="btn" href="#requisitos">Consultar requisitos</a>
+                  <button class="btn" type="button" data-dialog="asesores">Conocer a los asesores</button>
+                </div>
+              </div>
             </div>
-            <div class="degree-story-final-actions">
-              <a class="btn" href="#requisitos">Consultar requisitos</a>
-              <button class="btn" type="button" data-dialog="asesores">Conocer a los asesores</button>
-            </div>
+            <img class="degree-story-graphic" src="assets/Graphics.svg" alt="Las siete áreas de un proyecto emprendedor">
           </div>
         </div>
       </div>
@@ -5099,6 +5210,7 @@
         </div>
         <div class="noticias-grid">
           <article class="noticia-card">
+            <img src="assets/blog/demo-day.png" alt="Estudiantes presentan sus proyectos en el Demo Day UVP" width="600" height="380" loading="lazy" decoding="async">
             <div class="noticia-meta">
               <span class="noticia-tag">Eventos</span>
               <span class="noticia-date">Ago 2026</span>
@@ -5108,6 +5220,7 @@
             <a href="#" class="noticia-link">Leer más →</a>
           </article>
           <article class="noticia-card">
+            <img src="assets/blog/alianza-canacintra.png" alt="Alianza UVP-CANACINTRA para impulsar emprendimientos" width="600" height="380" loading="lazy" decoding="async">
             <div class="noticia-meta">
               <span class="noticia-tag">Convocatoria</span>
               <span class="noticia-date">Jul 2026</span>
@@ -5117,6 +5230,7 @@
             <a href="#" class="noticia-link">Leer más →</a>
           </article>
           <article class="noticia-card">
+            <img src="assets/blog/egresada-financiamiento.png" alt="Egresada UVP recibe financiamiento para su emprendimiento" width="600" height="380" loading="lazy" decoding="async">
             <div class="noticia-meta">
               <span class="noticia-tag">Logro</span>
               <span class="noticia-date">Jul 2026</span>
@@ -5125,112 +5239,40 @@
             <p class="noticia-desc">Daniela Ríos, fundadora de EcoLokal, fue seleccionada entre más de 400 emprendedores a nivel nacional.</p>
             <a href="#" class="noticia-link">Leer más →</a>
           </article>
-        </div>
-      </div>
-    </section>
-
-    <section id="blog" class="blog-section" data-section="blog" data-node-id="236:929">
-      <div class="blog-topbar" data-node-id="236:931">
-        <p data-node-id="236:933">Blog · Recursos</p>
-        <p data-node-id="236:935">04 / 04</p>
-      </div>
-      <div class="blog-container" data-node-id="236:937">
-        <div class="blog-header" data-node-id="236:938">
-          <h2 class="blog-heading" data-node-id="236:940">
-            <p>Contenidos para</p>
-            <p>crecer tu proyecto</p>
-          </h2>
-          <a href="#" class="blog-btn" data-node-id="236:941">Explorar el blog →</a>
-        </div>
-
-        <!-- Featured article — Figma 236:944 -->
-        <div class="blog-featured-wrap" data-node-id="236:943">
-          <article class="blog-featured" data-node-id="236:944">
-            <div class="blog-featured-media" data-node-id="236:945">
-              <img src="assets/blog/taller-mipymes.png" alt="Taller para emprendedores y MiPyMEs en UVP — audiencia en auditorio" width="615" height="458" loading="lazy" decoding="async" data-node-id="236:946">
-              <div class="blog-featured-gradient" data-node-id="236:947" aria-hidden="true"></div>
-              <span class="blog-featured-badge" data-node-id="236:949">Destacado</span>
+          <article class="noticia-card">
+            <img src="assets/blog/taller-mipymes.png" alt="Taller para emprendedores y MiPyMEs en la Universidad del Valle de Puebla" width="600" height="380" loading="lazy" decoding="async">
+            <div class="noticia-meta">
+              <span class="noticia-tag">Formación</span>
+              <span class="noticia-date">Jun 2026</span>
             </div>
-            <div class="blog-featured-body" data-node-id="236:950">
-              <div class="blog-featured-top">
-                <div class="blog-featured-meta" data-node-id="236:952">
-                  <span class="blog-tag blog-tag--emprendedores" data-node-id="236:954">Emprendedores</span>
-                  <span class="blog-date" data-node-id="236:956">Ago 2026</span>
-                </div>
-                <h3 class="blog-featured-title" data-node-id="236:958">UVP sede de importante taller para impulsar a emprendedores y MiPyMEs</h3>
-                <p class="blog-featured-desc" data-node-id="236:960">La Universidad del Valle de Puebla fue anfitriona de un taller de alto impacto dirigido a emprendedores en etapas tempranas y micro, pequeñas y medianas empresas de la región, fortaleciendo el ecosistema local de innovación empresarial.</p>
-              </div>
-              <div class="blog-featured-footer" data-node-id="236:962">
-                <div class="blog-author" data-node-id="236:963">
-                  <span class="blog-author-icon" data-node-id="236:964" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M7 7.5C8.38071 7.5 9.5 6.38071 9.5 5C9.5 3.61929 8.38071 2.5 7 2.5C5.61929 2.5 4.5 3.61929 4.5 5C4.5 6.38071 5.61929 7.5 7 7.5Z" stroke="currentColor" stroke-width="1.2"/><path d="M2.5 12C2.5 9.515 4.515 7.5 7 7.5C9.485 7.5 11.5 9.515 11.5 12" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg></span>
-                  <span class="blog-author-text" data-node-id="236:968">
-                    <span class="blog-author-label" data-node-id="236:970">Autor</span>
-                    <span class="blog-author-name" data-node-id="236:972">Comunicación y Eventos</span>
-                  </span>
-                </div>
-                <a href="#" class="blog-readmore" data-node-id="236:973">Leer más <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M2 7H12M8 11L12 7L8 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
-              </div>
+            <h3 class="noticia-title">UVP impulsa a emprendedores y MiPyMEs con un taller especializado</h3>
+            <p class="noticia-desc">La comunidad recibió herramientas prácticas para fortalecer sus modelos de negocio y su estrategia comercial.</p>
+            <a href="#" class="noticia-link">Leer más →</a>
+          </article>
+          <article class="noticia-card">
+            <img src="assets/carousel/convocatorias.webp" alt="Convocatoria para proyectos de emprendimiento UVP" width="600" height="380" loading="lazy" decoding="async">
+            <div class="noticia-meta">
+              <span class="noticia-tag">Convocatoria</span>
+              <span class="noticia-date">May 2026</span>
             </div>
+            <h3 class="noticia-title">Nueva convocatoria para incubar proyectos con impacto regional</h3>
+            <p class="noticia-desc">El CIE abre registros para equipos que buscan validar, estructurar y acelerar sus ideas de negocio.</p>
+            <a href="#" class="noticia-link">Leer más →</a>
+          </article>
+          <article class="noticia-card">
+            <img src="assets/carousel/expo.webp" alt="Expo de proyectos emprendedores de la comunidad UVP" width="600" height="380" loading="lazy" decoding="async">
+            <div class="noticia-meta">
+              <span class="noticia-tag">Comunidad</span>
+              <span class="noticia-date">Abr 2026</span>
+            </div>
+            <h3 class="noticia-title">Expo UVP conecta proyectos emprendedores con la comunidad</h3>
+            <p class="noticia-desc">Estudiantes y egresados compartieron soluciones innovadoras ante aliados, docentes y futuros clientes.</p>
+            <a href="#" class="noticia-link">Leer más →</a>
           </article>
         </div>
-
-        <!-- Secondary 3 cards — Figma 236:978 -->
-        <div class="blog-secondary-wrap" data-node-id="236:977">
-          <div class="blog-secondary-grid" data-node-id="236:978">
-            <article class="blog-card-secondary" data-node-id="236:979">
-              <div class="blog-card-secondary-media" data-node-id="236:980">
-                <img src="assets/blog/demo-day.png" alt="Estudiantes UVP presentan startups en Demo Day" width="393" height="192" loading="lazy" decoding="async" data-node-id="236:981">
-                <div class="blog-card-secondary-gradient" data-node-id="236:982" aria-hidden="true"></div>
-              </div>
-              <div class="blog-card-secondary-body" data-node-id="236:983">
-                <div class="blog-card-secondary-meta" data-node-id="236:984">
-                  <span class="blog-tag blog-tag--emprendedores" data-node-id="236:986">Emprendedores</span>
-                  <span class="blog-date" data-node-id="236:988">Jul 2026</span>
-                </div>
-                <h3 class="blog-card-secondary-title" data-node-id="236:990">Estudiantes UVP presentan sus startups en el Demo Day de incubación 2026</h3>
-                <div class="blog-card-secondary-footer" data-node-id="236:991">
-                  <span class="blog-card-secondary-author" data-node-id="236:993">Comunicación y Eventos</span>
-                </div>
-              </div>
-            </article>
-
-            <article class="blog-card-secondary" data-node-id="236:994">
-              <div class="blog-card-secondary-media" data-node-id="236:995">
-                <img src="assets/blog/alianza-canacintra.png" alt="Alianza UVP-CANACINTRA — grupo de personas celebrando" width="393" height="192" loading="lazy" decoding="async" data-node-id="236:996">
-                <div class="blog-card-secondary-gradient" data-node-id="236:997" aria-hidden="true"></div>
-              </div>
-              <div class="blog-card-secondary-body" data-node-id="236:998">
-                <div class="blog-card-secondary-meta" data-node-id="236:999">
-                  <span class="blog-tag blog-tag--vinculacion" data-node-id="236:1001">Vinculación</span>
-                  <span class="blog-date" data-node-id="236:1003">Jul 2026</span>
-                </div>
-                <h3 class="blog-card-secondary-title" data-node-id="236:1005">Alianza UVP-CANACINTRA abre nuevas oportunidades para emprendedores de la región</h3>
-                <div class="blog-card-secondary-footer" data-node-id="236:1006">
-                  <span class="blog-card-secondary-author" data-node-id="236:1008">Comunicación y Eventos</span>
-                </div>
-              </div>
-            </article>
-
-            <article class="blog-card-secondary" data-node-id="236:1009">
-              <div class="blog-card-secondary-media" data-node-id="236:1010">
-                <img src="assets/blog/egresada-financiamiento.png" alt="Egresada UVP recibe financiamiento — equipo con batas blancas" width="393" height="192" loading="lazy" decoding="async" data-node-id="236:1011">
-                <div class="blog-card-secondary-gradient" data-node-id="236:1012" aria-hidden="true"></div>
-              </div>
-              <div class="blog-card-secondary-body" data-node-id="236:1013">
-                <div class="blog-card-secondary-meta" data-node-id="236:1014">
-                  <span class="blog-tag blog-tag--logros" data-node-id="236:1016">Logros</span>
-                  <span class="blog-date" data-node-id="236:1018">Jun 2026</span>
-                </div>
-                <h3 class="blog-card-secondary-title" data-node-id="236:1020">Egresada UVP obtiene financiamiento de fondo nacional para su empresa sustentable</h3>
-                <div class="blog-card-secondary-footer" data-node-id="236:1021">
-                  <span class="blog-card-secondary-author" data-node-id="236:1023">Comunicación y Eventos</span>
-                </div>
-              </div>
-            </article>
-          </div>
-        </div>
       </div>
     </section>
+
 
     <section id="incubadora" class="cie-section" data-od-id="incubator-section" data-node-id="240:1465">
       <div class="cie-background" aria-hidden="true">
@@ -5276,118 +5318,9 @@
 
         <div class="cie-right" data-node-id="240:1527">
           <div class="cie-card-wrap" data-node-id="240:1613">
-            <div class="cie-card" data-node-id="240:1528">
-              <div class="cie-card-header" data-node-id="240:1529">
-                <p data-node-id="240:1531">Fases del proceso</p>
-                <div class="cie-dots" data-node-id="240:1533" aria-hidden="true">
-                  <span class="cie-dot" data-node-id="240:1534"></span>
-                  <span class="cie-dot" data-node-id="240:1535"></span>
-                  <span class="cie-dot cie-dot--active" data-node-id="240:1536"></span>
-                </div>
-              </div>
-
-              <div class="cie-card-list" data-node-id="240:1537">
-                <div class="cie-phase" data-node-id="240:1538">
-                  <span class="cie-phase-num" data-node-id="240:1540">01</span>
-                  <div class="cie-phase-body" data-node-id="240:1542">
-                    <p class="cie-phase-title" data-node-id="240:1544">Orientación</p>
-                    <p class="cie-phase-desc" data-node-id="240:1547">Diagnóstico inicial y mapeo de tu idea de negocio.</p>
-                  </div>
-                </div>
-
-                <div class="cie-phase cie-phase--active" data-node-id="240:1551">
-                  <span class="cie-phase-num" data-node-id="240:1553">02</span>
-                  <div class="cie-phase-body" data-node-id="240:1555">
-                    <p class="cie-phase-title" data-node-id="240:1557">Pre-incubación</p>
-                    <p class="cie-phase-desc" data-node-id="240:1560">Validación de mercado, propuesta de valor y modelo de negocio.</p>
-                  </div>
-                  <span class="cie-phase-dot" data-node-id="240:1563" aria-hidden="true"></span>
-                </div>
-
-                <div class="cie-phase" data-node-id="240:1567">
-                  <span class="cie-phase-num" data-node-id="240:1569">03</span>
-                  <div class="cie-phase-body" data-node-id="240:1571">
-                    <p class="cie-phase-title" data-node-id="240:1573">Incubación</p>
-                    <p class="cie-phase-desc" data-node-id="240:1576">Prototipado, plan financiero y mentorías especializadas.</p>
-                  </div>
-                </div>
-
-                <div class="cie-phase" data-node-id="240:1580">
-                  <span class="cie-phase-num" data-node-id="240:1582">04</span>
-                  <div class="cie-phase-body" data-node-id="240:1584">
-                    <p class="cie-phase-title" data-node-id="240:1586">Aceleración</p>
-                    <p class="cie-phase-desc" data-node-id="240:1589">Escalamiento, redes de contacto y acceso a financiamiento.</p>
-                  </div>
-                </div>
-
-                <div class="cie-phase" data-node-id="240:1593">
-                  <span class="cie-phase-num" data-node-id="240:1595">05</span>
-                  <div class="cie-phase-body" data-node-id="240:1597">
-                    <p class="cie-phase-title" data-node-id="240:1599">Egreso</p>
-                    <p class="cie-phase-desc" data-node-id="240:1602">Graduación, seguimiento y vinculación con el ecosistema.</p>
-                  </div>
-                </div>
-              </div>
-
-              <div class="cie-progress" data-node-id="240:1606">
-                <div class="cie-progress-bar" data-node-id="240:1607" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" aria-label="Progreso de incubación">
-                  <div class="cie-progress-fill" data-node-id="240:1608"></div>
-                </div>
-                <p class="cie-progress-label" data-node-id="240:1610">Fase 2 de 5 · Pre-incubación en progreso</p>
-              </div>
-            </div>
+            <img class="cie-card-image" src="assets/cie/cie-hero.jpg" alt="Espacio del Centro de Innovación Empresarial UVP" width="1600" height="900" loading="lazy" decoding="async">
           </div>
         </div>
-      </div>
-    </section>
-
-    <section class="section orientation" id="orientacion" data-od-id="orientation-section">
-      <div class="wrap orientation-layout">
-        <div>
-          <p class="eyebrow">Orientación emprendedora</p>
-          <h2>Formulario de orientación</h2>
-          <p>Cuéntanos en qué necesitas apoyo. El mismo formulario sirve para postular un proyecto, solicitar mentoría,
-            iniciar titulación, registrar una empresa o solicitar vinculación.</p>
-        </div>
-        <form class="orientation-form" id="orientation-form">
-          <div class="form-field">
-            <label for="orientation-name">Nombre completo</label>
-            <input id="orientation-name" name="name" type="text" autocomplete="name" required>
-          </div>
-          <div class="form-field">
-            <label for="orientation-email">Correo electrónico</label>
-            <input id="orientation-email" name="email" type="email" autocomplete="email" required>
-          </div>
-          <div class="form-field">
-            <label for="orientation-profile">Perfil</label>
-            <select id="orientation-profile" name="profile" required>
-              <option value="" selected disabled>Selecciona una opción</option>
-              <option value="estudiante uvp">Estudiante UVP</option>
-              <option value="egresado uvp">Egresado UVP</option>
-              <option value="empresa">Empresa</option>
-              <option value="aliado">Aliado</option>
-            </select>
-          </div>
-          <div class="form-field">
-            <label for="orientation-request">Tipo de solicitud</label>
-            <select id="orientation-request" name="request" required>
-              <option value="" selected disabled>Selecciona una opción</option>
-              <option value="emprender una idea">Emprender una idea</option>
-              <option value="titulación emprendedora">Titulación emprendedora</option>
-              <option value="mentoría">Mentoría</option>
-              <option value="registro de empresa">Registro de empresa</option>
-              <option value="vinculación">Vinculación</option>
-            </select>
-          </div>
-          <div class="form-field full">
-            <label for="orientation-description">Descripción de la solicitud</label>
-            <textarea id="orientation-description" name="description" required></textarea>
-          </div>
-          <div class="form-submit">
-            <button class="btn" type="submit">Enviar solicitud</button>
-            <p class="form-status" id="orientation-status" aria-live="polite"></p>
-          </div>
-        </form>
       </div>
     </section>
 
@@ -5465,6 +5398,57 @@
             </div>
           </article>
         </div>
+      </div>
+    </section>
+
+
+    <section class="section orientation" id="orientacion" data-od-id="orientation-section">
+      <div class="wrap orientation-layout">
+        <div>
+          <p class="eyebrow">Orientación emprendedora</p>
+          <h2>Formulario de orientación</h2>
+          <p>Cuéntanos en qué necesitas apoyo. El mismo formulario sirve para postular un proyecto, solicitar mentoría,
+            iniciar titulación, registrar una empresa o solicitar vinculación.</p>
+        </div>
+        <form class="orientation-form" id="orientation-form">
+          <div class="form-field">
+            <label for="orientation-name">Nombre completo</label>
+            <input id="orientation-name" name="name" type="text" autocomplete="name" required>
+          </div>
+          <div class="form-field">
+            <label for="orientation-email">Correo electrónico</label>
+            <input id="orientation-email" name="email" type="email" autocomplete="email" required>
+          </div>
+          <div class="form-field">
+            <label for="orientation-profile">Perfil</label>
+            <select id="orientation-profile" name="profile" required>
+              <option value="" selected disabled>Selecciona una opción</option>
+              <option value="estudiante uvp">Estudiante UVP</option>
+              <option value="egresado uvp">Egresado UVP</option>
+              <option value="empresa">Empresa</option>
+              <option value="aliado">Aliado</option>
+            </select>
+          </div>
+          <div class="form-field">
+            <label for="orientation-request">Tipo de solicitud</label>
+            <select id="orientation-request" name="request" required>
+              <option value="" selected disabled>Selecciona una opción</option>
+              <option value="emprender una idea">Emprender una idea</option>
+              <option value="titulación emprendedora">Titulación emprendedora</option>
+              <option value="mentoría">Mentoría</option>
+              <option value="registro de empresa">Registro de empresa</option>
+              <option value="vinculación">Vinculación</option>
+            </select>
+          </div>
+          <div class="form-field full">
+            <label for="orientation-description">Descripción de la solicitud</label>
+            <textarea id="orientation-description" name="description" required></textarea>
+          </div>
+          <div class="form-submit">
+            <button class="btn" type="submit">Enviar solicitud</button>
+            <p class="form-status" id="orientation-status" aria-live="polite"></p>
+          </div>
+        </form>
       </div>
     </section>
   </main>
@@ -5719,71 +5703,6 @@
           };
         });
 
-        const degreeStory = document.querySelector('.degree-story');
-        const degreeStoryVideo = degreeStory?.querySelector('.degree-story-video');
-        const degreeStoryOverlay = degreeStory?.querySelector('.degree-story-overlay');
-        const degreeStoryTitlePosition = degreeStory?.querySelectorAll('.degree-story-title-position');
-        const degreeStoryTitleScale = degreeStory?.querySelectorAll('.degree-story-title-scale');
-        const degreeStorySolidCopy = degreeStory?.querySelector('.degree-story-solid-copy');
-        const degreeStoryFinalDetails = degreeStory?.querySelector('.degree-story-final-details');
-        const degreeStoryMedia = gsap.matchMedia();
-
-        degreeStoryMedia.add('(prefers-reduced-motion: no-preference)', () => {
-          if (!degreeStory || !degreeStoryVideo || !degreeStoryOverlay || !degreeStoryTitlePosition?.length || !degreeStoryTitleScale?.length || !degreeStorySolidCopy || !degreeStoryFinalDetails) return undefined;
-
-          gsap.set(degreeStoryVideo, { opacity: 1, yPercent: -3 });
-          gsap.set(degreeStoryOverlay, { autoAlpha: 0 });
-          gsap.set(degreeStoryTitlePosition, { attr: { transform: 'translate(0 150)' } });
-          gsap.set(degreeStoryTitleScale, { attr: { transform: 'scale(12)' } });
-          gsap.set(degreeStorySolidCopy, { opacity: 0 });
-          gsap.set(degreeStoryFinalDetails, { autoAlpha: 0 });
-
-          const degreeStoryTimeline = gsap.timeline({
-            scrollTrigger: {
-              trigger: degreeStory,
-              start: 'top top+=72',
-              end: () => `+=${window.innerHeight * 4.2}`,
-              pin: true,
-              pinSpacing: true,
-              scrub: 1,
-              anticipatePin: 1,
-              invalidateOnRefresh: true
-            }
-          });
-
-          degreeStoryTimeline
-            .to({}, { duration: 0.15 })
-            .to(degreeStoryOverlay, { autoAlpha: 1, duration: 0.1, ease: 'none' })
-            .to(degreeStoryTitleScale, { attr: { transform: 'scale(1)' }, duration: 0.6, ease: 'power1.inOut' })
-            .to(degreeStoryTitlePosition, { attr: { transform: 'translate(0 0)' }, duration: 0.6, ease: 'power1.inOut' }, '<')
-            .to(degreeStorySolidCopy, { opacity: 1, duration: 0.12, ease: 'none' })
-            .to(degreeStoryVideo, { opacity: 0, duration: 0.08, ease: 'none' })
-            .to(degreeStoryFinalDetails, { autoAlpha: 1, duration: 0.18, ease: 'power1.out' })
-            .to({}, { duration: 0.15 });
-
-          const degreeStoryParallax = gsap.to(degreeStoryVideo, {
-            yPercent: 3,
-            ease: 'none',
-            scrollTrigger: {
-              trigger: degreeStory,
-              start: 'top top+=72',
-              end: () => `+=${window.innerHeight * 4.2}`,
-              scrub: true,
-              invalidateOnRefresh: true
-            }
-          });
-
-          return () => {
-            degreeStoryTimeline.scrollTrigger?.kill();
-            degreeStoryTimeline.kill();
-            degreeStoryParallax.scrollTrigger?.kill();
-            degreeStoryParallax.kill();
-            degreeStoryTitlePosition.forEach((node) => node.removeAttribute('transform'));
-            degreeStoryTitleScale.forEach((node) => node.removeAttribute('transform'));
-            gsap.set([degreeStoryVideo, degreeStoryOverlay, degreeStorySolidCopy, degreeStoryFinalDetails], { clearProps: 'all' });
-          };
-        });
-
         const carouselRevealMedia = gsap.matchMedia();
 
         carouselRevealMedia.add({
@@ -5811,7 +5730,6 @@
         const refreshScrollTriggers = () => window.requestAnimationFrame(() => ScrollTrigger.refresh());
         window.addEventListener('load', refreshScrollTriggers, { once: true });
         document.fonts?.ready.then(refreshScrollTriggers);
-        degreeStoryVideo?.addEventListener('loadedmetadata', refreshScrollTriggers, { once: true });
       }
 
       navToggle.addEventListener('click', () => {
