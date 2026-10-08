@@ -1830,6 +1830,9 @@
     }
 
     .inspirate-purple-heading {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
       font: 900 50px/normal var(--display);
       color: #ffffff;
       width: 479.754px;
@@ -1840,7 +1843,7 @@
 
     .inspirate-purple-heading p {
       margin: 0;
-      line-height: 83.6px;
+      line-height: 1;
     }
 
     .inspirate-purple-list {
@@ -2174,13 +2177,16 @@
     }
 
     .noticias-heading {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
       font: 700 56px/70px var(--display);
       color: #51008d;
       margin: 0;
       letter-spacing: 0;
     }
 
-    .noticias-heading p { margin:0; line-height:70px; }
+    .noticias-heading p { margin: 0; line-height: 1; }
 
     .noticias-btn {
       display: inline-flex;
@@ -2892,7 +2898,14 @@
       border-bottom: 1px solid var(--cie-border);
     }
 
-    .cie-stat { flex: 0 0 auto; min-width: 0; }
+    .cie-stat {
+      display: flex;
+      flex: 0 0 auto;
+      flex-direction: column;
+      align-items: center;
+      min-width: 0;
+      text-align: center;
+    }
     .cie-stat:nth-child(1) { width: 124px; }
     .cie-stat:nth-child(2) { width: 124px; }
     .cie-stat:nth-child(3) { width: 104px; }
@@ -3189,7 +3202,16 @@
       .cie-stamp { font-size: 72px; line-height: 72px; }
       .cie-heading { font-size: 28px; line-height: 34px; }
       .cie-desc { font-size: 15px; line-height: 24px; }
-      .cie-stats { flex-wrap: wrap; gap: 16px; }
+      .cie-stats {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 12px;
+      }
+      .cie-stat { width: 100%; }
+      .cie-stat-label {
+        white-space: normal;
+        overflow-wrap: anywhere;
+      }
       .cie-actions { flex-direction: column; align-items: stretch; }
       .cie-btn-primary, .cie-btn-secondary { width: 100%; }
       .cie-card-wrap { width: 100%; height: auto; min-height: 0; aspect-ratio: 4 / 5; }
@@ -4146,7 +4168,7 @@
       }
 
       .degree-story-copy h2 span:not(:first-child) {
-        font-size: clamp(48px, 14vw, 68px);
+        font-size: clamp(36px, 12.5vw, 68px);
       }
 
       .degree-story-final-details {
@@ -4489,7 +4511,7 @@
 
     /* === Requirements: grid fullpage exacto, centrado vertical/horizontal === */
     #requisitos {
-      padding-block: 0;
+      padding-block: 100px;
     }
 
     .requisitos-grid-section {
