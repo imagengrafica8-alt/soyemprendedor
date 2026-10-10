@@ -1060,13 +1060,26 @@
 
     /* === Equipo de asesores: carrusel de perfiles === */
     .community-lineup {
-      padding: clamp(72px, 9vw, 128px) 0;
+      padding: clamp(24px, 4vh, 48px) 0;
       color: #fff;
       background: var(--brand-800);
     }
 
+    .community-lineup.community-gsap-active {
+      height: 100dvh;
+      min-height: 0;
+      padding-block: clamp(16px, 3vh, 32px);
+      overflow: clip;
+    }
+
     .community-lineup .academic-container {
       width: min(100% - 48px, 1368px);
+    }
+
+    .community-lineup.community-gsap-active .academic-container {
+      height: 100%;
+      display: flex;
+      flex-direction: column;
     }
 
     .community-rule,
@@ -1087,7 +1100,7 @@
       display: grid;
       grid-template-columns: minmax(0, 1fr) minmax(0, .82fr);
       gap: clamp(40px, 8vw, 120px);
-      padding: 48px 0 72px;
+      padding: 28px 0 32px;
     }
 
     .community-intro h2 {
@@ -1188,8 +1201,24 @@
     }
 
     .community-slider-stage.community-gsap-active {
-      height: 100dvh;
-      min-height: 100dvh;
+      height: calc(100svh - 72px);
+      min-height: 560px;
+      padding-block: clamp(20px, 4vh, 48px);
+    }
+
+    .community-slider-stage.community-gsap-active .community-slider-viewport {
+      flex: 1 1 auto;
+      min-height: 0;
+      overflow: hidden;
+    }
+
+    .community-slider-stage.community-gsap-active .community-track,
+    .community-slider-stage.community-gsap-active .community-card {
+      height: 100%;
+    }
+
+    .community-slider-stage.community-gsap-active .community-card {
+      min-height: 0;
     }
 
     .community-track {
@@ -1250,62 +1279,6 @@
       letter-spacing: -.025em;
     }
 
-    .community-card-content>p:last-child {
-      margin: 0;
-      color: rgb(255 255 255 / 72%);
-      font-size: 14px;
-      line-height: 1.55;
-    }
-
-    .advisor-focus {
-      min-height: 100%;
-      display: flex;
-      flex-direction: column;
-      align-items: flex-start;
-      justify-content: space-between;
-      position: relative;
-      overflow: hidden;
-      padding: clamp(24px, 3vw, 36px);
-      background: #37005e;
-      color: #fff;
-    }
-
-    .community-card:nth-child(2) .advisor-focus { background: #51008d; }
-    .community-card:nth-child(3) .advisor-focus { background: #45103a; }
-    .community-card:nth-child(4) .advisor-focus { background: #5d154e; }
-
-    .advisor-focus::after {
-      position: absolute;
-      right: -42px;
-      bottom: -94px;
-      width: 220px;
-      height: 220px;
-      border: 1px solid rgb(255 255 255 / 24%);
-      border-radius: 50%;
-      content: "";
-      pointer-events: none;
-    }
-
-    .advisor-focus-index,
-    .advisor-focus-label {
-      position: relative;
-      z-index: 1;
-    }
-
-    .advisor-focus-index {
-      color: rgb(255 255 255 / 70%);
-      font: 700 11px/1.2 var(--mono);
-      letter-spacing: .12em;
-    }
-
-    .advisor-focus-label {
-      max-width: 330px;
-      margin: 24px 0 0;
-      color: #fff;
-      font: 700 clamp(30px, 3vw, 42px)/1.03 var(--display);
-      letter-spacing: -.035em;
-    }
-
     .advisor-degree {
       margin: 0 0 12px;
       color: #d6a3ce;
@@ -1347,15 +1320,139 @@
       line-height: 1.3;
     }
 
+    /* Advisor cards follow the horizontal composition from the Figma frame. */
+    .community-card {
+      flex-basis: 880px;
+      min-height: 400px;
+      grid-template-columns: 300px minmax(0, 1fr);
+      align-items: center;
+      gap: 34px;
+      padding: 24px;
+      border-radius: 16px;
+    }
+
+    .community-card-illustration {
+      display: block;
+      width: 300px;
+      height: 300px;
+      object-fit: contain;
+    }
+
+    .community-card-content {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 10px;
+      padding: 0 8px;
+    }
+
+    .community-card-content .advisor-profile-heading {
+      width: 100%;
+    }
+
+    .community-card .advisor-degree {
+      margin: 0;
+      color: #d6a3ce;
+      font: 700 12px/1.4 var(--mono);
+      letter-spacing: .08em;
+    }
+
+    .community-card .community-card-label {
+      margin: 0 0 2px;
+      color: #fff;
+      font: 700 26px/1.08 var(--display);
+      letter-spacing: -.045em;
+      text-transform: none;
+    }
+
+    .community-card h4 {
+      margin: 0;
+      font-size: 32px;
+      line-height: 1.08;
+      letter-spacing: -.045em;
+    }
+
+    .community-card .advisor-profile-details {
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+      gap: 32px;
+    }
+
+    .community-card .advisor-bio {
+      font-size: 15px !important;
+      line-height: 1.65 !important;
+    }
+
+    .community-card .advisor-specialties-title {
+      margin-bottom: 9px;
+      font-size: 10px;
+    }
+
+    .community-card .advisor-specialties {
+      gap: 4px;
+    }
+
+    .community-card .advisor-specialties li {
+      padding: 4px 6px;
+      font-size: 11px;
+      line-height: 1.3;
+    }
+
     @media (max-width: 767px) {
+      .degree-story.degree-story-gsap-active {
+        height: calc(100svh - 72px);
+        min-height: 0;
+        padding: 0 16px;
+      }
+
+      .degree-story-stage.degree-story-gsap-active {
+        display: flex;
+        align-items: center;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+      }
+
+      .degree-story-stage.degree-story-gsap-active .degree-story-final,
+      .degree-story-stage.degree-story-gsap-active .degree-story-layout {
+        width: max-content;
+      }
+
+      .degree-story-stage.degree-story-gsap-active .degree-story-layout {
+        display: flex;
+        align-items: center;
+        gap: 16px;
+      }
+
+      .degree-story-stage.degree-story-gsap-active .degree-story-copy {
+        position: static;
+        flex: 0 0 calc(100vw - 32px);
+        width: calc(100vw - 32px);
+        transform: none;
+        text-align: center;
+      }
+
+      .degree-story-stage.degree-story-gsap-active .degree-story-areas {
+        display: flex;
+        width: max-content;
+        gap: 16px;
+      }
+
+      .degree-story-stage.degree-story-gsap-active .degree-story-area {
+        flex: 0 0 min(82vw, 360px);
+      }
+
       .community-lineup .academic-container {
         width: min(100% - 32px, 1368px);
       }
 
+      .community-lineup.community-gsap-active {
+        padding-block: 12px;
+      }
+
       .community-intro {
         grid-template-columns: 1fr;
-        gap: 24px;
-        padding: 32px 0 48px;
+        gap: 14px;
+        padding: 22px 0 24px;
       }
 
       .community-intro h2 {
@@ -1384,9 +1481,32 @@
         scroll-snap-align: start;
       }
 
-      .advisor-focus {
-        min-height: 160px;
-        padding: 20px;
+      .community-card-illustration {
+        width: 100%;
+        height: auto;
+        max-height: 240px;
+      }
+
+      .community-card h4 {
+        font-size: 25px;
+      }
+
+      .community-card .advisor-profile-details {
+        grid-template-columns: minmax(0, 1fr);
+        gap: 12px;
+      }
+
+      .community-card .advisor-bio {
+        font-size: 13px !important;
+      }
+
+      .community-card .advisor-specialties-title {
+        font-size: 10px;
+      }
+
+      .community-card .advisor-specialties li {
+        padding: 4px 6px;
+        font-size: 10px;
       }
 
       .community-card-content {
@@ -1409,23 +1529,22 @@
       }
 
       .community-slider-stage.community-gsap-active {
-        height: 100dvh;
-        min-height: 100dvh;
-        padding-block: 8px;
+        height: calc(100svh - 72px);
+        min-height: 0;
+        padding: 8px 0;
       }
 
-      .community-card-content {
-        gap: 12px;
+      .community-slider-stage.community-gsap-active .community-slider-viewport {
+        flex: 1 1 auto;
+        min-height: 0;
       }
 
-      .advisor-focus {
-        min-height: 132px;
-        padding: 16px;
-      }
-
-      .advisor-focus-label {
-        margin-top: 12px;
-        font-size: 27px;
+      .community-slider-stage.community-gsap-active .community-card-illustration {
+        width: auto;
+        max-width: 100%;
+        height: clamp(112px, 19vh, 152px);
+        max-height: none;
+        margin-inline: auto;
       }
 
       .advisor-profile-details {
@@ -1598,10 +1717,10 @@
     /* === Degree story === */
     .degree-story {
       display: flex;
-      align-items: center;
+      align-items: flex-start;
       min-height: calc(100svh - 72px);
-      padding: 120px 24px;
-      background: linear-gradient(-13.7469deg, #eb2c49 24.164%, #49018a 74.626%);
+      padding: 50vh 24px 120px;
+      background: linear-gradient(-12.3614deg, #eb2c49 28%, #49018a 70.97%);
     }
 
     .degree-story-stage,
@@ -1611,16 +1730,20 @@
 
     .degree-story-layout {
       display: grid;
-      grid-template-columns: minmax(0, 588px) minmax(0, 567px);
-      gap: 100px;
-      align-items: center;
-      width: min(100%, 1255px);
+      grid-template-columns: minmax(0, .905fr) minmax(0, 1fr);
+      gap: clamp(48px, 7.8125vw, 150px);
+      align-items: start;
+      width: min(100%, 1355px);
       margin: 0 auto;
     }
 
     .degree-story-copy {
+      position: sticky;
+      top: 50vh;
       min-width: 0;
+      padding-top: 20px;
       text-align: right;
+      transform: translateY(-50%);
     }
 
     .degree-story-copy h2 {
@@ -1645,7 +1768,7 @@
     }
 
     .degree-story-final-details {
-      padding: 40px 0;
+      padding: 40px 0 0;
       color: #fff;
     }
 
@@ -1656,125 +1779,46 @@
       text-align: right;
     }
 
-    .degree-story-final-copy p+p {
-      padding-top: 17px;
-    }
-
-    .degree-story-final-actions {
-      display: flex;
-      align-items: center;
-      justify-content: flex-end;
-      gap: 12px;
-      height: 76px;
-    }
-
-    .degree-story-final-actions .btn {
-      min-height: 48px;
-      padding: 0 20px;
-      border: 1px solid #7800e5;
-      border-radius: 8px;
-      background: #7800e5;
-      color: #fff;
-      font: 800 14px/14px var(--display);
-    }
-
-    .degree-story-final-actions .btn:hover {
-      border-color: #6700c2;
-      background: #6700c2;
-      color: #fff;
-    }
-
-    .degree-story-final-actions .btn:nth-child(2) {
-      padding-inline: 21px;
-      border-color: rgb(255 255 255 / 50%);
-      background: transparent;
-    }
-
-    .degree-story-final-actions .btn:nth-child(2):hover {
-      border-color: #fff;
-      background: rgb(255 255 255 / 12%);
-    }
-
-    .degree-story-graphic {
-      display: block;
-      width: min(100%, 567px);
-      height: auto;
-      justify-self: center;
-    }
-
-    .degree-story-graphic-canvas {
-      position: relative;
-      width: 100%;
-      height: 485px;
-      overflow: hidden;
-    }
-
-    .degree-graphic-art {
-      position: absolute;
-      inset: 0;
-      z-index: 0;
-      pointer-events: none;
-    }
-
-    .degree-graphic-layer {
-      position: absolute;
-      display: block;
-    }
-
-    .degree-graphic-layer img {
-      position: absolute;
-      inset: 0;
-      display: block;
-      width: 100%;
-      height: 100%;
-    }
-
-    .degree-story-graphic-label {
-      position: absolute;
-      z-index: 2;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      width: 17.64%;
-      min-height: 5.41%;
-      padding: 4.526px;
-      color: #fff;
-      font: 700 13px/normal var(--display);
-      text-align: left;
-    }
-
-    .degree-graphic-step {
-      position: absolute;
-      z-index: 1;
-      color: #fff;
-      font: 800 24.607px/1 var(--display);
-      letter-spacing: -.76px;
-    }
-
-    .degree-graphic-step.s01 { top: 15.8%; left: 42.3%; }
-    .degree-graphic-step.s02 { top: 40.2%; left: 32.8%; }
-    .degree-graphic-step.s03 { top: 51.9%; left: 54.1%; }
-    .degree-graphic-step.s04 { top: 33.4%; left: 62.2%; }
-    .degree-graphic-step.s05 { top: 59.6%; left: 57.1%; }
-    .degree-graphic-step.s06 { top: 72.3%; left: 51.2%; color: #b68ae3; }
-
-    .degree-story-graphic-label.nature { top: 0; left: 29.37%; }
-    .degree-story-graphic-label.marketing { top: 2.71%; left: 50.74%; }
-    .degree-story-graphic-label.production { top: 15.09%; left: 69.85%; }
-    .degree-story-graphic-label.organization { top: 32.8%; left: 80.25%; width: 19.75%; }
-    .degree-story-graphic-label.legal { top: 51.42%; left: 81.73%; }
-    .degree-story-graphic-label.finance { top: 69.43%; left: 78.62%; }
-    .degree-story-graphic-label.impact { top: 85.42%; left: 70.56%; }
-
-    .degree-story-graphic-caption {
-      width: 100%;
+    .degree-story-areas {
+      display: grid;
+      gap: 30px;
       margin: 0;
-      padding: 10px;
-      color: #fff;
-      font: 700 30px/52.8px var(--display);
-      letter-spacing: -.92px;
-      text-align: center;
-      white-space: nowrap;
+      padding: 0;
+      list-style: none;
+    }
+
+    .degree-story-area {
+      padding: 30px;
+      border: 1px solid #d6a3ce;
+      background: #fff;
+      color: #151515;
+    }
+
+    .degree-story-area-heading {
+      display: grid;
+      grid-template-columns: 20px minmax(0, 1fr);
+      gap: 21px;
+      align-items: center;
+      padding-inline: 30px;
+    }
+
+    .degree-story-area-index {
+      color: #151515;
+      font: 400 16px/1 var(--display);
+    }
+
+    .degree-story-area h3 {
+      margin: 0;
+      color: #151515;
+      font: 700 27px/1.25 var(--display);
+      letter-spacing: -1.0667px;
+    }
+
+    .degree-story-area-description {
+      margin: 10px 0 0;
+      padding-inline: 30px;
+      color: #111116;
+      font: 400 15px/1.55 var(--body);
     }
 
     /* === Hub Diagram === */
@@ -3723,6 +3767,18 @@
     }
 
     @media (max-width: 560px) {
+      .cie-topbar {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 6px;
+        padding: 14px 16px;
+      }
+
+      .cie-topbar p:last-child {
+        white-space: normal;
+        overflow-wrap: anywhere;
+      }
+
       .cie-stamp { font-size: 64px; line-height: 64px; }
       .cie-card-header p { font-size: 8.5px; }
       .cie-phase-title { font-size: 12.5px; }
@@ -4025,6 +4081,10 @@
         grid-template-columns: minmax(0, 1fr) minmax(0, 1.034fr);
         gap: clamp(40px, 7.7vw, 100px);
       }
+
+      .routes-copy > p {
+        width: 100%;
+      }
     }
 
     @media (max-width: 920px) {
@@ -4090,7 +4150,13 @@
 
       .nav-postulate {
         width: 100%;
+        min-height: 48px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
         margin-top: 12px;
+        padding-inline: 16px;
+        text-align: center;
       }
 
       .hero-grid,
@@ -4151,6 +4217,39 @@
         width: min(100%, 410.664px);
         gap: 32px;
         margin: 40px auto 0;
+      }
+
+      .academic-card {
+        display: flex;
+        flex-direction: column;
+        height: auto;
+        aspect-ratio: auto;
+        overflow: visible;
+      }
+
+      .academic-card video {
+        width: 100%;
+        height: auto;
+        aspect-ratio: 1.35 / 1;
+        flex: 0 0 auto;
+      }
+
+      .academic-card-body,
+      .academic-card:is(:hover, :focus-visible) .academic-card-body {
+        position: relative;
+        inset: auto;
+        display: block;
+        width: 100%;
+        height: auto;
+        min-height: 0;
+        padding: 24px 20px;
+        border-top: 3px solid #7800e5;
+        background: #fff;
+        opacity: 1;
+        visibility: visible;
+        transform: none;
+        transition: none;
+        will-change: auto;
       }
 
       .program-layout {
@@ -4453,8 +4552,39 @@
         margin-top: 32px;
       }
 
+      .academic-card video {
+        aspect-ratio: 1.6 / 1;
+      }
+
+      .academic-card-body,
+      .academic-card:is(:hover, :focus-visible) .academic-card-body {
+        padding: 16px;
+      }
+
       .academic-card-body {
-        padding: 24px 20px;
+        padding: 16px;
+      }
+
+      .academic-card {
+        display: flex;
+        flex-direction: column;
+        aspect-ratio: auto;
+      }
+
+      .academic-card video {
+        height: auto;
+        aspect-ratio: 1.35 / 1;
+        flex: 0 0 auto;
+      }
+
+      .academic-card-body {
+        position: static;
+        height: auto;
+        min-height: 0;
+        padding: 20px;
+        border-top: 3px solid #383737;
+        transition: none;
+        will-change: auto;
       }
 
       .academic-card h3 {
@@ -4670,23 +4800,55 @@
 
     @media (max-width: 1120px) {
       .degree-story {
-        padding-block: 88px;
+        padding: 88px 24px;
       }
 
       .degree-story-layout {
-        grid-template-columns: minmax(0, 588px);
+        grid-template-columns: minmax(0, 632.5px);
         justify-content: center;
-        gap: 64px;
+        gap: 48px;
+      }
+
+      .degree-story-copy {
+        position: static;
+        padding-top: 0;
+        text-align: left;
+        transform: none;
+      }
+
+      .degree-story-final-copy p {
+        text-align: left;
+      }
+
+      .degree-story-area-heading,
+      .degree-story-area-description {
+        padding-inline: 20px;
       }
     }
 
     @media (max-width: 560px) {
       .degree-story {
-        padding: 72px 12px;
+        padding: 72px 16px;
+      }
+
+      .degree-story-stage {
+        width: 100%;
+        overflow-x: auto;
+        overflow-y: hidden;
+        overscroll-behavior-inline: contain;
+        scroll-snap-type: x mandatory;
+        scrollbar-width: thin;
+        scrollbar-color: rgb(255 255 255 / 55%) transparent;
+      }
+
+      .degree-story-final {
+        width: max-content;
       }
 
       .degree-story-layout {
-        gap: 48px;
+        display: flex;
+        width: max-content;
+        gap: 16px;
       }
 
       .degree-story-copy h2 {
@@ -4703,35 +4865,56 @@
       }
 
       .degree-story-final-details {
-        padding: 28px 0 0;
+        padding: 24px 0 0;
+      }
+
+      .degree-story-copy {
+        position: static;
+        flex: 0 0 calc(100vw - 32px);
+        width: calc(100vw - 32px);
+        padding: 0 8px;
+        text-align: center;
+        transform: none;
+        scroll-snap-align: start;
       }
 
       .degree-story-final-copy p {
         font-size: 15px;
         line-height: 24px;
-      }
-
-      .degree-story-final-actions {
-        flex-direction: column;
-        align-items: stretch;
-        height: auto;
-        margin-top: 24px;
-      }
-
-      .degree-story-final-actions .btn {
-        width: 100%;
-      }
-
-      .degree-story-graphic-caption {
-        font-size: clamp(14px, 3.5vw, 20px);
-        line-height: 1.3;
         text-align: center;
-        white-space: normal;
       }
 
-      .degree-story-graphic-canvas {
-        height: auto;
-        aspect-ratio: 567 / 485;
+      .degree-story-areas {
+        display: flex;
+        width: max-content;
+        gap: 16px;
+      }
+
+      .degree-story-area {
+        flex: 0 0 min(82vw, 360px);
+        scroll-snap-align: start;
+        padding: 18px;
+      }
+
+      .degree-story-area-heading,
+      .degree-story-area-description {
+        padding-inline: 0;
+      }
+
+      .degree-story-area-heading {
+        grid-template-columns: 20px minmax(0, 1fr);
+        gap: 12px;
+      }
+
+      .degree-story-area h3 {
+        font-size: 21px;
+        letter-spacing: -.6px;
+      }
+
+      .degree-story-area-description {
+        margin-top: 8px;
+        font-size: 14px;
+        line-height: 1.5;
       }
     }
 
@@ -5285,6 +5468,46 @@
         display: none !important;
       }
     }
+    @media (max-width: 560px) {
+      .academic-section .academic-card {
+        display: flex;
+        height: auto;
+        min-height: 0;
+        aspect-ratio: auto;
+        overflow: visible;
+      }
+
+      .academic-section .academic-card > video {
+        display: block;
+        width: 100%;
+        height: 180px;
+        min-height: 180px;
+        aspect-ratio: auto;
+        object-fit: cover;
+      }
+
+      .academic-section .academic-card .academic-card-body {
+        position: static !important;
+        display: block !important;
+        width: 100%;
+        height: auto !important;
+        min-height: 0;
+        padding: 16px;
+        overflow: visible;
+        background: #fff;
+        opacity: 1 !important;
+        visibility: visible !important;
+        transform: none !important;
+      }
+
+      .academic-section .academic-card h3,
+      .academic-section .academic-card p {
+        display: block;
+        color: #383737;
+        opacity: 1;
+        visibility: visible;
+      }
+    }
   </style>
   <link rel="stylesheet" href="hero-scroll.css">
 </head>
@@ -5521,36 +5744,32 @@
           <div class="community-slider-viewport">
             <div class="community-track" id="community-track" role="region" aria-labelledby="community-slider-title" tabindex="0">
           <article class="community-card">
-            <div class="advisor-focus">
-              <span class="advisor-focus-index">ÁREA 01</span>
-              <p class="advisor-focus-label">Emprendimiento<br>e innovación</p>
-            </div>
+            <img class="community-card-illustration" src="assets/images/Emprendimiento-empresarial.png" alt="Ilustración de emprendimiento empresarial">
             <div class="community-card-content">
               <div class="advisor-profile-heading">
-                <p class="advisor-degree">Maestría</p>
+                <h3 class="community-card-label">Emprendimiento empresarial</h3>
+                <p class="advisor-degree">Asesora de proyecto</p>
                 <h4>Dra. Mariana Terez Tufiño</h4>
               </div>
               <div class="advisor-profile-details">
-                <p class="advisor-bio">Licenciada en Administración de Empresas, maestra en Administración de PyMEs y candidata a doctora en Alta Dirección. Cuenta con negocio propio y más de 15 años de experiencia en docencia, consultoría y capacitación empresarial.</p>
+                <p class="advisor-bio">Licenciada en Administración de Empresas, maestra en Administración de PyMEs y candidata a doctora en Alta Dirección. Con más de 15 años en docencia, consultoría y capacitación empresarial.</p>
                 <div>
                   <p class="advisor-specialties-title">Áreas de especialidad</p>
-                  <ul class="advisor-specialties"><li>Emprendimiento social</li><li>Planes de negocio</li><li>Innovación</li><li>Formulación de proyectos</li></ul>
+                  <ul class="advisor-specialties"><li>Emprendimiento</li><li>Planes de negocio</li><li>Innovación</li><li>Formulación de proyectos</li></ul>
                 </div>
               </div>
             </div>
           </article>
           <article class="community-card">
-            <div class="advisor-focus">
-              <span class="advisor-focus-index">ÁREA 02</span>
-              <p class="advisor-focus-label">Estrategia<br>y talento</p>
-            </div>
+            <img class="community-card-illustration" src="assets/images/Estrategia-Directiva.png" alt="Ilustración de estrategia directiva">
             <div class="community-card-content">
               <div class="advisor-profile-heading">
-                <p class="advisor-degree">Doctorado</p>
+                <h3 class="community-card-label">Estrategia Directiva</h3>
+                <p class="advisor-degree">Asesora de proyecto</p>
                 <h4>Dra. María de Lourdes Sánchez Lezama</h4>
               </div>
               <div class="advisor-profile-details">
-                <p class="advisor-bio">Licenciada en Administración de Empresas, maestra en Administración Educativa y doctora en Alta Dirección. Tiene experiencia docente en UVP e IEU.</p>
+                <p class="advisor-bio">Licenciada en Administración de Empresas, maestra en Administración Educativa y doctora en Alta Dirección.</p>
                 <div>
                   <p class="advisor-specialties-title">Áreas de especialidad</p>
                   <ul class="advisor-specialties"><li>Emprendimiento</li><li>Formulación de proyectos</li><li>Planeación estratégica</li><li>Habilidades directivas</li><li>Talento humano</li></ul>
@@ -5559,43 +5778,39 @@
             </div>
           </article>
           <article class="community-card">
-            <div class="advisor-focus">
-              <span class="advisor-focus-index">ÁREA 03</span>
-              <p class="advisor-focus-label">Sostenibilidad<br>y negocios verdes</p>
-            </div>
+            <img class="community-card-illustration" src="assets/images/Sustentabilidad  global.png" alt="Ilustración de sustentabilidad global">
             <div class="community-card-content">
               <div class="advisor-profile-heading">
-                <p class="advisor-degree">Doctorado en curso</p>
+                <h3 class="community-card-label">Sustentabilidad global</h3>
+                <p class="advisor-degree">Asesor de proyecto</p>
                 <h4>Dr. Sergio García Sánchez</h4>
               </div>
               <div class="advisor-profile-details">
-                <p class="advisor-bio">Licenciado en Relaciones Internacionales, maestro en Derecho Ambiental y candidato a doctor en Ciencia, Cultura y Tecnología. Ha sido docente en ITESM, BUAP y Anáhuac, y representa a México en el World Economic Forum.</p>
+                <p class="advisor-bio">Licenciado en Relaciones Internacionales, maestro en Derecho Ambiental y candidato a doctor en Ciencia, Cultura y Tecnología. Representa a México en el World Economic Forum en temas de sustentabilidad.</p>
                 <div>
                   <p class="advisor-specialties-title">Áreas de especialidad</p>
-                  <ul class="advisor-specialties"><li>Sostenibilidad</li><li>Negocios verdes</li><li>Legislación ambiental</li><li>Proyectos de impacto global</li></ul>
+                  <ul class="advisor-specialties"><li>Sustentabilidad</li><li>Negocios verdes</li><li>Legislación ambiental</li><li>Proyectos de impacto global</li></ul>
                 </div>
               </div>
             </div>
           </article>
           <article class="community-card">
-            <div class="advisor-focus">
-              <span class="advisor-focus-index">ÁREA 04</span>
-              <p class="advisor-focus-label">Operación<br>y finanzas</p>
-            </div>
+            <img class="community-card-illustration" src="assets/images/Gestión Operativa.png" alt="Ilustración de gestión operativa">
             <div class="community-card-content">
               <div class="advisor-profile-heading">
-                <p class="advisor-degree">Maestría en Dirección de Negocios</p>
+                <h3 class="community-card-label">Gestión Operativa</h3>
+                <p class="advisor-degree">Asesor de proyecto</p>
                 <h4>Mtro. Vladimir Izamel Zenteno Pozos</h4>
               </div>
               <div class="advisor-profile-details">
-                <p class="advisor-bio">Maestro en Dirección de Negocios y licenciado en Administración. Tiene más de cinco años de experiencia administrativa y comercial en Ometa Medtech e I&amp;Global.</p>
+                <p class="advisor-bio">Licenciado en Administración y maestro en Dirección de Negocios. Más de 5 años de experiencia administrativa y comercial en empresas como Ometa Medtech e I&amp;Global.</p>
                 <div>
                   <p class="advisor-specialties-title">Áreas de especialidad</p>
                   <ul class="advisor-specialties"><li>Gestión operativa</li><li>Control de inventarios</li><li>Finanzas</li><li>Recursos humanos</li><li>Optimización de procesos</li></ul>
                 </div>
               </div>
             </div>
-            </article>
+          </article>
             </div>
           </div>
           <div class="community-actions">
@@ -5654,16 +5869,61 @@
               <h2 id="degree-story-title"><span>Titúlate con un</span><span>Proyecto</span><span>Emprendedor</span></h2>
               <div class="degree-story-final-details">
                 <div class="degree-story-final-copy">
-                  <p>Aplica los conocimientos de tu carrera para desarrollar un Plan de Negocios innovador, viable y con impacto en tu entorno.</p>
-                  <p>Tu proyecto integra siete áreas que permiten analizar cómo funcionará y qué necesita para ponerse en marcha.</p>
-                </div>
-                <div class="degree-story-final-actions">
-                  <a class="btn" href="#requisitos">Consultar requisitos</a>
-                  <button class="btn" type="button" data-dialog="asesores">Conocer a los asesores</button>
+                  <p>Convierte tus ideas en proyectos con propósito. En UVP te acompañamos paso a paso para desarrollar tu creatividad, liderazgo y visión emprendedora, desde la idea inicial hasta un proyecto viable y con impacto.</p>
                 </div>
               </div>
             </div>
-            <img class="degree-story-graphic" src="assets/Graphics.svg" alt="Las siete áreas de un proyecto emprendedor">
+            <ol class="degree-story-areas" aria-label="Áreas del proyecto emprendedor">
+              <li class="degree-story-area">
+                <div class="degree-story-area-heading">
+                  <span class="degree-story-area-index" aria-hidden="true">01</span>
+                  <h3>Naturaleza del proyecto</h3>
+                </div>
+                <p class="degree-story-area-description">Identifica la necesidad que quieres resolver y construye una propuesta de valor clara. Da forma a la misión, visión y propósito que harán único a tu proyecto.</p>
+              </li>
+              <li class="degree-story-area">
+                <div class="degree-story-area-heading">
+                  <span class="degree-story-area-index" aria-hidden="true">02</span>
+                  <h3>Plan de marketing</h3>
+                </div>
+                <p class="degree-story-area-description">Conoce a tu mercado, identifica a tu público objetivo y analiza a la competencia para crear estrategias que posicionen tu propuesta y comuniquen su verdadero valor.</p>
+              </li>
+              <li class="degree-story-area">
+                <div class="degree-story-area-heading">
+                  <span class="degree-story-area-index" aria-hidden="true">03</span>
+                  <h3>Plan de producción</h3>
+                </div>
+                <p class="degree-story-area-description">Define los recursos, procesos, tecnología y metodologías necesarias para desarrollar tu producto o servicio con calidad, orden y eficiencia.</p>
+              </li>
+              <li class="degree-story-area">
+                <div class="degree-story-area-heading">
+                  <span class="degree-story-area-index" aria-hidden="true">04</span>
+                  <h3>Plan organizacional</h3>
+                </div>
+                <p class="degree-story-area-description">Establece roles, funciones y una estructura organizacional clara. Fortalece el liderazgo, el trabajo colaborativo y la gestión del talento dentro de tu proyecto.</p>
+              </li>
+              <li class="degree-story-area">
+                <div class="degree-story-area-heading">
+                  <span class="degree-story-area-index" aria-hidden="true">05</span>
+                  <h3>Marco legal</h3>
+                </div>
+                <p class="degree-story-area-description">Conoce los elementos legales necesarios para dar certeza a tu proyecto, desde la constitución y el registro de marca hasta las licencias y normativas aplicables.</p>
+              </li>
+              <li class="degree-story-area">
+                <div class="degree-story-area-heading">
+                  <span class="degree-story-area-index" aria-hidden="true">06</span>
+                  <h3>Factibilidad financiera</h3>
+                </div>
+                <p class="degree-story-area-description">Calcula la inversión, los costos, el punto de equilibrio y las proyecciones financieras para tomar mejores decisiones y construir un modelo de negocio sostenible.</p>
+              </li>
+              <li class="degree-story-area">
+                <div class="degree-story-area-heading">
+                  <span class="degree-story-area-index" aria-hidden="true">07</span>
+                  <h3>Impacto del proyecto</h3>
+                </div>
+                <p class="degree-story-area-description">Identifica el impacto social, económico y ambiental de tu propuesta. Diseña un emprendimiento capaz de generar oportunidades y contribuir positivamente a su entorno.</p>
+              </li>
+            </ol>
           </div>
         </div>
       </div>
@@ -6360,17 +6620,16 @@
           });
         });
 
+        const communityLineup = document.querySelector('.community-lineup');
         const communityStage = document.querySelector('.community-slider-stage');
         const communityViewport = document.querySelector('.community-slider-viewport');
         const communityTrack = document.querySelector('.community-track');
-        if (communityStage && communityViewport && communityTrack) {
+        if (communityLineup && communityStage && communityViewport && communityTrack) {
           const communityHorizontalMedia = gsap.matchMedia();
           communityHorizontalMedia.add({
-            desktop: '(min-width: 768px)',
-            mobile: '(max-width: 767px)',
             motion: '(prefers-reduced-motion: no-preference)'
           }, (context) => {
-            if ((!context.conditions.desktop && !context.conditions.mobile) || !context.conditions.motion) return undefined;
+            if (!context.conditions.motion) return undefined;
 
             const getTravelDistance = () => Math.max(0, communityTrack.scrollWidth - communityViewport.clientWidth);
             communityViewport.classList.add('community-gsap-active');
@@ -6380,9 +6639,9 @@
               x: () => -getTravelDistance(),
               ease: 'none',
               scrollTrigger: {
-                id: 'community-lineup-horizontal',
+                id: 'community-stage-horizontal',
                 trigger: communityStage,
-                start: 'top top',
+                start: 'top top+=72',
                 end: () => `+=${getTravelDistance()}`,
                 pin: communityStage,
                 scrub: true,
@@ -6396,6 +6655,46 @@
               communityViewport.classList.remove('community-gsap-active');
               communityStage.classList.remove('community-gsap-active');
               gsap.set(communityTrack, { clearProps: 'transform' });
+            };
+          });
+        }
+
+        const degreeStory = document.querySelector('.degree-story');
+        const degreeStoryStage = document.querySelector('.degree-story-stage');
+        const degreeStoryFinal = document.querySelector('.degree-story-final');
+        const degreeStoryLayout = document.querySelector('.degree-story-layout');
+        if (degreeStory && degreeStoryStage && degreeStoryFinal && degreeStoryLayout) {
+          const degreeStoryHorizontalMedia = gsap.matchMedia();
+          degreeStoryHorizontalMedia.add({
+            mobile: '(max-width: 767px)',
+            motion: '(prefers-reduced-motion: no-preference)'
+          }, (context) => {
+            if (!context.conditions.mobile || !context.conditions.motion) return undefined;
+
+            const getTravelDistance = () => Math.max(0, degreeStoryFinal.scrollWidth - degreeStoryStage.clientWidth);
+            degreeStory.classList.add('degree-story-gsap-active');
+            degreeStoryStage.classList.add('degree-story-gsap-active');
+
+            gsap.to(degreeStoryLayout, {
+              x: () => -getTravelDistance(),
+              ease: 'none',
+              scrollTrigger: {
+                id: 'degree-story-mobile-horizontal',
+                trigger: degreeStory,
+                start: 'top top+=72',
+                end: () => `+=${getTravelDistance()}`,
+                pin: degreeStory,
+                scrub: true,
+                anticipatePin: 1,
+                invalidateOnRefresh: true,
+                onLeaveBack: () => gsap.set(degreeStoryLayout, { x: 0 })
+              }
+            });
+
+            return () => {
+              degreeStory.classList.remove('degree-story-gsap-active');
+              degreeStoryStage.classList.remove('degree-story-gsap-active');
+              gsap.set(degreeStoryLayout, { clearProps: 'transform' });
             };
           });
         }
